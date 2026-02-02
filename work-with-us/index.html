@@ -520,7 +520,107 @@
                 font-size: 0.75rem;
             }
         }
+
+        /* SUCCESS MESSAGE MODAL - Achievement Unlocked Style */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-modal.active { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .success-content {
+            background: var(--bg-card);
+            border: 2px solid var(--neon-purple);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(191, 0, 255, 0.6);
+            animation: slideUp 0.5s ease, glow 2s ease-in-out infinite;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 60px rgba(191, 0, 255, 0.6); }
+            50% { box-shadow: 0 0 80px rgba(191, 0, 255, 0.8), 0 0 120px rgba(255, 0, 170, 0.4); }
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .success-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--neon-purple);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(191, 0, 255, 0.8);
+        }
+
+        .success-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(255, 0, 170, 0.6);
+        }
+
+        .success-message {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .redirect-message {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .btn-loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            .success-content {
+                margin: 1rem;
+                padding: 2rem 1.5rem;
+            }
+            .success-title { font-size: 1.4rem; }
+            .success-subtitle { font-size: 1rem; }
+        }
     </style>
+    
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <div class="bg-animation"></div>
@@ -743,7 +843,7 @@
                 Get notified when we're looking for DJs, performers, vendors, and more.
             </p>
             
-            <form method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+            <form id="work-crew-form" method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
                 <input type="email" name="EMAIL" placeholder="your@email.com" required style="flex: 1; min-width: 250px; padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 50px; color: var(--text-primary); font-size: 1rem; font-family: inherit; transition: border-color 0.3s;">
                 <button type="submit" class="btn btn-primary">JOIN THE CREW</button>
                 <input type="text" name="email_address_check" value="" style="display:none;">
@@ -872,6 +972,120 @@
                 }
             });
         });
+
+        // ═══════════════════════════════════════════════════════════════════════════
+        // EPIC EMAIL FORM SUBMISSION WITH CONFETTI CELEBRATION
+        // ═══════════════════════════════════════════════════════════════════════════
+        const crewForm = document.getElementById('work-crew-form');
+        
+        if (crewForm) {
+            crewForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = crewForm.querySelector('button[type="submit"]');
+                const email = crewForm.querySelector('input[name="EMAIL"]').value;
+                const honeypot = crewForm.querySelector('input[name="email_address_check"]').value;
+                const locale = crewForm.querySelector('input[name="locale"]').value;
+                
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = 'JOINING...';
+                submitBtn.classList.add('btn-loading');
+                
+                const formData = new FormData();
+                formData.append('EMAIL', email);
+                formData.append('email_address_check', honeypot);
+                formData.append('locale', locale);
+                
+                try {
+                    const response = await fetch(crewForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors'
+                    });
+                    
+                    setTimeout(() => {
+                        const successModal = document.createElement('div');
+                        successModal.className = 'success-modal active';
+                        successModal.innerHTML = `
+                            <div class="success-content">
+                                <div class="success-icon">⭐</div>
+                                <h2 class="success-title">ACHIEVEMENT UNLOCKED!</h2>
+                                <h3 class="success-subtitle">🎮 MOONLIGHT CREW MEMBER</h3>
+                                <p class="success-message">You've joined the elite! Check your email for your legendary 10% discount code.</p>
+                                <p class="redirect-message">Redirecting to your rewards page...</p>
+                            </div>
+                        `;
+                        document.body.appendChild(successModal);
+                        
+                        const btnRect = submitBtn.getBoundingClientRect();
+                        const originX = (btnRect.left + btnRect.width / 2) / window.innerWidth;
+                        const originY = (btnRect.top + btnRect.height / 2) / window.innerHeight;
+                        
+                        confetti({
+                            particleCount: 100,
+                            spread: 100,
+                            origin: { x: originX, y: originY },
+                            colors: ['#bf00ff', '#ff00aa', '#00f0ff', '#00ff88']
+                        });
+                        
+                        const duration = 4000;
+                        const animationEnd = Date.now() + duration;
+                        const randomInRange = (min, max) => Math.random() * (max - min) + min;
+                        
+                        const interval = setInterval(() => {
+                            const timeLeft = animationEnd - Date.now();
+                            if (timeLeft <= 0) {
+                                clearInterval(interval);
+                                return;
+                            }
+                            
+                            const particleCount = 50 * (timeLeft / duration);
+                            
+                            confetti({
+                                particleCount,
+                                angle: randomInRange(55, 125),
+                                spread: randomInRange(50, 70),
+                                origin: { x: 0, y: 0.6 },
+                                colors: ['#bf00ff', '#ff00aa', '#00f0ff'],
+                                shapes: ['circle', 'square'],
+                                scalar: randomInRange(0.8, 1.2)
+                            });
+                            
+                            confetti({
+                                particleCount,
+                                angle: randomInRange(55, 125),
+                                spread: randomInRange(50, 70),
+                                origin: { x: 1, y: 0.6 },
+                                colors: ['#bf00ff', '#ff00aa', '#00f0ff'],
+                                shapes: ['circle', 'square'],
+                                scalar: randomInRange(0.8, 1.2)
+                            });
+                            
+                            confetti({
+                                particleCount: 2,
+                                angle: randomInRange(60, 120),
+                                spread: randomInRange(40, 80),
+                                origin: { x: 0.5, y: 0.4 },
+                                colors: ['#ffff00', '#ff00aa'],
+                                shapes: ['star'],
+                                scalar: 1.5
+                            });
+                        }, 250);
+                        
+                        setTimeout(() => {
+                            window.location.href = '/thank-you.html';
+                        }, 5000);
+                        
+                    }, 500);
+                    
+                } catch (error) {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.classList.remove('btn-loading');
+                    alert('Oops! Something went wrong. Please try again.');
+                    console.error('Form submission error:', error);
+                }
+            });
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+# Sensitive files - DO NOT PUBLISH
+donotpublishthis.md
+project.md
+
+# Environment variables
+.env
+.env.local
+*.env
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Node modules (if we add any build tools later)
+node_modules/
+
+# Build outputs
+dist/
+build/

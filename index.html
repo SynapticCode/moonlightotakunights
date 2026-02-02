@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moonlight Otaku Nights | NJ's Premier Anime Nightclub</title>
+    <meta name="description" content="Experience authentic anikura culture at QXT's Newark. J-Core, Anisong, cosplay contests, and the otaku community you've been searching for.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-green: #00ff88;
+            --neon-blue: #00f0ff;
+            --neon-purple: #bf00ff;
+            --neon-pink: #ff00aa;
+            --deep-black: #0a0a0f;
+            --card-bg: rgba(15, 15, 25, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+            background: var(--deep-black);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--deep-black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--neon-green), var(--neon-blue));
+            border-radius: 4px;
+        }
+
+        /* Noise Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) saturate(1.2);
+        }
+
+        /* Placeholder for video - shows instructions */
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a0f2e 50%, #0f1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 60%);
+            animation: nebula 20s ease-in-out infinite;
+        }
+
+        @keyframes nebula {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+
+        .hero-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(10, 10, 15, 0) 0%,
+                rgba(10, 10, 15, 0.3) 50%,
+                rgba(10, 10, 15, 0.95) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1000px;
+        }
+
+        .brand-japanese {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            letter-spacing: 0.5em;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+            margin-bottom: 1rem;
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.8; }
+            94% { opacity: 1; }
+            96% { opacity: 0.9; }
+            97% { opacity: 1; }
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--neon-green) 50%, var(--neon-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5));
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            font-weight: 500;
+            color: var(--neon-pink);
+            text-shadow: 0 0 15px var(--neon-pink);
+            margin-bottom: 2rem;
+            letter-spacing: 0.3em;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .cta-button {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            color: var(--deep-black);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.6);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--neon-purple);
+            box-shadow: 0 0 20px rgba(191, 0, 255, 0.3);
+        }
+
+        .cta-secondary:hover {
+            background: var(--neon-purple);
+            color: #fff;
+            box-shadow: 0 0 40px rgba(191, 0, 255, 0.5);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--neon-green);
+            filter: drop-shadow(0 0 10px var(--neon-green));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== FEATURED EVENT SECTION ===== */
+        .featured-event {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--deep-black) 0%, #0f1a15 100%);
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            color: var(--neon-green);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #fff, var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .event-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue), var(--neon-purple));
+        }
+
+        .event-flyer {
+            position: relative;
+        }
+
+        .event-flyer img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+            transition: transform 0.5s ease;
+        }
+
+        .event-flyer:hover img {
+            transform: scale(1.02);
+        }
+
+        .event-details h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .event-details .event-theme {
+            font-size: 1.3rem;
+            color: var(--neon-pink);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .event-meta-item svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--neon-blue);
+        }
+
+        .event-meta-item span {
+            font-size: 1.1rem;
+        }
+
+        .music-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .music-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--neon-green);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--neon-green);
+        }
+
+        .ticket-tiers {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .ticket-tiers h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .tier {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tier:last-child {
+            border-bottom: none;
+        }
+
+        .tier-name {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .tier-price {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--neon-green);
+        }
+
+        @media (max-width: 900px) {
+            .event-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* ===== VIDEO REEL SECTION ===== */
+        .video-reel {
+            padding: 6rem 2rem;
+            background: var(--deep-black);
+            position: relative;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .video-item {
+            position: relative;
+            aspect-ratio: 9/16;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .video-item video,
+        .video-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-placeholder-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .video-placeholder-item svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--neon-purple);
+            margin-bottom: 1rem;
+        }
+
+        .video-placeholder-item span {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* ===== EXPERIENCE SECTION ===== */
+        .experience {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--deep-black) 0%, #150f1a 100%);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-green);
+        }
+
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 240, 255, 0.2));
+            border-radius: 50%;
+        }
+
+        .experience-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--neon-green);
+        }
+
+        .experience-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .experience-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .experience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== EMAIL CAPTURE SECTION ===== */
+        .email-capture {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0f1a15 0%, #1a0f20 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .email-capture::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 50%, rgba(191, 0, 255, 0.1) 0%, transparent 40%);
+        }
+
+        .email-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .email-capture h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .email-capture p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            color: var(--deep-black);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-form input[type="text"],
+        .email-form input[type="email"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #fff;
+            font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .email-form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .email-form button {
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .email-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(191, 0, 255, 0.4);
+        }
+
+        .email-privacy {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1.5rem;
+        }
+
+        /* ===== UPCOMING EVENTS SECTION ===== */
+        .upcoming {
+            padding: 6rem 2rem;
+            background: var(--deep-black);
+        }
+
+        .events-timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .timeline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-blue);
+        }
+
+        .timeline-image {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-image::before {
+            content: 'EVENT IMAGE';
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.2em;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+        }
+
+        .timeline-date {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .timeline-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-theme {
+            color: var(--neon-pink);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .events-timeline {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* ===== SOCIAL & FOLLOW SECTION ===== */
+        .social-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--deep-black) 0%, #0f0f1a 100%);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--neon-purple);
+            border-color: var(--neon-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(191, 0, 255, 0.3);
+        }
+
+        .social-link svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 3rem 2rem;
+            background: #050508;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-green);
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== FLOATING ELEMENTS ===== */
+        .floating-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--neon-green);
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Developer Notes Panel (Hidden by default) */
+        .dev-notes {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    
+    <!-- Floating Particles -->
+    <div class="floating-particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="floating-particle" style="left: 30%; animation-delay: 3s;"></div>
+    <div class="floating-particle" style="left: 50%; animation-delay: 6s;"></div>
+    <div class="floating-particle" style="left: 70%; animation-delay: 9s;"></div>
+    <div class="floating-particle" style="left: 90%; animation-delay: 12s;"></div>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-video-container">
+            <!-- 
+            ╔══════════════════════════════════════════════════════════════════════════════╗
+            ║ VIDEO CONTENT INSTRUCTIONS                                                   ║
+            ╠══════════════════════════════════════════════════════════════════════════════╣
+            ║ WHAT TO CREATE: A 15-30 second looping video showing:                        ║
+            ║ - Anime cosplayers dancing in a dark club with neon lights                   ║
+            ║ - Quick cuts of: crowd energy, DJ booth, cosplay contest, competitions      ║
+            ║ - Aesthetic: Cyberpunk meets anime convention afterparty                     ║
+            ║                                                                              ║
+            ║ AI VIDEO GENERATION TOOLS (Ranked by quality):                               ║
+            ║ 1. Kling AI 2.0 - BEST for anime/cosplay content, fast motion               ║
+            ║    https://klingai.com - Use "Master" mode for highest quality              ║
+            ║                                                                              ║
+            ║ 2. Runway Gen-4 - Professional quality, good for crowd scenes               ║
+            ║    https://runwayml.com                                                       ║
+            ║                                                                              ║
+            ║ 3. Pika Labs 2.5 - Budget-friendly, good stylization                        ║
+            ║    https://pika.art                                                          ║
+            ║                                                                              ║
+            ║ PROMPT TO USE:                                                               ║
+            ║ "Cinematic footage of anime cosplayers dancing at a nightclub, neon green   ║
+            ║ and purple lighting, fog machines, DJ booth in background, young adults in  ║
+            ║ elaborate costumes (elf ears, fantasy armor, anime wigs) dancing and having ║
+            ║ fun, professional club lighting, energetic atmosphere, 4K quality"          ║
+            ║                                                                              ║
+            ║ ALTERNATIVE: Use royalty-free anime rave footage from:                       ║
+            ║ - Pexels (search: "rave" "nightclub" "cosplay")                              ║
+            ║ - Artgrid (paid but high quality)                                           ║
+            ║ - Film your own at a convention afterparty                                  ║
+            ╚══════════════════════════════════════════════════════════════════════════════╝
+            -->
+            <div class="video-placeholder">
+                <!-- Replace this div with: <video class="hero-video" autoplay muted loop playsinline src="your-video.mp4"></video> -->
+            </div>
+        </div>
+        <div class="hero-gradient-overlay"></div>
+        
+        <div class="hero-content">
+            <p class="brand-japanese">月光オタクナイツ</p>
+            <h1 class="hero-title">Moonlight<br>Otaku Nights</h1>
+            <p class="hero-subtitle">NJ's Anime Nightclub</p>
+            <p class="hero-tagline">Experience authentic anikura culture. J-Core. Anisong. Cosplay. Community. The night is ours.</p>
+            
+            <div class="cta-container">
+                <!-- 
+                    EVENTBRITE LINK: Replace # with your Eventbrite URL
+                    Example: href="https://www.eventbrite.com/e/your-event-id"
+                -->
+                <a href="#" class="cta-button cta-primary" id="main-tickets-btn">Get Tickets</a>
+                <a href="#email-signup" class="cta-button cta-secondary">Join the Waitlist</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED EVENT SECTION ===== -->
+    <section class="featured-event" id="event">
+        <div class="section-container">
+            <p class="section-label">Next Event</p>
+            <h2 class="section-title">Elven Grove: Emerald Moon</h2>
+            
+            <div class="event-card">
+                <div class="event-flyer">
+                    <!-- 
+                    ╔═══════════════════════════════════════════════════════════════════════╗
+                    ║ FLYER IMAGE: Replace src with your actual flyer                       ║
+                    ║ Recommended size: 1080x1350px (4:5 ratio) for Instagram compatibility ║
+                    ╚═══════════════════════════════════════════════════════════════════════╝
+                    -->
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500' viewBox='0 0 400 500'%3E%3Crect fill='%231a2e1a' width='400' height='500'/%3E%3Ctext x='200' y='250' text-anchor='middle' fill='%2300ff88' font-family='sans-serif' font-size='16'%3EFLYER IMAGE%3C/text%3E%3C/svg%3E" alt="Elven Grove: Emerald Moon - Event Flyer" />
+                </div>
+                
+                <div class="event-details">
+                    <h3>Elven Grove</h3>
+                    <p class="event-theme">Isekai & Fantasy Anime Night</p>
+                    
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                            </svg>
+                            <span><strong>Thursday, March 26, 2026</strong></span>
+                        </div>
+                        <div class="event-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>10PM - 3AM</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                            </svg>
+                            <span>QXT's Newark, NJ | 21+</span>
+                        </div>
+                    </div>
+
+                    <div class="music-tags">
+                        <span class="music-tag">J-Core</span>
+                        <span class="music-tag">Anisong</span>
+                        <span class="music-tag">Happy Hardcore</span>
+                        <span class="music-tag">Dubstep</span>
+                    </div>
+
+                    <div class="ticket-tiers">
+                        <h4>Admission</h4>
+                        <div class="tier">
+                            <span class="tier-name">Early Entry (Before 11PM)</span>
+                            <span class="tier-price">$20</span>
+                        </div>
+                        <div class="tier">
+                            <span class="tier-name">Late Entry (After 11PM)</span>
+                            <span class="tier-price">$25</span>
+                        </div>
+                        <div class="tier">
+                            <span class="tier-name">VIP Early Bird (Online Only)</span>
+                            <span class="tier-price">$18</span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="cta-button cta-primary">Get Tickets Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO REEL SECTION ===== -->
+    <section class="video-reel">
+        <div class="section-container">
+            <p class="section-label">The Vibe</p>
+            <h2 class="section-title">This Is Moonlight</h2>
+            
+            <div class="video-grid">
+                <!-- 
+                ╔══════════════════════════════════════════════════════════════════════════════╗
+                ║ VIDEO REEL CONTENT - Create 3 vertical videos (9:16 ratio)                  ║
+                ╠══════════════════════════════════════════════════════════════════════════════╣
+                ║                                                                              ║
+                ║ VIDEO 1: COSPLAY SHOWCASE                                                    ║
+                ║ Prompt: "Vertical video of anime cosplayers posing and dancing at a dark   ║
+                ║ nightclub, neon lighting, smoke effects, showing off elaborate costumes,    ║
+                ║ fantasy elf characters, isekai anime style, professional quality"           ║
+                ║                                                                              ║
+                ║ VIDEO 2: DJ & CROWD ENERGY                                                   ║
+                ║ Prompt: "Vertical video of energetic crowd at anime rave, hands in air,     ║
+                ║ green and purple lasers, DJ booth visible, young adults dancing, J-pop      ║
+                ║ concert atmosphere, euphoric energy"                                         ║
+                ║                                                                              ║
+                ║ VIDEO 3: COSPLAY COMPETITION                                                 ║
+                ║ Prompt: "Vertical video of cosplay competition on stage, spotlight on       ║
+                ║ cosplayer, audience cheering, MC with microphone, nightclub setting,        ║
+                ║ dramatic lighting, anime convention afterparty vibe"                         ║
+                ║                                                                              ║
+                ║ TOOLS: Kling AI 2.0 or Runway Gen-4 (set aspect ratio to 9:16)              ║
+                ║ ALTERNATIVE: Edit together clips from anime convention footage              ║
+                ╚══════════════════════════════════════════════════════════════════════════════╝
+                -->
+                <div class="video-item">
+                    <div class="video-placeholder-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                        </svg>
+                        <span>Cosplay Showcase Video</span>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-placeholder-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                        </svg>
+                        <span>DJ & Crowd Energy</span>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-placeholder-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                        </svg>
+                        <span>Cosplay Competition</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE SECTION ===== -->
+    <section class="experience">
+        <div class="section-container">
+            <p class="section-label">What Awaits</p>
+            <h2 class="section-title">The Experience</h2>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
+                        </svg>
+                    </div>
+                    <h3>Authentic Anisong</h3>
+                    <p>Real anime music. J-Core bangers. Happy hardcore anthems. No generic EDM—just the sounds that make otaku hearts race.</p>
+                </div>
+                
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0" />
+                        </svg>
+                    </div>
+                    <h3>Cosplay Contest</h3>
+                    <p>Show off your craft. Compete for prizes. Best Overall, Best Group, Most Creative, and Audience Favorite categories.</p>
+                </div>
+                
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                        </svg>
+                    </div>
+                    <h3>Your Community</h3>
+                    <p>Find your people. Otaku, cosplayers, and anime lovers creating a scene that's ours. No gatekeeping. Just vibes.</p>
+                </div>
+                
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                        </svg>
+                    </div>
+                    <h3>Safe & Legit</h3>
+                    <p>Professional venue. Real security. No warehouse sketchy vibes. A recurring home for anime nightlife in NJ.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EMAIL CAPTURE SECTION ===== -->
+    <section class="email-capture" id="email-signup">
+        <div class="email-content">
+            <h2>Join the Moonlight Crew</h2>
+            <p>Get exclusive early access, discounts, and be the first to know about new events.</p>
+            
+            <div class="discount-badge">🎟️ Subscribers Get 10% Off</div>
+            
+            <!-- 
+            ╔══════════════════════════════════════════════════════════════════════════════╗
+            ║ EMAIL FORM INTEGRATION                                                        ║
+            ╠══════════════════════════════════════════════════════════════════════════════╣
+            ║ OPTIONS:                                                                      ║
+            ║ 1. Mailchimp (Free up to 500 contacts)                                       ║
+            ║    - Create form at mailchimp.com, get embed code                            ║
+            ║    - Replace form action with your Mailchimp URL                             ║
+            ║                                                                              ║
+            ║ 2. Beehiiv (Free up to 2,500 subscribers)                                    ║
+            ║    - Great for newsletters, modern interface                                 ║
+            ║    - https://beehiiv.com                                                     ║
+            ║                                                                              ║
+            ║ 3. ConvertKit (Free up to 1,000 subscribers)                                 ║
+            ║    - Creator-focused, landing pages included                                 ║
+            ║    - https://convertkit.com                                                  ║
+            ║                                                                              ║
+            ║ 4. Eventbrite Waitlist                                                       ║
+            ║    - Use Eventbrite's built-in waitlist feature                              ║
+            ║    - Auto-captures emails for future events                                  ║
+            ║                                                                              ║
+            ║ RECOMMENDED: Start with Mailchimp, it integrates with Eventbrite             ║
+            ╚══════════════════════════════════════════════════════════════════════════════╝
+            -->
+            <form class="email-form" action="#" method="POST">
+                <input type="text" name="FNAME" placeholder="First Name" required>
+                <input type="email" name="EMAIL" placeholder="Email Address" required>
+                <button type="submit">Join Now</button>
+            </form>
+            
+            <p class="email-privacy">We respect your privacy. Unsubscribe anytime. No spam, only moonlight.</p>
+        </div>
+    </section>
+
+    <!-- ===== UPCOMING EVENTS SECTION ===== -->
+    <section class="upcoming">
+        <div class="section-container">
+            <p class="section-label">Coming Soon</p>
+            <h2 class="section-title">Future Events</h2>
+            
+            <div class="events-timeline">
+                <div class="timeline-card">
+                    <div class="timeline-image"></div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">April 2026</p>
+                        <h3 class="timeline-title">Neon Rain</h3>
+                        <p class="timeline-theme">Cyberpunk Anime Night</p>
+                        <p class="timeline-description">Edgerunners. Akira. Ghost in the Shell. Dive into the neon-soaked future.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-card">
+                    <div class="timeline-image"></div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">May 2026</p>
+                        <h3 class="timeline-title">Mecha Night</h3>
+                        <p class="timeline-theme">Giant Robot Anime Night</p>
+                        <p class="timeline-description">Gundam. Evangelion. Code Geass. Suit up for the ultimate mecha celebration.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-card">
+                    <div class="timeline-image"></div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">Monthly</p>
+                        <h3 class="timeline-title">Every Month</h3>
+                        <p class="timeline-theme">New Themes, Same Energy</p>
+                        <p class="timeline-description">Recurring monthly events building NJ's premier anime nightlife scene.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOCIAL SECTION ===== -->
+    <section class="social-section">
+        <div class="section-container">
+            <p class="section-label">Connect</p>
+            <h2 class="section-title">Follow the Moonlight</h2>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/moonlightotakunights/" target="_blank" rel="noopener" class="social-link" aria-label="Follow on Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                
+                <a href="#" class="social-link" aria-label="Join Discord">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/>
+                    </svg>
+                </a>
+                
+                <a href="#" class="social-link" aria-label="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-logo">Moonlight Otaku Nights</div>
+        <p class="footer-tagline">NJ's Premier Anime Nightclub Experience</p>
+        
+        <div class="footer-links">
+            <a href="#event">Events</a>
+            <a href="#email-signup">Join Waitlist</a>
+            <a href="https://www.instagram.com/moonlightotakunights/" target="_blank">Instagram</a>
+            <a href="mailto:anikuranj@gmail.com">Contact</a>
+        </div>
+        
+        <p class="footer-copyright">© 2026 Moonlight Otaku Nights. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-video-container');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply fade-in to sections
+        document.querySelectorAll('.experience-card, .timeline-card, .video-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

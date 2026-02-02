@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Promoter | Moonlight Otaku Nights</title>
+    <meta name="description" content="Earn money promoting NJ's first anime cosplay nightclub. 25% commission on every ticket. Free entry. Promotional materials provided.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-green: #00ff88;
+            --neon-blue: #00f0ff;
+            --neon-purple: #bf00ff;
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(15, 15, 25, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --gradient-primary: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.08) 0%, transparent 50%);
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-image {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.4));
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .logo:hover .logo-image {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { color: var(--neon-green); }
+
+        .hero {
+            padding: 150px 2rem 80px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+
+        .stat { text-align: center; }
+
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .section {
+            padding: 80px 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        .step-icon { font-size: 2.5rem; margin: 1rem 0; }
+
+        .step-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        .calculator {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .calc-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .calc-row:last-child { border-bottom: none; padding-top: 1.5rem; }
+        .calc-label { color: var(--text-secondary); }
+        .calc-value { font-family: 'Orbitron', sans-serif; font-weight: 600; }
+
+        .calc-total {
+            font-size: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tier-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card.featured { border-color: var(--neon-green); }
+
+        .tier-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px; right: -30px;
+            background: var(--neon-green);
+            color: var(--bg-dark);
+            padding: 0.3rem 2rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+
+        .tier-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-target { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .tier-perks { list-style: none; }
+
+        .tier-perks li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .tier-perks li::before {
+            content: '✓';
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-toggle { color: var(--neon-green); font-size: 1.5rem; transition: transform 0.3s; }
+
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer-inner { padding: 0 1.5rem 1.5rem; color: var(--text-secondary); line-height: 1.8; }
+        .faq-item.open .faq-answer { max-height: 500px; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+        .form-section {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--neon-green);
+        }
+
+        .form-textarea { min-height: 120px; resize: vertical; }
+        .form-select { cursor: pointer; }
+        .form-select option { background: var(--bg-dark); }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a { color: var(--neon-green); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .stats-row { gap: 2rem; }
+            .stat-value { font-size: 2rem; }
+            .calculator { padding: 2rem; }
+            
+            .logo-image {
+                height: 40px;
+                width: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo-text span {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="../assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Logo" class="logo-image">
+                <div class="logo-text">
+                    <span>MOONLIGHT OTAKU NIGHTS</span>
+                </div>
+            </a>
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <span class="hero-badge">💰 PROMOTER PROGRAM</span>
+        <h1>Turn Your <span>Anime Network</span> Into Cash</h1>
+        <p class="hero-subtitle">
+            Know anime fans? Earn money bringing them to NJ's first authentic anime nightclub. 
+            25% commission on every ticket you sell.
+        </p>
+
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">25%</div>
+                <div class="stat-label">Commission Rate</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">$4.50</div>
+                <div class="stat-label">Per Ticket (Early Bird)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">FREE</div>
+                <div class="stat-label">Entry After 10 Sales</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-icon">📝</div>
+                <h3>Apply Below</h3>
+                <p>Tell us about yourself. We approve most applications within 24 hours.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-icon">🔗</div>
+                <h3>Get Your Code</h3>
+                <p>Receive your unique promo code that gives your followers 10% off.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-icon">📣</div>
+                <h3>Spread the Word</h3>
+                <p>Share on socials, at conventions, with your anime club.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-icon">💵</div>
+                <h3>Get Paid</h3>
+                <p>Paid within 7 days after the event via PayPal or Venmo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="calculator">
+            <h3 class="calc-title">💰 Earnings Example</h3>
+            <div class="calc-row">
+                <span class="calc-label">Tickets Sold</span>
+                <span class="calc-value">50 tickets</span>
+            </div>
+            <div class="calc-row">
+                <span class="calc-label">Ticket Price (Early Bird)</span>
+                <span class="calc-value">$18.00</span>
+            </div>
+            <div class="calc-row">
+                <span class="calc-label">Your Commission (25%)</span>
+                <span class="calc-value">$4.50 per ticket</span>
+            </div>
+            <div class="calc-row">
+                <span class="calc-label">Total Earnings</span>
+                <span class="calc-value calc-total">$225.00</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Promoter Tiers</h2>
+        <div class="tiers-grid">
+            <div class="tier-card">
+                <h3 class="tier-name">🌱 Street Team</h3>
+                <p class="tier-target">Students & Casual Promoters</p>
+                <ul class="tier-perks">
+                    <li>Unique promo code</li>
+                    <li>25% commission ($4.50/ticket)</li>
+                    <li>Digital flyers & graphics</li>
+                    <li>Free entry after 10 sales</li>
+                </ul>
+            </div>
+            <div class="tier-card featured">
+                <h3 class="tier-name">⭐ Influencer</h3>
+                <p class="tier-target">Cosplayers & Content Creators</p>
+                <ul class="tier-perks">
+                    <li>Everything in Street Team</li>
+                    <li>Featured on our Instagram</li>
+                    <li>Exclusive merch/stickers</li>
+                    <li>Free entry + 2 guest passes (25+ sales)</li>
+                </ul>
+            </div>
+            <div class="tier-card">
+                <h3 class="tier-name">🏢 Business Partner</h3>
+                <p class="tier-target">Stores, Clubs, Organizations</p>
+                <ul class="tier-perks">
+                    <li>Everything in Influencer</li>
+                    <li>Logo on event materials</li>
+                    <li>Vendor table opportunity</li>
+                    <li>Physical promo materials</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How do I track my sales?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Eventbrite tracks every ticket sold with your promo code automatically. 
+                    We'll send you updates, and you can request a report anytime by emailing us.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>When do I get paid?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Within 7 days after each event. We pay via PayPal, Venmo, or Zelle — your choice.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What if someone uses my code but doesn't buy?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    You only earn commission on completed purchases. Abandoned carts don't count, 
+                    but we can see conversion rates and help you improve your pitch.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can I promote multiple events?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Yes! Your promo code works for all Moonlight Otaku Nights events. 
+                    This is a recurring opportunity — build your network and earn every month.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="form-section" id="apply">
+        <h2 class="section-title">Apply Now</h2>
+        
+        <!--
+        ═══════════════════════════════════════════════════════════════════════════
+        FORM INTEGRATION:
+        
+        Option 1: Google Forms
+        - Create a Google Form with these fields
+        - Replace action with your Google Form URL
+        
+        Option 2: Formspree (https://formspree.io)
+        - Free up to 50 submissions/month
+        - Replace action="https://formspree.io/f/YOUR_FORM_ID"
+        
+        Option 3: Brevo Forms
+        - Use the same account as your email marketing
+        ═══════════════════════════════════════════════════════════════════════════
+        -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+                <label class="form-label">Your Name *</label>
+                <input type="text" name="name" class="form-input" required placeholder="Full name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input type="email" name="email" class="form-input" required placeholder="your@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Instagram Handle</label>
+                <input type="text" name="instagram" class="form-input" placeholder="@yourhandle">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">How will you promote? *</label>
+                <select name="method" class="form-select" required>
+                    <option value="">Select one...</option>
+                    <option value="social">Social Media (Instagram, TikTok, etc.)</option>
+                    <option value="college">College Anime Club</option>
+                    <option value="conventions">At Conventions</option>
+                    <option value="friends">Word of Mouth / Friends</option>
+                    <option value="store">I own a store/business</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Tell us about your reach</label>
+                <textarea name="reach" class="form-textarea" placeholder="How many followers do you have? What anime communities are you part of? Any previous promotion experience?"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Preferred Promo Code</label>
+                <input type="text" name="code" class="form-input" placeholder="e.g., YOURNAME10 (we'll confirm availability)">
+            </div>
+            
+            <input type="hidden" name="_subject" value="New Promoter Application">
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">SUBMIT APPLICATION</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Questions? Email <a href="mailto:promo@moonlightotakunights.com">promo@moonlightotakunights.com</a></p>
+        <p style="margin-top: 1rem;"><a href="/">← Back to Moonlight Otaku Nights</a></p>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Us | Moonlight Otaku Nights</title>
+    <meta name="description" content="DJs, dancers, cosplay influencers, photographers, vendors — join NJ's first anime cosplay nightclub. Residency opportunities, performance slots, vendor spaces available.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-green: #00ff88;
+            --neon-blue: #00f0ff;
+            --neon-purple: #bf00ff;
+            --neon-pink: #ff00aa;
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(15, 15, 25, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --gradient-primary: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            --gradient-secondary: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(191, 0, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(0, 255, 136, 0.08) 0%, transparent 50%);
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-image {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.4));
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .logo:hover .logo-image {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { color: var(--neon-green); }
+
+        .hero {
+            padding: 150px 2rem 80px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: var(--text-primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 80px 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Opportunity Cards */
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .opportunity-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(191, 0, 255, 0.3);
+        }
+
+        .opportunity-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: var(--gradient-secondary);
+        }
+
+        .opportunity-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .opportunity-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .opportunity-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .opportunity-perks {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .opportunity-perks li {
+            padding: 0.4rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .opportunity-perks li::before {
+            content: '→';
+            color: var(--neon-purple);
+        }
+
+        .opportunity-cta {
+            display: inline-block;
+            color: var(--neon-purple);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .opportunity-cta:hover {
+            color: var(--neon-pink);
+        }
+
+        /* What We're Looking For */
+        .looking-for {
+            background: linear-gradient(180deg, transparent 0%, rgba(191, 0, 255, 0.03) 50%, transparent 100%);
+            padding: 80px 2rem;
+        }
+
+        .looking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .looking-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .looking-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .looking-text h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .looking-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Value Proposition */
+        .value-section {
+            text-align: center;
+            padding: 60px 2rem;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 2rem auto 0;
+        }
+
+        .value-item h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form */
+        .form-section {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+
+        .form-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--neon-purple);
+        }
+
+        .form-textarea { min-height: 150px; resize: vertical; }
+        .form-select { cursor: pointer; }
+        .form-select option { background: var(--bg-dark); }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-secondary);
+            color: var(--text-primary);
+            box-shadow: 0 0 30px rgba(191, 0, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(191, 0, 255, 0.6);
+        }
+
+        /* Direct Contact */
+        .direct-contact {
+            text-align: center;
+            padding: 40px 2rem;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .direct-contact h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-method a {
+            color: var(--neon-purple);
+            text-decoration: none;
+        }
+
+        .contact-method a:hover {
+            color: var(--neon-pink);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a { color: var(--neon-green); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .logo-image {
+                height: 40px;
+                width: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo-text span {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="../assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Logo" class="logo-image">
+                <div class="logo-text">
+                    <span>MOONLIGHT OTAKU NIGHTS</span>
+                </div>
+            </a>
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <span class="hero-badge">🤝 COLLABORATIONS</span>
+        <h1>Work <span>With Us</span></h1>
+        <p class="hero-subtitle">
+            We're building NJ's anime nightlife scene from the ground up. 
+            DJs, dancers, cosplayers, photographers, vendors — if you have something 
+            to contribute to the culture, let's talk.
+        </p>
+    </section>
+
+    <!-- Opportunities -->
+    <section class="section">
+        <h2 class="section-title">Opportunities</h2>
+        <p class="section-subtitle">
+            We're looking for people who understand the culture and want to help shape it.
+        </p>
+
+        <div class="opportunities-grid">
+            <!-- DJs -->
+            <div class="opportunity-card">
+                <div class="opportunity-icon">🎧</div>
+                <h3>DJs & Music</h3>
+                <p>
+                    We need DJs who actually know anisong, J-Core, happy hardcore, and video game music. 
+                    If you've played at anime conventions or anikura events, we want to hear from you.
+                </p>
+                <ul class="opportunity-perks">
+                    <li>Monthly residency opportunities</li>
+                    <li>Competitive pay + exposure to growing scene</li>
+                    <li>Creative control over your sets</li>
+                    <li>No looking over your shoulder for cops</li>
+                </ul>
+                <a href="#contact" class="opportunity-cta">Apply for Residency →</a>
+            </div>
+
+            <!-- Dancers/Performers -->
+            <div class="opportunity-card">
+                <div class="opportunity-icon">💃</div>
+                <h3>Dancers & Performers</h3>
+                <p>
+                    Go-go dancers, cosplay performers, LED hoopers, flow artists — 
+                    if you can add visual energy to the dance floor, we have slots for you.
+                </p>
+                <ul class="opportunity-perks">
+                    <li>Paid performance slots</li>
+                    <li>Themed costume coordination</li>
+                    <li>Safe, professional environment</li>
+                    <li>Recurring gigs if it's a good fit</li>
+                </ul>
+                <a href="#contact" class="opportunity-cta">Send Your Reel →</a>
+            </div>
+
+            <!-- Cosplay Influencers -->
+            <div class="opportunity-card">
+                <div class="opportunity-icon">📸</div>
+                <h3>Cosplay Influencers</h3>
+                <p>
+                    Got a following in the cosplay community? 
+                    Partner with us to promote events and get exclusive perks.
+                </p>
+                <ul class="opportunity-perks">
+                    <li>25% commission on ticket sales</li>
+                    <li>Featured on our channels</li>
+                    <li>VIP access + guest passes</li>
+                    <li>Exclusive photo opportunities</li>
+                </ul>
+                <a href="/promote/" class="opportunity-cta">Join Promoter Program →</a>
+            </div>
+
+            <!-- Photographers/Videographers -->
+            <div class="opportunity-card">
+                <div class="opportunity-icon">🎥</div>
+                <h3>Photographers & Videographers</h3>
+                <p>
+                    We need content creators who can capture the energy. 
+                    Event photography, recap videos, social content — build your portfolio with us.
+                </p>
+                <ul class="opportunity-perks">
+                    <li>Free entry to all events</li>
+                    <li>Credit on all published content</li>
+                    <li>Access to exclusive areas</li>
+                    <li>Potential paid contracts</li>
+                </ul>
+                <a href="#contact" class="opportunity-cta">Show Us Your Work →</a>
+            </div>
+
+            <!-- Vendors -->
+            <div class="opportunity-card">
+                <div class="opportunity-icon">🛍️</div>
+                <h3>Vendors & Artists</h3>
+                <p>
+                    Selling anime merch, art prints, handmade accessories, cosplay items? 
+                    Our events feature a vendor area with your target audience.
+                </p>
+                <ul class="opportunity-perks">
+                    <li>Table space at events</li>
+                    <li>Captive audience of anime fans</li>
+                    <li>Cross-promotion on our channels</li>
+                    <li>Affordable booth fees</li>
+                </ul>
+                <a href="#contact" class="opportunity-cta">Inquire About Vending →</a>
+            </div>
+
+            <!-- Sponsors/Partners -->
+            <div class="opportunity-card">
+                <div class="opportunity-icon">🤝</div>
+                <h3>Sponsors & Partners</h3>
+                <p>
+                    Brands, stores, and organizations looking to reach the anime/cosplay community. 
+                    Let's create something mutually beneficial.
+                </p>
+                <ul class="opportunity-perks">
+                    <li>Logo placement on materials</li>
+                    <li>Branded activations at events</li>
+                    <li>Social media exposure</li>
+                    <li>Custom partnership packages</li>
+                </ul>
+                <a href="#contact" class="opportunity-cta">Discuss Partnership →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We're Looking For -->
+    <section class="looking-for">
+        <div class="section">
+            <h2 class="section-title">What We're Looking For</h2>
+            <p class="section-subtitle">
+                Skills matter, but cultural fit matters more.
+            </p>
+
+            <div class="looking-grid">
+                <div class="looking-item">
+                    <div class="looking-icon">🎌</div>
+                    <div class="looking-text">
+                        <h4>Knows the Culture</h4>
+                        <p>You understand anime, cosplay, and otaku community</p>
+                    </div>
+                </div>
+                <div class="looking-item">
+                    <div class="looking-icon">⚡</div>
+                    <div class="looking-text">
+                        <h4>Professional</h4>
+                        <p>Shows up on time, communicates clearly, delivers</p>
+                    </div>
+                </div>
+                <div class="looking-item">
+                    <div class="looking-icon">🎯</div>
+                    <div class="looking-text">
+                        <h4>Gets It</h4>
+                        <p>Understands we're building a scene, not just events</p>
+                    </div>
+                </div>
+                <div class="looking-item">
+                    <div class="looking-icon">🔥</div>
+                    <div class="looking-text">
+                        <h4>Brings Energy</h4>
+                        <p>Passionate about what they do and it shows</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section class="value-section">
+        <h2 class="section-title">Why Work With Us?</h2>
+        <div class="value-grid">
+            <div class="value-item">
+                <h4>Legitimate Venue</h4>
+                <p>No illegal warehouses. QXT's is a licensed, professional club.</p>
+            </div>
+            <div class="value-item">
+                <h4>Recurring Events</h4>
+                <p>Monthly events = consistent opportunities, not one-offs.</p>
+            </div>
+            <div class="value-item">
+                <h4>Growing Scene</h4>
+                <p>Get in on the ground floor of NJ's anime nightlife.</p>
+            </div>
+            <div class="value-item">
+                <h4>Creative Control</h4>
+                <p>We collaborate. Your vision matters.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="form-section" id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="form-intro">
+            Tell us what you do and how you'd like to be involved. 
+            Include links to your work if applicable. We respond to all inquiries.
+        </p>
+
+        <!--
+        ═══════════════════════════════════════════════════════════════════════════
+        FORM INTEGRATION:
+        
+        Use Formspree (https://formspree.io) - Free up to 50 submissions/month
+        Replace YOUR_FORM_ID with your actual form ID
+        
+        Or use Google Forms and embed the action URL
+        ═══════════════════════════════════════════════════════════════════════════
+        -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Name *</label>
+                    <input type="text" name="name" class="form-input" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" name="email" class="form-input" required placeholder="your@email.com">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Instagram / Social</label>
+                    <input type="text" name="social" class="form-input" placeholder="@yourhandle">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">What are you? *</label>
+                    <select name="type" class="form-select" required>
+                        <option value="">Select one...</option>
+                        <option value="dj">DJ / Music Producer</option>
+                        <option value="dancer">Dancer / Performer</option>
+                        <option value="influencer">Cosplay Influencer</option>
+                        <option value="photographer">Photographer / Videographer</option>
+                        <option value="vendor">Vendor / Artist</option>
+                        <option value="sponsor">Sponsor / Brand Partner</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Portfolio / Links</label>
+                <input type="text" name="portfolio" class="form-input" placeholder="Link to your work (website, SoundCloud, portfolio, etc.)">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Tell us about yourself *</label>
+                <textarea name="message" class="form-textarea" required placeholder="What do you do? What's your experience with anime/cosplay culture? What are you looking for in a collaboration?"></textarea>
+            </div>
+
+            <input type="hidden" name="_subject" value="New Work With Us Inquiry">
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">SEND INQUIRY</button>
+        </form>
+    </section>
+
+    <!-- Direct Contact -->
+    <section class="direct-contact">
+        <h3>Prefer Direct Contact?</h3>
+        <div class="contact-methods">
+            <div class="contact-method">
+                <span>📧</span>
+                <a href="mailto:talent@moonlightotakunights.com">talent@moonlightotakunights.com</a>
+            </div>
+            <div class="contact-method">
+                <span>📸</span>
+                <a href="https://instagram.com/moonlightotakunights" target="_blank">@moonlightotakunights</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Looking to promote and earn commission? <a href="/promote/">Join the Promoter Program</a></p>
+        <p style="margin-top: 1rem;"><a href="/">← Back to Moonlight Otaku Nights</a></p>
+    </footer>
+</body>
+</html>
+

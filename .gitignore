@@ -1,6 +1,8 @@
 # Sensitive files - DO NOT PUBLISH
 donotpublishthis.md
 project.md
+filestructure.md
+complete_website_system.md
 
 # Environment variables
 .env

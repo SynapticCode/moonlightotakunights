@@ -1339,14 +1339,7 @@
     <section class="featured-event" id="events">
         <div class="event-showcase">
             <div class="event-flyer">
-                <!-- Replace with your flyer image -->
-                <div class="flyer-placeholder">
-                    <span style="font-size: 4rem;">🌲✨</span>
-                    <p class="flyer-placeholder-text">
-                        EVENT FLYER<br>
-                        <small>Replace with elven-grove-flyer.jpg</small>
-                    </p>
-                </div>
+                <img src="./assets/images/flyers/elven-grove.jpg" alt="Elven Grove Event Flyer" id="homepage-flyer" style="cursor: pointer;">
                 <span class="event-badge">UP NEXT</span>
             </div>
             
@@ -1389,7 +1382,7 @@
                         <div class="meta-icon">🎟️</div>
                         <div class="meta-text">
                             <span class="meta-label">TICKETS</span>
-                            <span class="meta-value">$18 – $25</span>
+                            <span class="meta-value">$20 – $25</span>
                         </div>
                     </div>
                 </div>
@@ -1520,13 +1513,13 @@
     </section>
 
     <!-- Join the Moonlight Crew -->
-    <section class="section join-section">
+    <section class="section join-section" id="join">
         <div class="join-content">
-            <span class="section-label">STAY CONNECTED</span>
+            <span class="section-label">UNLOCK EXCLUSIVE DISCOUNTS</span>
             <h2 class="section-title">Join the Moonlight Crew</h2>
             <p class="section-subtitle">
-                Get early access to tickets, exclusive content, and first word on new events. 
-                You're not just attending — you're building the scene with us.
+                Get 10% off ALL event tickets + early access to ticket drops before they sell out. 
+                Don't pay full price — crew members save on every event.
             </p>
             
             <!-- Replace action URL with your email service -->
@@ -1534,7 +1527,7 @@
                 <input type="email" name="email" placeholder="your@email.com" required>
                 <button type="submit" class="btn btn-primary">JOIN THE CREW</button>
             </form>
-            <p class="email-incentive">🎟️ Crew members get 10% off their first ticket</p>
+            <p class="email-incentive">🎟️ Crew members get 10% off ALL tickets • Online purchases only</p>
         </div>
     </section>
 
@@ -1558,7 +1551,7 @@
                 </p>
                 <ul class="collab-perks">
                     <li>Unique promo code for tracking</li>
-                    <li>$4.50 per ticket sold ($18 early bird)</li>
+                    <li>$5 per ticket sold ($20 early bird)</li>
                     <li>Free entry after 10 sales</li>
                     <li>Promotional materials provided</li>
                 </ul>
@@ -1632,6 +1625,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Flyer Lightbox Modal -->
+    <div id="flyer-modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; cursor: pointer;">
+        <span id="close-modal" style="position: absolute; top: 30px; right: 50px; color: #fff; font-size: 50px; font-weight: bold; cursor: pointer; z-index: 10001;">&times;</span>
+        <img id="modal-flyer-img" src="" alt="Event Flyer" style="max-width: 90%; max-height: 90%; object-fit: contain; box-shadow: 0 0 50px rgba(0, 255, 136, 0.5);">
+    </div>
 
     <script>
         // Generate floating particles - spawn throughout the viewport
@@ -1709,6 +1708,47 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
+        });
+
+        // Flyer Lightbox functionality
+        const flyerImg = document.getElementById('homepage-flyer');
+        const modal = document.getElementById('flyer-modal');
+        const modalImg = document.getElementById('modal-flyer-img');
+        const closeModal = document.getElementById('close-modal');
+
+        if (flyerImg) {
+            flyerImg.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                modalImg.src = this.src;
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        }
+
+        // Close modal when clicking X
+        if (closeModal) {
+            closeModal.addEventListener('click', function(e) {
+                e.stopPropagation();
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Close modal when clicking background
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>

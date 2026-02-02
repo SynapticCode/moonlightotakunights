@@ -3,9 +3,1084 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elven Grove - Moonlight Otaku Nights</title>
+    <title>Elven Grove: Emerald Moon | Moonlight Otaku Nights</title>
+    <meta name="description" content="NJ's first anime cosplay nightclub event. Isekai/Fantasy themed night at QXT's Newark. March 26, 2026. J-Core, Anisong, Cosplay Contest. 21+">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Elven Grove: Emerald Moon | Anime Cosplay Night">
+    <meta property="og:description" content="Step into a fantasy world. NJ's first authentic anikura experience. March 26, 2026 at QXT's Newark.">
+    <meta property="og:type" content="event">
+    <meta property="og:image" content="https://moonlightotakunights.com/assets/images/elven-grove-flyer.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* CORRECTED: Matches actual flyer colors */
+            --theme-primary: #7fff00;  /* Bright lime green */
+            --theme-secondary: #00e5ff;  /* Cyan */
+            --theme-magenta: #ff00ff;  /* Magenta */
+            --theme-gold: #ffb700;  /* Gold */
+            --theme-glow: rgba(127, 255, 0, 0.5);
+            
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(15, 15, 25, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --gradient-theme: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(127, 255, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(0, 229, 255, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.04) 0%, transparent 50%);
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: var(--theme-primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(127, 255, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: var(--gradient-theme);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-image {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px var(--theme-glow));
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .logo:hover .logo-image {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--theme-primary);
+        }
+
+        .nav-cta {
+            background: var(--gradient-theme);
+            color: var(--bg-dark) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: 0.3s;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: var(--gradient-theme);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--theme-primary); }
+
+        .nav-cta {
+            background: var(--gradient-theme);
+            color: var(--bg-dark) !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 2rem 60px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .event-badge {
+            display: inline-block;
+            background: rgba(127, 255, 0, 0.1);
+            border: 1px solid rgba(127, 255, 0, 0.3);
+            color: var(--theme-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1rem;
+            color: var(--theme-primary);
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-theme);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--theme-secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Event Meta */
+        .event-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(127, 255, 0, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .meta-icon {
+            font-size: 1.5rem;
+        }
+
+        .meta-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Music Tags */
+        .music-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .music-tag {
+            background: rgba(127, 255, 0, 0.1);
+            border: 1px solid rgba(127, 255, 0, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--theme-primary);
+            letter-spacing: 1px;
+        }
+
+        /* CTA Buttons */
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--gradient-theme);
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px var(--theme-glow);
+            min-width: 200px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px var(--theme-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--theme-primary);
+            color: var(--theme-primary);
+        }
+
+        /* Flyer Display */
+        .flyer-container {
+            position: relative;
+        }
+
+        .flyer-frame {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 100px var(--theme-glow);
+        }
+
+        .flyer-frame::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px;
+            right: -2px; bottom: -2px;
+            background: var(--gradient-theme);
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .flyer-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Ticket Section */
+        .tickets-section {
+            padding: 80px 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(127, 255, 0, 0.02) 50%, transparent 100%);
+        }
+
+        .tickets-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .tickets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ticket-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(127, 255, 0, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .ticket-card:hover {
+            border-color: var(--theme-primary);
+            transform: translateY(-5px);
+        }
+
+        .ticket-card.featured {
+            border-color: var(--theme-primary);
+            position: relative;
+        }
+
+        .ticket-card.featured::before {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--theme-primary);
+            color: var(--bg-dark);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .ticket-type {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .ticket-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-theme);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .ticket-details {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ticket-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--gradient-theme);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .ticket-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px var(--theme-glow);
+        }
+
+        /* Discount Code */
+        .discount-banner {
+            background: var(--bg-card);
+            border: 1px dashed var(--theme-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .discount-text {
+            color: var(--text-secondary);
+        }
+
+        .discount-code {
+            background: rgba(127, 255, 0, 0.1);
+            border: 1px solid var(--theme-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--theme-primary);
+            letter-spacing: 2px;
+        }
+
+        /* What to Expect */
+        .expect-section {
+            padding: 80px 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .expect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .expect-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(127, 255, 0, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .expect-card:hover {
+            border-color: rgba(127, 255, 0, 0.3);
+        }
+
+        .expect-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .expect-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .expect-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Anime Inspiration */
+        .anime-section {
+            padding: 60px 2rem;
+            text-align: center;
+        }
+
+        .anime-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .anime-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .anime-tag {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .anime-tag:hover {
+            border-color: var(--theme-primary);
+            color: var(--theme-primary);
+        }
+
+        /* Email Capture */
+        .email-section {
+            padding: 60px 2rem;
+            background: var(--bg-card);
+            text-align: center;
+        }
+
+        .email-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--theme-primary);
+        }
+
+        .email-incentive {
+            margin-top: 1rem;
+            color: var(--theme-primary);
+            font-size: 0.9rem;
+        }
+
+        /* Venue Info */
+        .venue-section {
+            padding: 60px 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .venue-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .venue-address {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .venue-note {
+            background: rgba(255, 200, 0, 0.1);
+            border: 1px solid rgba(255, 200, 0, 0.3);
+            color: #ffc800;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(127, 255, 0, 0.1);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--theme-primary);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(127, 255, 0, 0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .logo {
+                font-size: 0.75rem;
+            }
+
+            .logo-image {
+                height: 40px;
+                width: 40px;
+            }
+            
+            .hero-container {
+                padding-top: 20px;
+            }
+            
+            .event-meta {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .discount-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Add your Elven Grove event page content here -->
+    <div class="bg-animation"></div>
+    
+    <!-- Floating particles -->
+    <div class="particles">
+        <script>
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                document.querySelector('.particles').appendChild(particle);
+            }
+        </script>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="../assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Logo" class="logo-image">
+                MOONLIGHT OTAKU NIGHTS
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/promote/">Promote</a></li>
+                <li><a href="/work-with-us/">Work With Us</a></li>
+                <li><a href="#tickets" class="nav-cta">GET TICKETS</a></li>
+            </ul>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="event-badge">EVENT #1 • SPRING 2026</span>
+                <p class="hero-jp">エルヴングローブ</p>
+                <h1><span>ELVEN GROVE</span></h1>
+                <p class="hero-subtitle">EMERALD MOON</p>
+                
+                <p class="hero-description">
+                    Step through the portal into a fantasy world where isekai anime comes alive. 
+                    Enchanted forest meets nightclub. This is NJ's first authentic anime cosplay 
+                    nightclub experience — and you're invited.
+                </p>
+
+                <div class="event-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">📅</div>
+                        <div class="meta-text">
+                            <span class="meta-label">Date</span>
+                            <span class="meta-value">Thursday, March 26, 2026</span>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">🕙</div>
+                        <div class="meta-text">
+                            <span class="meta-label">Time</span>
+                            <span class="meta-value">10PM – 3AM</span>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">📍</div>
+                        <div class="meta-text">
+                            <span class="meta-label">Venue</span>
+                            <span class="meta-value">QXT's Newark</span>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">🎂</div>
+                        <div class="meta-text">
+                            <span class="meta-label">Age</span>
+                            <span class="meta-value">21+ Only</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-tags">
+                    <span class="music-tag">J-CORE</span>
+                    <span class="music-tag">ANISONG</span>
+                    <span class="music-tag">HAPPY HARDCORE</span>
+                    <span class="music-tag">DUBSTEP</span>
+                    <span class="music-tag">COSPLAY CONTEST</span>
+                </div>
+
+                <div class="hero-cta">
+                    <!-- Replace # with your actual Eventbrite URL -->
+                    <a href="#tickets" class="btn btn-primary">GET TICKETS →</a>
+                    <a href="/promote/" class="btn btn-secondary">EARN BY PROMOTING</a>
+                </div>
+            </div>
+
+            <div class="flyer-container">
+                <div class="flyer-frame">
+                    <!-- INSERT YOUR ACTUAL FLYER IMAGE HERE -->
+                    <img src="elven-grove-flyer.jpg" alt="Elven Grove: Emerald Moon Event Flyer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tickets -->
+    <section class="tickets-section" id="tickets">
+        <div class="tickets-container">
+            <h2 class="section-title">Get Your Tickets</h2>
+            <p class="section-subtitle">Limited capacity. Early birds get the best price.</p>
+
+            <div class="tickets-grid">
+                <div class="ticket-card featured">
+                    <div class="ticket-type">EARLY BIRD</div>
+                    <div class="ticket-price">$18</div>
+                    <div class="ticket-details">Online only • Limited quantity</div>
+                    <!-- Replace href with Eventbrite link -->
+                    <a href="#" class="ticket-btn">BUY NOW</a>
+                </div>
+                
+                <div class="ticket-card">
+                    <div class="ticket-type">GENERAL ADMISSION</div>
+                    <div class="ticket-price">$20</div>
+                    <div class="ticket-details">Online • After early bird sells out</div>
+                    <a href="#" class="ticket-btn">BUY NOW</a>
+                </div>
+                
+                <div class="ticket-card">
+                    <div class="ticket-type">AT THE DOOR</div>
+                    <div class="ticket-price">$25</div>
+                    <div class="ticket-details">Cash or card • If not sold out</div>
+                    <a href="#" class="ticket-btn">BUY ONLINE & SAVE</a>
+                </div>
+            </div>
+
+            <div class="discount-banner">
+                <span class="discount-text">🎟️ Got a promo code?</span>
+                <span class="discount-code">ENTER AT CHECKOUT</span>
+                <span class="discount-text">for 10% off</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect -->
+    <section class="expect-section">
+        <h2 class="section-title" style="text-align: center;">What to Expect</h2>
+        
+        <div class="expect-grid">
+            <div class="expect-card">
+                <div class="expect-icon">🎧</div>
+                <h3>AUTHENTIC ANISONG</h3>
+                <p>DJs who know the culture. Anime openings, J-Core bangers, happy hardcore anthems. The songs you love, remixed for the dance floor.</p>
+            </div>
+            
+            <div class="expect-card">
+                <div class="expect-icon">👗</div>
+                <h3>COSPLAY WELCOME</h3>
+                <p>Full armor or casual fit — both welcome. Cosplay contest with prizes for Best Overall, Best Group, Most Creative.</p>
+            </div>
+            
+            <div class="expect-card">
+                <div class="expect-icon">🌲</div>
+                <h3>ISEKAI VIBES</h3>
+                <p>Enchanted forest theme. Fantasy decorations, themed drinks, anime visuals on screens. Step into another world.</p>
+            </div>
+            
+            <div class="expect-card">
+                <div class="expect-icon">🔒</div>
+                <h3>SAFE & LEGIT</h3>
+                <p>Licensed venue, professional security, no sketchy vibes. Just good music, good people, and good energy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anime Inspiration -->
+    <section class="anime-section">
+        <p class="anime-label">COSPLAY INSPIRATION</p>
+        <h2 class="section-title">Fantasy & Isekai Anime</h2>
+        
+        <div class="anime-tags">
+            <span class="anime-tag">Sword Art Online</span>
+            <span class="anime-tag">Re:Zero</span>
+            <span class="anime-tag">Konosuba</span>
+            <span class="anime-tag">Frieren</span>
+            <span class="anime-tag">Mushoku Tensei</span>
+            <span class="anime-tag">Shield Hero</span>
+            <span class="anime-tag">Overlord</span>
+            <span class="anime-tag">That Time I Got Reincarnated</span>
+            <span class="anime-tag">Goblin Slayer</span>
+            <span class="anime-tag">DanMachi</span>
+            <span class="anime-tag">Any Fantasy/Elf Character</span>
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="email-section">
+        <div class="email-container">
+            <h2 class="email-title">Can't Make This One?</h2>
+            <p class="email-subtitle">Join the list for future events and exclusive early access.</p>
+            
+            <!-- Replace action with your email provider form URL -->
+            <form class="email-form" action="#" method="POST">
+                <input type="email" name="email" class="email-input" placeholder="your@email.com" required>
+                <button type="submit" class="btn btn-primary">NOTIFY ME</button>
+            </form>
+            <p class="email-incentive">✨ Subscribers get 10% off their first ticket</p>
+        </div>
+    </section>
+
+    <!-- Venue -->
+    <section class="venue-section">
+        <h2 class="section-title">Venue</h2>
+        <p class="venue-name">QXT's Nightclub</p>
+        <p class="venue-address">248 Mulberry St, Newark, NJ 07102</p>
+        <p class="venue-note">⚠️ 21+ ONLY — Valid ID required. No exceptions.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="/">Moonlight Otaku Nights</a>
+            <a href="/promote/">Become a Promoter</a>
+            <a href="/work-with-us/">Work With Us</a>
+            <a href="https://instagram.com/moonlightotakunights" target="_blank">Instagram</a>
+            <a href="mailto:anikuranj@gmail.com">Contact</a>
+        </div>
+        <p class="copyright">© 2026 Moonlight Otaku Nights. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                });
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

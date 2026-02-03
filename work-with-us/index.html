@@ -914,7 +914,6 @@
             </div>
 
             <input type="hidden" name="_subject" value="New Work With Us Inquiry">
-            <input type="hidden" name="_next" value="https://moonlightotakunights.com/thank-you.html">
 
             <button type="submit" class="btn btn-primary" style="width: 100%;">SEND INQUIRY</button>
         </form>
@@ -1087,6 +1086,50 @@
                 }
             });
         }
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const forms = document.querySelectorAll('form[action*="formspree.io"]');
+        
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                
+                // Show loading state
+                submitBtn.textContent = 'SUBMITTING...';
+                submitBtn.disabled = true;
+                
+                // Submit to Formspree
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // Redirect to custom thank you page
+                        window.location.href = '/thank-you.html';
+                    } else {
+                        response.json().then(data => {
+                            alert('Oops! There was a problem submitting your form');
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        });
+                    }
+                }).catch(error => {
+                    alert('Oops! There was a problem submitting your form');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        });
+    });
     </script>
 </body>
 </html>

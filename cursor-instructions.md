@@ -32,19 +32,19 @@ Replace the current hero copy with:
 Replace whatever the current explainer section is with this:
 
 **Section label (Japanese):** 何これ
-**Section title:** "Not a costume party."
+**Section title:** "An authentic anikura experience."
 **Body copy (left column):**
 
 > There's a difference between throwing on a wig at a bar and walking into a room where **everyone gets it**. Where the DJ drops a Chainsaw Man OP remix and the floor erupts. Where your cosplay isn't weird—it's the standard.
 
 > It's called **anikura** — anime club culture. A real nightclub built around the music, the cosplay, and the people who live this. It exists all over the world. But not here. Not in Jersey. Not yet.
 
-> Monthly themed nights. Real anisong and J-Core DJs. A legitimate venue with a full sound system, professional security, and anime visuals on the screens all night. This isn't going anywhere.
+> Monthly themed nights. Real anisong and J-Core DJs. A venue where you can show up as exactly who you are — cosplay, casual, whatever feels right — and nobody blinks. Professional sound, professional security, anime on every screen. This is home.
 
 **Right column — 3 info cards:**
 
 Card 1 - THE SOUND 🎵
-"Anisong remixes, J-Core, happy hardcore, future bass—all rooted in the culture. No top 40. No filler. Every track hits different when you know the source."
+"Anisong remixes, J-Core, happy hardcore, future bass—all rooted in the culture. Every track hits different when you know the source."
 
 Card 2 - THE ENERGY ⚡
 "Themed nights that go deeper than decoration. Isekai forests, cyberpunk rain, mecha arenas—each event is a world you step into."
@@ -66,7 +66,7 @@ Event details:
 - **Date:** Thursday, March 26
 - **Time:** 10 PM – 3 AM
 - **Venue:** QXT's Newark
-- **Early Bird price:** $18
+- **Starts at:** $15
 - **Music tags:** ANISONG | J-CORE | HAPPY HARDCORE | FUTURE BASS | COSPLAY CONTEST
 - **CTA:** "GET TICKETS" → /elven-grove/
 
@@ -282,7 +282,7 @@ Actually — for this page:
 **What You Get:**
 - Japanese label: 提供
 - Title: "What you get"
-- Intro: "This isn't a warehouse pop-up. **QXT's is a real nightclub** with a real sound system, professional security, a full bar, and screens running anime visuals all night. We handle the venue — you bring your craft."
+- Intro: "**QXT's is a venue built on inclusivity** — a space where alternative culture has always been welcome. Real sound system, professional security, a full bar, and screens running anime visuals all night. We handle the venue — you bring your craft."
 
 5 bullet points:
 ◆ **Professional venue** — full sound system, lighting, DJ booth, bar, and dedicated security. Everything you need is already there.
@@ -341,6 +341,7 @@ Scan this page for:
 5. **DO NOT break** any existing email marketing integrations (Brevo, Formspree, confetti, MOONLIGHT10 code).
 6. **Preserve** all existing JavaScript functionality, form endpoints, and API calls.
 7. The word "promoter" should not appear anywhere on the public site. Use "partner" instead.
+8. **NO NEGATIVE COMPARISONS in public copy.** Never define Moonlight by what it ISN'T. No "not generic EDM," "not a costume party," "not a warehouse," "no top 40," "no filler," "this isn't a convention party." Only describe what Moonlight IS. Negative comparisons are for internal strategy documents only — never on the website, Eventbrite, Instagram, flyers, or any public-facing material.
 
 ---
 

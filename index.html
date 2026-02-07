@@ -511,6 +511,34 @@
             font-size: 1.1rem;
         }
 
+        /* Vibe section two-column layout */
+        .vibe-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .vibe-copy p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .vibe-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .vibe-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
         /* Anikura explanation cards */
         .anikura-grid {
             display: grid;
@@ -1338,12 +1366,10 @@
                 </div>
             </a>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
+                <li><a href="#vibe">The Vibe</a></li>
                 <li><a href="#events">Events</a></li>
-                <li><a href="#music">Music</a></li>
-                <li><a href="/promote/">Promote</a></li>
-                <li><a href="/work-with-us/">Work With Us</a></li>
-                <li><a href="/elven-grove/" class="nav-cta">GET TICKETS</a></li>
+                <li><a href="#crew">Join the Crew</a></li>
+                <li><a href="/elven-grove/" class="nav-cta">TICKETS</a></li>
             </ul>
             <div class="mobile-toggle">
                 <span></span>
@@ -1361,28 +1387,26 @@
         </div>
         
         <div class="hero-content">
-            <p class="hero-jp">アニクラ</p>
+            <p class="hero-jp">月光オタクナイト</p>
             <h1>
                 <span class="gradient-text">MOONLIGHT</span><br>
                 OTAKU NIGHTS
             </h1>
             <p class="hero-tagline">
-                New Jersey's first authentic anime cosplay nightclub. 
-                Real anikura culture. Monthly themed events. This is where the otaku community comes alive after dark.
+                The night has a frequency. If you've ever felt it—bass rattling through a dark room, your favorite opening blasting while the lights go insane—you already know. This is that. Every month. Newark, NJ.
             </p>
             
             <div class="hero-tags">
-                <span class="hero-tag">🎌 ANIKURA</span>
-                <span class="hero-tag">🎵 J-CORE</span>
-                <span class="hero-tag">✨ ANISONG</span>
-                <span class="hero-tag">🔊 DUBSTEP</span>
-                <span class="hero-tag">👗 COSPLAY</span>
-                <span class="hero-tag">🏆 CONTESTS</span>
+                <span class="hero-tag">ANISONG</span>
+                <span class="hero-tag">J-CORE</span>
+                <span class="hero-tag">COSPLAY</span>
+                <span class="hero-tag">21+</span>
+                <span class="hero-tag">QXT'S NEWARK</span>
             </div>
             
             <div class="hero-cta">
-                <a href="/elven-grove/" class="btn btn-primary">NEXT EVENT →</a>
-                <a href="#about" class="btn btn-secondary">WHAT IS THIS?</a>
+                <a href="/elven-grove/" class="btn btn-primary">FIRST EVENT — MAR 26</a>
+                <a href="#events" class="btn btn-secondary">SEE WHAT'S COMING</a>
             </div>
         </div>
         
@@ -1392,79 +1416,73 @@
         </div>
     </section>
 
-    <!-- What is Anikura Section -->
-    <section class="section" id="about">
+    <!-- The Vibe Section -->
+    <section class="section" id="vibe">
         <div class="section-header">
-            <span class="section-label">THE CULTURE</span>
-            <h2 class="section-title">What is Anikura?</h2>
-            <p class="section-subtitle">
-                "Anikura" (アニクラ) = Anisong + Club. Born in Tokyo's Akihabara district, 
-                it's the underground fusion of anime music culture and nightlife.
-            </p>
+            <span class="section-label">何これ</span>
+            <h2 class="section-title">Not a costume party.</h2>
         </div>
 
-        <div class="anikura-grid">
-            <div class="anikura-card">
-                <div class="anikura-icon">🎵</div>
-                <h3>Not Your Average Club Music</h3>
+        <div class="vibe-layout">
+            <div class="vibe-copy">
                 <p>
-                    Forget generic EDM. We play anisong (anime openings, endings, insert songs), 
-                    J-Core, happy hardcore, Vocaloid, and video game OSTs — all remixed for the dance floor. 
-                    When "Gurenge" drops, the whole room knows every word.
+                    There's a difference between throwing on a wig at a bar and walking into a room where <strong>everyone gets it</strong>. Where the DJ drops a Chainsaw Man OP remix and the floor erupts. Where your cosplay isn't weird—it's the standard.
+                </p>
+                <p>
+                    It's called <strong>anikura</strong> — anime club culture. A real nightclub built around the music, the cosplay, and the people who live this. It exists all over the world. But not here. Not in Jersey. Not yet.
+                </p>
+                <p>
+                    Monthly themed nights. Real anisong and J-Core DJs. A legitimate venue with a full sound system, professional security, and anime visuals on the screens all night. This isn't going anywhere.
                 </p>
             </div>
-            
-            <div class="anikura-card">
-                <div class="anikura-icon">👗</div>
-                <h3>Cosplay Welcome, Never Required</h3>
-                <p>
-                    Whether you're in full armor or just a band tee, you belong here. 
-                    Our cosplay contests reward creativity, but the real magic is seeing 
-                    Demon Slayer characters dance next to Evangelion pilots.
-                </p>
-            </div>
-            
-            <div class="anikura-card">
-                <div class="anikura-icon">🌙</div>
-                <h3>Monthly Themed Experiences</h3>
-                <p>
-                    Each event has a theme rooted in anime culture: Isekai, Cyberpunk, Mecha, Yokai. 
-                    The music, visuals, decorations, and drink specials all connect to create 
-                    an immersive world you step into.
-                </p>
-            </div>
-            
-            <div class="anikura-card">
-                <div class="anikura-icon">🏠</div>
-                <h3>A Community, Not Just an Event</h3>
-                <p>
-                    Modeled after Club Mogra in Tokyo and Club Kaiju in Dallas — 
-                    we're building a recurring home base for the NJ/NYC otaku community. 
-                    Not one-off parties. A real scene.
-                </p>
+
+            <div class="vibe-cards">
+                <div class="anikura-card">
+                    <div class="anikura-icon">🎵</div>
+                    <h3>THE SOUND</h3>
+                    <p>
+                        Anisong remixes, J-Core, happy hardcore, future bass—all rooted in the culture. No top 40. No filler. Every track hits different when you know the source.
+                    </p>
+                </div>
+                
+                <div class="anikura-card">
+                    <div class="anikura-icon">⚡</div>
+                    <h3>THE ENERGY</h3>
+                    <p>
+                        Themed nights that go deeper than decoration. Isekai forests, cyberpunk rain, mecha arenas—each event is a world you step into.
+                    </p>
+                </div>
+                
+                <div class="anikura-card">
+                    <div class="anikura-icon">🌙</div>
+                    <h3>THE CREW</h3>
+                    <p>
+                        Convention friends. Anime club people. The ones who actually know what "anikura" means. You'll recognize your people immediately.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Event -->
     <section class="featured-event" id="events">
+        <div class="section-header">
+            <span class="section-label">次のイベント</span>
+            <h2 class="section-title">Next Event</h2>
+        </div>
         <div class="event-showcase">
             <div class="event-flyer">
                 <img src="./assets/images/flyers/elven-grove.jpg" alt="Elven Grove Event Flyer" id="homepage-flyer" style="cursor: pointer;">
-                <span class="event-badge">UP NEXT</span>
+                <span class="event-badge">EVENT #1</span>
             </div>
             
             <div class="event-details">
-                <span class="event-label">EVENT #1 • SPRING 2026</span>
-                <h2 class="event-title">
+                <h2 class="event-title" style="color: var(--neon-green); text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);">
                     ELVEN GROVE
-                    <span class="jp">エルヴングローブ：エメラルドムーン</span>
+                    <span class="jp">エメラルドムーン</span>
                 </h2>
                 <p class="event-description">
-                    Step into a fantasy world where isekai anime comes alive. 
-                    Enchanted forest vibes meet nightclub energy. SAO, Re:Zero, Konosuba, 
-                    Frieren, Mushoku Tensei — if you've ever wanted to be transported 
-                    to another world, this is your portal.
+                    Step through the veil. Isekai fantasy brought to life—enchanted forests, emerald light, and a soundtrack pulled from the worlds you've always wanted to visit. Cosplay as your favorite fantasy character or come as you are. The grove welcomes everyone.
                 </p>
                 
                 <div class="event-meta">
@@ -1472,35 +1490,42 @@
                         <div class="meta-icon">📅</div>
                         <div class="meta-text">
                             <span class="meta-label">DATE</span>
-                            <span class="meta-value">Thursday, March 26, 2026</span>
+                            <span class="meta-value">Thursday, March 26</span>
                         </div>
                     </div>
                     <div class="meta-item">
                         <div class="meta-icon">🕙</div>
                         <div class="meta-text">
                             <span class="meta-label">TIME</span>
-                            <span class="meta-value">10PM – 3AM</span>
+                            <span class="meta-value">10 PM – 3 AM</span>
                         </div>
                     </div>
                     <div class="meta-item">
                         <div class="meta-icon">📍</div>
                         <div class="meta-text">
                             <span class="meta-label">VENUE</span>
-                            <span class="meta-value"><a href="https://maps.app.goo.gl/jdhzZGGy8uwT8bpi8" target="_blank" style="color: inherit; text-decoration: none;">QXT's Newark</a> • 21+</span>
+                            <span class="meta-value"><a href="https://maps.app.goo.gl/jdhzZGGy8uwT8bpi8" target="_blank" style="color: inherit; text-decoration: none;">QXT's Newark</a></span>
                         </div>
                     </div>
                     <div class="meta-item">
                         <div class="meta-icon">🎟️</div>
                         <div class="meta-text">
-                            <span class="meta-label">TICKETS</span>
-                            <span class="meta-value">$20 – $25</span>
+                            <span class="meta-label">EARLY BIRD</span>
+                            <span class="meta-value">$18</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="hero-tags" style="justify-content: flex-start; margin-bottom: 1.5rem;">
+                    <span class="hero-tag">ANISONG</span>
+                    <span class="hero-tag">J-CORE</span>
+                    <span class="hero-tag">HAPPY HARDCORE</span>
+                    <span class="hero-tag">FUTURE BASS</span>
+                    <span class="hero-tag">COSPLAY CONTEST</span>
                 </div>
                 
                 <div class="event-cta">
                     <a href="/elven-grove/" class="btn btn-primary">GET TICKETS</a>
-                    <a href="/promote/" class="btn btn-secondary">PROMOTE THIS</a>
                 </div>
             </div>
         </div>
@@ -1509,183 +1534,50 @@
     <!-- Upcoming Events -->
     <section class="section">
         <div class="section-header">
-            <span class="section-label">2026 CALENDAR</span>
-            <h2 class="section-title">The Series Continues</h2>
+            <span class="section-label">予定</span>
+            <h2 class="section-title">What's Coming</h2>
             <p class="section-subtitle">
-                Three events to prove the concept. If we build it right, this becomes monthly.
+                Every month, a new world. Same crew, different dimension.
             </p>
         </div>
 
         <div class="events-timeline">
             <div class="timeline-card">
                 <span class="timeline-date">APRIL 2026</span>
-                <h3 class="timeline-title">Neon Rain</h3>
-                <p class="timeline-theme">Cyberpunk Anime Night</p>
+                <h3 class="timeline-title">NEON RAIN</h3>
+                <p class="timeline-theme">Cyberpunk anime. Edgerunners. Akira. Ghost in the Shell. Rain-soaked neon, synth-heavy sets, and the future you were promised.</p>
                 <div class="timeline-tags">
-                    <span class="timeline-tag">Edgerunners</span>
-                    <span class="timeline-tag">Akira</span>
-                    <span class="timeline-tag">Ghost in the Shell</span>
-                    <span class="timeline-tag">Psycho-Pass</span>
+                    <span class="timeline-tag">DATE TBA</span>
                 </div>
             </div>
             
             <div class="timeline-card">
                 <span class="timeline-date">MAY 2026</span>
-                <h3 class="timeline-title">Mecha Night</h3>
-                <p class="timeline-theme">Giant Robot Celebration</p>
+                <h3 class="timeline-title">MECHA NIGHT</h3>
+                <p class="timeline-theme">Gundam. Evangelion. Code Geass. Colossal energy. Heavy bass. Pilot suits encouraged.</p>
                 <div class="timeline-tags">
-                    <span class="timeline-tag">Gundam</span>
-                    <span class="timeline-tag">Evangelion</span>
-                    <span class="timeline-tag">Code Geass</span>
-                    <span class="timeline-tag">Gurren Lagann</span>
-                </div>
-            </div>
-            
-            <div class="timeline-card">
-                <span class="timeline-date">FALL 2026</span>
-                <h3 class="timeline-title">Yokai Night</h3>
-                <p class="timeline-theme">Dark Anime Halloween</p>
-                <div class="timeline-tags">
-                    <span class="timeline-tag">Jujutsu Kaisen</span>
-                    <span class="timeline-tag">Chainsaw Man</span>
-                    <span class="timeline-tag">Tokyo Ghoul</span>
-                    <span class="timeline-tag">Demon Slayer</span>
+                    <span class="timeline-tag">DATE TBA</span>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- The Experience -->
-    <section class="section">
-        <div class="section-header">
-            <span class="section-label">WHAT YOU GET</span>
-            <h2 class="section-title">The Experience</h2>
-        </div>
-
-        <div class="experience-grid">
-            <div class="experience-card">
-                <div class="experience-icon">🎧</div>
-                <h3>AUTHENTIC ANISONG DJS</h3>
-                <p>DJs who actually know the culture. Anime openings you'll scream along to, 
-                J-Core drops that hit different, and happy hardcore that keeps you moving all night.</p>
-            </div>
-            
-            <div class="experience-card">
-                <div class="experience-icon">🏆</div>
-                <h3>COSPLAY CONTESTS</h3>
-                <p>Best Overall, Best Group, Most Creative, Audience Favorite. 
-                Real prizes, real recognition. Your craft deserves a stage.</p>
-            </div>
-            
-            <div class="experience-card">
-                <div class="experience-icon">📺</div>
-                <h3>ANIME VISUALS</h3>
-                <p>Screens playing anime clips synced to the music. 
-                When the DJ drops "The Rumbling," you'll see titans on the wall.</p>
-            </div>
-            
-            <div class="experience-card">
-                <div class="experience-icon">🔒</div>
-                <h3>SAFE & LEGITIMATE</h3>
-                <p>Not an illegal warehouse. <a href="https://maps.app.goo.gl/jdhzZGGy8uwT8bpi8" target="_blank" style="color: var(--neon-green); text-decoration: none;">QXT's Nightclub</a> (248 Mulberry St, Newark, NJ) is a licensed venue with professional security. 
-                No cops shutting it down. No sketchy vibes. Just fun.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Music -->
-    <section class="section music-section" id="music">
-        <div class="section-header">
-            <span class="section-label">THE SOUND</span>
-            <h2 class="section-title">The Music</h2>
-            <p class="section-subtitle">
-                This isn't a costume party with a Spotify playlist. This is curated anikura.
-            </p>
-        </div>
-
-        <div class="music-genres">
-            <span class="genre-tag">J-CORE</span>
-            <span class="genre-tag">ANISONG</span>
-            <span class="genre-tag">HAPPY HARDCORE</span>
-            <span class="genre-tag">DUBSTEP</span>
-            <span class="genre-tag">VOCALOID</span>
-            <span class="genre-tag">GAME OST</span>
-            <span class="genre-tag">NIGHTCORE</span>
-            <span class="genre-tag">J-POP REMIXES</span>
-        </div>
-
-        <p class="music-description">
-            <strong>Expect to hear:</strong> LiSA's "Gurenge," SiM's "The Rumbling," 
-            YOASOBI's "IDOL," S3RL's "Pretty Rave Girl," 
-            DJ Genki, USAO, t+pazolite, Camellia, and every anime opening 
-            that's ever made you feel something. The DJ reads the room. 
-            The crowd knows the songs. The energy is unmatched.
-        </p>
     </section>
 
     <!-- Join the Moonlight Crew -->
-    <section class="section join-section" id="join">
+    <section class="section join-section" id="crew">
         <div class="join-content">
-            <span class="section-label">UNLOCK EXCLUSIVE DISCOUNTS</span>
+            <span class="section-label">仲間入り</span>
             <h2 class="section-title">Join the Moonlight Crew</h2>
             <p class="section-subtitle">
-                Get 10% off ALL event tickets + early access to ticket drops before they sell out. 
-                Don't pay full price — crew members save on every event.
+                First access to tickets. Event announcements before anyone else. Exclusive crew perks. This is how you stay in the loop.
             </p>
             
-            <!-- Replace action URL with your email service -->
             <form class="email-form" id="moonlight-crew-form" method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==">
                 <input type="email" name="EMAIL" placeholder="your@email.com" required>
                 <button type="submit" class="btn btn-primary">JOIN THE CREW</button>
                 <input type="text" name="email_address_check" value="" style="display:none;">
                 <input type="hidden" name="locale" value="en">
             </form>
-            <p class="email-incentive">🎟️ Crew members get 10% off ALL tickets • Online purchases only</p>
-        </div>
-    </section>
-
-    <!-- Collaboration Section -->
-    <section class="collab-section">
-        <div class="section-header">
-            <span class="section-label">GET INVOLVED</span>
-            <h2 class="section-title">Build This With Us</h2>
-            <p class="section-subtitle">
-                We're not just throwing parties. We're building a scene. Want in?
-            </p>
-        </div>
-
-        <div class="collab-grid">
-            <div class="collab-card promoter">
-                <div class="collab-icon">📣</div>
-                <h3>Become a Promoter</h3>
-                <p>
-                    Know anime fans? Want to earn money spreading the word? 
-                    Our promoter program pays 25% commission on every ticket you sell.
-                </p>
-                <ul class="collab-perks">
-                    <li>Unique promo code for tracking</li>
-                    <li>$5 per ticket sold ($20 early bird)</li>
-                    <li>Free entry after 10 sales</li>
-                    <li>Promotional materials provided</li>
-                </ul>
-                <a href="/promote/" class="collab-link">Learn More →</a>
-            </div>
-            
-            <div class="collab-card talent">
-                <div class="collab-icon">🎤</div>
-                <h3>Work With Us</h3>
-                <p>
-                    DJs, dancers, cosplay influencers, photographers, vendors — 
-                    if you have something to contribute to the culture, let's talk.
-                </p>
-                <ul class="collab-perks">
-                    <li>DJ residency opportunities</li>
-                    <li>Performance slots for dancers</li>
-                    <li>Vendor table spaces</li>
-                    <li>Photo/video partnerships</li>
-                </ul>
-                <a href="/work-with-us/" class="collab-link">Get in Touch →</a>
-            </div>
+            <p class="email-incentive">You'll get a welcome gift — <span style="color: var(--neon-green); font-weight: 600;">10% off your first ticket</span></p>
         </div>
     </section>
 
@@ -1694,47 +1586,38 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <span class="footer-logo">MOONLIGHT OTAKU NIGHTS</span>
+                <span style="font-family: 'Noto Sans JP', sans-serif; font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">アニクラ NJ</span>
                 <p class="footer-tagline">
-                    NJ's first authentic anime cosplay nightclub. 
-                    Bringing anikura culture to the East Coast, one event at a time.
+                    Building NJ's anime nightlife scene. One night at a time.
                 </p>
             </div>
             
             <div class="footer-section">
-                <h4>EVENTS</h4>
+                <h4>NAVIGATE</h4>
                 <ul class="footer-links">
-                    <li><a href="/elven-grove/">Elven Grove (March)</a></li>
-                    <li><a href="#">Neon Rain (April)</a></li>
-                    <li><a href="#">Mecha Night (May)</a></li>
-                    <li><a href="#">Full Calendar</a></li>
+                    <li><a href="/elven-grove/">Current Event</a></li>
+                    <li><a href="https://instagram.com/moonlightotakunights" target="_blank">Instagram</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
-                <h4>GET INVOLVED</h4>
+                <h4>DETAILS</h4>
                 <ul class="footer-links">
-                    <li><a href="/promote/">Become a Promoter</a></li>
-                    <li><a href="/work-with-us/">DJs & Talent</a></li>
-                    <li><a href="/work-with-us/">Vendors</a></li>
-                    <li><a href="mailto:anikuranj@gmail.com">Contact</a></li>
+                    <li><span style="color: var(--text-muted); font-size: 0.9rem;">QXT's Newark — 248 Mulberry St</span></li>
+                    <li><a href="mailto:anikuranj@gmail.com">anikuranj@gmail.com</a></li>
+                    <li><span style="color: var(--text-muted); font-size: 0.9rem;">21+ with valid ID</span></li>
+                    <li><a href="/partners/" style="opacity: 0.5;">Community Partners</a></li>
+                    <li><a href="/work-with-us/" style="opacity: 0.5;">Work With Us</a></li>
                 </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>FOLLOW</h4>
-                <div class="social-links">
-                    <a href="https://instagram.com/moonlightotakunights" class="social-link" target="_blank">📸</a>
-                    <a href="#" class="social-link">🎵</a>
-                    <a href="#" class="social-link">💬</a>
-                </div>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p class="copyright">© 2026 Moonlight Otaku Nights. All rights reserved.</p>
-            <div class="footer-legal">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+            <p class="copyright">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/moonlightotakunights" class="social-link" target="_blank">📸</a>
+                <a href="#" class="social-link">🎵</a>
+                <a href="#" class="social-link">💬</a>
             </div>
         </div>
     </footer>

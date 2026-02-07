@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work With Us | Moonlight Otaku Nights</title>
-    <meta name="description" content="DJs, visual artists, vendors, cosplay guests — bring your craft to NJ's anime nightclub. Monthly events at QXT's Newark.">
+    <title>Community Partners | Moonlight Otaku Nights</title>
+    <meta name="description" content="Partner with NJ's anime nightclub community. Share your code, support the scene, earn from every ticket.">
+    <meta name="robots" content="noindex, nofollow">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -18,7 +19,6 @@
             --neon-green: #00ff88;
             --neon-blue: #00f0ff;
             --neon-purple: #bf00ff;
-            --neon-pink: #ff00aa;
             --bg-dark: #0a0a0f;
             --bg-card: rgba(15, 15, 25, 0.8);
             --bg-glass: rgba(255, 255, 255, 0.03);
@@ -26,7 +26,6 @@
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-muted: rgba(255, 255, 255, 0.5);
             --gradient-primary: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
-            --gradient-secondary: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -44,8 +43,8 @@
             width: 100%; height: 100%;
             z-index: -1;
             background: 
-                radial-gradient(circle at 30% 70%, rgba(191, 0, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(0, 255, 136, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.08) 0%, transparent 50%);
         }
 
         nav {
@@ -80,7 +79,8 @@
         }
 
         .logo-image {
-            height: 50px; width: 50px;
+            height: 50px;
+            width: 50px;
             object-fit: contain;
             filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.4));
             transition: transform 0.3s ease;
@@ -120,7 +120,9 @@
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover { color: var(--neon-green); }
+        .nav-links a:hover {
+            color: var(--neon-green);
+        }
 
         .nav-cta {
             background: var(--gradient-primary);
@@ -138,10 +140,24 @@
             z-index: 1001;
         }
 
-        .mobile-toggle span { width: 25px; height: 2px; background: var(--text-primary); transition: 0.3s; }
-        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
-        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
-        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: 0.3s;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
 
         .hero {
             padding: 150px 2rem 80px;
@@ -176,13 +192,13 @@
             font-size: 1.15rem;
             color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
             line-height: 1.8;
         }
 
         .section {
             padding: 80px 2rem;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -206,74 +222,128 @@
         .section-intro {
             color: var(--text-secondary);
             text-align: center;
-            max-width: 750px;
+            max-width: 700px;
             margin: 0 auto 3rem;
             line-height: 1.8;
         }
 
-        /* Role Cards */
-        .roles-grid {
+        .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .role-card {
+        .step-card {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
+
+        .calculator {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 255, 136, 0.2);
             border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
+            padding: 3rem;
+            margin: 3rem 0;
         }
 
-        .role-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 136, 0.3);
+        .calc-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
-        .role-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-        .role-card h3 {
+        .calc-row:last-child { border-bottom: none; padding-top: 1.5rem; }
+        .calc-label { color: var(--text-secondary); }
+        .calc-value { font-family: 'Orbitron', sans-serif; font-weight: 600; }
+
+        .calc-total {
+            font-size: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tier-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .tier-name {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-target { color: var(--neon-green); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px; }
+        
+        .tier-description { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
             margin-bottom: 1rem;
+            overflow: hidden;
         }
 
-        .role-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* What You Get */
-        .perks-list {
-            max-width: 800px;
-            margin: 0 auto;
-            list-style: none;
-        }
-
-        .perks-list li {
-            padding: 1rem 0;
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
             display: flex;
-            gap: 1rem;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
         }
 
-        .perks-list li:last-child { border-bottom: none; }
+        .faq-question:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-toggle { color: var(--neon-green); font-size: 1.5rem; transition: transform 0.3s; }
 
-        .perk-marker {
-            color: var(--neon-green);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer-inner { padding: 0 1.5rem 1.5rem; color: var(--text-secondary); line-height: 1.8; }
+        .faq-item.open .faq-answer { max-height: 500px; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
 
-        /* Contact Form */
         .form-section {
-            max-width: 650px;
+            max-width: 600px;
             margin: 0 auto;
             padding: 60px 2rem;
         }
@@ -298,19 +368,9 @@
             border-color: var(--neon-green);
         }
 
-        .form-textarea { min-height: 150px; resize: vertical; }
+        .form-textarea { min-height: 120px; resize: vertical; }
         .form-select { cursor: pointer; }
         .form-select option { background: var(--bg-dark); }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        @media (max-width: 600px) {
-            .form-row { grid-template-columns: 1fr; }
-        }
 
         .btn {
             display: inline-block;
@@ -378,7 +438,14 @@
 
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 0.8rem; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
         .footer-links a:hover { color: var(--neon-green); }
 
         .social-links { display: flex; gap: 1rem; }
@@ -388,14 +455,20 @@
             background: var(--bg-glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
-        .social-link:hover { background: var(--neon-green); color: var(--bg-dark); transform: translateY(-3px); }
+        .social-link:hover {
+            background: var(--neon-green);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+        }
 
         .footer-bottom {
             max-width: 1200px;
@@ -415,7 +488,9 @@
             .nav-links {
                 display: none;
                 position: fixed;
-                top: 80px; left: 0; right: 0;
+                top: 80px;
+                left: 0;
+                right: 0;
                 background: rgba(10, 10, 15, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
@@ -426,9 +501,19 @@
             }
 
             .nav-links.active { display: flex; }
-            .nav-links a { font-size: 1.1rem; padding: 0.8rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
             .mobile-toggle { display: flex; }
+
+            .calculator { padding: 2rem; }
+            
             .logo-image { height: 40px; width: 40px; }
+
             .footer-bottom { flex-direction: column; text-align: center; }
         }
 
@@ -437,20 +522,51 @@
         }
 
         /* SUCCESS MESSAGE MODAL */
-        .success-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 10000; animation: fadeIn 0.3s ease; }
+        .success-modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
         .success-modal.active { display: flex; }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .success-content { background: var(--bg-card); border: 2px solid var(--neon-purple); border-radius: 20px; padding: 3rem 2rem; max-width: 500px; text-align: center; box-shadow: 0 0 60px rgba(191, 0, 255, 0.6); animation: slideUp 0.5s ease, glow 2s ease-in-out infinite; }
+
+        .success-content {
+            background: var(--bg-card);
+            border: 2px solid var(--neon-green);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(0, 255, 136, 0.6);
+            animation: slideUp 0.5s ease, glow 2s ease-in-out infinite;
+        }
+
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes glow { 0%, 100% { box-shadow: 0 0 60px rgba(191, 0, 255, 0.6); } 50% { box-shadow: 0 0 80px rgba(191, 0, 255, 0.8), 0 0 120px rgba(255, 0, 170, 0.4); } }
+        @keyframes glow { 0%, 100% { box-shadow: 0 0 60px rgba(0, 255, 136, 0.6); } 50% { box-shadow: 0 0 80px rgba(0, 255, 136, 0.8), 0 0 120px rgba(0, 240, 255, 0.4); } }
+
         .success-icon { font-size: 4rem; margin-bottom: 1rem; animation: bounce 1s ease infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .success-title { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--neon-purple); margin-bottom: 0.5rem; text-shadow: 0 0 20px rgba(191, 0, 255, 0.8); }
-        .success-subtitle { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--neon-pink); margin-bottom: 1rem; text-shadow: 0 0 15px rgba(255, 0, 170, 0.6); }
+
+        .success-title { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--neon-green); margin-bottom: 0.5rem; text-shadow: 0 0 20px rgba(0, 255, 136, 0.8); }
+        .success-subtitle { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--neon-blue); margin-bottom: 1rem; text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
         .success-message { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
         .redirect-message { font-size: 0.9rem; color: var(--text-muted); font-style: italic; }
         .btn-loading { opacity: 0.7; pointer-events: none; }
-        @media (max-width: 600px) { .success-content { margin: 1rem; padding: 2rem 1.5rem; } .success-title { font-size: 1.4rem; } .success-subtitle { font-size: 1rem; } }
+
+        @media (max-width: 600px) {
+            .success-content { margin: 1rem; padding: 2rem 1.5rem; }
+            .success-title { font-size: 1.4rem; }
+            .success-subtitle { font-size: 1rem; }
+        }
     </style>
     
     <!-- Canvas Confetti Library -->
@@ -470,7 +586,7 @@
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/elven-grove/">Events</a></li>
-                <li><a href="/partners/">Partners</a></li>
+                <li><a href="/work-with-us/">Collaborate</a></li>
                 <li><a href="/elven-grove/" class="nav-cta">TICKETS</a></li>
             </ul>
             <div class="mobile-toggle">
@@ -483,101 +599,193 @@
 
     <!-- Hero -->
     <section class="hero">
-        <p class="hero-jp">一緒に作ろう</p>
-        <h1>Bring your <span>craft</span> to the floor.</h1>
+        <p class="hero-jp">コミュニティパートナー</p>
+        <h1>This scene doesn't <span>build itself.</span></h1>
         <p class="hero-subtitle">
-            We're building a monthly home for anime nightlife in NJ. That takes DJs who know the music, artists who bring the visuals, vendors with product the community actually wants, and cosplay guests who set the tone. If you do any of that — let's talk.
+            There's no recurring anime nightclub in NJ. We're changing that — but not alone. If you're a cosplayer, content creator, convention regular, or someone who runs in these circles and genuinely wants this to exist, we want to work with you. Not as a sales rep. As someone who's helping build something real.
         </p>
     </section>
 
-    <!-- Who We're Looking For -->
+    <!-- How It Works -->
     <section class="section">
-        <span class="section-label">募集中</span>
-        <h2 class="section-title">Who we're looking for</h2>
-
-        <div class="roles-grid">
-            <div class="role-card">
-                <div class="role-icon">🎧</div>
-                <h3>DJs</h3>
-                <p>Anisong, J-Core, happy hardcore, future bass, denpa — if you spin music rooted in anime and Japanese club culture, we want to hear your sets. Full sound system and booth provided by the venue.</p>
+        <span class="section-label">仕組み</span>
+        <h2 class="section-title">How it works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">STEP 01</div>
+                <h3>YOU REACH OUT</h3>
+                <p>Tell us who you are and how you're connected to the community. Conventions you attend, cosplay you do, content you create, clubs you're in — whatever your world is.</p>
             </div>
-            <div class="role-card">
-                <div class="role-icon">🎨</div>
-                <h3>VISUAL ARTISTS</h3>
-                <p>VJs, projection artists, LED designers — each event has a theme. We need people who can make a room feel like another world. If you've done convention panels or club visuals, you're already ahead.</p>
+            <div class="step-card">
+                <div class="step-number">STEP 02</div>
+                <h3>YOU GET YOUR CODE</h3>
+                <p>We create a unique discount code for you — something like YOURNAME10. Your people get 10% off tickets when they use it. Everything is tracked through Eventbrite so it's clean and transparent.</p>
             </div>
-            <div class="role-card">
-                <div class="role-icon">🛍️</div>
-                <h3>VENDORS</h3>
-                <p>Anime merch, original art, cosplay accessories, Japanese snacks — if your product belongs at a convention, it belongs here. Flat table fee, you keep 100% of sales at the first event.</p>
+            <div class="step-card">
+                <div class="step-number">STEP 03</div>
+                <h3>SHARE HOW YOU SHARE</h3>
+                <p>Post on your socials, mention it at a meetup, text your group chat. However you naturally connect with people — do that. No scripts. No pressure. If you think this is worth talking about, talk about it.</p>
             </div>
-            <div class="role-card">
-                <div class="role-icon">✨</div>
-                <h3>COSPLAY GUESTS</h3>
-                <p>If your cosplay stops people in their tracks, we want you in the room. Featured guests get free entry, promo on our channels, and the spotlight during the cosplay showcase.</p>
+            <div class="step-card">
+                <div class="step-number">STEP 04</div>
+                <h3>WE TAKE CARE OF YOU</h3>
+                <p>25% of ticket revenue from your code comes back to you. Paid within 7 days after each event — PayPal, Venmo, or Zelle. This isn't charity. Your reach matters and we respect that.</p>
             </div>
         </div>
     </section>
 
-    <!-- What You Get -->
+    <!-- Compensation -->
     <section class="section">
-        <span class="section-label">提供</span>
-        <h2 class="section-title">What you get</h2>
-        <p class="section-intro">This isn't a warehouse pop-up. <strong>QXT's is a real nightclub</strong> with a real sound system, professional security, a full bar, and screens running anime visuals all night. We handle the venue — you bring your craft.</p>
+        <span class="section-label">透明性</span>
+        <h2 class="section-title">The numbers, straight up</h2>
+        <p class="section-intro">Your code gives people 10% off. You earn 25% of what they pay after the discount. Here's what that actually looks like:</p>
 
-        <ul class="perks-list">
-            <li><span class="perk-marker">◆</span> <span><strong>Professional venue</strong> — full sound system, lighting, DJ booth, bar, and dedicated security. Everything you need is already there.</span></li>
-            <li><span class="perk-marker">◆</span> <span><strong>Recurring platform</strong> — this isn't one-and-done. Monthly events mean a monthly home base for your craft.</span></li>
-            <li><span class="perk-marker">◆</span> <span><strong>Audience that gets it</strong> — convention crowd, anime club members, cosplayers. People who know the music and love the culture.</span></li>
-            <li><span class="perk-marker">◆</span> <span><strong>Multi-floor setup</strong> — main floor for music and dancing, downstairs area available for vendors and overflow. Space to build something real.</span></li>
-            <li><span class="perk-marker">◆</span> <span><strong>Fair compensation</strong> — DJs are paid per set. Vendors keep their sales. Cosplay guests receive comps and promotion. We'll work something out that respects your time.</span></li>
-        </ul>
+        <div class="calculator">
+            <div class="calc-row">
+                <span class="calc-label">Early Bird ticket ($20 → $18 after discount)</span>
+                <span class="calc-value" style="color: var(--neon-green); font-weight: 700;">$4.50 per ticket</span>
+            </div>
+            <div class="calc-row">
+                <span class="calc-label">General ticket ($25 → $22.50 after discount)</span>
+                <span class="calc-value" style="color: var(--neon-green); font-weight: 700;">$5.63 per ticket</span>
+            </div>
+            <div style="border-top: 2px solid rgba(0, 255, 136, 0.2); padding-top: 1.5rem; margin-top: 1rem;">
+                <div class="calc-row">
+                    <span class="calc-label">20 people use your code (early bird)</span>
+                    <span class="calc-value calc-total">$90</span>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">50 people use your code (early bird)</span>
+                    <span class="calc-value calc-total">$225</span>
+                </div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-top: 1.5rem;">Plus you earn free entry after 10 ticket uses and guest passes after 25.</p>
+        </div>
     </section>
 
-    <!-- Contact Form -->
-    <section class="form-section" id="contact">
-        <h2 class="section-title">Get in Touch</h2>
+    <!-- Partner Tiers -->
+    <section class="section">
+        <span class="section-label">パートナー</span>
+        <h2 class="section-title">Partner tiers</h2>
+        <div class="tiers-grid">
+            <div class="tier-card">
+                <h3 class="tier-name">🌱 COMMUNITY PARTNER</h3>
+                <p class="tier-target">Cosplayers, content creators, community members</p>
+                <p class="tier-description">You have a following — even a small one — and people trust your taste. You share your code naturally and help get the word out to your circle.</p>
+            </div>
+            <div class="tier-card">
+                <h3 class="tier-name">⭐ FEATURED PARTNER</h3>
+                <p class="tier-target">Established creators with consistent reach</p>
+                <p class="tier-description">You've got an audience that looks to you. We feature you on our channels, collaborate on content, and give you early access to event details for your posts.</p>
+            </div>
+            <div class="tier-card">
+                <h3 class="tier-name">🏢 BUSINESS PARTNER</h3>
+                <p class="tier-target">Shops, clubs, organizations</p>
+                <p class="tier-description">Comic stores, manga cafés, anime clubs, convention groups — if your space or org has a built-in audience, we'll create a partnership that works for both of us.</p>
+            </div>
+        </div>
+    </section>
 
-        <form action="https://formspree.io/f/mykpoong" method="POST">
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Name / Artist Name</label>
-                    <input type="text" name="name" class="form-input" required placeholder="Your name or stage name">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-input" required placeholder="your@email.com">
+    <!-- FAQ -->
+    <section class="section">
+        <span class="section-label">質問</span>
+        <h2 class="section-title">Common questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Do I have to attend every event?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    No. Partnership isn't about attendance — it's about helping spread the word to your community. Some of our partners can't always make events but genuinely support what we're building.
                 </div>
             </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What if I have a convention conflict?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    We get it — cons come first. Your code still works whether you're there or not. If Colossal or AnimeNYC falls on the same weekend, no stress.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How do I get paid?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Within 7 days after each event. PayPal, Venmo, or Zelle — your choice. We pull the Eventbrite data, calculate your code's performance, and send you a breakdown with payment.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What's the minimum follower count?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    There isn't one. If you're connected to 30 people in a Rutgers anime club group chat and they all come, that's more valuable than 10K disengaged followers. We care about real community reach.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Will my name be on a public "partners" page?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    No. This page isn't indexed by search engines and your partnership is between us. We'll only feature you publicly if you want to be featured.
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Application Form -->
+    <section class="form-section" id="apply">
+        <h2 class="section-title">Become a Partner</h2>
+        
+        <form action="https://formspree.io/f/mykpoopg" method="POST">
             <div class="form-group">
-                <label class="form-label">Role</label>
-                <select name="type" class="form-select" required>
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-input" required placeholder="Full name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-input" required placeholder="your@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Instagram / Social</label>
+                <input type="text" name="instagram" class="form-input" placeholder="@yourusername">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Partner Type</label>
+                <select name="method" class="form-select" required>
                     <option value="">Select one...</option>
-                    <option value="dj">DJ</option>
-                    <option value="vj">VJ / Visual Artist</option>
-                    <option value="vendor">Vendor</option>
-                    <option value="cosplay">Cosplay Guest</option>
-                    <option value="photographer">Photographer / Videographer</option>
-                    <option value="other">Other</option>
+                    <option value="community">Community Partner</option>
+                    <option value="featured">Featured Partner</option>
+                    <option value="business">Business Partner</option>
                 </select>
             </div>
-
+            
             <div class="form-group">
-                <label class="form-label">Links to your work</label>
-                <input type="text" name="portfolio" class="form-input" placeholder="SoundCloud, Instagram, portfolio, etc.">
+                <label class="form-label">Tell us about your connection to the anime community</label>
+                <textarea name="reach" class="form-textarea" placeholder="What conventions do you attend? What communities are you part of? Why do you want to help build this?"></textarea>
             </div>
-
-            <div class="form-group">
-                <label class="form-label">Tell us about yourself</label>
-                <textarea name="message" class="form-textarea" required placeholder="What's your experience? What genres/styles do you work with? What excites you about this?"></textarea>
-            </div>
-
-            <input type="hidden" name="_subject" value="New Work With Us Inquiry">
-
+            
+            <input type="hidden" name="_subject" value="New Partner Application">
+            
             <button type="submit" class="btn btn-primary" style="width: 100%;">SEND IT</button>
         </form>
-        <p style="text-align: center; color: var(--text-muted); margin-top: 1.5rem; font-size: 0.9rem;">Prefer email? Hit us directly at <a href="mailto:anikuranj@gmail.com" style="color: var(--neon-green); text-decoration: none;">anikuranj@gmail.com</a></p>
     </section>
 
     <!-- Footer -->
@@ -617,6 +825,14 @@
     </footer>
 
     <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+
         // Mobile menu toggle
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');

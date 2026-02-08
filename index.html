@@ -1297,6 +1297,11 @@
             50% { transform: translateY(-10px); }
         }
 
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
         .success-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
@@ -1426,13 +1431,19 @@
         <div class="vibe-layout">
             <div class="vibe-copy">
                 <p>
-                    There's a difference between throwing on a wig at a bar and walking into a room where <strong>everyone gets it</strong>. Where the DJ drops a Chainsaw Man OP remix and the floor erupts. Where your cosplay isn't weird—it's the standard.
+                    You know that moment when the beat drops and the whole room moves together? When the lights sync perfectly with a track you've loved since you first heard it in an anime? When you look around and realize everyone here <em>actually gets it</em>?
                 </p>
                 <p>
-                    It's called <strong>anikura</strong> — anime club culture. A real nightclub built around the music, the cosplay, and the people who live this. It exists all over the world. But not here. Not in Jersey. Not yet.
+                    That's the feeling we're building. That moment when your favorite opening drops and the crowd erupts because they know it too. When someone recognizes your cosplay from that one season nobody watched. When you're dancing next to a Chainsaw Man cosplayer and across from someone in full Frieren gear and it all just <em>works</em>.
                 </p>
                 <p>
-                    Monthly themed nights. Real anisong and J-Core DJs. A venue where you can show up as exactly who you are — cosplay, casual, whatever feels right — and nobody blinks. Professional sound, professional security, anime on every screen. This is home.
+                    This is <strong>anikura</strong> — anime club culture. Real nightclub energy meets the music, the characters, and the worlds we actually care about. It's a whole scene in Tokyo, spreading across cities worldwide. But somehow, it never made it here. Not to Jersey. Not until now.
+                </p>
+                <p>
+                    We're building something real. Monthly themed nights that go deeper than just "anime music" — curated sets where every track has a story. A venue where you show up exactly as you are. Full cosplay? Come through. Casual fit? That works too. Convention friends, discord friends, that group chat that only talks about seasonal anime — everyone's welcome.
+                </p>
+                <p>
+                    Professional sound. Real lighting. Actual security. Screens playing the visuals that match the vibe. This isn't someone's basement with a Bluetooth speaker. This is a nightclub that gets it. This is home.
                 </p>
             </div>
 
@@ -1449,7 +1460,7 @@
                     <div class="anikura-icon">⚡</div>
                     <h3>THE ENERGY</h3>
                     <p>
-                        Themed nights that go deeper than decoration. Isekai forests, cyberpunk rain, mecha arenas—each event is a world you step into.
+                        Themed nights that go deeper than decoration. Enchanted forests, neon-soaked cityscapes, mecha command centers — each event transforms the space into a world you step into.
                     </p>
                 </div>
                 
@@ -1472,7 +1483,9 @@
         </div>
         <div class="event-showcase">
             <div class="event-flyer">
-                <img src="./assets/images/flyers/elven-grove.jpg" alt="Elven Grove Event Flyer" id="homepage-flyer" style="cursor: pointer;">
+                <a href="/elven-grove/" style="display: block;">
+                    <img src="./assets/images/flyers/elven-grove.jpg" alt="Elven Grove Event Flyer" style="cursor: pointer;">
+                </a>
                 <span class="event-badge">EVENT #1</span>
             </div>
             
@@ -1514,6 +1527,13 @@
                             <span class="meta-value">$15</span>
                         </div>
                     </div>
+                </div>
+                
+                <p style="color: var(--neon-green); font-size: 0.9rem; margin-top: 1rem; animation: pulse 2s ease-in-out infinite;">
+                    🎟️ PRESALE TICKETS LIVE NOW — Limited quantity
+                </p>
+                
+                <div class="event-meta" style="display: none;">
                 </div>
 
                 <div class="hero-tags" style="justify-content: flex-start; margin-bottom: 1.5rem;">
@@ -1577,7 +1597,7 @@
                 <input type="text" name="email_address_check" value="" style="display:none;">
                 <input type="hidden" name="locale" value="en">
             </form>
-            <p class="email-incentive">You'll get a welcome gift — <span style="color: var(--neon-green); font-weight: 600;">10% off your first ticket</span></p>
+            <p class="email-incentive">You'll get a welcome gift — <span style="color: var(--neon-green); font-weight: 600;">exclusive discounts + early access</span></p>
         </div>
     </section>
 
@@ -1604,7 +1624,7 @@
                 <h4>DETAILS</h4>
                 <ul class="footer-links">
                     <li><span style="color: var(--text-muted); font-size: 0.9rem;">QXT's Newark — 248 Mulberry St</span></li>
-                    <li><a href="mailto:anikuranj@gmail.com">anikuranj@gmail.com</a></li>
+                    <li><a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a></li>
                     <li><span style="color: var(--text-muted); font-size: 0.9rem;">21+ with valid ID</span></li>
                     <li><a href="/partners/" style="opacity: 0.5;">Community Partners</a></li>
                     <li><a href="/work-with-us/" style="opacity: 0.5;">Work With Us</a></li>
@@ -1616,8 +1636,8 @@
             <p class="copyright">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
             <div class="social-links">
                 <a href="https://instagram.com/moonlightotakunights" class="social-link" target="_blank">📸</a>
-                <a href="#" class="social-link">🎵</a>
-                <a href="#" class="social-link">💬</a>
+                <a href="/elven-grove/" class="social-link">🎵</a>
+                <a href="mailto:info@moonlightotakunights.com" class="social-link">💬</a>
             </div>
         </div>
     </footer>
@@ -1706,19 +1726,7 @@
             observer.observe(el);
         });
 
-        // Flyer Lightbox functionality
-        const flyerImg = document.getElementById('homepage-flyer');
-        const modal = document.getElementById('flyer-modal');
-        const modalImg = document.getElementById('modal-flyer-img');
-        const closeModal = document.getElementById('close-modal');
-
-        if (flyerImg) {
-            flyerImg.addEventListener('click', function() {
-                modal.style.display = 'flex';
-                modalImg.src = this.src;
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-        }
+        // Flyer click now navigates to /elven-grove/ - lightbox removed
 
         // Close modal when clicking X
         if (closeModal) {

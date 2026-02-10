@@ -1134,7 +1134,7 @@
             <p class="email-subtitle">Join Moonlight Crew for discount codes on every event. Members get first access + crew-only perks.</p>
             
             <!-- Replace action with your email provider form URL -->
-            <form class="email-form" id="elven-grove-form" method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==">
+            <form class="email-form" id="elven-grove-form" method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==" onsubmit="return false;">
                 <input type="email" name="EMAIL" class="email-input" placeholder="your@email.com" required>
                 <button type="submit" class="btn btn-primary">NOTIFY ME</button>
                 <input type="text" name="email_address_check" value="" style="display:none;">
@@ -1168,162 +1168,118 @@
         <p class="copyright" style="margin-top: 1.5rem;">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
     </footer>
 
-    <!-- Flyer Lightbox Modal -->
-    <div id="flyer-modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; cursor: pointer;">
-        <span id="close-modal" style="position: absolute; top: 30px; right: 50px; color: #fff; font-size: 50px; font-weight: bold; cursor: pointer; z-index: 10001;">&times;</span>
-        <img id="modal-flyer-img" src="" alt="Event Flyer" style="max-width: 90%; max-height: 90%; object-fit: contain; box-shadow: 0 0 50px rgba(127, 255, 0, 0.5);">
-    </div>
-
     <script>
-        // Mobile menu toggle
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                mobileToggle.classList.toggle('active');
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('[Moonlight] DOM loaded, initializing...');
 
-            // Close menu when clicking a link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileToggle.classList.remove('active');
-                });
-            });
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Flyer Lightbox functionality
-        const flyerImg = document.getElementById('event-flyer');
-        const modal = document.getElementById('flyer-modal');
-        const modalImg = document.getElementById('modal-flyer-img');
-        const closeModal = document.getElementById('close-modal');
-
-        if (flyerImg) {
-            flyerImg.addEventListener('click', function() {
-                modal.style.display = 'flex';
-                modalImg.src = this.src;
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-        }
-
-        // Close modal when clicking X
-        if (closeModal) {
-            closeModal.addEventListener('click', function(e) {
-                e.stopPropagation();
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-        }
-
-        // Close modal when clicking background
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.style.display === 'flex') {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
+    });
 
-        // ═══════════════════════════════════════════════════════════════════════════
-        // EPIC EMAIL FORM SUBMISSION WITH CONFETTI CELEBRATION
-        // ═══════════════════════════════════════════════════════════════════════════
-        const crewForm = document.getElementById('elven-grove-form');
-        
-        if (crewForm) {
-            crewForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                const submitBtn = crewForm.querySelector('button[type="submit"]');
-                const email = crewForm.querySelector('input[name="EMAIL"]').value;
-                const honeypot = crewForm.querySelector('input[name="email_address_check"]').value;
-                const locale = crewForm.querySelector('input[name="locale"]').value;
-                
-                // Change button text to loading state
-                const originalBtnText = submitBtn.textContent;
-                submitBtn.textContent = 'JOINING...';
-                submitBtn.classList.add('btn-loading');
-                
-                // Prepare form data
-                const formData = new FormData();
-                formData.append('EMAIL', email);
-                formData.append('email_address_check', honeypot);
-                formData.append('locale', locale);
-                
-                try {
-                    // Submit to Brevo
-                    const response = await fetch(crewForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        mode: 'no-cors'
-                    });
-                    
-                    setTimeout(() => {
-                        // Create and show success modal
-                        const successModal = document.createElement('div');
-                        successModal.className = 'success-modal active';
-                        successModal.innerHTML = `
-                            <div class="success-content">
-                                <div class="success-icon">⭐</div>
-                                <h2 class="success-title">ACHIEVEMENT UNLOCKED!</h2>
-                                <h3 class="success-subtitle">🎮 MOONLIGHT CREW MEMBER</h3>
-                                <p class="success-message">You've joined the elite! Check your email for your legendary 10% discount code.</p>
-                                <p class="redirect-message">Redirecting to your rewards page...</p>
-                            </div>
-                        `;
-                        document.body.appendChild(successModal);
-                        
-                        // Trigger EPIC confetti explosion
-                        const btnRect = submitBtn.getBoundingClientRect();
-                        const originX = (btnRect.left + btnRect.width / 2) / window.innerWidth;
-                        const originY = (btnRect.top + btnRect.height / 2) / window.innerHeight;
-                        
+    // Mobile menu toggle
+    var mobileToggle = document.querySelector('.mobile-toggle');
+    var navLinks = document.querySelector('.nav-links');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+    }
+
+    // EPIC EMAIL FORM SUBMISSION WITH CONFETTI CELEBRATION
+    var crewForm = document.getElementById('elven-grove-form');
+    console.log('[Moonlight] Form element found:', !!crewForm);
+
+    if (crewForm) {
+        var originalAction = crewForm.getAttribute('action');
+        console.log('[Moonlight] Form action captured:', originalAction);
+
+        crewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('[Moonlight] Form submit intercepted!');
+
+            var submitBtn = crewForm.querySelector('button[type="submit"]');
+            var emailInput = crewForm.querySelector('input[name="EMAIL"]');
+            var honeypotInput = crewForm.querySelector('input[name="email_address_check"]');
+            var localeInput = crewForm.querySelector('input[name="locale"]');
+
+            if (!emailInput || !emailInput.value) {
+                console.log('[Moonlight] No email entered');
+                return false;
+            }
+
+            var email = emailInput.value;
+            var honeypot = honeypotInput ? honeypotInput.value : '';
+            var locale = localeInput ? localeInput.value : 'en';
+
+            var originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'JOINING...';
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+
+            var formData = new FormData();
+            formData.append('EMAIL', email);
+            formData.append('email_address_check', honeypot);
+            formData.append('locale', locale);
+
+            fetch(originalAction, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(function() {
+                console.log('[Moonlight] Brevo submission sent');
+
+                setTimeout(function() {
+                    var successModal = document.createElement('div');
+                    successModal.className = 'success-modal active';
+                    successModal.innerHTML = '<div class="success-content">' +
+                        '<div class="success-icon">⭐</div>' +
+                        '<h2 class="success-title">ACHIEVEMENT UNLOCKED!</h2>' +
+                        '<h3 class="success-subtitle">🎮 MOONLIGHT CREW MEMBER</h3>' +
+                        '<p class="success-message">You\'ve joined the elite! Check your email for your legendary 10% discount code.</p>' +
+                        '<p class="redirect-message">Redirecting to your rewards page...</p>' +
+                        '</div>';
+                    document.body.appendChild(successModal);
+
+                    if (typeof confetti === 'function') {
+                        var btnRect = submitBtn.getBoundingClientRect();
+                        var originX = (btnRect.left + btnRect.width / 2) / window.innerWidth;
+                        var originY = (btnRect.top + btnRect.height / 2) / window.innerHeight;
+
                         confetti({
                             particleCount: 100,
                             spread: 100,
                             origin: { x: originX, y: originY },
                             colors: ['#7fff00', '#00e5ff', '#ff00ff', '#ffb700']
                         });
-                        
-                        const duration = 4000;
-                        const animationEnd = Date.now() + duration;
-                        const randomInRange = (min, max) => Math.random() * (max - min) + min;
-                        
-                        const interval = setInterval(() => {
-                            const timeLeft = animationEnd - Date.now();
-                            if (timeLeft <= 0) {
-                                clearInterval(interval);
-                                return;
-                            }
-                            
-                            const particleCount = 50 * (timeLeft / duration);
-                            
+
+                        var duration = 4000;
+                        var animationEnd = Date.now() + duration;
+                        var randomInRange = function(min, max) {
+                            return Math.random() * (max - min) + min;
+                        };
+
+                        var interval = setInterval(function() {
+                            var timeLeft = animationEnd - Date.now();
+                            if (timeLeft <= 0) { clearInterval(interval); return; }
+                            var particleCount = 50 * (timeLeft / duration);
+
                             confetti({
-                                particleCount,
+                                particleCount: particleCount,
                                 angle: randomInRange(55, 125),
                                 spread: randomInRange(50, 70),
                                 origin: { x: 0, y: 0.6 },
@@ -1331,9 +1287,8 @@
                                 shapes: ['circle', 'square'],
                                 scalar: randomInRange(0.8, 1.2)
                             });
-                            
                             confetti({
-                                particleCount,
+                                particleCount: particleCount,
                                 angle: randomInRange(55, 125),
                                 spread: randomInRange(50, 70),
                                 origin: { x: 1, y: 0.6 },
@@ -1341,7 +1296,6 @@
                                 shapes: ['circle', 'square'],
                                 scalar: randomInRange(0.8, 1.2)
                             });
-                            
                             confetti({
                                 particleCount: 2,
                                 angle: randomInRange(60, 120),
@@ -1352,21 +1306,32 @@
                                 scalar: 1.5
                             });
                         }, 250);
-                        
-                        setTimeout(() => {
-                            window.location.href = '/thank-you.html';
-                        }, 5000);
-                        
-                    }, 500);
-                    
-                } catch (error) {
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.classList.remove('btn-loading');
-                    alert('Oops! Something went wrong. Please try again.');
-                    console.error('Form submission error:', error);
-                }
+                    } else {
+                        console.warn('[Moonlight] Confetti library not loaded');
+                    }
+
+                    setTimeout(function() {
+                        window.location.href = '/thank-you.html';
+                    }, 5000);
+
+                }, 500);
+
+            }).catch(function(error) {
+                console.error('[Moonlight] Form submission error:', error);
+                submitBtn.textContent = originalBtnText;
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.disabled = false;
+                alert('Oops! Something went wrong. Please try again.');
             });
-        }
+
+            return false;
+        });
+
+        console.log('[Moonlight] Form handler registered successfully');
+    } else {
+        console.error('[Moonlight] CRITICAL: Form element not found!');
+    }
+});
     </script>
 </body>
 </html>

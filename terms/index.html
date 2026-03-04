@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Moonlight Otaku Nights</title>
+    <meta name="description" content="Terms of Service for Moonlight Otaku Nights — NJ's anime nightclub event series.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --neon-green: #00ff88;
+            --neon-blue: #00f0ff;
+            --neon-purple: #bf00ff;
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(15, 15, 25, 0.8);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --gradient-primary: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.05) 0%, transparent 50%);
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-image {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.4));
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .logo:hover .logo-image {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--neon-green); }
+
+        .nav-cta {
+            background: var(--gradient-primary);
+            color: var(--bg-dark) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: 0.3s;
+        }
+
+        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+        /* Legal page content */
+        .legal-page {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 140px 2rem 80px;
+        }
+
+        .legal-page h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .legal-page h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .legal-page h3 {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-page p {
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+        }
+
+        .legal-page ul {
+            list-style: none;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .legal-page ul li {
+            color: var(--text-secondary);
+            line-height: 1.85;
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative;
+        }
+
+        .legal-page ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            font-size: 0.75rem;
+            top: 0.45rem;
+        }
+
+        .legal-page a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+
+        .legal-page a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 5, 10, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 2rem 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-brand { max-width: 300px; }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-tagline { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+        .footer-section h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: var(--neon-green); }
+
+        .social-links { display: flex; gap: 1rem; }
+
+        .social-link {
+            width: 45px; height: 45px;
+            background: var(--bg-glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--neon-green);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .copyright { color: var(--text-muted); font-size: 0.85rem; }
+
+        .footer-legal {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover { color: var(--text-primary); }
+        .footer-legal .separator { color: var(--text-muted); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active { display: flex; }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .mobile-toggle { display: flex; }
+            .logo-image { height: 40px; width: 40px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 600px) {
+            .logo-text span { font-size: 0.75rem; }
+            .legal-page { padding-top: 120px; }
+        }
+    </style>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8W7W5FKYV9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8W7W5FKYV9');
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1979608179640857');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1979608179640857&ev=PageView&noscript=1"/>
+    </noscript>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="../assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Logo" class="logo-image">
+                <div class="logo-text">
+                    <span>MOONLIGHT OTAKU NIGHTS</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/elven-grove/">Events</a></li>
+                <li><a href="/work-with-us/">Collaborate</a></li>
+                <li><a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=nav&utm_campaign=elven_grove" class="nav-cta" target="_blank" rel="noopener noreferrer">TICKETS</a></li>
+            </ul>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="legal-page">
+        <h1>Terms of Service</h1>
+        <p class="legal-updated">Last Updated: March 4, 2026</p>
+
+        <p>Welcome to Moonlight Otaku Nights. By using our website (moonlightotakunights.com) or attending our events, you agree to these Terms of Service.</p>
+
+        <h2>ABOUT US</h2>
+        <p>Moonlight Otaku Nights is an anime nightclub event series hosted at various venues in New Jersey. We organize events featuring DJs, live performances, cosplay competitions, and vendor pop-ups.</p>
+
+        <h2>WEBSITE USE</h2>
+        <p>By accessing our website, you agree to:</p>
+        <ul>
+            <li>Use the site for lawful purposes only</li>
+            <li>Not attempt to disrupt or compromise site security</li>
+            <li>Not copy, reproduce, or redistribute site content without permission</li>
+        </ul>
+        <p>We may update or modify the website at any time without notice.</p>
+
+        <h2>EVENT ATTENDANCE</h2>
+
+        <h3>Age Requirement</h3>
+        <p>All Moonlight Otaku Nights events are 21+ only. Valid government-issued photo ID is required at entry. No exceptions.</p>
+
+        <h3>Ticket Purchases</h3>
+        <ul>
+            <li>Tickets are sold through Eventbrite and are subject to Eventbrite's terms of service</li>
+            <li>All ticket sales are final unless the event is cancelled</li>
+            <li>Ticket prices may change at any time</li>
+            <li>We reserve the right to limit ticket quantities</li>
+        </ul>
+
+        <h3>Event Rules</h3>
+        <p>By attending our events, you agree to:</p>
+        <ul>
+            <li>Follow all venue rules and staff instructions</li>
+            <li>Treat other attendees, staff, and performers with respect</li>
+            <li>Not engage in harassment, violence, or illegal activity</li>
+            <li>Consent to being photographed or recorded (events may be filmed for promotional purposes)</li>
+        </ul>
+
+        <h3>Cosplay and Costumes</h3>
+        <ul>
+            <li>Costumes are welcome but not required</li>
+            <li>Prop weapons must be peace-bonded and non-functional</li>
+            <li>Final approval of props and costumes is at venue security's discretion</li>
+            <li>Costumes may not obstruct walkways or create safety hazards</li>
+        </ul>
+
+        <h3>Removal from Event</h3>
+        <p>We reserve the right to remove any attendee from the event without refund for:</p>
+        <ul>
+            <li>Violating event or venue rules</li>
+            <li>Disruptive or dangerous behavior</li>
+            <li>Harassment of any kind</li>
+            <li>Intoxication beyond safe levels</li>
+            <li>Any illegal activity</li>
+        </ul>
+
+        <h2>COSPLAY COMPETITION</h2>
+
+        <h3>Participation</h3>
+        <ul>
+            <li>Entry is open to all ticket holders</li>
+            <li>Participants must check in before the competition begins</li>
+            <li>By entering, you grant us permission to photograph and share images of your cosplay</li>
+        </ul>
+
+        <h3>Judging</h3>
+        <ul>
+            <li>Judging criteria and prizes are at our discretion</li>
+            <li>All judging decisions are final</li>
+            <li>We reserve the right to modify competition rules at any time</li>
+        </ul>
+
+        <h2>INTELLECTUAL PROPERTY</h2>
+        <p>All content on this website — including logos, graphics, text, and the Moonlight Otaku Nights brand — is our property or used with permission. You may not use our branding, logos, or content without written permission.</p>
+
+        <h2>LIMITATION OF LIABILITY</h2>
+        <p>To the fullest extent permitted by law:</p>
+        <ul>
+            <li>We are not liable for any injury, loss, or damage occurring at our events</li>
+            <li>We are not responsible for lost, stolen, or damaged personal property</li>
+            <li>We make no guarantees about specific performers, DJs, or event features (lineups may change)</li>
+            <li>Our website is provided "as is" without warranties of any kind</li>
+        </ul>
+        <p>Your attendance at our events is at your own risk.</p>
+
+        <h2>INDEMNIFICATION</h2>
+        <p>You agree to indemnify and hold harmless Moonlight Otaku Nights, its organizers, staff, and partners from any claims, damages, or expenses arising from your use of our website or attendance at our events.</p>
+
+        <h2>THIRD-PARTY SERVICES</h2>
+        <p>Our website and events involve third-party services including:</p>
+        <ul>
+            <li>Eventbrite for ticket sales</li>
+            <li>QXT's Nightclub and other venues</li>
+            <li>Various DJs and performers</li>
+        </ul>
+        <p>These third parties have their own terms and policies. We are not responsible for their actions or services.</p>
+
+        <h2>CHANGES TO EVENTS</h2>
+        <p>We reserve the right to:</p>
+        <ul>
+            <li>Change event dates, times, or venues</li>
+            <li>Modify lineups, performers, or features</li>
+            <li>Cancel events if necessary</li>
+        </ul>
+        <p>In case of cancellation by us, ticket refunds will be processed through Eventbrite.</p>
+
+        <h2>PRIVACY</h2>
+        <p>Your privacy matters to us. Please review our <a href="/privacy-policy/">Privacy Policy</a> for information on how we collect and use your data.</p>
+
+        <h2>GOVERNING LAW</h2>
+        <p>These Terms are governed by the laws of the State of New Jersey. Any disputes will be resolved in courts located in New Jersey.</p>
+
+        <h2>CHANGES TO THESE TERMS</h2>
+        <p>We may update these Terms at any time. Continued use of our website or attendance at our events constitutes acceptance of any changes.</p>
+
+        <h2>CONTACT US</h2>
+        <p>Questions about these Terms?</p>
+        <p>
+            Moonlight Otaku Nights<br>
+            Email: <a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a>
+        </p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">MOONLIGHT OTAKU NIGHTS</span>
+                <span style="font-family: 'Noto Sans JP', sans-serif; font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">アニクラ NJ</span>
+                <p class="footer-tagline">Building NJ's anime nightlife scene. One night at a time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>NAVIGATE</h4>
+                <ul class="footer-links">
+                    <li><a href="/elven-grove/">Current Event</a></li>
+                    <li><a href="https://instagram.com/moonlightotakunights" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>DETAILS</h4>
+                <ul class="footer-links">
+                    <li><span style="color: var(--text-muted); font-size: 0.9rem;">QXT's Newark — 248 Mulberry St</span></li>
+                    <li><a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a></li>
+                    <li><span style="color: var(--text-muted); font-size: 0.9rem;">21+ with valid ID</span></li>
+                    <li><a href="/partners/" style="opacity: 0.5;">Community Partners</a></li>
+                    <li><a href="/work-with-us/" style="opacity: 0.5;">Work With Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/moonlightotakunights" class="social-link" target="_blank">📸</a>
+                <a href="/elven-grove/" class="social-link">🎵</a>
+                <a href="mailto:info@moonlightotakunights.com" class="social-link">💬</a>
+            </div>
+        </div>
+        <div class="footer-legal">
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <span class="separator">|</span>
+            <a href="/terms/">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

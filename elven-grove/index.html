@@ -755,6 +755,27 @@
             font-size: 0.85rem;
         }
 
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-legal a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover { color: var(--text-primary); }
+        .footer-legal .separator { color: var(--text-muted); font-size: 0.85rem; }
+
         /* Mobile */
         @media (max-width: 768px) {
             .nav-links {
@@ -1193,6 +1214,11 @@
             <a href="/work-with-us/" style="opacity: 0.5;">Work With Us</a>
         </div>
         <p class="copyright" style="margin-top: 1.5rem;">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
+        <div class="footer-legal">
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <span class="separator">|</span>
+            <a href="/terms/">Terms of Service</a>
+        </div>
     </footer>
 
     <script>

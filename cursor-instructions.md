@@ -1,372 +1,467 @@
 # CURSOR INSTRUCTIONS: Moonlight Website Update
+## Read This First
 
-> ## Read This First
 
-> I'm updating the copy, navigation, and footer across my Moonlight Otaku Nights website. The site already has WORKING email marketing (Brevo integration, Formspree forms, confetti celebrations, MOONLIGHT10 discount code). **DO NOT replace or overwrite any JavaScript, form action URLs, Brevo API calls, or Formspree endpoint IDs.** Only change the HTML copy, CSS, and structural elements I specify.
+I'm updating the copy, navigation, and footer across my Moonlight Otaku Nights website. The site already has WORKING email marketing (Brevo integration, Formspree forms, confetti celebrations, MOONLIGHT10 discount code). **DO NOT replace or overwrite any JavaScript, form action URLs, Brevo API calls, or Formspree endpoint IDs.** Only change the HTML copy, CSS, and structural elements I specify.
 
-> Work through this ONE PAGE AT A TIME. After each page, stop and let me verify before moving to the next.
 
----
+Work through this ONE PAGE AT A TIME. After each page, stop and let me verify before moving to the next.
 
-> ## ═══════════════════════════════════════════════════════════
-> ## GLOBAL RULES — Apply to ALL pages, ALL copy
-> ## These are NON-NEGOTIABLE. Apply to EVERY output.
-> ## ═══════════════════════════════════════════════════════════
-
-> 1. **NO NEGATIVE COMPARISONS** — Only describe what Moonlight IS, never what it ISN'T. No "not generic EDM," "not a costume party," "no top 40," "not a warehouse," "there's no recurring anime nightclub in NJ." Describe what we are, positively.
-
-> 2. **NO ARTIST NAME-DROPS** — Never mention specific DJs, producers, or artists by name unless that person is CONFIRMED to perform at the specific event being promoted. Always describe genres: "anisong, J-Core, happy hardcore, J-pop." Never: "USAO, t+pazolite, Camellia, DJ Genki, S3RL, Gammer." Naming unconfirmed artists is false advertising.
-
-> 3. **NO COMPETITOR NAMES** — Never mention other anime nightclub brands, events, or venues by name. No Club Mogra, Club Kaiju, AniParty, Touch Grass, Dallas, Tokyo, or any other anime nightclub/event. These are internal strategy references only.
-
-> 4. **NO DOLLAR AMOUNTS FOR PRIZES** — Never say "$200 prize" or "$200 cosplay competition." Say "cosplay competition with prizes" or "winners take home exclusive collectibles, replica props, and bragging rights."
-
-> 5. **INCLUSIVE DRESS CODE** — Never say "club attire" or "nightclub-ready" or deny entry based on clothing. Say "whatever you want — cosplay, goth, punk, steampunk, rave gear, kandi, casual. No costume? No problem."
-
-> 6. **INCLUSIVE ENTRY LANGUAGE** — Never say "no exceptions" or aggressive enforcement language. Say "21+ with valid ID required at entry."
-
-> 7. **RE-ENTRY IS ALLOWED** — QXT's allows re-entry. Never say "no re-entry." Say "Re-entry allowed — let security know at the door."
-
-> 8. **EARLY BIRD TICKETS** — No overselling language. No "no codes, no catches." Just: "First 50 tickets. First come, first served."
-
-> 9. **VENDING VILLAGE** — Always mention the vending village (vendors downstairs with anime merch, collectibles, cosplay accessories) as part of the event experience.
-
-> 10. **PARTNER LANGUAGE** — Never use "promoter," "promote," "earn commission," "turn your network into cash." Always use "community partner," "founding partner," "help build the scene."
-
-> ## ADDITIONAL GLOBAL RULES:
-
-> - **NEVER claim** CDJ-3000s, "400+ capacity," "30+ years," or anything not explicitly confirmed by the venue.
-> - **Partners and Work With Us links** appear ONLY in the footer, at reduced opacity (50%). Never in the main navigation.
-> - **The /partners/ page** must have `<meta name="robots" content="noindex, nofollow">` — it should not be indexed by Google.
-> - **DO NOT break** any existing email marketing integrations (Brevo, Formspree, confetti, MOONLIGHT10 code).
-> - **Preserve** all existing JavaScript functionality, form endpoints, and API calls.
-> - The word "promoter" should not appear anywhere on the public site. Use "partner" instead.
-
-> ## EMAIL ADDRESSES — Use the correct one for each context:
-
-> - **Website footer / general contact:** info@moonlightotakunights.com
-> - **Work With Us / talent page:** talent@moonlightotakunights.com
-> - **Partners page:** promo@moonlightotakunights.com
-> - **NEVER use anikuranj@gmail.com on any public page.** That is the internal backend only.
-
-> ## TICKET PRICING (Current / Correct):
-
-> - **Early Bird:** $15 (first 50 tickets, no promo codes apply)
-> - **GA:** $20 (before 11:30pm, MOONLIGHT10 = 10% off = $18)
-> - **Late Night:** $25 (after 11:30pm or at door, MOONLIGHT10 = 10% off = $22.50)
 
 ---
 
-> ## PAGE 1: HOMEPAGE (index.html)
-> ## ✅ COMPLETED — Do not redo unless specifically asked.
+
+## PAGE 1: HOMEPAGE (index.html)
+
+
+### STEP 1: Update the Navigation Bar
+Find the `<nav>` section. Change the nav links to ONLY these items:
+- "The Vibe" → links to `#vibe`
+- "Events" → links to `#events`
+- "Join the Crew" → links to `#crew`
+- "TICKETS" → links to `/elven-grove/` (this is the CTA button with special styling)
+
+
+**REMOVE** any links to `/promote/`, `/partners/`, or `/work-with-us/` from the nav. Those pages should NOT be in the main navigation anymore.
+
+
+### STEP 2: Update the Hero Section
+Replace the current hero copy with:
+
+
+**Japanese text above the title:** 月光オタクナイト
+**Main title:** MOONLIGHT OTAKU NIGHTS (with "MOONLIGHT" in the glowing green style)
+**Subtitle/description:** "The night has a frequency. If you've ever felt it—bass rattling through a dark room, your favorite opening blasting while the lights go insane—you already know. This is that. Every month. Newark, NJ."
+**Tags below subtitle:** ANISONG | J-CORE | COSPLAY | 21+ | QXT'S NEWARK
+**Primary CTA button:** "FIRST EVENT — MAR 26" → links to `/elven-grove/`
+**Secondary CTA button:** "SEE WHAT'S COMING" → links to `#events`
+
+
+### STEP 3: Update the "What Is This" / Vibe Section
+Replace whatever the current explainer section is with this:
+
+
+**Section label (Japanese):** 何これ
+**Section title:** "An authentic anikura experience."
+**Body copy (left column):**
+
+
+> There's a difference between throwing on a wig at a bar and walking into a room where **everyone gets it**. Where the DJ drops a Chainsaw Man OP remix and the floor erupts. Where your cosplay isn't weird—it's the standard.
+
+
+> It's called **anikura** — anime club culture. A real nightclub built around the music, the cosplay, and the people who live this. It exists all over the world. But not here. Not in Jersey. Not yet.
+
+
+> Monthly themed nights. Real anisong and J-Core DJs. A venue where you can show up as exactly who you are — cosplay, casual, whatever feels right — and nobody blinks. Professional sound, professional security, anime on every screen. This is home.
+
+
+**Right column — 3 info cards:**
+
+
+Card 1 - THE SOUND 🎵
+"Anisong remixes, J-Core, happy hardcore, future bass—all rooted in the culture. Every track hits different when you know the source."
+
+
+Card 2 - THE ENERGY ⚡
+"Themed nights that go deeper than decoration. Isekai forests, cyberpunk rain, mecha arenas—each event is a world you step into."
+
+
+Card 3 - THE CREW 🌙
+"Convention friends. Anime club people. The ones who actually know what 'anikura' means. You'll recognize your people immediately."
+
+
+**IMPORTANT:** Do NOT mention Club Mogra, Club Kaiju, Tokyo, Dallas, or any other anime nightclub by name. Anywhere. On any page. We don't name-drop competitors.
+
+
+### STEP 4: Update the Featured Event Section
+**Section label (Japanese):** 次のイベント
+**Section title:** "Next Event"
+
+
+Event details:
+- **Badge:** EVENT #1
+- **Title:** ELVEN GROVE (in green glow text)
+- **Japanese subtitle:** エメラルドムーン
+- **Description:** "Step through the veil. Isekai fantasy brought to life—enchanted forests, emerald light, and a soundtrack pulled from the worlds you've always wanted to visit. Cosplay as your favorite fantasy character or come as you are. The grove welcomes everyone."
+- **Date:** Thursday, March 26
+- **Time:** 10 PM – 3 AM
+- **Venue:** QXT's Newark
+- **Starts at:** $15
+- **Music tags:** ANISONG | J-CORE | HAPPY HARDCORE | FUTURE BASS | COSPLAY CONTEST
+- **CTA:** "GET TICKETS" → /elven-grove/
+
+
+### STEP 5: Update the Upcoming Events Section
+**Section label (Japanese):** 予定
+**Section title:** "What's Coming"
+**Section subtitle:** "Every month, a new world. Same crew, different dimension."
+
+
+Two cards:
+
+
+Card 1:
+- Date: APRIL 2026
+- Title: NEON RAIN
+- Description: "Cyberpunk anime. Edgerunners. Akira. Ghost in the Shell. Rain-soaked neon, synth-heavy sets, and the future you were promised."
+- Status: DATE TBA
+
+
+Card 2:
+- Date: MAY 2026
+- Title: MECHA NIGHT
+- Description: "Gundam. Evangelion. Code Geass. Colossal energy. Heavy bass. Pilot suits encouraged."
+- Status: DATE TBA
+
+
+### STEP 6: Update the Email Signup Section (⚠️ CAREFUL)
+
+
+**Section label (Japanese):** 仲間入り
+**Section title:** "Join the Moonlight Crew"
+**Description:** "First access to tickets. Event announcements before anyone else. Exclusive crew perks. This is how you stay in the loop."
+**Below form note:** "You'll get a welcome gift — **10% off your first ticket**" (the 10% part in green)
+
+
+⚠️ **DO NOT CHANGE:**
+- The form action URL / Formspree endpoint
+- Any Brevo API integration code
+- The JavaScript that handles form submission
+- The confetti celebration code
+- The MOONLIGHT10 discount code display
+- The success modal/popup
+
+
+ONLY change the visible text labels, headings, and descriptions around the form. The form inputs, submission logic, and success behavior must stay exactly as they are.
+
+
+### STEP 7: Update the Footer
+Replace the current footer with this structure:
+
+
+**Left column (brand):**
+- "MOONLIGHT OTAKU NIGHTS" (in display font, green)
+- "アニクラ NJ" (small, dim)
+- "Building NJ's anime nightlife scene. One night at a time."
+
+
+**Middle column - NAVIGATE:**
+- Current Event → /elven-grove/
+- Instagram → https://instagram.com/moonlightotakunights
+
+
+**Right column - DETAILS:**
+- QXT's Newark — 248 Mulberry St
+- anikuranj@gmail.com
+- 21+ with valid ID
+- Community Partners → /partners/ (style this link at 50% opacity, subtle)
+- Work With Us → /work-with-us/ (style this link at 50% opacity, subtle)
+
+
+**Footer bottom:**
+- Left: "© 2026 Moonlight Otaku Nights. All rights reserved."
+- Right: Social media icons (Instagram, TikTok, Discord)
+
 
 ---
 
-> ## PAGE 2: PARTNERS PAGE (/promote/index.html → rename folder to /partners/)
 
-> ### IMPORTANT STRUCTURAL CHANGE
+## PAGE 2: PARTNERS PAGE (/promote/index.html → rename folder to /partners/)
 
-> The current folder is probably called `/promote/`. Rename it to `/partners/`. Update all internal links that point to `/promote/` to point to `/partners/` instead.
 
-> ### STEP 1: Add noindex meta tag
+### IMPORTANT STRUCTURAL CHANGE
+The current folder is probably called `/promote/`. Rename it to `/partners/`. Update all internal links that point to `/promote/` to point to `/partners/` instead.
 
-> Add this to the `<head>` section:
 
-> ```html
-> <meta name="robots" content="noindex, nofollow">
-> ```
+### STEP 1: Add noindex meta tag
+Add this to the `<head>` section:
+```html
+<meta name="robots" content="noindex, nofollow">
+```
+This prevents search engines from indexing this page. We don't want it showing up in Google.
 
-> This prevents search engines from indexing this page. We don't want it showing up in Google.
 
-> ### STEP 2: Update the Nav Bar
+### STEP 2: Update the Nav Bar
+Same nav as the homepage:
+- The Vibe → / (back to homepage)
+- Events → /elven-grove/
+- Join the Crew → /#crew
+- TICKETS (CTA) → /elven-grove/
 
-> For subpages the nav should be:
 
-> - Home → /
-> - Events → /elven-grove/
-> - Collaborate → /work-with-us/
-> - TICKETS (CTA) → /elven-grove/
+NO link to "Partners" or "Work With Us" in the nav bar.
 
-> NO link to "Partners" or "Promote" in the nav bar.
 
-> ### STEP 3: Replace ALL copy on this page
+Actually, for subpages the nav should be:
+- Home → /
+- Events → /elven-grove/
+- Collaborate → /work-with-us/
+- TICKETS (CTA) → /elven-grove/
 
-> **Hero:**
 
-> - Japanese label: コミュニティパートナー
-> - Headline: "This scene doesn't **build itself.**" (the "build itself" part in green gradient)
-> - Description: "We're building NJ's first recurring anime nightclub — monthly themed nights with real anisong and J-Core music, cosplay competitions, and a community that gets it. If you're a cosplayer, content creator, convention regular, or someone who runs in these circles and wants to be part of this, we want to work with you. Not as a sales rep. As someone who's helping build something real."
+### STEP 3: Replace ALL copy on this page
 
-> **How It Works section:**
 
-> - Japanese label: 仕組み
-> - Title: "How it works"
-> - 4 steps:
+**Hero:**
+- Japanese label: コミュニティパートナー
+- Headline: "This scene doesn't **build itself.**" (the "build itself" part in green gradient)
+- Description: "There's no recurring anime nightclub in NJ. We're changing that — but not alone. If you're a cosplayer, content creator, convention regular, or someone who runs in these circles and genuinely wants this to exist, we want to work with you. Not as a sales rep. As someone who's helping build something real."
 
-> Step 01 - YOU REACH OUT
 
-> "Tell us who you are and how you're connected to the community. Conventions you attend, cosplay you do, content you create, clubs you're in — whatever your world is."
+**How It Works section:**
+- Japanese label: 仕組み
+- Title: "How it works"
+- 4 steps:
 
-> Step 02 - YOU GET YOUR CODE
 
-> "We create a unique discount code for you — something like YOURNAME10. Your people get 10% off GA and Late Night tickets when they use it. Everything is tracked through Eventbrite so it's clean and transparent."
+Step 01 - YOU REACH OUT
+"Tell us who you are and how you're connected to the community. Conventions you attend, cosplay you do, content you create, clubs you're in — whatever your world is."
 
-> Step 03 - SHARE HOW YOU SHARE
 
-> "Post on your socials, mention it at a meetup, text your group chat. However you naturally connect with people — do that. No scripts. No pressure. If you think this is worth talking about, talk about it."
+Step 02 - YOU GET YOUR CODE
+"We create a unique discount code for you — something like YOURNAME10. Your people get 10% off tickets when they use it. Everything is tracked through Eventbrite so it's clean and transparent."
 
-> Step 04 - WE TAKE CARE OF YOU
 
-> "25% of ticket revenue from your code comes back to you. Paid within 7 days after each event — PayPal, Venmo, or Zelle. Your reach matters and we respect that."
+Step 03 - SHARE HOW YOU SHARE
+"Post on your socials, mention it at a meetup, text your group chat. However you naturally connect with people — do that. No scripts. No pressure. If you think this is worth talking about, talk about it."
 
-> **Compensation section:**
 
-> - Japanese label: 透明性
-> - Title: "The numbers, straight up"
-> - Intro: "Your code gives people 10% off GA and Late Night tickets. You earn 25% of what they pay after the discount. Here's what that actually looks like:"
+Step 04 - WE TAKE CARE OF YOU
+"25% of ticket revenue from your code comes back to you. Paid within 7 days after each event — PayPal, Venmo, or Zelle. This isn't charity. Your reach matters and we respect that."
 
-> - GA Tickets: $4.50 per ticket ($20 → $18 after discount, you earn 25% = $4.50)
-> - Late Night Tickets: $5.63 per ticket ($25 → $22.50 after discount, you earn 25% = $5.63)
-> - Early Bird Tickets: No partner codes apply. Early Bird is first 50, first come first served.
 
-> - Example: "If 20 people use your code on GA tickets, that's **$90**. 50 people? **$225**. Plus you earn free entry after 10 ticket uses and guest passes after 25."
+**Compensation section:**
+- Japanese label: 透明性
+- Title: "The numbers, straight up"
+- Intro: "Your code gives people 10% off. You earn 25% of what they pay after the discount. Here's what that actually looks like:"
+- Early Bird: $4.50 per ticket ($20 → $18 after discount)
+- General: $5.63 per ticket ($25 → $22.50 after discount)
+- Example: "If 20 people use your code on early bird tickets, that's **$90**. 50 people? **$225**. Plus you earn free entry after 10 ticket uses and guest passes after 25."
 
-> **Partner Tiers:**
 
-> - Japanese label: パートナー
-> - Title: "Partner tiers"
+**Partner Tiers:**
+- Japanese label: パートナー
+- Title: "Partner tiers"
 
-> 🌱 COMMUNITY PARTNER — Cosplayers, content creators, community members
 
-> "You have a following — even a small one — and people trust your taste. You share your code naturally and help get the word out to your circle."
+🌱 COMMUNITY PARTNER — Cosplayers, content creators, community members
+"You have a following — even a small one — and people trust your taste. You share your code naturally and help get the word out to your circle."
 
-> ⭐ FEATURED PARTNER — Established creators with consistent reach
 
-> "You've got an audience that looks to you. We feature you on our channels, collaborate on content, and give you early access to event details for your posts."
+⭐ FEATURED PARTNER — Established creators with consistent reach
+"You've got an audience that looks to you. We feature you on our channels, collaborate on content, and give you early access to event details for your posts."
 
-> 🏢 BUSINESS PARTNER — Shops, clubs, organizations
 
-> "Comic stores, manga cafés, anime clubs, convention groups — if your space or org has a built-in audience, we'll create a partnership that works for both of us."
+🏢 BUSINESS PARTNER — Shops, clubs, organizations
+"Comic stores, manga cafés, anime clubs, convention groups — if your space or org has a built-in audience, we'll create a partnership that works for both of us."
 
-> **FAQ section:**
 
-> - Japanese label: 質問
-> - Title: "Common questions"
+**FAQ section:**
+- Japanese label: 質問
+- Title: "Common questions"
 
-> Q: "Do I have to attend every event?"
-> A: "No. Partnership isn't about attendance — it's about helping spread the word to your community. Some of our partners can't always make events but genuinely support what we're building."
 
-> Q: "What if I have a convention conflict?"
-> A: "We get it — cons come first. Your code still works whether you're there or not. No stress."
+Q: "Do I have to attend every event?"
+A: "No. Partnership isn't about attendance — it's about helping spread the word to your community. Some of our partners can't always make events but genuinely support what we're building."
 
-> Q: "How do I get paid?"
-> A: "Within 7 days after each event. PayPal, Venmo, or Zelle — your choice. We pull the Eventbrite data, calculate your code's performance, and send you a breakdown with payment."
 
-> Q: "What's the minimum follower count?"
-> A: "There isn't one. If you're connected to 30 people in a Rutgers anime club group chat and they all come, that's more valuable than 10K disengaged followers. We care about real community reach."
+Q: "What if I have a convention conflict?"
+A: "We get it — cons come first. Your code still works whether you're there or not. If Colossal or AnimeNYC falls on the same weekend, no stress."
 
-> Q: "Will my name be on a public 'promoters' page?"
-> A: "No. This page isn't indexed by search engines and your partnership is between us. We'll only feature you publicly if you want to be featured."
 
-> **Application form:** ⚠️ Keep the existing Formspree endpoint. Only change the visible labels:
+Q: "How do I get paid?"
+A: "Within 7 days after each event. PayPal, Venmo, or Zelle — your choice. We pull the Eventbrite data, calculate your code's performance, and send you a breakdown with payment."
 
-> - Name → "Name"
-> - Email → "Email"
-> - Social → "Instagram / Social" (placeholder: @yourusername)
-> - Type → "Partner Type" with options: Community Partner, Featured Partner, Business Partner
-> - Message → "Tell us about your connection to the anime community" (placeholder: "What conventions do you attend? What communities are you part of? Why do you want to help build this?")
-> - Submit button: "SEND IT"
-> - Below form: "Prefer email? Hit us directly at promo@moonlightotakunights.com"
 
-> ### STEP 4: Update Footer
+Q: "What's the minimum follower count?"
+A: "There isn't one. If you're connected to 30 people in a Rutgers anime club group chat and they all come, that's more valuable than 10K disengaged followers. We care about real community reach."
 
-> Same footer structure as the homepage (see footer spec below).
 
-> ### STEP 5: Remove ALL language like:
+Q: "Will my name be on a public 'promoters' page?"
+A: "No. This page isn't indexed by search engines and your partnership is between us. We'll only feature you publicly if you want to be featured."
 
-> - "Turn your network into cash"
-> - "Get paid to promote"
-> - "Earn commission"
-> - Any MLM / hustle language
-> - Any mention of "promoter" as a title (use "partner" instead)
-> - Any mention of Club Mogra, Club Kaiju, Dallas, Tokyo
-> - Any reference to anikuranj@gmail.com
+
+**Application form:** ⚠️ Keep the existing Formspree endpoint. Only change the visible labels:
+- Name → "Name"
+- Email → "Email"
+- Social → "Instagram / Social" (placeholder: @yourusername)
+- Type → "Partner Type" with options: Community Partner, Featured Partner, Business Partner
+- Message → "Tell us about your connection to the anime community" (placeholder: "What conventions do you attend? What communities are you part of? Why do you want to help build this?")
+- Submit button: "SEND IT"
+
+
+### STEP 4: Update Footer
+Same footer structure as the homepage.
+
+
+### STEP 5: Remove ALL language like:
+- "Turn your network into cash"
+- "Get paid to promote"
+- "Earn commission"
+- Any MLM / hustle language
+- Any mention of "promoter" as a title (use "partner" instead)
+- Any mention of Club Mogra, Club Kaiju, Dallas, Tokyo
+
 
 ---
 
-> ## PAGE 3: WORK WITH US (/work-with-us/index.html)
 
-> ### STEP 1: Update Nav
+## PAGE 3: WORK WITH US (/work-with-us/index.html)
 
-> - Home → /
-> - Events → /elven-grove/
-> - Partners → /partners/
-> - TICKETS (CTA) → /elven-grove/
 
-> ### STEP 2: Replace ALL copy
+### STEP 1: Update Nav
+Same nav structure as the partners page (Home, Events, Partners, TICKETS CTA).
 
-> **Hero:**
 
-> - Japanese label: 一緒に作ろう
-> - Headline: "Bring your **craft** to the floor." (the "craft" in green gradient)
-> - Description: "We're building a monthly home for anime nightlife in NJ. That takes DJs who know the music, artists who bring the visuals, vendors with product the community actually wants, and cosplay guests who set the tone. If you do any of that — let's talk."
+Actually — for this page:
+- Home → /
+- Events → /elven-grove/
+- Partners → /partners/
+- TICKETS (CTA) → /elven-grove/
 
-> **Who We're Looking For:**
 
-> - Japanese label: 募集中
-> - Title: "Who we're looking for"
+### STEP 2: Replace ALL copy
 
-> 4 role cards:
 
-> 🎧 DJs
+**Hero:**
+- Japanese label: 一緒に作ろう
+- Headline: "Bring your **craft** to the floor." (the "craft" in green gradient)
+- Description: "We're building a monthly home for anime nightlife in NJ. That takes DJs who know the music, artists who bring the visuals, vendors with product the community actually wants, and cosplay guests who set the tone. If you do any of that — let's talk."
 
-> "Anisong, J-Core, happy hardcore, future bass, denpa — if you spin music rooted in anime and Japanese club culture, we want to hear your sets. Full sound system and booth provided by the venue."
 
-> 🎨 VISUAL ARTISTS
+**Who We're Looking For:**
+- Japanese label: 募集中
+- Title: "Who we're looking for"
 
-> "VJs, projection artists, LED designers — each event has a theme. We need people who can make a room feel like another world. If you've done convention panels or club visuals, you're already ahead."
 
-> 🛍️ VENDORS
+4 role cards:
 
-> "Anime merch, original art, cosplay accessories, Japanese snacks — if your product belongs at a convention, it belongs here. Flat table fee, you keep 100% of sales at the first event."
 
-> ✨ COSPLAY GUESTS
+🎧 DJs
+"Anisong, J-Core, happy hardcore, future bass, denpa — if you spin music rooted in anime and Japanese club culture, we want to hear your sets. Full sound system and booth provided by the venue."
 
-> "If your cosplay stops people in their tracks, we want you in the room. Featured guests get free entry, promo on our channels, and the spotlight during the cosplay showcase."
 
-> **What You Get:**
+🎨 VISUAL ARTISTS
+"VJs, projection artists, LED designers — each event has a theme. We need people who can make a room feel like another world. If you've done convention panels or club visuals, you're already ahead."
 
-> - Japanese label: 提供
-> - Title: "What you get"
-> - Intro: "**QXT's is a venue built on inclusivity** — a space where alternative culture has always been welcome. Real sound system, professional security, a full bar, and screens running anime visuals all night. We handle the venue — you bring your craft."
 
-> 5 items:
+🛍️ VENDORS
+"Anime merch, original art, cosplay accessories, Japanese snacks — if your product belongs at a convention, it belongs here. Flat table fee, you keep 100% of sales at the first event."
 
-> ◆ **Professional venue** — full sound system, lighting, DJ booth, bar, and dedicated security. Everything you need is already there.
 
-> ◆ **Recurring platform** — this isn't one-and-done. Monthly events mean a monthly home base for your craft.
+✨ COSPLAY GUESTS
+"If your cosplay stops people in their tracks, we want you in the room. Featured guests get free entry, promo on our channels, and the spotlight during the cosplay showcase."
 
-> ◆ **Audience that gets it** — convention crowd, anime club members, cosplayers. People who know the music and love the culture.
 
-> ◆ **Multi-floor setup** — main floor for music and dancing, downstairs vending village for vendors, merch, and overflow. Space to build something real.
+**What You Get:**
+- Japanese label: 提供
+- Title: "What you get"
+- Intro: "**QXT's is a venue built on inclusivity** — a space where alternative culture has always been welcome. Real sound system, professional security, a full bar, and screens running anime visuals all night. We handle the venue — you bring your craft."
 
-> ◆ **Fair compensation** — DJs are paid per set. Vendors keep their sales. Cosplay guests receive comps and promotion. We'll work something out that respects your time.
 
-> **IMPORTANT:** Do NOT claim CDJ-3000s, "400+ capacity," "30+ years," or any other specific detail we haven't confirmed with the venue owner. Only state what's listed above.
+5 bullet points:
+◆ **Professional venue** — full sound system, lighting, DJ booth, bar, and dedicated security. Everything you need is already there.
+◆ **Recurring platform** — this isn't one-and-done. Monthly events mean a monthly home base for your craft.
+◆ **Audience that gets it** — convention crowd, anime club members, cosplayers. People who know the music and love the culture.
+◆ **Multi-floor setup** — main floor for music and dancing, downstairs area available for vendors and overflow. Space to build something real.
+◆ **Fair compensation** — DJs are paid per set. Vendors keep their sales. Cosplay guests receive comps and promotion. We'll work something out that respects your time.
 
-> **Contact form:** ⚠️ Keep existing Formspree endpoint. Only change labels:
 
-> - Name → "Name / Artist Name" (placeholder: "Your name or stage name")
-> - Email → "Email"
-> - Role → dropdown: DJ, VJ / Visual Artist, Vendor, Cosplay Guest, Photographer / Videographer, Other
-> - Links → "Links to your work" (placeholder: "SoundCloud, Instagram, portfolio, etc.")
-> - Message → "Tell us about yourself" (placeholder: "What's your experience? What genres/styles do you work with? What excites you about this?")
-> - Submit: "SEND IT"
-> - Below form: "Prefer email? Hit us directly at talent@moonlightotakunights.com"
+**IMPORTANT:** Do NOT claim CDJ-3000s, "400+ capacity," "30+ years," or any other specific detail we haven't confirmed with the venue owner. Only state what's listed above.
 
-> ### STEP 3: Update Footer
 
-> Same footer as other pages (see footer spec below).
+**Contact form:** ⚠️ Keep existing Formspree endpoint. Only change labels:
+- Name → "Name / Artist Name" (placeholder: "Your name or stage name")
+- Email → "Email"
+- Role → dropdown: DJ, VJ / Visual Artist, Vendor, Cosplay Guest, Photographer / Videographer, Other
+- Links → "Links to your work" (placeholder: "SoundCloud, Instagram, portfolio, etc.")
+- Message → "Tell us about yourself" (placeholder: "What's your experience? What genres/styles do you work with? What excites you about this?")
+- Submit: "SEND IT"
+- Below form: "Prefer email? Hit us directly at anikuranj@gmail.com"
 
-> ### STEP 4: Remove ALL mentions of:
 
-> - Club Mogra, Club Kaiju, Dallas, Tokyo, or any competitor
-> - CDJ-3000s or specific equipment we haven't confirmed
-> - "400+ capacity" or any capacity number
-> - "30+ years" or specific venue age claims
-> - anikuranj@gmail.com
+### STEP 3: Update Footer
+Same footer as other pages.
 
----
 
-> ## PAGE 4: ELVEN GROVE (/elven-grove/index.html)
+### STEP 4: Remove ALL mentions of:
+- Club Mogra, Club Kaiju, Dallas, Tokyo, or any competitor
+- CDJ-3000s or specific equipment we haven't confirmed
+- "400+ capacity" or any capacity number
+- "30+ years" or specific venue age claims
 
-> ### STEP 1: Update Nav
-
-> Same nav as homepage: The Vibe, Events, Join the Crew, TICKETS
-
-> ### STEP 2: Update Footer
-
-> Same footer as other pages (see footer spec below).
-
-> ### STEP 3: Copy changes
-
-> Scan this page for:
-
-> - Any mention of Club Mogra, Club Kaiju, Dallas, Tokyo → REMOVE
-> - Any mention of CDJ-3000s or unconfirmed equipment → REMOVE
-> - Any link to `/promote/` → change to `/partners/`
-> - Any reference to anikuranj@gmail.com → change to info@moonlightotakunights.com
-> - Make sure the date says March 26 (confirmed by Ronaldo)
-> - Make sure ticket pricing shows: $15 Early Bird / $20 GA / $25 Late Night
-> - Make sure dress code says: "whatever you want — cosplay, goth, punk, steampunk, rave gear, kandi, casual. No costume? No problem."
-> - Make sure re-entry says: "Re-entry allowed — let security know at the door."
-> - Make sure entry language says: "21+ with valid ID required at entry." (NOT "no exceptions")
-> - Make sure cosplay competition says "cosplay competition with prizes" (NOT "$200 cosplay competition")
-> - Make sure vending village is mentioned as part of the event experience
-> - Parking: Free street parking nearby. Paid garage one block from venue.
-
-> ⚠️ DO NOT touch any ticketing integration, email signup forms, or JavaScript on this page.
 
 ---
 
-> ## FOOTER SPEC (Use on ALL pages)
 
-> **Left column (brand):**
+## PAGE 4: ELVEN GROVE (/elven-grove/index.html)
 
-> - "MOONLIGHT OTAKU NIGHTS" (in display font, green)
-> - "アニクラ NJ" (small, dim)
-> - "Building NJ's anime nightlife scene. One night at a time."
 
-> **Middle column - NAVIGATE:**
+### STEP 1: Update Nav
+Same nav as homepage: The Vibe, Events, Join the Crew, TICKETS
 
-> - Current Event → /elven-grove/
-> - Instagram → https://instagram.com/moonlightotakunights
 
-> **Right column - DETAILS:**
+### STEP 2: Update Footer
+Same footer as other pages (with Partners and Work With Us at reduced opacity).
 
-> - QXT's Newark — 248 Mulberry St, Newark NJ 07102
-> - info@moonlightotakunights.com
-> - 21+ with valid ID
-> - Community Partners → /partners/ (style this link at 50% opacity, subtle)
-> - Work With Us → /work-with-us/ (style this link at 50% opacity, subtle)
 
-> **Footer bottom:**
+### STEP 3: Copy changes
+Scan this page for:
+- Any mention of Club Mogra, Club Kaiju, Dallas, Tokyo → REMOVE
+- Any mention of CDJ-3000s or unconfirmed equipment → REMOVE
+- Any link to `/promote/` → change to `/partners/`
+- Make sure the date says March 26 (confirmed by rolando)
 
-> - Left: "© 2026 Moonlight Otaku Nights. All rights reserved."
-> - Right: Social media icons (Instagram, TikTok, Discord)
+
+⚠️ DO NOT touch any ticketing integration, email signup forms, or JavaScript on this page.
+
 
 ---
 
-> ## HOW TO GIVE THIS TO CURSOR
 
-> ### Option A: One page at a time (RECOMMENDED)
+## GLOBAL RULES (Apply to ALL pages):
 
-> 1. Open the relevant page file in Cursor
-> 2. Paste the relevant PAGE section + GLOBAL RULES into Cursor's chat
-> 3. Say: "Update the copy and navigation on this page according to these instructions. Do NOT modify any JavaScript, form endpoints, or email integration code. Only change the HTML text content, nav structure, and footer."
-> 4. Review the changes, test the email signup still works
-> 5. Commit to git
-> 6. Move to next PAGE, repeat
 
-> ### Option B: Give it the full doc
+1. **NEVER mention** Club Mogra, Club Kaiju, AniParty, Touch Grass, Dallas, Tokyo, or any other anime nightclub/event by name on the public website.
+2. **NEVER claim** CDJ-3000s, "400+ capacity," "30+ years," or anything not explicitly confirmed by the venue.
+3. **Partners and Work With Us links** appear ONLY in the footer, at reduced opacity (50%). Never in the main navigation.
+4. **The /partners/ page** must have `<meta name="robots" content="noindex, nofollow">` — it should not be indexed by Google.
+5. **DO NOT break** any existing email marketing integrations (Brevo, Formspree, confetti, MOONLIGHT10 code).
+6. **Preserve** all existing JavaScript functionality, form endpoints, and API calls.
+7. The word "promoter" should not appear anywhere on the public site. Use "partner" instead.
+8. **NO NEGATIVE COMPARISONS in public copy.** Never define Moonlight by what it ISN'T. No "not generic EDM," "not a costume party," "not a warehouse," "no top 40," "no filler," "this isn't a convention party." Only describe what Moonlight IS. Negative comparisons are for internal strategy documents only — never on the website, Eventbrite, Instagram, flyers, or any public-facing material.
 
-> 1. Save this entire file somewhere in your project (like /docs/cursor-update-instructions.md)
-> 2. Open Cursor, reference the file
-> 3. Say: "Read cursor-update-instructions.md. Start with PAGE 2 (Partners — Page 1 is already done). Only do one page at a time. Do NOT modify any JavaScript, form action URLs, Brevo API code, or Formspree endpoints. Wait for my confirmation before moving to the next page."
 
-> ### After EACH page, test:
+---
 
-> - [ ] Email signup form still submits
-> - [ ] Confetti still fires on signup
-> - [ ] Success modal still appears with MOONLIGHT10 code
-> - [ ] No broken links
-> - [ ] Nav shows correct items
-> - [ ] Footer shows correct items with info@moonlightotakunights.com
-> - [ ] No competitor names anywhere on page
-> - [ ] No unconfirmed venue claims
-> - [ ] No anikuranj@gmail.com on any public page
-> - [ ] No artist name-drops
-> - [ ] No dollar amounts for prizes
-> - [ ] Dress code is inclusive ("whatever you want")
-> - [ ] Re-entry is allowed
-> - [ ] Entry language says "21+ with valid ID required at entry"
+
+## HOW TO GIVE THIS TO CURSOR
+
+
+### Option A: One page at a time (RECOMMENDED)
+1. Open the homepage (index.html) in Cursor
+2. Paste the PAGE 1 section + GLOBAL RULES into Cursor's chat
+3. Say: "Update the copy and navigation on this page according to these instructions. Do NOT modify any JavaScript, form endpoints, or email integration code. Only change the HTML text content, nav structure, and footer."
+4. Review the changes, test the email signup still works
+5. Commit to git
+6. Move to PAGE 2, repeat
+
+
+### Option B: Give it the full doc
+1. Save this entire file somewhere in your project (like /docs/cursor-update-instructions.md)
+2. Open Cursor, reference the file
+3. Say: "Read cursor-update-instructions.md. Start with PAGE 1 (homepage). Only do one page at a time. Do NOT modify any JavaScript, form action URLs, Brevo API code, or Formspree endpoints. Wait for my confirmation before moving to the next page."
+
+
+### After EACH page, test:
+- [ ] Email signup form still submits
+- [ ] Confetti still fires on signup
+- [ ] Success modal still appears with MOONLIGHT10 code
+- [ ] No broken links
+- [ ] Nav shows correct items
+- [ ] Footer shows correct items
+- [ ] No competitor names anywhere on page
+- [ ] No unconfirmed venue claims
+
+
+

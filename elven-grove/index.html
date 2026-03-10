@@ -944,6 +944,79 @@
                 font-size: 1rem;
             }
         }
+
+        /* Data Collection Notice Banner */
+        .data-notice {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(20, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem 1.5rem;
+            z-index: 9999;
+            transform: translateY(0);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .data-notice.hidden {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .data-notice-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .data-notice p {
+            margin: 0;
+            color: var(--text-muted, rgba(255, 255, 255, 0.6));
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex: 1;
+            min-width: 200px;
+        }
+        .data-notice a {
+            color: var(--text-primary, rgba(255, 255, 255, 0.9));
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+        }
+        .data-notice a:hover {
+            color: var(--neon-green, #00FF88);
+        }
+        .data-notice-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary, rgba(255, 255, 255, 0.9));
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .data-notice-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .data-notice-btn:focus {
+            outline: 2px solid var(--neon-green, #00FF88);
+            outline-offset: 2px;
+        }
+        @media (max-width: 600px) {
+            .data-notice { padding: 1rem; }
+            .data-notice-content { flex-direction: column; text-align: center; gap: 1rem; }
+            .data-notice p { font-size: 0.85rem; }
+            .data-notice-btn { width: 100%; padding: 0.75rem 1.25rem; }
+        }
     </style>
     
     <!-- Canvas Confetti Library -->
@@ -1068,13 +1141,13 @@
                 <div class="hero-cta">
                     <!-- Replace # with your actual Eventbrite URL -->
                     <a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=event_page_cta&utm_campaign=elven_grove" class="btn btn-primary" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">GET TICKETS →</a>
-                    <a href="/#crew" class="btn btn-secondary">JOIN THE CREW</a>
+                    <a href="/cosplay-signup/" class="btn btn-secondary">COSPLAY SIGN-UP 🏆</a>
                 </div>
             </div>
 
             <div class="flyer-container">
                 <div class="flyer-frame">
-                    <img src="../assets/images/flyers/elven-grove.jpg" alt="Elven Grove: Emerald Moon Event Flyer" id="event-flyer" style="cursor: pointer;">
+                    <img src="../assets/images/flyers/9_16_flyer website flyer.png" alt="Elven Grove: Emerald Moon Event Flyer" id="event-flyer" style="cursor: pointer;">
                 </div>
             </div>
         </div>
@@ -1118,6 +1191,76 @@
         </div>
     </section>
 
+    <!-- Lineup -->
+    <section class="lineup-section" id="lineup">
+      <div class="lineup-container" style="max-width: 1000px; margin: 0 auto; padding: 80px 2rem; text-align: center;">
+        <h2 class="section-title">The Lineup</h2>
+        <p class="section-subtitle">Your soundtrack for the night.</p>
+
+        <div class="lineup-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
+
+          <!-- greenteawasted -->
+          <div class="lineup-card" style="text-align: center;">
+            <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
+              <img src="../assets/images/dj_images/greenteawasted.jpg" alt="DJ greenteawasted" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">greenteawasted</h3>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">DJ — 10PM–12AM</p>
+          </div>
+
+          <!-- FaithInTheGlitch -->
+          <div class="lineup-card" style="text-align: center;">
+            <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
+              <img src="../assets/images/dj_images/faithintheglitch.jpg" alt="DJ FaithInTheGlitch" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">FaithInTheGlitch</h3>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">DJ — 11PM–12AM</p>
+          </div>
+
+          <!-- Jalisha Paz -->
+          <div class="lineup-card" style="text-align: center;">
+            <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-secondary); box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
+              <img src="../assets/images/dj_images/Jalisha_Paz.jpg" alt="Jalisha Paz" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">Jalisha Paz</h3>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Live Kaigai Idol Performance — Midnight</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Vendors -->
+    <section class="vendors-section" id="vendors">
+      <div style="max-width: 800px; margin: 0 auto; padding: 60px 2rem; text-align: center;">
+        <h2 class="section-title">Vendor Pop-Up</h2>
+        <p class="section-subtitle">Shop local artists inside the venue all night.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+
+          <div style="background: var(--bg-card); border: 1px solid rgba(127, 255, 0, 0.1); border-radius: 16px; padding: 2rem; text-align: left;">
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--theme-primary); letter-spacing: 1px; margin-bottom: 0.5rem;">🔮 The Oracle of the Grove</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">Tarot readings and fortune telling by Bash (<a href="https://instagram.com/bashxthexoracle" target="_blank" style="color: var(--theme-primary); text-decoration: none;">@bashxthexoracle</a>). Step into the grove and discover what the cards reveal.</p>
+          </div>
+
+          <div style="background: var(--bg-card); border: 1px solid rgba(127, 255, 0, 0.1); border-radius: 16px; padding: 2rem; text-align: left;">
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--theme-primary); letter-spacing: 1px; margin-bottom: 0.5rem;">🎨 Anime Art Prints</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">Manga-style anime prints by Renee (<a href="https://instagram.com/intr0verteddesigns" target="_blank" style="color: var(--theme-primary); text-decoration: none;">@intr0verteddesigns</a>). The artist behind Tsuki — the elf on our flyer.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Join the Crew (lower on page) -->
+    <section style="padding: 60px 2rem; text-align: center;">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <h2 class="section-title">Join the Crew</h2>
+        <p class="section-subtitle">Get updates, early access, and an exclusive discount code for future events.</p>
+        <a href="/#crew" class="btn btn-secondary" style="margin-top: 1rem; display: inline-block;">JOIN THE CREW</a>
+      </div>
+    </section>
+
     <!-- What to Expect -->
     <section class="expect-section">
         <h2 class="section-title" style="text-align: center;">What to Expect</h2>
@@ -1126,7 +1269,8 @@
             <div class="expect-card">
                 <div class="expect-icon">✨</div>
                 <h3>COSPLAY CONTEST</h3>
-                <p>Fantasy & isekai characters. Prizes for judges' pick and crowd favorite.</p>
+                <p>Cosplay competition at midnight on the main stage. Two categories: Judge's Pick and Crowd Favorite. Fantasy and isekai cosplay encouraged — all cosplay welcome. Pre-register and our DJs will have your character's theme song queued for your walk-on. Day-of sign-ups available if spots remain.</p>
+                <a href="/cosplay-signup/" class="btn btn-secondary" style="margin-top: 1rem; display: inline-block;">PRE-REGISTER NOW</a>
             </div>
             
             <div class="expect-card">
@@ -1386,6 +1530,48 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('[Moonlight] CRITICAL: Form element not found!');
     }
 });
+    </script>
+
+    <!-- Data Collection Notice -->
+    <div id="data-notice" class="data-notice" role="complementary" aria-label="Data collection notice">
+        <div class="data-notice-content">
+            <p>We use cookies and similar technologies to improve your experience and measure site traffic.
+               <a href="/privacy-policy/">Learn more</a></p>
+            <button id="data-notice-dismiss" class="data-notice-btn" aria-label="Dismiss notice">Got it</button>
+        </div>
+    </div>
+    <script>
+    (function() {
+        const notice = document.getElementById('data-notice');
+        const dismissBtn = document.getElementById('data-notice-dismiss');
+        const STORAGE_KEY = 'moonlight_data_notice_dismissed';
+        const EXPIRY_DAYS = 90;
+
+        function isDismissed() {
+            const dismissed = localStorage.getItem(STORAGE_KEY);
+            if (!dismissed) return false;
+            const dismissedDate = parseInt(dismissed, 10);
+            const now = Date.now();
+            const daysSince = (now - dismissedDate) / (1000 * 60 * 60 * 24);
+            if (daysSince > EXPIRY_DAYS) {
+                localStorage.removeItem(STORAGE_KEY);
+                return false;
+            }
+            return true;
+        }
+
+        function hideBanner() {
+            notice.classList.add('hidden');
+            localStorage.setItem(STORAGE_KEY, Date.now().toString());
+        }
+
+        if (notice && dismissBtn) {
+            if (isDismissed()) {
+                notice.classList.add('hidden');
+            }
+            dismissBtn.addEventListener('click', hideBanner);
+        }
+    })();
     </script>
 </body>
 </html>

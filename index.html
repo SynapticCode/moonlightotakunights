@@ -1359,6 +1359,79 @@
                 font-size: 1rem;
             }
         }
+
+        /* Data Collection Notice Banner */
+        .data-notice {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(20, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem 1.5rem;
+            z-index: 9999;
+            transform: translateY(0);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .data-notice.hidden {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .data-notice-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .data-notice p {
+            margin: 0;
+            color: var(--text-muted, rgba(255, 255, 255, 0.6));
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex: 1;
+            min-width: 200px;
+        }
+        .data-notice a {
+            color: var(--text-primary, rgba(255, 255, 255, 0.9));
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+        }
+        .data-notice a:hover {
+            color: var(--neon-green, #00FF88);
+        }
+        .data-notice-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary, rgba(255, 255, 255, 0.9));
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .data-notice-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .data-notice-btn:focus {
+            outline: 2px solid var(--neon-green, #00FF88);
+            outline-offset: 2px;
+        }
+        @media (max-width: 600px) {
+            .data-notice { padding: 1rem; }
+            .data-notice-content { flex-direction: column; text-align: center; gap: 1rem; }
+            .data-notice p { font-size: 0.85rem; }
+            .data-notice-btn { width: 100%; padding: 0.75rem 1.25rem; }
+        }
     </style>
     
     <!-- Canvas Confetti Library -->
@@ -1891,6 +1964,48 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('[Moonlight] CRITICAL: Form element not found!');
     }
 });
+    </script>
+
+    <!-- Data Collection Notice -->
+    <div id="data-notice" class="data-notice" role="complementary" aria-label="Data collection notice">
+        <div class="data-notice-content">
+            <p>We use cookies and similar technologies to improve your experience and measure site traffic.
+               <a href="/privacy-policy/">Learn more</a></p>
+            <button id="data-notice-dismiss" class="data-notice-btn" aria-label="Dismiss notice">Got it</button>
+        </div>
+    </div>
+    <script>
+    (function() {
+        const notice = document.getElementById('data-notice');
+        const dismissBtn = document.getElementById('data-notice-dismiss');
+        const STORAGE_KEY = 'moonlight_data_notice_dismissed';
+        const EXPIRY_DAYS = 90;
+
+        function isDismissed() {
+            const dismissed = localStorage.getItem(STORAGE_KEY);
+            if (!dismissed) return false;
+            const dismissedDate = parseInt(dismissed, 10);
+            const now = Date.now();
+            const daysSince = (now - dismissedDate) / (1000 * 60 * 60 * 24);
+            if (daysSince > EXPIRY_DAYS) {
+                localStorage.removeItem(STORAGE_KEY);
+                return false;
+            }
+            return true;
+        }
+
+        function hideBanner() {
+            notice.classList.add('hidden');
+            localStorage.setItem(STORAGE_KEY, Date.now().toString());
+        }
+
+        if (notice && dismissBtn) {
+            if (isDismissed()) {
+                notice.classList.add('hidden');
+            }
+            dismissBtn.addEventListener('click', hideBanner);
+        }
+    })();
     </script>
 </body>
 </html>

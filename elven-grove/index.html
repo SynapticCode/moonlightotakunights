@@ -8,7 +8,7 @@
     
     <!-- Open Graph for social sharing -->
     <meta property="og:title" content="Elven Grove: Emerald Moon | Anime Cosplay Night">
-    <meta property="og:description" content="Step into a fantasy world. NJ's first dedicated anikura experience. March 26, 2026 at QXT's Newark.">
+    <meta property="og:description" content="NJ's first anikura — anime nightclub with live performances, VDJ anime visuals, cosplay competition, and four DJs until 3AM. March 26 at QXT's Newark. 21+.">
     <meta property="og:type" content="event">
     <meta property="og:image" content="https://moonlightotakunights.com/assets/images/elven-grove-flyer.jpg">
     
@@ -1021,9 +1021,10 @@
         /* ── Lineup Restructure ── */
         .lineup-dj-row {
             display: grid;
-            grid-template-columns: 1fr 1fr 2fr;
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin-top: 3rem;
+            margin: 2rem auto 0;
+            max-width: 500px;
             align-items: start;
             justify-items: center;
         }
@@ -1033,44 +1034,41 @@
             width: 100%;
         }
 
-        .lineup-aniparty-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            width: 100%;
-        }
-
-        .lineup-aniparty-djs {
+        .lineup-dj-row-aniparty {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr auto 1fr;
             gap: 2rem;
-            width: 100%;
+            margin: 2rem auto 0;
+            max-width: 700px;
+            align-items: center;
             justify-items: center;
         }
 
-        .lineup-aniparty-badge {
+        .lineup-aniparty-center {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-        }
-
-        .lineup-aniparty-badge img {
-            width: 100px;
-            height: auto;
-            opacity: 0.85;
-        }
-
-        .lineup-aniparty-badge span {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
+            gap: 0.35rem;
             text-align: center;
+        }
+
+        .lineup-aniparty-center .featuring-label {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .lineup-aniparty-center img {
+            height: 65px;
+            width: auto;
+            opacity: 0.75;
+        }
+
+        .lineup-aniparty-center .vdj-label {
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            color: var(--text-muted);
         }
 
         .lineup-performing-section {
@@ -1085,9 +1083,7 @@
             letter-spacing: 3px;
             color: var(--theme-secondary);
             text-transform: uppercase;
-            padding-top: 2.5rem;
             margin-bottom: 2rem;
-            border-top: 1px solid rgba(0, 229, 255, 0.15);
         }
 
         .lineup-performing-card {
@@ -1098,12 +1094,11 @@
         @media (max-width: 768px) {
             .lineup-dj-row {
                 grid-template-columns: 1fr;
+                max-width: 260px;
             }
-            .lineup-aniparty-djs {
+            .lineup-dj-row-aniparty {
                 grid-template-columns: 1fr;
-            }
-            .lineup-aniparty-group {
-                width: 100%;
+                max-width: 260px;
             }
         }
 
@@ -1231,7 +1226,7 @@
                 <p class="hero-subtitle">EMERALD MOON</p>
                 
                 <p class="hero-description">
-                    Step into another world. Isekai fantasy brought to life—enchanted forests, emerald light, and a soundtrack pulled from the worlds you've always wanted to visit. Cosplay as your favorite fantasy character or come as you are. The grove welcomes everyone.
+                    NJ's first anikura — a real anime nightclub built around the music you actually listen to. Live kaigai idol performance at midnight. Four DJs spinning anisong, J-Core, happy hardcore, and future bass until 3AM — plus AniParty's live VDJ anime visuals synced to every track on the big screen. Cosplay competition, hidden side quests, mystical readings by The Oracle of the Grove, and an anime artist pop-up. Fantasy and isekai theme — cosplay encouraged, never required.
                 </p>
 
                 <div class="event-meta">
@@ -1334,7 +1329,19 @@
         <h2 class="section-title">The Lineup</h2>
         <p class="section-subtitle">Your soundtrack for the night.</p>
 
-        <!-- Row 1: The DJs — 4 equal circles -->
+        <!-- Row 1: Performing Live — Jalisha Paz -->
+        <div class="lineup-performing-section">
+          <span class="lineup-performing-label">Performing Live</span>
+          <div class="lineup-performing-card">
+            <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-secondary); box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
+              <img src="../assets/images/dj_images/Jalisha_Paz.jpg" alt="Jalisha Paz" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">Jalisha Paz</h3>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Kaigai Idol Performance + Cosplay Competition Host — Midnight</p>
+          </div>
+        </div>
+
+        <!-- Row 2: greenteawasted + FaithInTheGlitch -->
         <div class="lineup-dj-row">
 
           <!-- greenteawasted -->
@@ -1355,49 +1362,36 @@
             <p style="color: var(--text-muted); font-size: 0.8rem;">DJ — 11PM–12AM</p>
           </div>
 
-          <!-- AniParty group: DJ Appare + DJ Th3rdEye with shared badge -->
-          <div class="lineup-aniparty-group">
-            <div class="lineup-aniparty-djs">
-
-              <!-- DJ Appare -->
-              <div class="lineup-card">
-                <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
-                  <img src="../assets/images/dj_images/dj_appare.avif" alt="DJ Appare" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">DJ Appare</h3>
-                <p style="color: var(--text-muted); font-size: 0.8rem;">DJ + VDJ — 12:30AM–3AM</p>
-              </div>
-
-              <!-- DJ Th3rdEye -->
-              <div class="lineup-card">
-                <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
-                  <img src="../assets/images/dj_images/DJ Th3rdEye.avif" alt="DJ Th3rdEye" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">DJ Th3rdEye</h3>
-                <p style="color: var(--text-muted); font-size: 0.8rem;">DJ — 12:30AM–3AM</p>
-              </div>
-
-            </div>
-
-            <!-- AniParty badge — beneath DJ Appare + DJ Th3rdEye only -->
-            <div class="lineup-aniparty-badge">
-              <img src="../assets/images/logos/Aniparty_logo_blocktransparent.png" alt="AniParty logo">
-              <span>AniParty · Live VDJ Anime Visuals</span>
-            </div>
-          </div>
-
         </div>
 
-        <!-- Row 2: Performing Live — Jalisha Paz -->
-        <div class="lineup-performing-section">
-          <span class="lineup-performing-label">Performing Live</span>
-          <div class="lineup-performing-card">
-            <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-secondary); box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
-              <img src="../assets/images/dj_images/Jalisha_Paz.jpg" alt="Jalisha Paz" style="width: 100%; height: 100%; object-fit: cover;">
+        <!-- Row 3: DJ Appare | AniParty | DJ Th3rdEye -->
+        <div class="lineup-dj-row-aniparty">
+
+          <!-- DJ Appare -->
+          <div class="lineup-card">
+            <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
+              <img src="../assets/images/dj_images/dj_appare.avif" alt="DJ Appare" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">Jalisha Paz</h3>
-            <p style="color: var(--text-muted); font-size: 0.8rem;">Kaigai Idol Performance + Cosplay Competition Host — Midnight</p>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">DJ Appare (AniParty)</h3>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">DJ + VDJ — 12:30AM–3AM</p>
           </div>
+
+          <!-- AniParty center credit -->
+          <div class="lineup-aniparty-center">
+            <span class="featuring-label">Featuring</span>
+            <img src="../assets/images/logos/Aniparty_logo_blocktransparent.png" alt="AniParty">
+            <span class="vdj-label">Live VDJ Anime Visuals</span>
+          </div>
+
+          <!-- DJ Th3rdEye -->
+          <div class="lineup-card">
+            <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
+              <img src="../assets/images/dj_images/DJ Th3rdEye.avif" alt="DJ Th3rdEye" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">DJ Th3rdEye (AniParty)</h3>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">DJ — 12:30AM–3AM</p>
+          </div>
+
         </div>
 
       </div>

@@ -1017,6 +1017,141 @@
             .data-notice p { font-size: 0.85rem; }
             .data-notice-btn { width: 100%; padding: 0.75rem 1.25rem; }
         }
+
+        /* ── Lineup Restructure ── */
+        .lineup-dj-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr;
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: start;
+            justify-items: center;
+        }
+
+        .lineup-card {
+            text-align: center;
+            width: 100%;
+        }
+
+        .lineup-aniparty-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .lineup-aniparty-djs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            width: 100%;
+            justify-items: center;
+        }
+
+        .lineup-aniparty-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+        }
+
+        .lineup-aniparty-badge img {
+            width: 100px;
+            height: auto;
+            opacity: 0.85;
+        }
+
+        .lineup-aniparty-badge span {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .lineup-performing-section {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .lineup-performing-label {
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: var(--theme-secondary);
+            text-transform: uppercase;
+            padding-top: 2.5rem;
+            margin-bottom: 2rem;
+            border-top: 1px solid rgba(0, 229, 255, 0.15);
+        }
+
+        .lineup-performing-card {
+            display: inline-block;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .lineup-dj-row {
+                grid-template-columns: 1fr;
+            }
+            .lineup-aniparty-djs {
+                grid-template-columns: 1fr;
+            }
+            .lineup-aniparty-group {
+                width: 100%;
+            }
+        }
+
+        /* ── Presale SOLD OUT ── */
+        .presale-soldout {
+            opacity: 0.82;
+        }
+
+        .presale-soldout:hover {
+            transform: none !important;
+        }
+
+        .presale-inner {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .presale-inner::after {
+            content: "SOLD OUT";
+            position: absolute;
+            top: 22px;
+            right: -32px;
+            background: #ff3333;
+            color: white;
+            padding: 5px 40px;
+            font-size: 13px;
+            font-weight: 800;
+            transform: rotate(45deg);
+            z-index: 10;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .ticket-btn-disabled {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: block;
+            text-align: center;
+            cursor: default;
+        }
     </style>
     
     <!-- Canvas Confetti Library -->
@@ -1160,11 +1295,13 @@
             <p class="section-subtitle">Limited capacity. Early birds get the best price.</p>
 
             <div class="tickets-grid">
-                <div class="ticket-card featured">
-                    <div class="ticket-type">⚡ PRESALE</div>
-                    <div class="ticket-price">$15</div>
-                    <div class="ticket-details">Limited quantity • Best price • No codes needed</div>
-                    <a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=event_page_cta&utm_campaign=elven_grove" class="ticket-btn" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">BUY ON EVENTBRITE</a>
+                <div class="ticket-card featured presale-soldout">
+                    <div class="presale-inner">
+                        <div class="ticket-type">⚡ PRESALE</div>
+                        <div class="ticket-price">$15</div>
+                        <div class="ticket-details">Sold out • Next best price: $20 GA</div>
+                        <span class="ticket-btn-disabled" aria-disabled="true">SOLD OUT</span>
+                    </div>
                 </div>
                 
                 <div class="ticket-card">
@@ -1197,10 +1334,11 @@
         <h2 class="section-title">The Lineup</h2>
         <p class="section-subtitle">Your soundtrack for the night.</p>
 
-        <div class="lineup-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
+        <!-- Row 1: The DJs — 4 equal circles -->
+        <div class="lineup-dj-row">
 
           <!-- greenteawasted -->
-          <div class="lineup-card" style="text-align: center;">
+          <div class="lineup-card">
             <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
               <img src="../assets/images/dj_images/greenteawasted.jpg" alt="DJ greenteawasted" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
@@ -1209,7 +1347,7 @@
           </div>
 
           <!-- FaithInTheGlitch -->
-          <div class="lineup-card" style="text-align: center;">
+          <div class="lineup-card">
             <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
               <img src="../assets/images/dj_images/faithintheglitch.jpg" alt="DJ FaithInTheGlitch" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
@@ -1217,16 +1355,51 @@
             <p style="color: var(--text-muted); font-size: 0.8rem;">DJ — 11PM–12AM</p>
           </div>
 
-          <!-- Jalisha Paz -->
-          <div class="lineup-card" style="text-align: center;">
+          <!-- AniParty group: DJ Appare + DJ Th3rdEye with shared badge -->
+          <div class="lineup-aniparty-group">
+            <div class="lineup-aniparty-djs">
+
+              <!-- DJ Appare -->
+              <div class="lineup-card">
+                <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
+                  <img src="../assets/images/dj_images/dj_appare.avif" alt="DJ Appare" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">DJ Appare</h3>
+                <p style="color: var(--text-muted); font-size: 0.8rem;">DJ + VDJ — 12:30AM–3AM</p>
+              </div>
+
+              <!-- DJ Th3rdEye -->
+              <div class="lineup-card">
+                <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-primary); box-shadow: 0 0 20px var(--theme-glow);">
+                  <img src="../assets/images/dj_images/DJ Th3rdEye.avif" alt="DJ Th3rdEye" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">DJ Th3rdEye</h3>
+                <p style="color: var(--text-muted); font-size: 0.8rem;">DJ — 12:30AM–3AM</p>
+              </div>
+
+            </div>
+
+            <!-- AniParty badge — beneath DJ Appare + DJ Th3rdEye only -->
+            <div class="lineup-aniparty-badge">
+              <img src="../assets/images/logos/Aniparty_logo_blocktransparent.png" alt="AniParty logo">
+              <span>AniParty · Live VDJ Anime Visuals</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Row 2: Performing Live — Jalisha Paz -->
+        <div class="lineup-performing-section">
+          <span class="lineup-performing-label">Performing Live</span>
+          <div class="lineup-performing-card">
             <div style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem; border: 2px solid var(--theme-secondary); box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
               <img src="../assets/images/dj_images/Jalisha_Paz.jpg" alt="Jalisha Paz" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.3rem;">Jalisha Paz</h3>
-            <p style="color: var(--text-muted); font-size: 0.8rem;">Live Kaigai Idol Performance — Midnight</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">Kaigai Idol Performance + Cosplay Competition Host — Midnight</p>
           </div>
-
         </div>
+
       </div>
     </section>
 
@@ -1268,11 +1441,17 @@
         <div class="expect-grid">
             <div class="expect-card">
                 <div class="expect-icon">✨</div>
-                <h3>COSPLAY CONTEST</h3>
-                <p>Cosplay competition at midnight on the main stage. Two categories: Judge's Pick and Crowd Favorite. Fantasy and isekai cosplay encouraged — all cosplay welcome. Pre-register and our DJs will have your character's theme song queued for your walk-on. Day-of sign-ups available if spots remain.</p>
+                <h3>COSPLAY COMPETITION</h3>
+                <p>Cosplay competition at midnight hosted by Jalisha Paz. Two categories: Judge's Pick and Crowd Favorite. Pre-register at moonlightotakunights.com/cosplay-signup and our DJs will queue your character's theme song for your walk-on. Day-of sign-ups welcome if spots remain. 12 contestant cap.</p>
                 <a href="/cosplay-signup/" class="btn btn-secondary" style="margin-top: 1rem; display: inline-block;">PRE-REGISTER NOW</a>
             </div>
             
+            <div class="expect-card">
+                <div class="expect-icon">🗺️</div>
+                <h3>HIDDEN SIDE QUESTS</h3>
+                <p>Discover hidden relics scattered across the venue. Complete quests, collect stamps, earn exclusive rewards. We're not telling you more than that — you'll have to find them yourself.</p>
+            </div>
+
             <div class="expect-card">
                 <div class="expect-icon">🎁</div>
                 <h3>PRIZE RAFFLE</h3>

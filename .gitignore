@@ -12,6 +12,7 @@ complete_website_system.md
 # System files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Editor folders
 .vscode/

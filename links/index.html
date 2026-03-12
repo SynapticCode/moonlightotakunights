@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonlight — Moonlight Otaku Nights</title>
+  <meta name="description" content="Founder & Executive Producer of Moonlight Otaku Nights — NJ's first anikura-style anime nightclub series." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --emerald: #2ecc71;
+      --emerald-dim: #1a7a44;
+      --gold: #c9a84c;
+      --bg: #060c0a;
+      --surface: #0d1a14;
+      --border: rgba(46, 204, 113, 0.15);
+      --text: #e8f5ee;
+      --muted: #7a9988;
+      --font-display: 'Cinzel', serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 48px 20px 64px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Atmospheric background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% -10%, rgba(46,204,113,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, rgba(201,168,76,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Wordmark */
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--emerald);
+      opacity: 0.7;
+      margin-bottom: 32px;
+      text-align: center;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    /* Photo */
+    .avatar-wrap {
+      position: relative;
+      margin-bottom: 24px;
+      animation: fadeDown 0.6s ease 0.1s both;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--emerald) 0deg,
+        var(--gold) 120deg,
+        var(--emerald-dim) 240deg,
+        var(--emerald) 360deg
+      );
+      animation: spin 8s linear infinite;
+    }
+
+    .avatar-ring-mask {
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+
+    .avatar {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: var(--surface);
+      z-index: 1;
+    }
+
+    /* Placeholder avatar when no image loaded */
+    .avatar-placeholder {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      font-size: 36px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Name + title */
+    .identity {
+      text-align: center;
+      margin-bottom: 6px;
+      animation: fadeDown 0.6s ease 0.2s both;
+    }
+
+    .name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .title-line {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .title-line span {
+      color: var(--emerald);
+      font-weight: 500;
+    }
+
+    /* Japanese subtitle */
+    .jp {
+      font-size: 11px;
+      color: var(--emerald);
+      opacity: 0.5;
+      letter-spacing: 0.15em;
+      margin-top: 4px;
+      margin-bottom: 32px;
+      animation: fadeDown 0.6s ease 0.25s both;
+    }
+
+    /* Divider */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin-bottom: 28px;
+      animation: fadeDown 0.6s ease 0.3s both;
+    }
+
+    /* Links */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 1px solid var(--border);
+      background: rgba(13, 26, 20, 0.8);
+      color: var(--text);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(46,204,113,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .link-btn:hover {
+      border-color: rgba(46,204,113,0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(46,204,113,0.08);
+    }
+
+    .link-btn:hover::before { opacity: 1; }
+
+    .link-btn:active { transform: translateY(0); }
+
+    .link-btn.primary {
+      background: rgba(46,204,113,0.12);
+      border-color: rgba(46,204,113,0.35);
+    }
+
+    .link-btn.primary:hover {
+      background: rgba(46,204,113,0.18);
+      border-color: rgba(46,204,113,0.6);
+    }
+
+    .link-icon {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .link-label {
+      flex: 1;
+    }
+
+    .link-label-sub {
+      display: block;
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-top: 1px;
+    }
+
+    .link-arrow {
+      color: var(--muted);
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .link-btn:hover .link-arrow {
+      transform: translateX(3px);
+      color: var(--emerald);
+    }
+
+    /* Stagger animations */
+    .link-btn:nth-child(1) { animation-delay: 0.35s; }
+    .link-btn:nth-child(2) { animation-delay: 0.42s; }
+    .link-btn:nth-child(3) { animation-delay: 0.49s; }
+    .link-btn:nth-child(4) { animation-delay: 0.56s; }
+    .link-btn:nth-child(5) { animation-delay: 0.63s; }
+
+    /* Flyer */
+    .flyer-section {
+      width: 100%;
+      margin-bottom: 28px;
+      animation: fadeUp 0.5s ease 0.68s both;
+    }
+
+    .flyer-label {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-family: var(--font-display);
+      text-align: center;
+    }
+
+    .flyer-img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: block;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .flyer-img:hover {
+      opacity: 0.9;
+      transform: scale(1.01);
+    }
+
+    /* Contact */
+    .contact-section {
+      width: 100%;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(13, 26, 20, 0.5);
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeUp 0.5s ease 0.7s both;
+    }
+
+    .contact-label {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-family: var(--font-display);
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--emerald);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .contact-email:hover { opacity: 0.7; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      animation: fadeUp 0.5s ease 0.8s both;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.5;
+      margin-bottom: 4px;
+    }
+
+    .footer-copy {
+      font-size: 10px;
+      color: var(--muted);
+      opacity: 0.35;
+      letter-spacing: 0.05em;
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile fine-tuning */
+    @media (max-width: 380px) {
+      .name { font-size: 19px; }
+      body { padding: 36px 16px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="wordmark">Moonlight Otaku Nights — アニクラNJ</div>
+
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
+      <div class="avatar-ring-mask"></div>
+      <img
+        class="avatar"
+        src="/assets/Moonlight_Guild/Moonlight.png"
+        alt="Moonlight — Moonlight Otaku Nights"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="avatar-placeholder" style="display:none;">🌙</div>
+    </div>
+
+    <div class="identity">
+      <div class="name">Moonlight</div>
+      <div class="title-line">Founder & Executive Producer</div>
+      <div class="title-line"><span>Moonlight Otaku Nights</span></div>
+    </div>
+
+    <div class="jp">月光オタクナイト</div>
+
+    <div class="divider"></div>
+
+    <div class="links">
+
+      <a class="link-btn primary" href="https://elven-grove.eventbrite.com?utm_source=nfc&utm_medium=card&utm_campaign=elven_grove" target="_blank" rel="noopener">
+        <span class="link-icon">🎟️</span>
+        <span class="link-label">
+          Get Tickets
+          <span class="link-label-sub">Elven Grove — Emerald Moon · Mar 26</span>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link-btn" href="https://moonlightotakunights.com/cosplay-signup/?utm_source=nfc&utm_medium=card&utm_campaign=elven_grove" target="_blank" rel="noopener">
+        <span class="link-icon">🌿</span>
+        <span class="link-label">
+          Cosplay Competition
+          <span class="link-label-sub">Pre-register for walk-on music</span>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link-btn" href="https://moonlightotakunights.com/elven-grove/?utm_source=nfc&utm_medium=card&utm_campaign=elven_grove" target="_blank" rel="noopener">
+        <span class="link-icon">🌙</span>
+        <span class="link-label">
+          Event Details
+          <span class="link-label-sub">Full lineup, venue, and info</span>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link-btn" href="https://instagram.com/moonlightotakunights" target="_blank" rel="noopener">
+        <span class="link-icon">📸</span>
+        <span class="link-label">
+          Instagram
+          <span class="link-label-sub">@moonlightotakunights</span>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a class="link-btn" href="https://moonlightotakunights.com?utm_source=nfc&utm_medium=card&utm_campaign=elven_grove" target="_blank" rel="noopener">
+        <span class="link-icon">🏠</span>
+        <span class="link-label">
+          Website
+          <span class="link-label-sub">moonlightotakunights.com</span>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+
+    </div>
+
+    <div class="flyer-section">
+      <div class="flyer-label">Now Playing</div>
+      <a href="https://elven-grove.eventbrite.com?utm_source=nfc&utm_medium=card&utm_campaign=elven_grove" target="_blank" rel="noopener">
+        <img
+          class="flyer-img"
+          src="/assets/images/flyers/4_5 flyer Moonlight Otaku Nights march 26 2026 full lineup.png"
+          alt="Elven Grove — Emerald Moon · March 26, 2026"
+        />
+      </a>
+    </div>
+
+    <div class="contact-section">
+      <div class="contact-label">Get in touch</div>
+      <a class="contact-email" href="/cdn-cgi/l/email-protection#f69b9999989a9f919e82b69b9999989a9f919e829982979d83989f919e8285d895999b"><span class="__cf_email__" data-cfemail="dfb2b0b0b1b3b6b8b7ab9fb2b0b0b1b3b6b8b7abb0abbeb4aab1b6b8b7abacf1bcb0b2">[email&#160;protected]</span></a>
+    </div>
+
+    <div class="footer">
+      <div class="footer-logo">Moonlight Otaku Nights</div>
+      <div class="footer-copy">© 2026 Moonlight Otaku Nights. All rights reserved.</div>
+    </div>
+
+  </div>
+</body>
+</html>

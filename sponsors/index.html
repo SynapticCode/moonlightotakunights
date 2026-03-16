@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Moonlight Otaku Nights | Partner With NJ's Anime Nightlife Series</title>
+    <meta name="description" content="Put your brand in front of 300+ anime fans at Moonlight Otaku Nights. Sponsorship, vendor tables, and prize donations available. Newark, NJ — monthly series.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8W7W5FKYV9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8W7W5FKYV9');
+    </script>
+
+    <!-- Meta Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1979608179640857');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1979608179640857&ev=PageView&noscript=1"/></noscript>
+
+    <style>
+        /* ============================================================
+           CSS VARIABLES — brand palette
+        ============================================================ */
+        :root {
+            --neon-green: #00ff88;
+            --neon-blue: #00f0ff;
+            --neon-purple: #bf00ff;
+            --neon-pink: #ff00aa;
+            --neon-orange: #ff6b00;
+
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(15, 15, 25, 0.8);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+
+            --gradient-primary: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            --gradient-secondary: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            --gradient-hero: linear-gradient(180deg, transparent 0%, var(--bg-dark) 100%);
+        }
+
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================================
+           BACKGROUND ANIMATION
+        ============================================================ */
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(191, 0, 255, 0.03) 0%, transparent 50%);
+        }
+
+        /* ============================================================
+           FLOATING PARTICLES
+        ============================================================ */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            width: 2px; height: 2px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            animation: float-up linear infinite;
+            opacity: 0;
+        }
+        .particle:nth-child(3n) { background: var(--neon-blue); width: 3px; height: 3px; }
+        .particle:nth-child(5n) { background: var(--neon-purple); }
+        @keyframes float-up {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* ============================================================
+           DATA NOTICE BANNER
+        ============================================================ */
+        .data-notice {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(10, 10, 15, 0.97);
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 1rem 2rem;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+        .data-notice.hidden { transform: translateY(100%); }
+        .data-notice p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex: 1;
+        }
+        .data-notice a { color: var(--neon-green); text-decoration: none; }
+        .data-notice-dismiss {
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .logo-image {
+            height: 36px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.4));
+            transition: filter 0.3s ease;
+        }
+        .logo:hover .logo-image { filter: drop-shadow(0 0 14px rgba(0, 255, 136, 0.7)); }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--neon-green); }
+        .nav-cta {
+            background: var(--gradient-primary) !important;
+            color: var(--bg-dark) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600 !important;
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
+        }
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        .mobile-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ============================================================
+           SECTION SHARED STYLES
+        ============================================================ */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        .section-label {
+            display: block;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--neon-green);
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        .section-eyebrow {
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        /* ============================================================
+           SECTION 1 — HERO
+        ============================================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 40%, rgba(0, 255, 136, 0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 240, 255, 0.07) 0%, transparent 40%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        .hero-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--neon-green);
+            letter-spacing: 4px;
+            display: block;
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
+        }
+        .hero-eyebrow {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3.5rem, 9vw, 8rem);
+            font-weight: 900;
+            line-height: 0.95;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -2px;
+        }
+        .hero-sub {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--neon-green);
+            display: block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        }
+        .hero-support {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.6);
+        }
+
+        /* ============================================================
+           SECTION 2 — THE AUDIENCE
+        ============================================================ */
+        .audience {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .audience h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+        }
+        .audience h2 em {
+            font-style: normal;
+            color: var(--neon-green);
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: var(--gradient-primary);
+        }
+        .stat-card:hover {
+            border-color: rgba(0, 255, 136, 0.35);
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        .audience-copy {
+            max-width: 780px;
+        }
+        .audience-copy p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.25rem;
+        }
+        .audience-copy p:last-child { margin-bottom: 0; }
+
+        /* ============================================================
+           SECTION 3 — SPONSORSHIP TIERS
+        ============================================================ */
+        .tiers {
+            padding: 0;
+        }
+        .tiers .section-container {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .tiers-header {
+            margin-bottom: 1rem;
+        }
+        .tiers h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .tiers-sub {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .tier-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: var(--gradient-primary);
+        }
+        .tier-card:hover {
+            border-color: rgba(0, 255, 136, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        .tier-card.featured {
+            border-color: rgba(0, 255, 136, 0.25);
+            background: rgba(0, 255, 136, 0.04);
+        }
+        .tier-card.featured::before { background: var(--gradient-primary); }
+        .tier-badge {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            background: rgba(0, 255, 136, 0.12);
+            color: var(--neon-green);
+            border: 1px solid rgba(0, 255, 136, 0.25);
+        }
+        .tier-badge.badge-premium {
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            border: none;
+        }
+        .tier-badge.badge-sell {
+            background: rgba(0, 240, 255, 0.12);
+            color: var(--neon-blue);
+            border-color: rgba(0, 240, 255, 0.25);
+        }
+        .tier-badge.badge-prize {
+            background: rgba(191, 0, 255, 0.12);
+            color: #d966ff;
+            border-color: rgba(191, 0, 255, 0.25);
+        }
+        .tier-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .tier-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 1.25rem;
+        }
+        .tier-what-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+        .tier-what {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .tier-benefits-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .tier-benefits {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        .tier-benefits li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 0.3rem 0;
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+            line-height: 1.5;
+        }
+        .tier-benefits li .bullet {
+            color: var(--neon-green);
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+        }
+        .tier-best {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .tier-best strong {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .tier-cta {
+            display: block;
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            background: transparent;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            color: var(--neon-green);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+        .tier-cta:hover {
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           SECTION 4 — WHY IT WORKS
+        ============================================================ */
+        .why-works {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .why-works h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
+            max-width: 720px;
+            line-height: 1.3;
+        }
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .benefit-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: var(--gradient-primary);
+        }
+        .benefit-card:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .benefit-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .benefit-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ============================================================
+           SECTION 5 — CURRENT SPONSORS
+        ============================================================ */
+        .current-sponsors {
+            text-align: center;
+        }
+        .current-sponsors h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+        .current-sponsors .sponsors-sub {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .sponsor-placeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .sponsor-placeholder {
+            border: 2px dashed rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+            transition: border-color 0.3s ease;
+        }
+        .sponsor-placeholder:hover {
+            border-color: rgba(0, 255, 136, 0.25);
+        }
+        .sponsor-placeholder span {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.15);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           SECTION 6 — HOW IT WORKS
+        ============================================================ */
+        .how-it-works {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .how-it-works h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            position: relative;
+        }
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            left: calc(16.666% + 1rem);
+            right: calc(16.666% + 1rem);
+            height: 1px;
+            background: linear-gradient(90deg, rgba(0,255,136,0.4), rgba(0,240,255,0.4));
+            z-index: 0;
+        }
+        .step {
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .step-number {
+            width: 5rem; height: 5rem;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+        .step-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .step-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .step-text a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+        .step-text a:hover { text-decoration: underline; }
+
+        /* ============================================================
+           SECTION 7 — CONTACT FORM
+        ============================================================ */
+        .contact-section {
+            position: relative;
+        }
+        .contact-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .contact-sub {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 520px;
+            line-height: 1.7;
+        }
+        .contact-form-wrap {
+            max-width: 680px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.9rem 1rem;
+            color: var(--text-primary);
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+            width: 100%;
+        }
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,0.4)' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+        .form-group select option {
+            background: #0f0f1a;
+            color: var(--text-primary);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: rgba(0, 255, 136, 0.4);
+            background: rgba(0, 255, 136, 0.04);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.08);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            margin-top: 0.5rem;
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.5);
+        }
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .form-email-alt {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .form-email-alt a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+        .form-email-alt a:hover { text-decoration: underline; }
+        .form-success {
+            display: none;
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .form-success.visible { display: block; }
+        .form-success h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+        .form-success p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer {
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--neon-green); }
+        .footer-links span { color: var(--text-muted); font-size: 0.9rem; }
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .footer-legal {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        .footer-legal a {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-legal a:hover { color: var(--text-secondary); }
+        .footer-legal .separator { color: rgba(255, 255, 255, 0.2); }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px; left: 0; right: 0;
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+            }
+            .nav-links.active { display: flex; }
+            .mobile-toggle { display: flex; }
+
+            .stat-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .benefit-grid { grid-template-columns: 1fr; }
+            .tiers-grid { grid-template-columns: 1fr; }
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .steps-grid::before { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .sponsor-placeholder-grid { grid-template-columns: 1fr; max-width: 300px; }
+        }
+
+        @media (max-width: 600px) {
+            .section-container { padding: 3.5rem 1.25rem; }
+            .hero { padding: 0 1.25rem; }
+            .hero h1 { letter-spacing: -1px; }
+            .stat-grid { gap: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Data Notice -->
+    <div class="data-notice" id="data-notice">
+        <p>We use cookies to understand how visitors interact with this site. See our <a href="/privacy-policy/">Privacy Policy</a> for details.</p>
+        <button class="data-notice-dismiss" id="data-notice-dismiss">GOT IT</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="../assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Otaku Nights" class="logo-image">
+                MOONLIGHT OTAKU NIGHTS
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/elven-grove/">Events</a></li>
+                <li><a href="/partners/">Community Partners</a></li>
+                <li>
+                    <a href="https://elven-grove.eventbrite.com" class="nav-cta" target="_blank" rel="noopener noreferrer"
+                       onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">
+                        TICKETS
+                    </a>
+                </li>
+            </ul>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+    ============================================================ -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-jp">スポンサー募集</span>
+            <span class="hero-eyebrow">MOONLIGHT OTAKU NIGHTS</span>
+            <h1>PUT YOUR BRAND</h1>
+            <span class="hero-sub">IN FRONT OF THE CULTURE.</span>
+            <p class="hero-support">
+                300+ anime fans. One room. Newark, NJ.<br>
+                March 26 — and every month after.
+            </p>
+            <a href="#tiers" class="btn btn-primary">GET INVOLVED ↓</a>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2 — THE AUDIENCE
+    ============================================================ -->
+    <section class="audience">
+        <div class="section-container">
+            <span class="section-label">誰が来るのか</span>
+            <h2>"Who's walking through that door."</h2>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-number">300+</span>
+                    <span class="stat-label">Expected attendees at our first event</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">21–35</span>
+                    <span class="stat-label">Core age demographic</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Anime, gaming & cosplay community</span>
+                </div>
+            </div>
+            <div class="audience-copy">
+                <p>Moonlight Otaku Nights is NJ's first dedicated anikura series — a nightclub format built entirely around anime music, cosplay, and Japanese pop culture. This isn't a one-time event. This is a monthly recurring series with a growing, loyal audience.</p>
+                <p>The people coming to this event buy anime merch, collect figures, attend conventions, and actively support the brands and businesses that show up in their community. If your business serves this audience — or wants to — this is your room.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 — SPONSORSHIP TIERS
+    ============================================================ -->
+    <section class="tiers" id="tiers">
+        <div class="section-container">
+            <div class="tiers-header">
+                <span class="section-label">スポンサーシップ</span>
+                <h2>Find your fit.</h2>
+                <p class="tiers-sub">Every level of involvement is welcome. Pick what works for you.</p>
+            </div>
+            <div class="tiers-grid">
+
+                <!-- TIER 1 — FLYER PARTNER -->
+                <div class="tier-card">
+                    <span class="tier-badge">FREE</span>
+                    <p class="tier-name">FLYER PARTNER</p>
+                    <span class="tier-jp">フライヤーパートナー</span>
+                    <p class="tier-what-label">What you do</p>
+                    <p class="tier-what">Let us leave a stack of flyers at your location for your customers.</p>
+                    <p class="tier-benefits-label">What you get</p>
+                    <ul class="tier-benefits">
+                        <li><span class="bullet">✦</span> Shoutout on our Instagram stories</li>
+                        <li><span class="bullet">✦</span> Mentioned in our community newsletter</li>
+                        <li><span class="bullet">✦</span> Your customers get early access to future events</li>
+                    </ul>
+                    <p class="tier-best"><strong>Best for:</strong> Local shops, cafes, gaming stores</p>
+                    <a href="#contact" class="tier-cta">This is me</a>
+                </div>
+
+                <!-- TIER 2 — COMMUNITY SPONSOR -->
+                <div class="tier-card">
+                    <span class="tier-badge">FREE</span>
+                    <p class="tier-name">COMMUNITY SPONSOR</p>
+                    <span class="tier-jp">コミュニティスポンサー</span>
+                    <p class="tier-what-label">What you do</p>
+                    <p class="tier-what">Share our event on your social media and tag @moonlightotakunights. We'll do the same for you.</p>
+                    <p class="tier-benefits-label">What you get</p>
+                    <ul class="tier-benefits">
+                        <li><span class="bullet">✦</span> Your logo featured on our event page</li>
+                        <li><span class="bullet">✦</span> Dedicated Instagram shoutout to our audience</li>
+                        <li><span class="bullet">✦</span> Verbal mention at the event</li>
+                        <li><span class="bullet">✦</span> Logo in our post-event recap content</li>
+                    </ul>
+                    <p class="tier-best"><strong>Best for:</strong> Brands, online shops, creators with an audience</p>
+                    <a href="#contact" class="tier-cta">This is me</a>
+                </div>
+
+                <!-- TIER 3 — PRIZE SPONSOR -->
+                <div class="tier-card">
+                    <span class="tier-badge badge-prize">DONATE A PRIZE</span>
+                    <p class="tier-name">PRIZE SPONSOR</p>
+                    <span class="tier-jp">プライズスポンサー</span>
+                    <p class="tier-what-label">What you do</p>
+                    <p class="tier-what">Donate a prize — gift card, product, experience — for our cosplay competition or raffle giveaway.</p>
+                    <p class="tier-benefits-label">What you get</p>
+                    <ul class="tier-benefits">
+                        <li><span class="bullet">✦</span> Everything in Community Sponsor</li>
+                        <li><span class="bullet">✦</span> 'Presented by [Your Brand]' callout during the competition</li>
+                        <li><span class="bullet">✦</span> Your prize featured in pre-event promotional content</li>
+                        <li><span class="bullet">✦</span> Direct exposure to our most engaged attendees</li>
+                    </ul>
+                    <p class="tier-best"><strong>Best for:</strong> Restaurants, activity venues, product brands</p>
+                    <a href="#contact" class="tier-cta">This is me</a>
+                </div>
+
+                <!-- TIER 4 — VENDOR TABLE -->
+                <div class="tier-card">
+                    <span class="tier-badge badge-sell">SELL DIRECTLY</span>
+                    <p class="tier-name">VENDOR TABLE</p>
+                    <span class="tier-jp">ベンダーテーブル</span>
+                    <p class="tier-what-label">What you do</p>
+                    <p class="tier-what">Set up a table at the event. Sell your product directly to 300+ anime fans. Arrive by 5 PM, set up before doors open at 10 PM. Promote your appearance to your audience.</p>
+                    <p class="tier-benefits-label">What you get</p>
+                    <ul class="tier-benefits">
+                        <li><span class="bullet">✦</span> Everything in Community Sponsor</li>
+                        <li><span class="bullet">✦</span> Table space in our vendor area</li>
+                        <li><span class="bullet">✦</span> 100% of your sales — we don't take a cut</li>
+                        <li><span class="bullet">✦</span> Direct access to the most engaged buyers in the room</li>
+                    </ul>
+                    <p class="tier-best"><strong>Best for:</strong> Anime stores, artists, merch brands, collectible shops</p>
+                    <a href="#contact" class="tier-cta">This is me</a>
+                </div>
+
+                <!-- TIER 5 — PRESENTING SPONSOR -->
+                <div class="tier-card featured">
+                    <span class="tier-badge badge-premium">PREMIUM</span>
+                    <p class="tier-name">PRESENTING SPONSOR</p>
+                    <span class="tier-jp">プレゼンティングスポンサー</span>
+                    <p class="tier-what-label">What you do</p>
+                    <p class="tier-what">Contact us to discuss. Reserved for brands who want maximum visibility.</p>
+                    <p class="tier-benefits-label">What you get</p>
+                    <ul class="tier-benefits">
+                        <li><span class="bullet">✦</span> Logo on the event flyer</li>
+                        <li><span class="bullet">✦</span> Dedicated promotional post to our full audience</li>
+                        <li><span class="bullet">✦</span> PA announcement at the event</li>
+                        <li><span class="bullet">✦</span> Featured banner placement at venue</li>
+                        <li><span class="bullet">✦</span> Everything in all lower tiers</li>
+                    </ul>
+                    <p class="tier-best"><strong>Best for:</strong> Brands looking for deep community integration</p>
+                    <a href="#contact" class="tier-cta">This is me</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 — WHY IT WORKS
+    ============================================================ -->
+    <section class="why-works">
+        <div class="section-container">
+            <span class="section-label">なぜ効果があるのか</span>
+            <h2>"This community doesn't just attend events. They support the brands that show up for them."</h2>
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <p class="benefit-title">COMMUNITY LOYALTY</p>
+                    <p class="benefit-text">Anime fans are among the most brand-loyal consumers in any entertainment vertical. When a brand shows up in their space genuinely, they remember it — and they tell their friends.</p>
+                </div>
+                <div class="benefit-card">
+                    <p class="benefit-title">DIRECT ACCESS</p>
+                    <p class="benefit-text">No algorithm. No ad spend. Your brand is physically in the room with your exact target customer while they're having the best night of their month.</p>
+                </div>
+                <div class="benefit-card">
+                    <p class="benefit-title">RECURRING EXPOSURE</p>
+                    <p class="benefit-text">Moonlight Otaku Nights is a monthly series. One sponsorship conversation can turn into ongoing visibility as the series grows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 — CURRENT SPONSORS
+    ============================================================ -->
+    <section class="current-sponsors">
+        <div class="section-container">
+            <span class="section-label">現在のスポンサー</span>
+            <h2>Brands already in the room.</h2>
+            <p class="sponsors-sub">Logos and links will appear here as sponsors are confirmed. Want to be first?</p>
+            <div class="sponsor-placeholder-grid">
+                <div class="sponsor-placeholder">
+                    <span>YOUR<br>BRAND<br>HERE</span>
+                </div>
+                <div class="sponsor-placeholder">
+                    <span>YOUR<br>BRAND<br>HERE</span>
+                </div>
+                <div class="sponsor-placeholder">
+                    <span>YOUR<br>BRAND<br>HERE</span>
+                </div>
+            </div>
+            <a href="#contact" class="btn btn-primary">BECOME A FOUNDING SPONSOR</a>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 — HOW IT WORKS
+    ============================================================ -->
+    <section class="how-it-works">
+        <div class="section-container">
+            <span class="section-label">プロセス</span>
+            <h2>Simple. Fast. No friction.</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p class="step-title">REACH OUT</p>
+                    <p class="step-text">Fill out the form below or email us directly at <a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a>. Tell us which tier interests you.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p class="step-title">WE CONNECT</p>
+                    <p class="step-text">We'll get back to you within 24 hours to confirm details, answer questions, and get your assets (logo, link, prize info) on file.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p class="step-title">YOU'RE IN</p>
+                    <p class="step-text">We handle everything from there — your logo goes live on the site, your shoutout goes out, and you show up to an audience that's already excited about your brand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7 — CONTACT FORM
+    ============================================================ -->
+    <section class="contact-section" id="contact">
+        <div class="section-container">
+            <span class="section-label">お問い合わせ</span>
+            <h2>Let's talk.</h2>
+            <p class="contact-sub">Tell us which tier fits your brand and we'll take it from there. No commitment required to reach out.</p>
+
+            <div class="contact-form-wrap">
+                <form id="sponsor-form" action="https://formspree.io/f/mykpoopg" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="business-name">Business / Brand Name *</label>
+                            <input type="text" id="business-name" name="business_name" required placeholder="Your business name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-name">Contact Name *</label>
+                            <input type="text" id="contact-name" name="contact_name" required placeholder="Your name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website or Instagram</label>
+                            <input type="text" id="website" name="website_instagram" placeholder="yourwebsite.com or @handle">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tier">Which tier interests you? *</label>
+                        <select id="tier" name="tier" required>
+                            <option value="" disabled selected>Select a tier...</option>
+                            <option value="Flyer Partner (Free)">Flyer Partner (Free)</option>
+                            <option value="Community Sponsor (Free)">Community Sponsor (Free)</option>
+                            <option value="Prize Sponsor (Donate a Prize)">Prize Sponsor (Donate a Prize)</option>
+                            <option value="Vendor Table">Vendor Table</option>
+                            <option value="Presenting Sponsor (Premium)">Presenting Sponsor (Premium)</option>
+                            <option value="Not sure yet — let's talk">Not sure yet — let's talk</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="brand-info">Tell us about your brand</label>
+                        <textarea id="brand-info" name="brand_info" placeholder="What do you sell? Who's your audience? Why does this feel like a fit?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" id="submit-btn">SEND IT</button>
+                </form>
+
+                <div class="form-success" id="form-success">
+                    <h3>MESSAGE RECEIVED.</h3>
+                    <p>We'll be in touch within 24 hours. Talk soon.</p>
+                </div>
+
+                <p class="form-email-alt">Prefer email? Reach us directly at <a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer>
+        <div class="footer-links">
+            <a href="/">Moonlight Otaku Nights</a>
+            <a href="https://instagram.com/moonlightotakunights" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a>
+            <span>QXT's Newark — 248 Mulberry St</span>
+            <span>21+ with valid ID</span>
+        </div>
+        <div class="footer-links" style="margin-top: 1rem;">
+            <a href="/partners/" style="opacity: 0.5;">Community Partners</a>
+            <a href="/work-with-us/" style="opacity: 0.5;">Work With Us</a>
+        </div>
+        <p class="copyright" style="margin-top: 1.5rem;">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
+        <div class="footer-legal">
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <span class="separator">|</span>
+            <a href="/terms/">Terms of Service</a>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         JAVASCRIPT
+    ============================================================ -->
+    <script>
+
+    /* --- Particles --- */
+    (function() {
+        var container = document.getElementById('particles');
+        for (var i = 0; i < 20; i++) {
+            var p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = (Math.random() * 100) + '%';
+            p.style.animationDelay = (Math.random() * 15) + 's';
+            p.style.animationDuration = (10 + Math.random() * 10) + 's';
+            container.appendChild(p);
+        }
+    })();
+
+    /* --- Data notice banner --- */
+    (function() {
+        var STORAGE_KEY = 'moonlight_data_notice_dismissed';
+        var EXPIRY_DAYS = 90;
+        var notice = document.getElementById('data-notice');
+        var dismissBtn = document.getElementById('data-notice-dismiss');
+
+        var stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            var storedTime = parseInt(stored, 10);
+            var now = Date.now();
+            if ((now - storedTime) < (EXPIRY_DAYS * 24 * 60 * 60 * 1000)) {
+                notice.classList.add('hidden');
+            }
+        }
+
+        dismissBtn.addEventListener('click', function() {
+            notice.classList.add('hidden');
+            localStorage.setItem(STORAGE_KEY, Date.now().toString());
+        });
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        /* --- Smooth scroll for all hash links --- */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        /* --- Mobile menu toggle --- */
+        var mobileToggle = document.getElementById('mobile-toggle');
+        var navLinks = document.querySelector('.nav-links');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-links a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                });
+            });
+        }
+
+        /* --- Scroll-triggered fade-in for cards --- */
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.stat-card, .tier-card, .benefit-card, .step, .sponsor-placeholder').forEach(function(el) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        /* --- Formspree contact form --- */
+        var sponsorForm = document.getElementById('sponsor-form');
+        var submitBtn = document.getElementById('submit-btn');
+        var formSuccess = document.getElementById('form-success');
+
+        if (sponsorForm) {
+            var originalAction = sponsorForm.getAttribute('action');
+
+            sponsorForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'SENDING...';
+
+                var formData = new FormData(sponsorForm);
+
+                fetch(originalAction, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'Lead', {
+                                content_name: 'Sponsor Inquiry',
+                                content_category: 'Sponsorship'
+                            });
+                        }
+                        sponsorForm.style.display = 'none';
+                        formSuccess.classList.add('visible');
+                    } else {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'SEND IT';
+                        alert('Something went wrong. Please try again or email us directly at info@moonlightotakunights.com');
+                    }
+                })
+                .catch(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'SEND IT';
+                    alert('Something went wrong. Please try again or email us directly at info@moonlightotakunights.com');
+                });
+            });
+        }
+
+    });
+    </script>
+
+</body>
+</html>

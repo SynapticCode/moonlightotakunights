@@ -768,20 +768,34 @@
         <div id="form-wrapper">
             <form id="cosplay-form" method="POST" action="https://formspree.io/f/mjgayegq">
                 <div class="form-group">
-                    <label class="form-label" for="stage-name">Stage Name</label>
-                    <input type="text" id="stage-name" name="stage_name" class="form-input" required placeholder="What name should we call on stage?">
+                    <label class="form-label" for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full_name" class="form-input" required placeholder="First and last name">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="instagram">Instagram Handle</label>
+                    <label class="form-label" for="alias">Alias / Moonlight Name</label>
+                    <input type="text" id="alias" name="alias" class="form-input" placeholder="The name you go by in the community">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">Your persona, online handle, or the name people know you as.</p>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="cosplay-character">Cosplay Character</label>
+                    <input type="text" id="cosplay-character" name="cosplay_character" class="form-input" required placeholder="Who are you cosplaying as?">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="character-series">Series / Origin</label>
+                    <input type="text" id="character-series" name="character_series" class="form-input" required placeholder="Anime, manga, game, or DC universe">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="walk-on-theme">Walk-On Theme Song</label>
+                    <input type="text" id="walk-on-theme" name="walk_on_track" class="form-input" placeholder="What song should play when you hit the stage?">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">Pre-registered contestants get their character's theme song queued live by our DJs. Song name + artist, or a YouTube/Spotify link.</p>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="instagram">Instagram @ Handle</label>
                     <input type="text" id="instagram" name="instagram" class="form-input" required placeholder="@yourusername">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="character">Character & Series</label>
-                    <input type="text" id="character" name="character_series" class="form-input" required placeholder="Example: Frieren — Frieren: Beyond Journey's End">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="walk-on">Walk-On Track</label>
-                    <input type="text" id="walk-on" name="walk_on_track" class="form-input" placeholder="Want a specific anime OP or track when you walk on? Leave blank and we'll pick.">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="category">Category Preference</label>
@@ -795,15 +809,26 @@
                 <div class="form-group">
                     <label class="form-label" for="ticket-status">Ticket Status</label>
                     <select id="ticket-status" name="ticket_status" class="form-select" required>
-                        <option value="">Select...</option>
-                        <option value="already-purchased">Already purchased</option>
-                        <option value="buying-soon">Buying soon</option>
-                        <option value="promo-code">I have a promo code</option>
+                        <option value="">Select one...</option>
+                        <option value="purchased">Already purchased my ticket</option>
+                        <option value="using-promo-code">I have a promo code</option>
+                        <option value="not-yet">Haven't bought yet</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="notes">Anything else?</label>
-                    <textarea id="notes" name="notes" class="form-textarea" placeholder="Props, group entry, accessibility needs"></textarea>
+                    <label class="form-label" for="promo-code-info">Promo Code Info</label>
+                    <input type="text" id="promo-code-info" name="promo_code_info" class="form-input" placeholder="Enter the code or who gave it to you">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">If you selected 'I have a promo code' above, let us know the code or who shared it.</p>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="notes">Anything else we should know?</label>
+                    <textarea id="notes" name="notes" class="form-textarea" placeholder="Accessibility needs, group entries, questions — whatever you want us to know."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contact-consent" style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer;">
+                        <input type="checkbox" id="contact-consent" name="contact_consent" required style="margin-top: 0.2rem; flex-shrink: 0; width: auto;">
+                        <span style="font-size: 0.68rem; color: var(--text-muted); line-height: 1.5; letter-spacing: 0.02em;">I give permission to be contacted by Moonlight Otaku Nights regarding the cosplay competition, including walk-on coordination, schedule updates, and event-day details.</span>
+                    </label>
                 </div>
                 <input type="hidden" name="_subject" value="Cosplay Competition Signup — Elven Grove">
                 <div class="form-submit-wrap">

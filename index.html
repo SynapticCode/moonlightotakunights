@@ -732,6 +732,45 @@
             margin-top: 1rem;
         }
 
+        .featured-event .event-cta {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .featured-event .event-cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .featured-event .btn-event-ghost {
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            box-shadow: none;
+            transition: background 0.3s ease;
+        }
+
+        .featured-event .btn-event-ghost:hover {
+            background: rgba(0, 255, 136, 0.12);
+        }
+
+        .featured-event .event-next-details-link {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-top: 12px;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .featured-event .event-next-details-link:hover {
+            text-decoration: underline;
+        }
+
         /* ═══════════════════════════════════════════════════════════════════════════
            UPCOMING EVENTS TIMELINE
            ═══════════════════════════════════════════════════════════════════════════ */
@@ -1222,6 +1261,14 @@
             .event-cta {
                 justify-content: center;
             }
+
+            .featured-event .event-cta {
+                align-items: center;
+            }
+
+            .featured-event .event-cta-buttons {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 600px) {
@@ -1242,6 +1289,16 @@
                 width: 100%;
                 max-width: 300px;
                 text-align: center;
+            }
+
+            .featured-event .event-cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                align-items: stretch;
+            }
+
+            .featured-event .event-cta-buttons .btn {
+                max-width: none;
             }
 
             .footer-bottom {
@@ -1650,7 +1707,11 @@
                 </div>
                 
                 <div class="event-cta">
-                    <a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=homepage_cta&utm_campaign=elven_grove" class="btn btn-primary" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">GET TICKETS</a>
+                    <div class="event-cta-buttons">
+                        <a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=homepage_cta&utm_campaign=elven_grove" class="btn btn-primary" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">GET TICKETS</a>
+                        <a href="/cosplay-signup/" class="btn btn-event-ghost">COSPLAY SIGN-UP</a>
+                    </div>
+                    <a href="/elven-grove/" class="event-next-details-link">See full event details →</a>
                 </div>
             </div>
         </div>

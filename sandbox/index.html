@@ -44,6 +44,8 @@
 </head>
 <body>
 <div class="sandbox">
+    <div class="sandbox-bg-stripes" aria-hidden="true"></div>
+    <div class="sandbox-bg-dots" aria-hidden="true"></div>
     <div class="sandbox-scanlines" aria-hidden="true"></div>
     <div class="sandbox-noise" aria-hidden="true"></div>
     <div class="sandbox-banner">
@@ -54,8 +56,9 @@
 
     <main>
         <section class="hero">
-            <div class="hero-scan-beam" aria-hidden="true"></div>
-            <div class="hero-glitch-flash" aria-hidden="true"></div>
+            <div class="hero-burst-overlay" aria-hidden="true"></div>
+            <span class="katakana-fragment" data-original="ノイズ" aria-hidden="true">ノイズ</span>
+            <span class="data-fragment" aria-hidden="true">REF.MK//07</span>
             <div class="hero-text">
                 <p class="hero-eyebrow">MOONLIGHT OTAKU NIGHTS × MIKU ONLY NYC</p>
                 <p class="hero-jp-sub">初音ミク 非公式アフターパーティー</p>
@@ -82,6 +85,8 @@
         </section>
 
         <section class="details-strip">
+            <span class="katakana-fragment" data-original="データ" aria-hidden="true">データ</span>
+            <span class="data-fragment" aria-hidden="true">01.0240.7</span>
             <div class="details-strip-inner">
                 <div class="detail-point">
                     <span class="detail-label">DATE</span>
@@ -104,6 +109,8 @@
         </section>
 
         <section class="lineup" id="lineup">
+            <span class="katakana-fragment" data-original="信号" aria-hidden="true">信号</span>
+            <span class="data-fragment" aria-hidden="true">SIG/CYAN.A</span>
             <span class="sandbox-crop-bracket tl" aria-hidden="true"></span>
             <span class="sandbox-crop-bracket tr" aria-hidden="true"></span>
             <span class="sandbox-crop-bracket bl" aria-hidden="true"></span>
@@ -137,7 +144,13 @@
             </div>
         </section>
 
+        <div class="diagonal-break diagonal-break--start-left" aria-hidden="true">
+            <div class="diagonal-break-stripe"></div>
+        </div>
+
         <section class="live-block">
+            <span class="katakana-fragment" data-original="接続" aria-hidden="true">接続</span>
+            <span class="data-fragment" aria-hidden="true">TX_240507</span>
             <span class="sandbox-crop-bracket tl" aria-hidden="true"></span>
             <span class="sandbox-crop-bracket tr" aria-hidden="true"></span>
             <span class="sandbox-crop-bracket bl" aria-hidden="true"></span>
@@ -159,6 +172,8 @@
         </section>
 
         <section class="cosplay-block">
+            <span class="katakana-fragment" data-original="周波数" aria-hidden="true">周波数</span>
+            <span class="data-fragment" aria-hidden="true">BROADCAST.OK</span>
             <span class="sandbox-crop-bracket tl" aria-hidden="true"></span>
             <span class="sandbox-crop-bracket tr" aria-hidden="true"></span>
             <span class="sandbox-crop-bracket bl" aria-hidden="true"></span>
@@ -183,12 +198,17 @@
             </div>
         </section>
 
+        <div class="diagonal-break diagonal-break--start-right" aria-hidden="true">
+            <div class="diagonal-break-stripe"></div>
+        </div>
+
         <div class="slash-divider">
             <span class="slashes" aria-hidden="true">////////////</span>
             <p class="slash-sub">次は何だ — what's next</p>
         </div>
 
         <section class="experiences">
+            <span class="katakana-fragment" data-original="光速" aria-hidden="true">光速</span>
             <span class="sandbox-crop-bracket tl" aria-hidden="true"></span>
             <span class="sandbox-crop-bracket tr" aria-hidden="true"></span>
             <span class="sandbox-crop-bracket bl" aria-hidden="true"></span>
@@ -230,6 +250,7 @@
         </section>
 
         <section class="tickets-cta">
+            <span class="katakana-fragment" data-original="暗号" aria-hidden="true">暗号</span>
             <div class="big-date">
                 <div class="ghost-month">MAY</div>
                 <div class="ghost-day">07</div>
@@ -266,6 +287,28 @@
         <p class="footer-copy">© 2026 Moonlight Otaku Nights — Sandbox Build</p>
     </footer>
 </div>
+<script>
+(function () {
+    var pool = ['ノイズ', 'データ', '信号', '接続', '周波数', '光速', '暗号', '位相', '衛星', '放送'];
+    var nodes = document.querySelectorAll('.sandbox .katakana-fragment');
+    if (!nodes.length) return;
+    function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+    function swap() {
+        var el = nodes[Math.floor(Math.random() * nodes.length)];
+        var next = pick(pool);
+        el.style.transition = 'opacity 0.15s ease';
+        el.style.opacity = '0';
+        window.setTimeout(function () {
+            el.textContent = next;
+            el.setAttribute('data-original', next);
+            el.style.opacity = '1';
+        }, 150);
+    }
+    window.setInterval(swap, 3000);
+})();
+</script>
 <script src="/components/nav-loader.js"></script>
 </body>
 </html>

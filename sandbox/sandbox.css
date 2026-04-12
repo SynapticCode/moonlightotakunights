@@ -14,6 +14,9 @@
     --sb-glow: rgba(0, 240, 255, 0.4);
     --sb-banner-height: 1.9rem;
 
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
     min-height: 100vh;
     background: var(--sb-bg);
     color: var(--sb-text);
@@ -27,6 +30,39 @@
 .sandbox *::before,
 .sandbox *::after {
     box-sizing: border-box;
+}
+
+.sandbox .sandbox-bg-stripes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -2;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 60px,
+        rgba(0, 240, 255, 0.025) 60px,
+        rgba(0, 240, 255, 0.025) 62px
+    );
+}
+
+.sandbox .sandbox-bg-dots {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: radial-gradient(
+        circle,
+        rgba(0, 240, 255, 0.08) 1px,
+        transparent 1px
+    );
+    background-size: 40px 40px;
 }
 
 .sandbox .sandbox-scanlines {
@@ -225,92 +261,165 @@
     margin: 0 auto;
 }
 
-.sandbox .hero-scan-beam {
+.sandbox .hero-burst-overlay {
     position: absolute;
-    left: 0;
-    right: 0;
-    height: 60px;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background-color: transparent;
+    animation: heroBurst 8s infinite linear;
+}
+
+@keyframes heroBurst {
+    0%,
+    96% {
+        opacity: 0;
+        background-color: transparent;
+        transform: none;
+    }
+    96.5% {
+        opacity: 1;
+        background-color: rgba(0, 240, 255, 0.08);
+        transform: skewX(-1deg);
+    }
+    97% {
+        opacity: 0;
+        background-color: transparent;
+        transform: none;
+    }
+    97.5% {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.05);
+        transform: translateX(8px);
+    }
+    98% {
+        opacity: 0;
+        background-color: transparent;
+        transform: none;
+    }
+    98.5% {
+        opacity: 1;
+        background-color: rgba(0, 136, 184, 0.08);
+        transform: skewX(1deg) translateX(-8px);
+    }
+    99%,
+    100% {
+        opacity: 0;
+        background-color: transparent;
+        transform: none;
+    }
+}
+
+.sandbox .katakana-fragment {
+    position: absolute;
     pointer-events: none;
     z-index: 1;
-    mix-blend-mode: screen;
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(0, 240, 255, 0) 40%,
-        rgba(0, 240, 255, 0.25) 50%,
-        rgba(0, 240, 255, 0) 60%,
-        transparent 100%
-    );
-    animation: scanBeam 12s infinite ease-in-out;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(0, 240, 255, 0.35);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 }
 
-@keyframes scanBeam {
-    0% {
-        top: -60px;
-        opacity: 0;
-    }
-    5% {
-        opacity: 1;
-    }
-    50% {
-        top: 100%;
-        opacity: 1;
-    }
-    55% {
-        opacity: 0;
-    }
-    100% {
-        top: 100%;
-        opacity: 0;
-    }
-}
-
-.sandbox .hero-glitch-flash {
+.sandbox .data-fragment {
     position: absolute;
-    left: 0;
-    right: 0;
-    height: 40px;
-    top: 30%;
-    opacity: 0;
     pointer-events: none;
-    z-index: 2;
-    mix-blend-mode: overlay;
-    background: linear-gradient(
-        90deg,
-        rgba(0, 240, 255, 0.3) 0%,
-        rgba(255, 255, 255, 0.15) 50%,
-        rgba(0, 136, 184, 0.3) 100%
-    );
-    animation: glitchFlash 8s infinite steps(100);
+    z-index: 1;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 1px;
 }
 
-@keyframes glitchFlash {
-    0%,
-    100% {
-        opacity: 0;
-    }
-    23% {
-        opacity: 0;
-    }
-    24% {
-        opacity: 1;
-        top: 18%;
-        transform: skewX(-2deg);
-    }
-    25% {
-        opacity: 0;
-    }
-    67% {
-        opacity: 0;
-    }
-    68% {
-        opacity: 1;
-        top: 62%;
-        transform: skewX(1deg);
-    }
-    69% {
-        opacity: 0;
-    }
+.sandbox .hero .katakana-fragment {
+    top: 8%;
+    left: 2%;
+}
+
+.sandbox .hero .data-fragment {
+    bottom: 22%;
+    right: 3%;
+}
+
+.sandbox .details-strip .katakana-fragment {
+    bottom: 12%;
+    right: 3%;
+}
+
+.sandbox .details-strip .data-fragment {
+    top: 18%;
+    left: 3%;
+}
+
+.sandbox .lineup .katakana-fragment {
+    top: 14%;
+    right: 2%;
+}
+
+.sandbox .lineup .data-fragment {
+    bottom: 10%;
+    left: 2%;
+}
+
+.sandbox .live-block .katakana-fragment {
+    bottom: 10%;
+    left: 3%;
+}
+
+.sandbox .live-block .data-fragment {
+    top: 12%;
+    right: 3%;
+}
+
+.sandbox .cosplay-block .katakana-fragment {
+    top: 12%;
+    right: 2%;
+}
+
+.sandbox .cosplay-block .data-fragment {
+    bottom: 28%;
+    right: 3%;
+}
+
+.sandbox .experiences .katakana-fragment {
+    bottom: 12%;
+    left: 2%;
+}
+
+.sandbox .tickets-cta .katakana-fragment {
+    top: 8%;
+    right: 3%;
+}
+
+.sandbox .diagonal-break {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sandbox .diagonal-break-stripe {
+    position: absolute;
+    top: 0;
+    width: 240px;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 8px,
+        rgba(0, 240, 255, 0.4) 8px,
+        rgba(0, 240, 255, 0.4) 16px
+    );
+}
+
+.sandbox .diagonal-break--start-left .diagonal-break-stripe {
+    left: 0;
+}
+
+.sandbox .diagonal-break--start-right .diagonal-break-stripe {
+    right: 0;
 }
 
 .sandbox .hero-text,
@@ -453,6 +562,7 @@
 
 /* Details strip */
 .sandbox .details-strip {
+    position: relative;
     width: 100%;
     background: rgba(255, 255, 255, 0.02);
     border-top: 1px solid rgba(0, 240, 255, 0.15);
@@ -509,7 +619,7 @@
     margin-top: 2rem;
     width: 100%;
     height: 40px;
-    opacity: 0.3;
+    animation: barcodeFlicker 6s infinite;
     background: repeating-linear-gradient(
         90deg,
         rgba(0, 240, 255, 0.5) 0px,
@@ -521,6 +631,81 @@
         transparent 5px,
         transparent 8px
     );
+}
+
+@keyframes barcodeFlicker {
+    0%,
+    5.5%,
+    7%,
+    20%,
+    23%,
+    38%,
+    41.5%,
+    55%,
+    58.5%,
+    71%,
+    74.5%,
+    100% {
+        opacity: 0.3;
+    }
+    5.67%,
+    6.83% {
+        opacity: 0.9;
+    }
+    21.5%,
+    22.67% {
+        opacity: 0.9;
+    }
+    40%,
+    41.17% {
+        opacity: 0.9;
+    }
+    57%,
+    58.17% {
+        opacity: 0.9;
+    }
+    73%,
+    74.17% {
+        opacity: 0.9;
+    }
+}
+
+/* Same spike times as barcodeFlicker; baseline 0.4 / peak 0.95 for title strips */
+@keyframes barcodeFlickerTitle {
+    0%,
+    5.5%,
+    7%,
+    20%,
+    23%,
+    38%,
+    41.5%,
+    55%,
+    58.5%,
+    71%,
+    74.5%,
+    100% {
+        opacity: 0.4;
+    }
+    5.67%,
+    6.83% {
+        opacity: 0.95;
+    }
+    21.5%,
+    22.67% {
+        opacity: 0.95;
+    }
+    40%,
+    41.17% {
+        opacity: 0.95;
+    }
+    57%,
+    58.17% {
+        opacity: 0.95;
+    }
+    73%,
+    74.17% {
+        opacity: 0.95;
+    }
 }
 
 /* Lineup */
@@ -694,7 +879,7 @@
     max-width: 100%;
     height: 20px;
     margin: 1.5rem auto;
-    opacity: 0.4;
+    animation: barcodeFlickerTitle 6s infinite;
     background: repeating-linear-gradient(
         90deg,
         rgba(0, 240, 255, 0.5) 0px,
@@ -1026,6 +1211,7 @@
 
 /* Tickets CTA */
 .sandbox .tickets-cta {
+    position: relative;
     padding: 5rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -1134,8 +1320,8 @@
 .sandbox .footer-barcode {
     width: 100%;
     height: 30px;
-    opacity: 0.3;
     margin-bottom: 2rem;
+    animation: barcodeFlicker 6s infinite;
     background: repeating-linear-gradient(
         90deg,
         rgba(0, 240, 255, 0.5) 0px,

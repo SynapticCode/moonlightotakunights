@@ -1,0 +1,395 @@
+/*
+ * Shared design system for Moonlight Otaku Nights. Apply
+ * .moonlight-theme to a wrapper div on any page. Override
+ * --mt-accent-primary, --mt-accent-secondary, and --mt-accent-highlight
+ * on a more specific selector to retheme the page.
+ */
+
+/* ── Tokens & Base ─────────────────────────────────────────────── */
+
+.moonlight-theme {
+    /* Background */
+    --mt-bg: #0a0a0f;
+    --mt-bg-elevated: #12121a;
+
+    /* Text */
+    --mt-text: #ffffff;
+    --mt-text-muted: rgba(255, 255, 255, 0.6);
+    --mt-text-dim: rgba(255, 255, 255, 0.4);
+
+    /* Accent — overridable per page */
+    --mt-accent-primary: #ff00aa;
+    --mt-accent-secondary: #bf00ff;
+    --mt-accent-highlight: #00f0ff;
+
+    /* Derived from accent */
+    --mt-accent-glow: color-mix(in srgb, var(--mt-accent-primary) 40%, transparent);
+    --mt-border: color-mix(in srgb, var(--mt-accent-primary) 15%, transparent);
+    --mt-border-strong: color-mix(in srgb, var(--mt-accent-primary) 40%, transparent);
+    --mt-panel: rgba(255, 255, 255, 0.03);
+
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    min-height: 100vh;
+    background: var(--mt-bg);
+    color: var(--mt-text);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.moonlight-theme,
+.moonlight-theme *,
+.moonlight-theme *::before,
+.moonlight-theme *::after {
+    box-sizing: border-box;
+}
+
+/* ── Background Layers ─────────────────────────────────────────── */
+
+.moonlight-theme .bg-stripes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -2;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 60px,
+        color-mix(in srgb, var(--mt-accent-primary) 2.5%, transparent) 60px,
+        color-mix(in srgb, var(--mt-accent-primary) 2.5%, transparent) 62px
+    );
+}
+
+.moonlight-theme .bg-dots {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--mt-accent-primary) 8%, transparent) 1px,
+        transparent 1px
+    );
+    background-size: 40px 40px;
+}
+
+.moonlight-theme .scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    mix-blend-mode: overlay;
+}
+
+.moonlight-theme .noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: noiseShift 16s linear infinite;
+}
+
+@keyframes noiseShift {
+    0%   { background-position: 0 0; }
+    25%  { background-position: 4px 3px; }
+    50%  { background-position: -3px 5px; }
+    75%  { background-position: 2px -2px; }
+    100% { background-position: 0 0; }
+}
+
+/* ── Chromatic Title ───────────────────────────────────────────── */
+
+.moonlight-theme .chromatic-title {
+    position: relative;
+    display: inline-block;
+    z-index: 0;
+    animation: titleGlitch 5s infinite;
+}
+
+.moonlight-theme .chromatic-title::before,
+.moonlight-theme .chromatic-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.moonlight-theme .chromatic-title::before {
+    color: color-mix(in srgb, var(--mt-accent-primary) 25%, transparent);
+    z-index: -1;
+    animation: titleGlitchBefore 5s infinite;
+}
+
+.moonlight-theme .chromatic-title::after {
+    color: color-mix(in srgb, var(--mt-accent-secondary) 25%, transparent);
+    z-index: -2;
+    animation: titleGlitchAfter 5s infinite;
+}
+
+@keyframes titleGlitch {
+    0%, 90%, 95%, 100% { opacity: 1; }
+    90.01%, 94.99%     { opacity: 0.85; }
+}
+
+@keyframes titleGlitchBefore {
+    0%, 90%, 95%, 100% { transform: translate(-6px, -4px); }
+    90.01%, 94.99%     { transform: translate(-12px, -8px); }
+}
+
+@keyframes titleGlitchAfter {
+    0%, 90%, 95%, 100% { transform: translate(6px, 4px); }
+    90.01%, 94.99%     { transform: translate(12px, 8px); }
+}
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+
+.moonlight-theme .btn {
+    font-family: 'Orbitron', sans-serif;
+    padding: 1rem 2.5rem;
+    letter-spacing: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.moonlight-theme .btn-accent-outline {
+    background: transparent;
+    color: var(--mt-accent-primary);
+    border: 1px solid var(--mt-accent-primary);
+}
+
+.moonlight-theme .btn-accent-outline:hover {
+    background: var(--mt-accent-primary);
+    color: var(--mt-bg);
+    box-shadow: 0 0 30px var(--mt-accent-glow);
+}
+
+.moonlight-theme .btn-ghost {
+    background: transparent;
+    color: var(--mt-text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.moonlight-theme .btn-ghost:hover {
+    border-color: var(--mt-text);
+    color: var(--mt-text);
+}
+
+/* ── Section Head ──────────────────────────────────────────────── */
+
+.moonlight-theme .section-head {
+    margin-bottom: 3rem;
+}
+
+.moonlight-theme .section-head .jp-label {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--mt-accent-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.moonlight-theme .section-head .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+}
+
+.moonlight-theme .section-head .section-sub {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--mt-text-muted);
+    margin-top: 1rem;
+}
+
+/* ── Barcode Strip ─────────────────────────────────────────────── */
+
+.moonlight-theme .barcode-strip {
+    animation: barcodeFlicker 18s infinite;
+    background: repeating-linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--mt-accent-primary) 50%, transparent) 0px,
+        color-mix(in srgb, var(--mt-accent-primary) 50%, transparent) 2px,
+        transparent 2px,
+        transparent 4px,
+        color-mix(in srgb, var(--mt-accent-secondary) 45%, transparent) 4px,
+        color-mix(in srgb, var(--mt-accent-secondary) 45%, transparent) 5px,
+        transparent 5px,
+        transparent 8px
+    );
+}
+
+@keyframes barcodeFlicker {
+    0%, 29.71%, 30.28%, 74.47%, 75.04%, 100% { opacity: 0.3; }
+    29.72%, 30.27% { opacity: 0.9; }
+    74.48%, 75.03% { opacity: 0.9; }
+}
+
+@keyframes barcodeFlickerTitle {
+    0%, 29.71%, 30.28%, 74.47%, 75.04%, 100% { opacity: 0.4; }
+    29.72%, 30.27% { opacity: 0.95; }
+    74.48%, 75.03% { opacity: 0.95; }
+}
+
+/* ── Decorative Fragments ──────────────────────────────────────── */
+
+.moonlight-theme .katakana-fragment {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--mt-accent-primary) 35%, transparent);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.moonlight-theme .data-fragment {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 1px;
+}
+
+/* ── Diagonal Break ────────────────────────────────────────────── */
+
+.moonlight-theme .diagonal-break {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.moonlight-theme .diagonal-break-stripe {
+    position: absolute;
+    top: 0;
+    width: 240px;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 8px,
+        color-mix(in srgb, var(--mt-accent-primary) 40%, transparent) 8px,
+        color-mix(in srgb, var(--mt-accent-primary) 40%, transparent) 16px
+    );
+}
+
+.moonlight-theme .diagonal-break--start-left .diagonal-break-stripe {
+    left: 0;
+}
+
+.moonlight-theme .diagonal-break--start-right .diagonal-break-stripe {
+    right: 0;
+}
+
+/* ── Slash Divider ─────────────────────────────────────────────── */
+
+.moonlight-theme .slash-divider {
+    width: 100%;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.moonlight-theme .slash-divider .slashes {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    color: rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    transform: skewX(-20deg);
+}
+
+.moonlight-theme .slash-divider .slash-sub {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--mt-text-dim);
+    margin-top: 1rem;
+}
+
+/* ── Corner Brackets ───────────────────────────────────────────── */
+
+.moonlight-theme .corner-bracket {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    border-style: solid;
+    border-color: var(--mt-border-strong);
+    border-width: 0;
+    z-index: 0;
+}
+
+.moonlight-theme .corner-bracket.tl {
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.moonlight-theme .corner-bracket.tr {
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.moonlight-theme .corner-bracket.bl {
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.moonlight-theme .corner-bracket.br {
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}
+
+/* ── Mobile ────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+    .moonlight-theme .slash-divider {
+        padding: 2.25rem 0;
+    }
+}

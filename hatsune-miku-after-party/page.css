@@ -1,40 +1,14 @@
-/* Sandbox page-specific layout — extends /components/theme.css */
+/* Hatsune Miku Unofficial After Party — page-specific layout */
 
-.sandbox {
+.miku-page {
     --mt-accent-primary: #00f0ff;
     --mt-accent-secondary: #0088b8;
     --mt-accent-highlight: #ffffff;
-    --sb-banner-height: 1.9rem;
-}
-
-/* Banner above fixed shared nav */
-.sandbox .sandbox-banner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1001;
-    width: 100%;
-    padding: 0.45rem 1rem;
-    line-height: 1.2;
-    background: rgba(255, 255, 255, 0.04);
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.sandbox nav {
-    top: var(--sb-banner-height);
-    padding-top: 0;
 }
 
 /* ── Hero ──────────────────────────────────────────────────────── */
 
-.sandbox .hero {
+.miku-page .hero {
     position: relative;
     min-height: 90vh;
     padding: 160px 2rem 4rem;
@@ -46,16 +20,16 @@
     margin: 0 auto;
 }
 
-.sandbox .hero-burst-overlay {
+.miku-page .hero-burst-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 3;
     background-color: transparent;
-    animation: heroBurst 8s infinite linear;
+    animation: mikuHeroBurst 8s infinite linear;
 }
 
-@keyframes heroBurst {
+@keyframes mikuHeroBurst {
     0%, 96% {
         opacity: 0;
         background-color: transparent;
@@ -93,27 +67,27 @@
     }
 }
 
-/* Fragment positions per section */
-.sandbox .hero .katakana-fragment { top: 8%; left: 2%; }
-.sandbox .hero .data-fragment { bottom: 22%; right: 3%; }
-.sandbox .details-strip .katakana-fragment { bottom: 12%; right: 3%; }
-.sandbox .details-strip .data-fragment { top: 18%; left: 3%; }
-.sandbox .lineup .katakana-fragment { top: 14%; right: 2%; }
-.sandbox .lineup .data-fragment { bottom: 10%; left: 2%; }
-.sandbox .live-block .katakana-fragment { bottom: 10%; left: 3%; }
-.sandbox .live-block .data-fragment { top: 12%; right: 3%; }
-.sandbox .cosplay-block .katakana-fragment { top: 12%; right: 2%; }
-.sandbox .cosplay-block .data-fragment { bottom: 28%; right: 3%; }
-.sandbox .experiences .katakana-fragment { bottom: 12%; left: 2%; }
-.sandbox .tickets-cta .katakana-fragment { top: 8%; right: 3%; }
+/* Fragment positions */
+.miku-page .hero .katakana-fragment { top: 8%; left: 2%; }
+.miku-page .hero .data-fragment { bottom: 22%; right: 3%; }
+.miku-page .details-strip .katakana-fragment { bottom: 12%; right: 3%; }
+.miku-page .details-strip .data-fragment { top: 18%; left: 3%; }
+.miku-page .lineup .katakana-fragment { top: 14%; right: 2%; }
+.miku-page .lineup .data-fragment { bottom: 10%; left: 2%; }
+.miku-page .live-block .katakana-fragment { bottom: 10%; left: 3%; }
+.miku-page .live-block .data-fragment { top: 12%; right: 3%; }
+.miku-page .cosplay-block .katakana-fragment { top: 12%; right: 2%; }
+.miku-page .cosplay-block .data-fragment { bottom: 28%; right: 3%; }
+.miku-page .experiences .katakana-fragment { bottom: 12%; left: 2%; }
+.miku-page .tickets-cta .katakana-fragment { top: 8%; right: 3%; }
 
-.sandbox .hero-text,
-.sandbox .hero-flyer {
+.miku-page .hero-text,
+.miku-page .hero-flyer {
     position: relative;
     z-index: 2;
 }
 
-.sandbox .hero-text .hero-eyebrow {
+.miku-page .hero-text .hero-eyebrow {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 3px;
@@ -122,7 +96,7 @@
     margin-bottom: 1rem;
 }
 
-.sandbox .hero-text .hero-jp-sub {
+.miku-page .hero-text .hero-jp-sub {
     font-family: 'Noto Serif JP', serif;
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.7);
@@ -130,7 +104,7 @@
     margin-bottom: 0.5rem;
 }
 
-.sandbox .hero-text .hero-title {
+.miku-page .hero-text .hero-title {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: clamp(3rem, 9vw, 7.5rem);
@@ -141,7 +115,7 @@
     margin: 0;
 }
 
-.sandbox .hero-text .hero-subtitle {
+.miku-page .hero-text .hero-subtitle {
     font-family: 'Orbitron', sans-serif;
     font-weight: 500;
     font-size: clamp(0.9rem, 2vw, 1.3rem);
@@ -151,7 +125,7 @@
     margin-top: 1.5rem;
 }
 
-.sandbox .hero-text .hero-tagline {
+.miku-page .hero-text .hero-tagline {
     font-family: 'Noto Serif JP', serif;
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.65);
@@ -161,26 +135,26 @@
     line-height: 1.7;
 }
 
-.sandbox .hero-cta-row {
+.miku-page .hero-cta-row {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 2rem;
 }
 
-.sandbox .hero-flyer {
+.miku-page .hero-flyer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.sandbox .flyer-frame {
+.miku-page .flyer-frame {
     position: relative;
     display: inline-block;
     padding: 0;
 }
 
-.sandbox .flyer-glow {
+.miku-page .flyer-glow {
     position: absolute;
     width: 600px;
     height: 600px;
@@ -197,7 +171,7 @@
     pointer-events: none;
 }
 
-.sandbox .flyer-frame img {
+.miku-page .flyer-frame img {
     position: relative;
     z-index: 0;
     display: block;
@@ -209,7 +183,7 @@
             drop-shadow(3px 0 color-mix(in srgb, var(--mt-accent-secondary) 50%, transparent));
 }
 
-.sandbox .flyer-bracket {
+.miku-page .flyer-bracket {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -217,28 +191,28 @@
     pointer-events: none;
 }
 
-.sandbox .flyer-bracket.tl {
+.miku-page .flyer-bracket.tl {
     top: -6px;
     left: -6px;
     border-top: 12px solid rgba(255, 255, 255, 0.8);
     border-left: 12px solid rgba(255, 255, 255, 0.8);
 }
 
-.sandbox .flyer-bracket.tr {
+.miku-page .flyer-bracket.tr {
     top: -6px;
     right: -6px;
     border-top: 12px solid rgba(255, 255, 255, 0.8);
     border-right: 12px solid rgba(255, 255, 255, 0.8);
 }
 
-.sandbox .flyer-bracket.bl {
+.miku-page .flyer-bracket.bl {
     bottom: -6px;
     left: -6px;
     border-bottom: 12px solid rgba(255, 255, 255, 0.8);
     border-left: 12px solid rgba(255, 255, 255, 0.8);
 }
 
-.sandbox .flyer-bracket.br {
+.miku-page .flyer-bracket.br {
     bottom: -6px;
     right: -6px;
     border-bottom: 12px solid rgba(255, 255, 255, 0.8);
@@ -247,7 +221,7 @@
 
 /* ── Details Strip ─────────────────────────────────────────────── */
 
-.sandbox .details-strip {
+.miku-page .details-strip {
     position: relative;
     width: 100%;
     background: rgba(255, 255, 255, 0.02);
@@ -256,7 +230,7 @@
     padding: 2.5rem 2rem;
 }
 
-.sandbox .details-strip-inner {
+.miku-page .details-strip-inner {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -266,14 +240,14 @@
     gap: 0;
 }
 
-.sandbox .detail-point {
+.miku-page .detail-point {
     flex: 1 1 140px;
     text-align: center;
     padding: 0 1.5rem;
     position: relative;
 }
 
-.sandbox .detail-point:not(:last-of-type)::after {
+.miku-page .detail-point:not(:last-of-type)::after {
     content: '';
     position: absolute;
     right: 0;
@@ -284,7 +258,7 @@
     background: color-mix(in srgb, var(--mt-accent-primary) 30%, transparent);
 }
 
-.sandbox .detail-label {
+.miku-page .detail-label {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.65rem;
     letter-spacing: 2px;
@@ -294,14 +268,14 @@
     margin-bottom: 0.35rem;
 }
 
-.sandbox .detail-value {
+.miku-page .detail-value {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 1.4rem;
     color: #fff;
 }
 
-.sandbox .details-barcode {
+.miku-page .details-barcode {
     margin-top: 2rem;
     width: 100%;
     height: 40px;
@@ -309,56 +283,129 @@
 
 /* ── Lineup ────────────────────────────────────────────────────── */
 
-.sandbox .lineup {
+.miku-page .lineup {
     position: relative;
     padding: 5rem 2rem;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-.sandbox .dj-grid {
+/* Corner bracket positions for lineup, experiences, live, cosplay */
+.miku-page .lineup .corner-bracket.tl,
+.miku-page .experiences .corner-bracket.tl {
+    top: 5rem;
+    left: 2rem;
+}
+
+.miku-page .lineup .corner-bracket.tr,
+.miku-page .experiences .corner-bracket.tr {
+    top: 5rem;
+    right: 2rem;
+}
+
+.miku-page .lineup .corner-bracket.bl,
+.miku-page .experiences .corner-bracket.bl {
+    bottom: 5rem;
+    left: 2rem;
+}
+
+.miku-page .lineup .corner-bracket.br,
+.miku-page .experiences .corner-bracket.br {
+    bottom: 5rem;
+    right: 2rem;
+}
+
+.miku-page .live-block .corner-bracket.tl,
+.miku-page .cosplay-block .corner-bracket.tl {
+    top: 6rem;
+    left: 2rem;
+}
+
+.miku-page .live-block .corner-bracket.tr,
+.miku-page .cosplay-block .corner-bracket.tr {
+    top: 6rem;
+    right: 2rem;
+}
+
+.miku-page .live-block .corner-bracket.bl,
+.miku-page .cosplay-block .corner-bracket.bl {
+    bottom: 6rem;
+    left: 2rem;
+}
+
+.miku-page .live-block .corner-bracket.br,
+.miku-page .cosplay-block .corner-bracket.br {
+    bottom: 6rem;
+    right: 2rem;
+}
+
+.miku-page .dj-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
 }
 
-.sandbox .dj-card:nth-child(5) {
+.miku-page .dj-card:nth-child(5) {
     grid-column: 1 / -1;
     max-width: calc((100% - 1.5rem) / 2);
     margin-inline: auto;
 }
 
-.sandbox .dj-card {
+.miku-page .dj-card {
+    position: relative;
     background: var(--mt-panel);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--mt-border);
     padding: 1.75rem;
+    padding-right: 100px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sandbox .dj-card:nth-child(odd) {
+.miku-page .dj-card:nth-child(odd) {
     transform: rotate(-0.5deg);
 }
 
-.sandbox .dj-card:nth-child(even) {
+.miku-page .dj-card:nth-child(even) {
     transform: rotate(0.5deg);
 }
 
-.sandbox .dj-card:hover {
+.miku-page .dj-card:hover {
     transform: translateY(-4px);
     box-shadow: -3px 0 var(--mt-border-strong), 3px 0 color-mix(in srgb, var(--mt-accent-secondary) 40%, transparent);
 }
 
-.sandbox .dj-card:nth-child(odd):hover {
+.miku-page .dj-card:nth-child(odd):hover {
     transform: translateY(-4px) rotate(-0.5deg);
 }
 
-.sandbox .dj-card:nth-child(even):hover {
+.miku-page .dj-card:nth-child(even):hover {
     transform: translateY(-4px) rotate(0.5deg);
 }
 
-.sandbox .dj-name {
+/* DJ photo frame */
+.miku-page .dj-photo-frame {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--mt-accent-primary);
+    border-radius: 2px;
+    transform: rotate(2deg);
+    overflow: hidden;
+    background: var(--mt-panel);
+}
+
+.miku-page .dj-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: drop-shadow(-2px 0 var(--mt-accent-primary))
+            drop-shadow(2px 0 var(--mt-accent-secondary));
+}
+
+.miku-page .dj-name {
     position: relative;
     display: inline-block;
     font-family: 'Orbitron', sans-serif;
@@ -368,8 +415,8 @@
     margin-top: 0;
 }
 
-.sandbox .dj-name::before,
-.sandbox .dj-name::after {
+.miku-page .dj-name::before,
+.miku-page .dj-name::after {
     content: attr(data-text);
     position: absolute;
     left: 0;
@@ -383,12 +430,12 @@
     white-space: nowrap;
 }
 
-.sandbox .dj-card:hover .dj-name::before,
-.sandbox .dj-card:hover .dj-name::after {
-    animation: djNameGlitchPulse 0.3s ease forwards;
+.miku-page .dj-card:hover .dj-name::before,
+.miku-page .dj-card:hover .dj-name::after {
+    animation: mikuDjGlitch 0.3s ease forwards;
 }
 
-@keyframes djNameGlitchPulse {
+@keyframes mikuDjGlitch {
     0%, 49.99% {
         opacity: 1;
         text-shadow: -3px 0 var(--mt-accent-primary), 3px 0 var(--mt-accent-secondary);
@@ -399,7 +446,8 @@
     }
 }
 
-.sandbox .dj-sub {
+.miku-page .dj-affiliation {
+    display: block;
     font-family: 'Noto Serif JP', serif;
     font-size: 0.9rem;
     font-style: italic;
@@ -409,7 +457,7 @@
 
 /* ── Live Block ────────────────────────────────────────────────── */
 
-.sandbox .live-block {
+.miku-page .live-block {
     position: relative;
     width: 100%;
     background: var(--mt-bg);
@@ -417,12 +465,12 @@
     text-align: center;
 }
 
-.sandbox .live-block-inner {
+.miku-page .live-block-inner {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.sandbox .live-block-jp-label {
+.miku-page .live-block-jp-label {
     font-family: 'Noto Serif JP', serif;
     font-size: 0.9rem;
     font-style: italic;
@@ -431,7 +479,7 @@
     margin: 0;
 }
 
-.sandbox .live-block-title {
+.miku-page .live-block-title {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: clamp(2.5rem, 6vw, 5rem);
@@ -442,7 +490,7 @@
     margin-top: 0.5rem;
 }
 
-.sandbox .sandbox-title-barcode {
+.miku-page .title-barcode {
     width: 240px;
     max-width: 100%;
     height: 20px;
@@ -450,7 +498,7 @@
     animation-name: barcodeFlickerTitle;
 }
 
-.sandbox .live-block-sub {
+.miku-page .live-block-sub {
     font-family: 'Noto Serif JP', serif;
     font-size: 1.1rem;
     font-style: italic;
@@ -459,7 +507,7 @@
     line-height: 1.5;
 }
 
-.sandbox .live-block-body {
+.miku-page .live-block-body {
     max-width: 640px;
     margin: 2.5rem auto 0;
     font-family: 'Zen Kaku Gothic New', sans-serif;
@@ -469,17 +517,17 @@
     text-align: center;
 }
 
-.sandbox .live-block-body p {
+.miku-page .live-block-body p {
     margin: 0;
 }
 
-.sandbox .live-block-badge-wrap {
+.miku-page .live-block-badge-wrap {
     display: flex;
     justify-content: center;
     margin-top: 2.5rem;
 }
 
-.sandbox .live-block-badge {
+.miku-page .live-block-badge {
     padding: 0.5rem 1.2rem;
     border: 1px solid var(--mt-border-strong);
     border-radius: 30px;
@@ -493,7 +541,7 @@
 
 /* ── Cosplay Block ─────────────────────────────────────────────── */
 
-.sandbox .cosplay-block {
+.miku-page .cosplay-block {
     position: relative;
     width: 100%;
     background: var(--mt-bg);
@@ -501,12 +549,12 @@
     text-align: center;
 }
 
-.sandbox .cosplay-block-inner {
+.miku-page .cosplay-block-inner {
     max-width: 900px;
     margin: 0 auto;
 }
 
-.sandbox .cosplay-jp-label {
+.miku-page .cosplay-jp-label {
     font-family: 'Noto Serif JP', serif;
     font-size: 0.9rem;
     font-style: italic;
@@ -515,7 +563,7 @@
     margin: 0;
 }
 
-.sandbox .cosplay-title {
+.miku-page .cosplay-title {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: clamp(2.5rem, 6vw, 5rem);
@@ -526,7 +574,7 @@
     margin-top: 0.5rem;
 }
 
-.sandbox .cosplay-sub {
+.miku-page .cosplay-sub {
     font-family: 'Noto Serif JP', serif;
     font-size: 1.1rem;
     font-style: italic;
@@ -536,7 +584,7 @@
     line-height: 1.5;
 }
 
-.sandbox .cosplay-body {
+.miku-page .cosplay-body {
     max-width: 680px;
     margin: 2.5rem auto 0;
     font-family: 'Zen Kaku Gothic New', sans-serif;
@@ -546,15 +594,15 @@
     text-align: center;
 }
 
-.sandbox .cosplay-body p {
+.miku-page .cosplay-body p {
     margin: 0;
 }
 
-.sandbox .cosplay-body p + p {
+.miku-page .cosplay-body p + p {
     margin-top: 1.25rem;
 }
 
-.sandbox .cosplay-badges {
+.miku-page .cosplay-badges {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -562,7 +610,7 @@
     margin-top: 2.5rem;
 }
 
-.sandbox .cosplay-badge {
+.miku-page .cosplay-badge {
     padding: 0.5rem 1.2rem;
     border: 1px solid var(--mt-border-strong);
     border-radius: 30px;
@@ -576,96 +624,21 @@
 
 /* ── Experiences ───────────────────────────────────────────────── */
 
-.sandbox .experiences {
+.miku-page .experiences {
     position: relative;
     padding: 5rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.sandbox .sandbox-crop-bracket {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    pointer-events: none;
-    border-style: solid;
-    border-color: var(--mt-border-strong);
-    border-width: 0;
-    z-index: 0;
-}
-
-.sandbox .lineup .sandbox-crop-bracket.tl,
-.sandbox .experiences .sandbox-crop-bracket.tl {
-    top: 5rem;
-    left: 2rem;
-    border-top-width: 1px;
-    border-left-width: 1px;
-}
-
-.sandbox .lineup .sandbox-crop-bracket.tr,
-.sandbox .experiences .sandbox-crop-bracket.tr {
-    top: 5rem;
-    right: 2rem;
-    border-top-width: 1px;
-    border-right-width: 1px;
-}
-
-.sandbox .lineup .sandbox-crop-bracket.bl,
-.sandbox .experiences .sandbox-crop-bracket.bl {
-    bottom: 5rem;
-    left: 2rem;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-}
-
-.sandbox .lineup .sandbox-crop-bracket.br,
-.sandbox .experiences .sandbox-crop-bracket.br {
-    bottom: 5rem;
-    right: 2rem;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-}
-
-.sandbox .live-block .sandbox-crop-bracket.tl,
-.sandbox .cosplay-block .sandbox-crop-bracket.tl {
-    top: 6rem;
-    left: 2rem;
-    border-top-width: 1px;
-    border-left-width: 1px;
-}
-
-.sandbox .live-block .sandbox-crop-bracket.tr,
-.sandbox .cosplay-block .sandbox-crop-bracket.tr {
-    top: 6rem;
-    right: 2rem;
-    border-top-width: 1px;
-    border-right-width: 1px;
-}
-
-.sandbox .live-block .sandbox-crop-bracket.bl,
-.sandbox .cosplay-block .sandbox-crop-bracket.bl {
-    bottom: 6rem;
-    left: 2rem;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-}
-
-.sandbox .live-block .sandbox-crop-bracket.br,
-.sandbox .cosplay-block .sandbox-crop-bracket.br {
-    bottom: 6rem;
-    right: 2rem;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-}
-
-.sandbox .exp-grid {
+.miku-page .exp-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     align-items: start;
 }
 
-.sandbox .exp-card {
+.miku-page .exp-card {
     position: relative;
     background: var(--mt-panel);
     backdrop-filter: blur(10px);
@@ -675,58 +648,58 @@
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.sandbox .exp-card:nth-child(2) {
+.miku-page .exp-card:nth-child(2) {
     margin-top: 40px;
 }
 
-.sandbox .exp-card:hover {
+.miku-page .exp-card:hover {
     transform: translateY(-6px);
     border-color: color-mix(in srgb, var(--mt-accent-primary) 50%, transparent);
 }
 
-.sandbox .exp-bracket {
+.miku-page .exp-bracket {
     position: absolute;
     width: 20px;
     height: 20px;
     pointer-events: none;
 }
 
-.sandbox .exp-bracket.tl {
+.miku-page .exp-bracket.tl {
     top: 10px;
     left: 10px;
     border-top: 2px solid color-mix(in srgb, var(--mt-accent-primary) 60%, transparent);
     border-left: 2px solid color-mix(in srgb, var(--mt-accent-primary) 60%, transparent);
 }
 
-.sandbox .exp-bracket.tr {
+.miku-page .exp-bracket.tr {
     top: 10px;
     right: 10px;
     border-top: 2px solid color-mix(in srgb, var(--mt-accent-primary) 60%, transparent);
     border-right: 2px solid color-mix(in srgb, var(--mt-accent-primary) 60%, transparent);
 }
 
-.sandbox .exp-bracket.bl {
+.miku-page .exp-bracket.bl {
     bottom: 10px;
     left: 10px;
     border-bottom: 2px solid color-mix(in srgb, var(--mt-accent-primary) 60%, transparent);
     border-left: 2px solid color-mix(in srgb, var(--mt-accent-primary) 60%, transparent);
 }
 
-.sandbox .exp-bracket.br {
+.miku-page .exp-bracket.br {
     bottom: 10px;
     right: 10px;
     border-bottom: 2px solid color-mix(in srgb, var(--mt-accent-primary) 60%, transparent);
     border-right: 2px solid color-mix(in srgb, var(--mt-accent-primary) 60%, transparent);
 }
 
-.sandbox .exp-label {
+.miku-page .exp-label {
     font-family: 'Noto Serif JP', serif;
     font-size: 0.85rem;
     font-style: italic;
     color: var(--mt-accent-primary);
 }
 
-.sandbox .exp-name {
+.miku-page .exp-name {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
@@ -734,7 +707,7 @@
     margin-top: 0.5rem;
 }
 
-.sandbox .exp-desc {
+.miku-page .exp-desc {
     font-family: 'Noto Serif JP', serif;
     font-size: 1rem;
     font-style: italic;
@@ -745,7 +718,7 @@
 
 /* ── Tickets CTA ───────────────────────────────────────────────── */
 
-.sandbox .tickets-cta {
+.miku-page .tickets-cta {
     position: relative;
     padding: 5rem 2rem;
     max-width: 1200px;
@@ -756,7 +729,7 @@
     align-items: center;
 }
 
-.sandbox .big-date .ghost-month {
+.miku-page .big-date .ghost-month {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: clamp(4rem, 12vw, 10rem);
@@ -764,7 +737,7 @@
     color: rgba(255, 255, 255, 0.1);
 }
 
-.sandbox .big-date .ghost-day {
+.miku-page .big-date .ghost-day {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: clamp(8rem, 20vw, 18rem);
@@ -774,7 +747,7 @@
     margin-top: -20px;
 }
 
-.sandbox .big-date .ghost-year {
+.miku-page .big-date .ghost-year {
     font-family: 'Orbitron', sans-serif;
     font-weight: 400;
     font-size: 1.5rem;
@@ -783,11 +756,11 @@
     margin-top: 0.5rem;
 }
 
-.sandbox .pricing-header {
+.miku-page .pricing-header {
     margin-bottom: 2rem;
 }
 
-.sandbox .pricing-header .jp {
+.miku-page .pricing-header .jp {
     font-family: 'Noto Serif JP', serif;
     font-size: 0.9rem;
     font-style: italic;
@@ -795,7 +768,7 @@
     display: block;
 }
 
-.sandbox .pricing-header .en {
+.miku-page .pricing-header .en {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 1.25rem;
@@ -804,7 +777,7 @@
     margin-top: 0.25rem;
 }
 
-.sandbox .tier-row {
+.miku-page .tier-row {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1.5rem;
@@ -814,59 +787,252 @@
     border-bottom: 1px solid var(--mt-border);
 }
 
-.sandbox .tier-row:last-of-type {
+.miku-page .tier-row:last-of-type {
     margin-bottom: 2rem;
 }
 
-.sandbox .tier-price {
+.miku-page .tier-price {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 2rem;
     color: #fff;
 }
 
-.sandbox .tier-desc {
+.miku-page .tier-desc {
     font-family: 'Noto Serif JP', serif;
     font-size: 0.95rem;
     font-style: italic;
     color: rgba(255, 255, 255, 0.7);
 }
 
-.sandbox .tickets-cta .btn-accent-outline {
+.miku-page .tickets-cta .btn-accent-outline {
     width: 100%;
     text-align: center;
     max-width: 320px;
 }
 
-.sandbox .ticket-disclaimer {
+.miku-page .ticket-waitlist-note {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--mt-text-muted);
+    margin-top: 0.75rem;
+}
+
+.miku-page .ticket-disclaimer {
     font-family: 'Noto Serif JP', serif;
     font-size: 0.8rem;
     font-style: italic;
     color: var(--mt-text-dim);
+    margin-top: 0.5rem;
+}
+
+/* ── Waitlist ──────────────────────────────────────────────────── */
+
+.miku-page .waitlist-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.miku-page .waitlist-section .jp-label {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--mt-accent-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.miku-page .waitlist-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+}
+
+.miku-page .waitlist-sub {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--mt-text-muted);
     margin-top: 1rem;
+    line-height: 1.5;
+}
+
+.miku-page .waitlist-form {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.miku-page .waitlist-form input[type="email"] {
+    flex: 1;
+    min-width: 260px;
+    padding: 1rem 1.5rem;
+    background: var(--mt-panel);
+    border: 1px solid var(--mt-accent-primary);
+    border-radius: 0;
+    color: var(--mt-text);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.miku-page .waitlist-form input[type="email"]::placeholder {
+    color: var(--mt-text-dim);
+}
+
+.miku-page .waitlist-form input[type="email"]:focus {
+    outline: none;
+    box-shadow: 0 0 20px var(--mt-accent-glow);
+}
+
+/* ── Venue ─────────────────────────────────────────────────────── */
+
+.miku-page .venue {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.miku-page .venue-info .jp-label {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--mt-accent-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.miku-page .venue-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+}
+
+.miku-page .venue-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-top: 1.5rem;
+}
+
+.miku-page .venue-address {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    color: var(--mt-text-muted);
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.miku-page .venue-directions {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--mt-accent-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.miku-page .venue-directions:hover {
+    color: var(--mt-text);
+}
+
+.miku-page .venue-note {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--mt-text-muted);
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+.miku-page .venue-map iframe {
+    display: block;
+    width: 100%;
+}
+
+/* ── FAQ ───────────────────────────────────────────────────────── */
+
+.miku-page .faq {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+}
+
+.miku-page .faq details {
+    background: var(--mt-panel);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 2px solid var(--mt-accent-primary);
+}
+
+.miku-page .faq summary {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    list-style: none;
+}
+
+.miku-page .faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.miku-page .faq summary::marker {
+    display: none;
+}
+
+.miku-page .faq details p {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--mt-text-muted);
+    line-height: 1.7;
+    padding-top: 1rem;
+    margin: 0;
 }
 
 /* ── Footer ────────────────────────────────────────────────────── */
 
-.sandbox .sandbox-footer {
+.miku-page .miku-footer {
     padding: 4rem 2rem 2rem;
     text-align: center;
 }
 
-.sandbox .footer-barcode {
+.miku-page .footer-barcode {
     width: 100%;
     height: 30px;
     margin-bottom: 2rem;
 }
 
-.sandbox .footer-credit {
+.miku-page .footer-credit {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.9rem;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-.sandbox .footer-credit-jp {
+.miku-page .footer-credit-jp {
     font-family: 'Noto Serif JP', serif;
     font-size: 0.85rem;
     font-style: italic;
@@ -874,14 +1040,14 @@
     margin-top: 0.5rem;
 }
 
-.sandbox .footer-rule {
+.miku-page .footer-rule {
     width: 200px;
     height: 1px;
     background: color-mix(in srgb, var(--mt-accent-primary) 10%, transparent);
     margin: 2rem auto;
 }
 
-.sandbox .footer-copy {
+.miku-page .footer-copy {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.3);
@@ -890,113 +1056,133 @@
 /* ── Mobile ────────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
-    .sandbox .hero {
+    .miku-page .hero {
         grid-template-columns: 1fr;
         min-height: auto;
         padding: 140px 1.5rem 3rem;
     }
 
-    .sandbox .details-strip {
+    .miku-page .details-strip {
         padding: 1.875rem 1.5rem;
     }
 
-    .sandbox .detail-point:not(:last-of-type)::after {
+    .miku-page .detail-point:not(:last-of-type)::after {
         display: none;
     }
 
-    .sandbox .detail-point {
+    .miku-page .detail-point {
         padding: 0.75rem 1rem;
         border-bottom: 1px solid color-mix(in srgb, var(--mt-accent-primary) 12%, transparent);
     }
 
-    .sandbox .lineup,
-    .sandbox .experiences,
-    .sandbox .tickets-cta {
+    .miku-page .lineup,
+    .miku-page .experiences,
+    .miku-page .tickets-cta {
         padding: 3.75rem 1.5rem;
     }
 
-    .sandbox .cosplay-block {
+    .miku-page .cosplay-block,
+    .miku-page .live-block {
         padding: 4rem 1.5rem;
     }
 
-    .sandbox .live-block {
-        padding: 4rem 1.5rem;
-    }
-
-    .sandbox .sandbox-footer {
+    .miku-page .miku-footer {
         padding: 3rem 1.5rem 1.5rem;
     }
 
-    .sandbox .dj-grid {
+    .miku-page .dj-grid {
         grid-template-columns: 1fr;
     }
 
-    .sandbox .dj-card:nth-child(5) {
+    .miku-page .dj-card {
+        padding-right: 1.75rem;
+    }
+
+    .miku-page .dj-photo-frame {
+        position: static;
+        transform: rotate(2deg);
+        margin-bottom: 1rem;
+    }
+
+    .miku-page .dj-card:nth-child(5) {
         grid-column: auto;
         max-width: none;
         margin-inline: unset;
     }
 
-    .sandbox .exp-grid {
+    .miku-page .exp-grid {
         grid-template-columns: 1fr;
     }
 
-    .sandbox .exp-card:nth-child(2) {
+    .miku-page .exp-card:nth-child(2) {
         margin-top: 0;
     }
 
-    .sandbox .tickets-cta {
+    .miku-page .tickets-cta {
         grid-template-columns: 1fr;
     }
 
-    .sandbox .big-date {
+    .miku-page .big-date {
         text-align: center;
     }
 
-    .sandbox .lineup .sandbox-crop-bracket.tl,
-    .sandbox .experiences .sandbox-crop-bracket.tl {
+    .miku-page .venue {
+        grid-template-columns: 1fr;
+        padding: 4.5rem 1.5rem;
+    }
+
+    .miku-page .waitlist-section {
+        padding: 4.5rem 1.5rem;
+    }
+
+    .miku-page .faq {
+        padding: 4.5rem 1.5rem;
+    }
+
+    .miku-page .lineup .corner-bracket.tl,
+    .miku-page .experiences .corner-bracket.tl {
         top: 3.75rem;
         left: 1.5rem;
     }
 
-    .sandbox .lineup .sandbox-crop-bracket.tr,
-    .sandbox .experiences .sandbox-crop-bracket.tr {
+    .miku-page .lineup .corner-bracket.tr,
+    .miku-page .experiences .corner-bracket.tr {
         top: 3.75rem;
         right: 1.5rem;
     }
 
-    .sandbox .lineup .sandbox-crop-bracket.bl,
-    .sandbox .experiences .sandbox-crop-bracket.bl {
+    .miku-page .lineup .corner-bracket.bl,
+    .miku-page .experiences .corner-bracket.bl {
         bottom: 3.75rem;
         left: 1.5rem;
     }
 
-    .sandbox .lineup .sandbox-crop-bracket.br,
-    .sandbox .experiences .sandbox-crop-bracket.br {
+    .miku-page .lineup .corner-bracket.br,
+    .miku-page .experiences .corner-bracket.br {
         bottom: 3.75rem;
         right: 1.5rem;
     }
 
-    .sandbox .live-block .sandbox-crop-bracket.tl,
-    .sandbox .cosplay-block .sandbox-crop-bracket.tl {
+    .miku-page .live-block .corner-bracket.tl,
+    .miku-page .cosplay-block .corner-bracket.tl {
         top: 4rem;
         left: 1.5rem;
     }
 
-    .sandbox .live-block .sandbox-crop-bracket.tr,
-    .sandbox .cosplay-block .sandbox-crop-bracket.tr {
+    .miku-page .live-block .corner-bracket.tr,
+    .miku-page .cosplay-block .corner-bracket.tr {
         top: 4rem;
         right: 1.5rem;
     }
 
-    .sandbox .live-block .sandbox-crop-bracket.bl,
-    .sandbox .cosplay-block .sandbox-crop-bracket.bl {
+    .miku-page .live-block .corner-bracket.bl,
+    .miku-page .cosplay-block .corner-bracket.bl {
         bottom: 4rem;
         left: 1.5rem;
     }
 
-    .sandbox .live-block .sandbox-crop-bracket.br,
-    .sandbox .cosplay-block .sandbox-crop-bracket.br {
+    .miku-page .live-block .corner-bracket.br,
+    .miku-page .cosplay-block .corner-bracket.br {
         bottom: 4rem;
         right: 1.5rem;
     }

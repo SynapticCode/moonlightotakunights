@@ -3,19 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Sandbox — Moonlight Otaku Nights</title>
-    <meta name="description" content="Design sandbox. Not for public use.">
+    <meta name="robots" content="index, follow">
+    <title>Hatsune Miku Unofficial After Party — Moonlight Otaku Nights × Miku Only NYC</title>
+    <meta name="description" content="Thursday May 7, 2026. The unofficial after-party for the show two blocks north. Vocaloid, J-Core, anikura. Three rooms. Five hours. QXT's Newark. 21+.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hatsune Miku Unofficial After Party — Moonlight Otaku Nights × Miku Only NYC">
+    <meta property="og:description" content="Thursday May 7, 2026. The unofficial after-party for the show two blocks north. Vocaloid, J-Core, anikura. Three rooms. Five hours. QXT's Newark. 21+.">
+    <meta property="og:image" content="/assets/images/flyers/1080%20x%201350%20hatsune%20miku%20unofficial%20after%20party%204_11_2026.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://moonlightotakunights.com/hatsune-miku-after-party/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Serif+JP:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="/components/theme.css">
-    <link rel="stylesheet" href="/sandbox/sandbox.css">
+    <link rel="stylesheet" href="/hatsune-miku-after-party/page.css">
+
     <style>
         html { scroll-behavior: smooth; }
         body { margin: 0; background: #0a0a0f; }
     </style>
+
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8W7W5FKYV9"></script>
     <script>
@@ -25,6 +43,7 @@
       gtag('config', 'G-8W7W5FKYV9');
     </script>
     <!-- End GA4 -->
+
     <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -37,25 +56,28 @@
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '1979608179640857');
       fbq('track', 'PageView');
+      fbq('track', 'ViewContent', {
+        content_name: 'Hatsune Miku Unofficial After Party',
+        content_type: 'event',
+        content_ids: ['hatsune-miku-after-party-2026']
+      });
     </script>
     <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1979608179640857&ev=PageView&noscript=1"/>
-    </noscript>
+      src="https://www.facebook.com/tr?id=1979608179640857&ev=PageView&noscript=1"/></noscript>
     <!-- End Meta Pixel Code -->
 </head>
 <body>
-<div class="sandbox moonlight-theme">
+<div class="moonlight-theme miku-page">
     <div class="bg-stripes" aria-hidden="true"></div>
     <div class="bg-dots" aria-hidden="true"></div>
     <div class="scanlines" aria-hidden="true"></div>
     <div class="noise" aria-hidden="true"></div>
-    <div class="sandbox-banner">
-        <span>SANDBOX — DESIGN TEST — NOT LIVE</span>
-    </div>
 
     <nav></nav>
 
     <main>
+
+        <!-- Hero -->
         <section class="hero">
             <div class="hero-burst-overlay" aria-hidden="true"></div>
             <span class="katakana-fragment" data-original="ノイズ" aria-hidden="true">ノイズ</span>
@@ -69,7 +91,7 @@
                 <p class="hero-subtitle">UNOFFICIAL AFTER PARTY</p>
                 <p class="hero-tagline">プルーデンシャル・センターから徒歩5分。Two blocks south. The night doesn't end at Prudential Center.</p>
                 <div class="hero-cta-row">
-                    <a href="#" class="btn btn-accent-outline">GET TICKETS →</a>
+                    <a href="#waitlist" class="btn btn-accent-outline">JOIN THE WAITLIST →</a>
                     <a href="#lineup" class="btn btn-ghost">VIEW LINEUP</a>
                 </div>
             </div>
@@ -85,6 +107,7 @@
             </div>
         </section>
 
+        <!-- Details Strip -->
         <section class="details-strip">
             <span class="katakana-fragment" data-original="データ" aria-hidden="true">データ</span>
             <span class="data-fragment" aria-hidden="true">01.0240.7</span>
@@ -109,13 +132,14 @@
             <div class="details-barcode barcode-strip" aria-hidden="true"></div>
         </section>
 
+        <!-- Lineup -->
         <section class="lineup" id="lineup">
             <span class="katakana-fragment" data-original="信号" aria-hidden="true">信号</span>
             <span class="data-fragment" aria-hidden="true">SIG/CYAN.A</span>
-            <span class="sandbox-crop-bracket tl" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket tr" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket bl" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket br" aria-hidden="true"></span>
+            <span class="corner-bracket tl" aria-hidden="true"></span>
+            <span class="corner-bracket tr" aria-hidden="true"></span>
+            <span class="corner-bracket bl" aria-hidden="true"></span>
+            <span class="corner-bracket br" aria-hidden="true"></span>
             <header class="section-head">
                 <span class="jp-label">ラインナップ</span>
                 <h2 class="section-title"><span class="chromatic-title" data-text="LINEUP">LINEUP</span></h2>
@@ -123,24 +147,43 @@
             </header>
             <div class="dj-grid">
                 <article class="dj-card">
-                    <p class="dj-name" data-text="CONTRO1FREAK">CONTRO1FREAK</p>
-                    <p class="dj-sub">Shonen Pump</p>
+                    <div class="dj-photo-frame"></div>
+                    <div class="dj-card-text">
+                        <span class="dj-name" data-text="CONTRO1FREAK">CONTRO1FREAK</span>
+                        <span class="dj-affiliation">Shonen Pump</span>
+                    </div>
                 </article>
                 <article class="dj-card">
-                    <p class="dj-name" data-text="DJ APPARE + 1 MORE">DJ APPARE + 1 MORE</p>
-                    <p class="dj-sub">AniParty</p>
+                    <div class="dj-photo-frame">
+                        <img src="/assets/images/dj_images/dj_appare.avif"
+                             alt="DJ Appare"
+                             onerror="this.style.display='none'">
+                    </div>
+                    <div class="dj-card-text">
+                        <span class="dj-name" data-text="DJ APPARE + 1 MORE">DJ APPARE + 1 MORE</span>
+                        <span class="dj-affiliation">AniParty</span>
+                    </div>
                 </article>
                 <article class="dj-card">
-                    <p class="dj-name" data-text="TUXEDO MASK">TUXEDO MASK</p>
-                    <p class="dj-sub">Soju Guild</p>
+                    <div class="dj-photo-frame"></div>
+                    <div class="dj-card-text">
+                        <span class="dj-name" data-text="TUXEDO MASK">TUXEDO MASK</span>
+                        <span class="dj-affiliation">Soju Guild</span>
+                    </div>
                 </article>
                 <article class="dj-card">
-                    <p class="dj-name" data-text="PLYNK">PLYNK</p>
-                    <p class="dj-sub">Soju Guild</p>
+                    <div class="dj-photo-frame"></div>
+                    <div class="dj-card-text">
+                        <span class="dj-name" data-text="PLYNK">PLYNK</span>
+                        <span class="dj-affiliation">Soju Guild</span>
+                    </div>
                 </article>
                 <article class="dj-card">
-                    <p class="dj-name" data-text="DARKPRIME">DARKPRIME</p>
-                    <p class="dj-sub">Soju Guild</p>
+                    <div class="dj-photo-frame"></div>
+                    <div class="dj-card-text">
+                        <span class="dj-name" data-text="DARKPRIME">DARKPRIME</span>
+                        <span class="dj-affiliation">Soju Guild</span>
+                    </div>
                 </article>
             </div>
         </section>
@@ -149,19 +192,20 @@
             <div class="diagonal-break-stripe"></div>
         </div>
 
+        <!-- Live Block -->
         <section class="live-block">
             <span class="katakana-fragment" data-original="接続" aria-hidden="true">接続</span>
             <span class="data-fragment" aria-hidden="true">TX_240507</span>
-            <span class="sandbox-crop-bracket tl" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket tr" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket bl" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket br" aria-hidden="true"></span>
+            <span class="corner-bracket tl" aria-hidden="true"></span>
+            <span class="corner-bracket tr" aria-hidden="true"></span>
+            <span class="corner-bracket bl" aria-hidden="true"></span>
+            <span class="corner-bracket br" aria-hidden="true"></span>
             <div class="live-block-inner">
                 <p class="live-block-jp-label">ライブ</p>
                 <h2 class="live-block-title">
                     <span class="chromatic-title" data-text="LIVE BLOCK">LIVE BLOCK</span>
                 </h2>
-                <div class="sandbox-title-barcode barcode-strip" aria-hidden="true"></div>
+                <div class="title-barcode barcode-strip" aria-hidden="true"></div>
                 <p class="live-block-sub">The dancefloor stops. The stage takes over.</p>
                 <div class="live-block-body">
                     <p>Miku Only NYC takes the main stage for a live block — cosplay performances, costume contest, and a moment that breaks the night in half. The DJs pause. The crowd turns to face the stage. This is the part of the night you'll be telling people about tomorrow.</p>
@@ -172,19 +216,20 @@
             </div>
         </section>
 
+        <!-- Cosplay Block -->
         <section class="cosplay-block">
             <span class="katakana-fragment" data-original="周波数" aria-hidden="true">周波数</span>
             <span class="data-fragment" aria-hidden="true">BROADCAST.OK</span>
-            <span class="sandbox-crop-bracket tl" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket tr" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket bl" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket br" aria-hidden="true"></span>
+            <span class="corner-bracket tl" aria-hidden="true"></span>
+            <span class="corner-bracket tr" aria-hidden="true"></span>
+            <span class="corner-bracket bl" aria-hidden="true"></span>
+            <span class="corner-bracket br" aria-hidden="true"></span>
             <div class="cosplay-block-inner">
                 <p class="cosplay-jp-label">コスプレ</p>
                 <h2 class="cosplay-title">
                     <span class="chromatic-title" data-text="COSPLAY NIGHT">COSPLAY NIGHT</span>
                 </h2>
-                <div class="sandbox-title-barcode barcode-strip" aria-hidden="true"></div>
+                <div class="title-barcode barcode-strip" aria-hidden="true"></div>
                 <p class="cosplay-sub">Miku Only NYC's cosplayer roster takes over the floor.</p>
                 <div class="cosplay-body">
                     <p>This isn't a DJ night with a few cosplayers in the crowd. Miku Only NYC is bringing their full cosplayer roster — Vocaloid, anime, and original character cosplay all night. Expect full gear, photo moments, and the energy of a convention floor compressed into a nightclub.</p>
@@ -208,12 +253,13 @@
             <p class="slash-sub">次は何だ — what's next</p>
         </div>
 
+        <!-- Experiences -->
         <section class="experiences">
             <span class="katakana-fragment" data-original="光速" aria-hidden="true">光速</span>
-            <span class="sandbox-crop-bracket tl" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket tr" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket bl" aria-hidden="true"></span>
-            <span class="sandbox-crop-bracket br" aria-hidden="true"></span>
+            <span class="corner-bracket tl" aria-hidden="true"></span>
+            <span class="corner-bracket tr" aria-hidden="true"></span>
+            <span class="corner-bracket bl" aria-hidden="true"></span>
+            <span class="corner-bracket br" aria-hidden="true"></span>
             <header class="section-head">
                 <span class="jp-label">体験</span>
                 <h2 class="section-title"><span class="chromatic-title" data-text="EXPERIENCES">EXPERIENCES</span></h2>
@@ -250,6 +296,7 @@
             </div>
         </section>
 
+        <!-- Tickets CTA -->
         <section class="tickets-cta">
             <span class="katakana-fragment" data-original="暗号" aria-hidden="true">暗号</span>
             <div class="big-date">
@@ -274,24 +321,93 @@
                     <span class="tier-price">$20</span>
                     <span class="tier-desc">Late entry after 11:30 PM</span>
                 </div>
-                <a href="#" class="btn btn-accent-outline">GET TICKETS →</a>
+                <a href="#waitlist" class="btn btn-accent-outline">JOIN THE WAITLIST →</a>
+                <p class="ticket-waitlist-note">Tickets drop soon. Waitlist members get first access.</p>
                 <p class="ticket-disclaimer">21+ with valid ID. Re-entry allowed.</p>
             </div>
         </section>
+
+        <!-- Waitlist Signup -->
+        <section id="waitlist" class="waitlist-section">
+            <span class="jp-label">ウェイトリスト</span>
+            <h2 class="waitlist-title">
+                <span class="chromatic-title" data-text="JOIN THE WAITLIST">JOIN THE WAITLIST</span>
+            </h2>
+            <p class="waitlist-sub">Tickets are coming. Members get the link before anyone else.</p>
+            <form class="waitlist-form" method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==">
+                <input type="email" name="EMAIL" placeholder="your@email.com" required>
+                <button type="submit" class="btn btn-accent-outline">JOIN THE WAITLIST</button>
+                <input type="text" name="email_address_check" value="" style="display:none;">
+                <input type="hidden" name="locale" value="en">
+            </form>
+        </section>
+
+        <!-- Venue -->
+        <section class="venue">
+            <div class="venue-info">
+                <span class="jp-label">会場</span>
+                <h2 class="venue-title">
+                    <span class="chromatic-title" data-text="VENUE">VENUE</span>
+                </h2>
+                <p class="venue-name">QXT'S NIGHTCLUB</p>
+                <p class="venue-address">248 Mulberry St, Newark, NJ 07102</p>
+                <a href="https://maps.app.goo.gl/jdhzZGGy8uwT8bpi8" target="_blank" class="venue-directions">Get directions →</a>
+                <p class="venue-note">Two blocks south of Prudential Center. Five-minute walk.</p>
+            </div>
+            <div class="venue-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6046.877430397524!2d-74.17403292366434!3d40.73037103649033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25377d06fde77%3A0x9ea9ecbe7707bf5e!2sQXT&#39;s%20Night%20Club!5e0!3m2!1sen!2sus!4v1776001161690!5m2!1sen!2sus" width="100%" height="360" style="border:1px solid var(--mt-border); border-radius:4px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq">
+            <header class="section-head">
+                <span class="jp-label">よくある質問</span>
+                <h2 class="section-title"><span class="chromatic-title" data-text="FAQ">FAQ</span></h2>
+            </header>
+            <div class="faq-items">
+                <details>
+                    <summary>When and where is this?</summary>
+                    <p>Thursday, May 7, 2026. 10 PM to 3 AM. QXT's Nightclub, 248 Mulberry St, Newark NJ. Two blocks south of Prudential Center.</p>
+                </details>
+                <details>
+                    <summary>How do I get the $10 entry?</summary>
+                    <p>Show one of three things at the door — a Hatsune Miku EXPO 2026 ticket stub, full cosplay, or a college ID. Any one of the three gets you in for $10 all night. Otherwise it's $15 before 11:30 PM and $20 after.</p>
+                </details>
+                <details>
+                    <summary>Is this an official Hatsune Miku event?</summary>
+                    <p>No. This is an unofficial fan after-party hosted independently by Moonlight Otaku Nights and Miku Only NYC. We are not affiliated with Crypton Future Media, Yamaha Corporation, or any official Hatsune Miku entity.</p>
+                </details>
+                <details>
+                    <summary>What's the dress code?</summary>
+                    <p>Cosplay is encouraged and gets you the $10 door rate. Vocaloid, anime, original characters — all welcome. If you're not in cosplay, dress for a nightclub.</p>
+                </details>
+                <details>
+                    <summary>Can I leave and come back?</summary>
+                    <p>Yes. Re-entry is allowed all night. Tell security on your way out so they know to let you back in.</p>
+                </details>
+                <details>
+                    <summary>When do tickets go on sale?</summary>
+                    <p>Soon. Join the waitlist above and you'll get the link before they go public.</p>
+                </details>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="sandbox-footer">
+    <footer class="miku-footer">
         <div class="footer-barcode barcode-strip" aria-hidden="true"></div>
         <p class="footer-credit">MOONLIGHT OTAKU NIGHTS × MIKU ONLY NYC</p>
         <p class="footer-credit-jp">ムーンライト・オタク・ナイツ と ミク・オンリー・NYC</p>
         <div class="footer-rule" aria-hidden="true"></div>
-        <p class="footer-copy">© 2026 Moonlight Otaku Nights — Sandbox Build</p>
+        <p class="footer-copy">© 2026 Moonlight Otaku Nights. All rights reserved.</p>
     </footer>
 </div>
+
 <script>
 (function () {
     var pool = ['ノイズ', 'データ', '信号', '接続', '周波数', '光速', '暗号', '位相', '衛星', '放送'];
-    var nodes = document.querySelectorAll('.sandbox .katakana-fragment');
+    var nodes = document.querySelectorAll('.moonlight-theme .katakana-fragment');
     if (!nodes.length) return;
     function pick(arr) {
         return arr[Math.floor(Math.random() * arr.length)];

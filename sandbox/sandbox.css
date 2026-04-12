@@ -433,6 +433,87 @@
     margin-top: 0.5rem;
 }
 
+/* Cosplay hype block */
+.sandbox .cosplay-block {
+    width: 100%;
+    background: var(--sb-bg);
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.sandbox .cosplay-block-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sandbox .cosplay-jp-label {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--sb-cyan-primary);
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.sandbox .cosplay-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1;
+    margin: 0;
+    margin-top: 0.5rem;
+}
+
+.sandbox .cosplay-sub {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    margin: 1rem auto 0;
+    line-height: 1.5;
+}
+
+.sandbox .cosplay-body {
+    max-width: 680px;
+    margin: 2.5rem auto 0;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+}
+
+.sandbox .cosplay-body p {
+    margin: 0;
+}
+
+.sandbox .cosplay-body p + p {
+    margin-top: 1.25rem;
+}
+
+.sandbox .cosplay-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+}
+
+.sandbox .cosplay-badge {
+    padding: 0.5rem 1.2rem;
+    border: 1px solid var(--sb-border-strong);
+    border-radius: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sb-cyan-primary);
+    background: transparent;
+}
+
 /* Slash divider */
 .sandbox .slash-divider {
     width: 100%;
@@ -728,6 +809,10 @@
     .sandbox .experiences,
     .sandbox .tickets-cta {
         padding: 3.75rem 1.5rem;
+    }
+
+    .sandbox .cosplay-block {
+        padding: 4rem 1.5rem;
     }
 
     .sandbox .slash-divider {

@@ -1,4 +1,15 @@
 (function() {
+    function ensureNavStylesheet() {
+        if (document.getElementById('moonlight-nav-css')) return;
+        var link = document.createElement('link');
+        link.id = 'moonlight-nav-css';
+        link.rel = 'stylesheet';
+        link.href = '/components/nav.css';
+        document.head.appendChild(link);
+    }
+
+    ensureNavStylesheet();
+
     fetch('/components/nav.html')
         .then(function(response) {
             if (!response.ok) throw new Error('Nav fetch failed: ' + response.status);

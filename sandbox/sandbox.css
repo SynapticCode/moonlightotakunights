@@ -381,6 +381,12 @@
     gap: 1.5rem;
 }
 
+.sandbox .dj-card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: calc((100% - 1.5rem) / 2);
+    margin-inline: auto;
+}
+
 .sandbox .dj-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -411,26 +417,12 @@
     transform: translateY(-4px) rotate(0.5deg);
 }
 
-.sandbox .dj-time {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
-    color: var(--sb-cyan-primary);
-    letter-spacing: 2px;
-}
-
-.sandbox .dj-room {
-    font-size: 0.65rem;
-    color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    margin-top: 0.35rem;
-}
-
 .sandbox .dj-name {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
     color: #fff;
-    margin-top: 0.75rem;
+    margin-top: 0;
 }
 
 .sandbox .dj-sub {
@@ -748,6 +740,12 @@
 
     .sandbox .dj-grid {
         grid-template-columns: 1fr;
+    }
+
+    .sandbox .dj-card:nth-child(5) {
+        grid-column: auto;
+        max-width: none;
+        margin-inline: unset;
     }
 
     .sandbox .exp-grid {

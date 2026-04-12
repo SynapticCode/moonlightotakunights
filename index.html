@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moonlight Otaku Nights | NJ's Premier Anime Cosplay Nightclub</title>
-    <meta name="description" content="Moonlight Otaku Nights - New Jersey's first dedicated anime cosplay nightclub experience. Recurring themed events featuring J-Core, Anisong, Happy Hardcore, cosplay contests, and real anikura culture at QXT's Newark.">
+    <title>Moonlight Otaku Nights — NJ's First Anikura at QXT's Newark</title>
+    <meta name="description" content="Moonlight Otaku Nights — NJ's first anikura. Anisong, J-Core, Vocaloid, hardstyle, hardcore, full cosplay. Thursday nights at QXT's Newark.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -18,1285 +18,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Serif+JP:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Design System + Page Styles -->
+    <link rel="stylesheet" href="/components/theme.css">
+    <link rel="stylesheet" href="/index.css">
     <style>
-        /* ═══════════════════════════════════════════════════════════════════════════
-           CSS CUSTOM PROPERTIES - Edit these to change the entire color scheme
-           ═══════════════════════════════════════════════════════════════════════════ */
-        :root {
-            /* Primary neon colors */
-            --neon-green: #00ff88;
-            --neon-blue: #00f0ff;
-            --neon-purple: #bf00ff;
-            --neon-pink: #ff00aa;
-            --neon-orange: #ff6b00;
-            
-            /* Background colors */
-            --bg-dark: #0a0a0f;
-            --bg-card: rgba(15, 15, 25, 0.8);
-            --bg-glass: rgba(255, 255, 255, 0.03);
-            
-            /* Text colors */
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-muted: rgba(255, 255, 255, 0.5);
-            
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
-            --gradient-secondary: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
-            --gradient-hero: linear-gradient(180deg, transparent 0%, var(--bg-dark) 100%);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           RESET & BASE STYLES
-           ═══════════════════════════════════════════════════════════════════════════ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Zen Kaku Gothic New', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           ANIMATED BACKGROUND
-           Comment: This creates the cyberpunk particle/grid effect
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(0, 240, 255, 0.05) 0%, transparent 40%);
-            animation: bgPulse 20s ease-in-out infinite;
-        }
-
-        @keyframes bgPulse {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-5%, -5%) scale(1.1); }
-        }
-
-        /* Noise overlay for texture */
-        .noise-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            z-index: -1;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
-        /* Floating particles effect */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--neon-green);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 15s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           HERO SECTION
-           Comment: Replace video src with your AI-generated video from Kling AI
-           Prompt for Kling: "Cinematic footage of anime cosplayers dancing in dark 
-           nightclub with neon green and purple lasers, fog machine, DJ booth with 
-           anime visuals on screens, euphoric crowd energy, professional event lighting"
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 120px 2rem 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .hero-video-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(180deg, rgba(10, 10, 15, 0.3) 0%, rgba(10, 10, 15, 0.8) 70%, var(--bg-dark) 100%),
-                radial-gradient(circle at center, transparent 0%, var(--bg-dark) 80%);
-            z-index: 1;
-        }
-
-        #hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Placeholder gradient when video isn't loaded */
-        .video-placeholder {
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(45deg, #0a0a0f 0%, #1a0a2e 50%, #0a1a1f 100%),
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ff88' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            animation: placeholderPulse 8s ease-in-out infinite;
-        }
-
-        @keyframes placeholderPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-        }
-
-        /* Japanese branding text */
-        .hero-jp {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            color: var(--neon-green);
-            letter-spacing: 8px;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
-        }
-
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: 4px;
-        }
-
-        .hero h1 .gradient-text {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-tagline {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Descriptor tags */
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-tag {
-            background: var(--bg-glass);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            color: var(--neon-green);
-            letter-spacing: 1px;
-        }
-
-        /* CTA Buttons */
-        .hero-cta {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: var(--bg-dark);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.6);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--neon-purple);
-            color: var(--neon-purple);
-            box-shadow: 0 0 30px rgba(191, 0, 255, 0.3);
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           WHAT IS ANIKURA SECTION
-           Comment: This explains the concept to newcomers
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .section {
-            padding: 100px 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            color: var(--neon-green);
-            letter-spacing: 4px;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* Vibe section two-column layout */
-        .vibe-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .vibe-copy p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-        }
-
-        .vibe-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 900px) {
-            .vibe-layout {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        }
-
-        /* Anikura explanation cards */
-        .anikura-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .anikura-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .anikura-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 136, 0.3);
-        }
-
-        .anikura-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-primary);
-        }
-
-        .anikura-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .anikura-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .anikura-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           FEATURED EVENT SECTION
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .featured-event {
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.02) 50%, transparent 100%);
-            padding: 100px 2rem;
-        }
-
-        .event-showcase {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .event-flyer {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .event-flyer img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Flyer placeholder */
-        .flyer-placeholder {
-            aspect-ratio: 4/5;
-            background: linear-gradient(135deg, #0a1f0a 0%, #1a0a2e 50%, #0a1a1f 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            border: 2px dashed rgba(0, 255, 136, 0.3);
-        }
-
-        .flyer-placeholder-text {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        .event-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--neon-green);
-            color: var(--bg-dark);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .event-details {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .event-label {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            color: var(--neon-purple);
-            letter-spacing: 3px;
-        }
-
-        .event-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .event-title .jp {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 0.5em;
-            color: var(--text-muted);
-            display: block;
-            margin-top: 0.5rem;
-        }
-
-        .event-description {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .event-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .meta-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--bg-glass);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .meta-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .meta-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        .meta-value {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .event-cta {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .featured-event .event-cta {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0;
-        }
-
-        .featured-event .event-cta-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            align-items: center;
-        }
-
-        .featured-event .btn-event-ghost {
-            background: transparent;
-            color: var(--neon-green);
-            border: 1px solid var(--neon-green);
-            box-shadow: none;
-            transition: background 0.3s ease;
-        }
-
-        .featured-event .btn-event-ghost:hover {
-            background: rgba(0, 255, 136, 0.12);
-        }
-
-        .featured-event .event-next-details-link {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-top: 12px;
-            text-align: center;
-            width: 100%;
-            display: block;
-        }
-
-        .featured-event .event-next-details-link:hover {
-            text-decoration: underline;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           UPCOMING EVENTS TIMELINE
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .events-timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .timeline-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-card:hover {
-            border-color: rgba(191, 0, 255, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .timeline-date {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            color: var(--neon-purple);
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-theme {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .timeline-tag {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           THE EXPERIENCE SECTION
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .experience-card {
-            background: var(--bg-glass);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .experience-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(0, 240, 255, 0.3);
-        }
-
-        .experience-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .experience-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .experience-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           THE MUSIC SECTION
-           Comment: This explains what kind of music to expect
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .music-section {
-            background: linear-gradient(180deg, transparent 0%, rgba(191, 0, 255, 0.02) 50%, transparent 100%);
-        }
-
-        .music-genres {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .genre-tag {
-            background: var(--bg-card);
-            border: 1px solid rgba(191, 0, 255, 0.3);
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            color: var(--neon-purple);
-            transition: all 0.3s ease;
-        }
-
-        .genre-tag:hover {
-            background: rgba(191, 0, 255, 0.1);
-            transform: scale(1.05);
-        }
-
-        .music-description {
-            max-width: 800px;
-            margin: 3rem auto 0;
-            text-align: center;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           JOIN THE MOONLIGHT CREW / EMAIL CAPTURE
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .join-section {
-            background: var(--bg-card);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .join-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .email-form {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .email-form input[type="email"] {
-            flex: 1;
-            min-width: 280px;
-            padding: 1rem 1.5rem;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
-
-        .email-form input[type="email"]:focus {
-            outline: none;
-            border-color: var(--neon-green);
-        }
-
-        .email-form input[type="email"]::placeholder {
-            color: var(--text-muted);
-        }
-
-        .email-incentive {
-            color: var(--neon-green);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           WORK WITH US / CALL TO ACTION CARDS
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .collab-section {
-            padding: 100px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .collab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .collab-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .collab-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon-green);
-        }
-
-        .collab-card.partner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-        }
-
-        .collab-card.talent::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-secondary);
-        }
-
-        .collab-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .collab-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .collab-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .collab-perks {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .collab-perks li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .collab-perks li::before {
-            content: '✓';
-            color: var(--neon-green);
-            font-weight: bold;
-        }
-
-        .collab-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--neon-green);
-            text-decoration: none;
-            font-weight: 600;
-            transition: gap 0.3s ease;
-        }
-
-        .collab-link:hover {
-            gap: 1rem;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           FOOTER
-           ═══════════════════════════════════════════════════════════════════════════ */
-        footer {
-            background: rgba(5, 5, 10, 0.9);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 60px 2rem 30px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .footer-tagline {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        .footer-section h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--neon-green);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background: var(--bg-glass);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: var(--neon-green);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .footer-legal {
-            max-width: 1200px;
-            margin: 1.5rem auto 0;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-legal a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-legal a:hover {
-            color: var(--text-primary);
-        }
-
-        .footer-legal .separator {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           RESPONSIVE DESIGN
-           ═══════════════════════════════════════════════════════════════════════════ */
-        @media (max-width: 900px) {
-            .event-showcase {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .event-meta {
-                justify-content: center;
-            }
-
-            .event-cta {
-                justify-content: center;
-            }
-
-            .featured-event .event-cta {
-                align-items: center;
-            }
-
-            .featured-event .event-cta-buttons {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .section {
-                padding: 60px 1rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-
-            .featured-event .event-cta-buttons {
-                flex-direction: column;
-                width: 100%;
-                align-items: stretch;
-            }
-
-            .featured-event .event-cta-buttons .btn {
-                max-width: none;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        /* ═══════════════════════════════════════════════════════════════════════════
-           SUCCESS MESSAGE MODAL - Achievement Unlocked Style
-           ═══════════════════════════════════════════════════════════════════════════ */
-        .success-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .success-modal.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .success-content {
-            background: var(--bg-card);
-            border: 2px solid var(--neon-green);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 0 60px rgba(0, 255, 136, 0.6);
-            animation: slideUp 0.5s ease, glow 2s ease-in-out infinite;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 60px rgba(0, 255, 136, 0.6); }
-            50% { box-shadow: 0 0 80px rgba(0, 255, 136, 0.8), 0 0 120px rgba(0, 240, 255, 0.4); }
-        }
-
-        .success-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: bounce 1s ease infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .success-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            color: var(--neon-green);
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
-        }
-
-        .success-subtitle {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--neon-blue);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
-        }
-
-        .success-message {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .redirect-message {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        .btn-loading {
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        @media (max-width: 600px) {
-            .success-content {
-                margin: 1rem;
-                padding: 2rem 1.5rem;
-            }
-            .success-title {
-                font-size: 1.4rem;
-            }
-            .success-subtitle {
-                font-size: 1rem;
-            }
-        }
-
-        /* Data Collection Notice Banner */
-        .data-notice {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(20, 20, 25, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 1rem 1.5rem;
-            z-index: 9999;
-            transform: translateY(0);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-        .data-notice.hidden {
-            transform: translateY(100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .data-notice-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .data-notice p {
-            margin: 0;
-            color: var(--text-muted, rgba(255, 255, 255, 0.6));
-            font-size: 0.9rem;
-            line-height: 1.5;
-            flex: 1;
-            min-width: 200px;
-        }
-        .data-notice a {
-            color: var(--text-primary, rgba(255, 255, 255, 0.9));
-            text-decoration: underline;
-            text-underline-offset: 2px;
-            transition: color 0.3s ease;
-        }
-        .data-notice a:hover {
-            color: var(--neon-green, #00FF88);
-        }
-        .data-notice-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-primary, rgba(255, 255, 255, 0.9));
-            padding: 0.5rem 1.25rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        .data-notice-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        .data-notice-btn:focus {
-            outline: 2px solid var(--neon-green, #00FF88);
-            outline-offset: 2px;
-        }
-        @media (max-width: 600px) {
-            .data-notice { padding: 1rem; }
-            .data-notice-content { flex-direction: column; text-align: center; gap: 1rem; }
-            .data-notice p { font-size: 0.85rem; }
-            .data-notice-btn { width: 100%; padding: 0.75rem 1.25rem; }
-        }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; background: #0a0a0f; }
     </style>
-    
+
     <!-- Canvas Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <!-- Google Analytics 4 -->
@@ -1327,297 +58,188 @@
     <!-- End Meta Pixel Code -->
 </head>
 <body>
-    <!-- Background Animation -->
-    <div class="bg-animation"></div>
-    <div class="noise-overlay"></div>
-    
-    <!-- Floating particles -->
-    <div class="particles"></div>
+<div class="moonlight-theme home-page">
+    <div class="bg-stripes" aria-hidden="true"></div>
+    <div class="bg-dots" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
 
-    <!-- Navigation -->
     <nav></nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-video-container">
-            <!-- Replace with your video: <video autoplay muted loop playsinline id="hero-video"><source src="assets/videos/hero-loop.mp4" type="video/mp4"></video> -->
-            <div class="video-placeholder"></div>
-        </div>
-        
-        <div class="hero-content">
-            <p class="hero-jp">月光オタクナイト</p>
-            <h1>
-                <span class="gradient-text">MOONLIGHT</span><br>
-                OTAKU NIGHTS
-            </h1>
-            <p class="hero-tagline">
-                NJ's first anikura — a recurring anime nightclub where the DJs play anisong, J-Core, and happy hardcore, the screens run anime visuals synced to every track, and the cosplay hits different at 1AM. Real nightclub. Real community. At QXT's Newark.
-            </p>
-            
-            <div class="hero-tags">
-                <span class="hero-tag">ANISONG</span>
-                <span class="hero-tag">J-CORE</span>
-                <span class="hero-tag">COSPLAY</span>
-                <span class="hero-tag">21+</span>
-                <span class="hero-tag">QXT'S NEWARK</span>
-            </div>
-            
-            <div class="hero-cta">
-                <a href="/elven-grove/" class="btn btn-primary">FIRST EVENT — MAR 26</a>
-                <a href="#events" class="btn btn-secondary">SEE WHAT'S COMING</a>
-            </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <span>SCROLL</span>
-            <span>↓</span>
-        </div>
-    </section>
+    <main>
+        <!-- ════ Hero ════ -->
+        <section class="hero">
+            <span class="katakana-fragment" data-original="ノイズ" aria-hidden="true">ノイズ</span>
+            <span class="data-fragment" aria-hidden="true">REF.MN//01</span>
 
-    <!-- The Vibe Section -->
-    <section class="section" id="vibe">
-        <div class="section-header">
-            <span class="section-label">何これ</span>
-            <h2 class="section-title">A dedicated anikura experience.</h2>
-        </div>
-
-        <div class="vibe-layout">
-            <div class="vibe-copy">
-                <p>
-                    You know the feeling — your favorite opening drops and the whole room erupts because they all know it. Someone recognizes your cosplay from that one season nobody watched. You're dancing next to a Chainsaw Man cosplayer and across from someone in full Frieren gear and it just works.
-                </p>
-                <p>
-                    This is <strong>anikura</strong> — anime club culture. Real nightclub energy built around the music, the characters, and the worlds we actually care about. It's a whole scene in Tokyo and it's spreading worldwide. Now it's here.
-                </p>
-                <p>
-                    Recurring themed nights. Curated DJ sets where every track has a story. Cosplay welcome, never required. Professional sound, real security, anime on every screen. This is home.
-                </p>
-            </div>
-
-            <div class="vibe-cards">
-                <div class="anikura-card">
-                    <div class="anikura-icon">🎵</div>
-                    <h3>THE SOUND</h3>
-                    <p>
-                        Anisong remixes, J-Core, happy hardcore, future bass—all rooted in the culture. Every track hits different when you know the source.
-                    </p>
+            <div class="hero-text">
+                <p class="hero-est">EST. 2026 — NEWARK, NJ</p>
+                <p class="hero-jp">月光オタクナイト</p>
+                <h1 class="chromatic-title" data-text="MOONLIGHT OTAKU NIGHTS">MOONLIGHT OTAKU NIGHTS</h1>
+                <p class="hero-subtitle">AN ANIKURA</p>
+                <p class="hero-tagline">An anikura at QXT's Newark. Anisong, J-Core, Vocaloid, hardstyle, hardcore, full cosplay. The night you've been quietly looking for.</p>
+                <div class="hero-cta-row">
+                    <a href="#next-event" class="btn btn-accent-outline">NEXT EVENT →</a>
+                    <a href="#guild" class="btn btn-ghost">JOIN THE GUILD</a>
                 </div>
-                
-                <div class="anikura-card">
-                    <div class="anikura-icon">⚡</div>
+            </div>
+
+            <div class="hero-logo-frame">
+                <div class="logo-glow" aria-hidden="true"></div>
+                <span class="logo-bracket tl" aria-hidden="true"></span>
+                <span class="logo-bracket tr" aria-hidden="true"></span>
+                <span class="logo-bracket bl" aria-hidden="true"></span>
+                <span class="logo-bracket br" aria-hidden="true"></span>
+                <img src="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Otaku Nights">
+            </div>
+        </section>
+
+        <!-- ════ The Vibe ════ -->
+        <section class="vibe-section">
+            <span class="katakana-fragment" data-original="データ" aria-hidden="true">データ</span>
+            <span class="data-fragment" aria-hidden="true">01.0240.7</span>
+
+            <header class="section-head">
+                <span class="jp-label">雰囲気</span>
+                <h2 class="section-title"><span class="chromatic-title" data-text="THE VIBE">THE VIBE</span></h2>
+                <p class="section-sub">Three things make Moonlight different.</p>
+            </header>
+
+            <div class="vibe-grid">
+                <article class="vibe-card">
+                    <span class="corner-bracket tl" aria-hidden="true"></span>
+                    <span class="corner-bracket tr" aria-hidden="true"></span>
+                    <span class="corner-bracket bl" aria-hidden="true"></span>
+                    <span class="corner-bracket br" aria-hidden="true"></span>
+                    <p class="card-jp">音楽 — the music</p>
+                    <h3>THE MUSIC</h3>
+                    <p>Anisong, J-Core, Vocaloid, hardstyle, hardcore, drum and bass. The DJs play what you actually listen to. Anime visuals synced to every track on the big screen.</p>
+                </article>
+
+                <article class="vibe-card">
+                    <span class="corner-bracket tl" aria-hidden="true"></span>
+                    <span class="corner-bracket tr" aria-hidden="true"></span>
+                    <span class="corner-bracket bl" aria-hidden="true"></span>
+                    <span class="corner-bracket br" aria-hidden="true"></span>
+                    <p class="card-jp">雰囲気 — the energy</p>
                     <h3>THE ENERGY</h3>
-                    <p>
-                        Themed nights that go deeper than decoration. Enchanted forests, neon-soaked cityscapes, mecha command centers — each event transforms the space into a world you step into.
-                    </p>
-                </div>
-                
-                <div class="anikura-card">
-                    <div class="anikura-icon">🌙</div>
+                    <p>Themed nights that go deeper than decoration. Each event becomes a world. Cosplay, vendor pop-ups, hidden quests, and a crowd that came to be in it — not to scroll through it.</p>
+                </article>
+
+                <article class="vibe-card">
+                    <span class="corner-bracket tl" aria-hidden="true"></span>
+                    <span class="corner-bracket tr" aria-hidden="true"></span>
+                    <span class="corner-bracket bl" aria-hidden="true"></span>
+                    <span class="corner-bracket br" aria-hidden="true"></span>
+                    <p class="card-jp">仲間 — the crew</p>
                     <h3>THE CREW</h3>
-                    <p>
-                        Convention friends. Anime club people. The ones who actually know what "anikura" means. You'll recognize your people immediately.
-                    </p>
-                </div>
+                    <p>Convention friends. Anime club people. The ones who actually know what anikura means. The night you walk in and recognize your people immediately.</p>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Featured Event -->
-    <section class="featured-event" id="events">
-        <div class="section-header">
-            <span class="section-label">次のイベント</span>
-            <h2 class="section-title">Next Event</h2>
-        </div>
-        <div class="event-showcase">
-            <div class="event-flyer">
-                <a href="/elven-grove/" style="display: block;">
-                    <img src="./assets/images/flyers/4_5 flyer Moonlight Otaku Nights march 26 2026 full lineup.png" alt="Elven Grove Event Flyer" style="cursor: pointer;">
-                </a>
-                <span class="event-badge">EVENT #1</span>
-            </div>
-            
-            <div class="event-details">
-                <h2 class="event-title" style="color: var(--neon-green); text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);">
-                    ELVEN GROVE
-                    <span class="jp">エメラルドムーン</span>
-                </h2>
-                <p class="event-description">
-                    A full-production anime nightclub experience. Live kaigai idol performance by Jalisha Paz at midnight. Four DJs across five hours — from anisong and future bass to AniParty's live VDJ anime visuals synced to every track on the big screen. Cosplay competition with walk-on theme songs. The Oracle of the Grove — live mystical readings all night. Anime artist pop-up with original prints. Hidden side quests with collectible rewards. Isekai fantasy atmosphere, enchanted forest decor, and a lineup built for people who actually know the music.
-                </p>
-                
-                <div class="event-meta">
-                    <div class="meta-item">
-                        <div class="meta-icon">📅</div>
-                        <div class="meta-text">
-                            <span class="meta-label">DATE</span>
-                            <span class="meta-value">Thursday, March 26</span>
-                        </div>
-                    </div>
-                    <div class="meta-item">
-                        <div class="meta-icon">🕙</div>
-                        <div class="meta-text">
-                            <span class="meta-label">TIME</span>
-                            <span class="meta-value">10 PM – 3 AM</span>
-                        </div>
-                    </div>
-                    <div class="meta-item">
-                        <div class="meta-icon">📍</div>
-                        <div class="meta-text">
-                            <span class="meta-label">VENUE</span>
-                            <span class="meta-value"><a href="https://maps.app.goo.gl/jdhzZGGy8uwT8bpi8" target="_blank" style="color: inherit; text-decoration: none;">QXT's Newark</a></span>
-                        </div>
-                    </div>
-                    <div class="meta-item">
-                        <div class="meta-icon">🎟️</div>
-                        <div class="meta-text">
-                            <span class="meta-label">STARTS AT</span>
-                            <span class="meta-value">$20</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <p style="color: var(--neon-green); font-size: 0.9rem; margin-top: 1rem; animation: pulse 2s ease-in-out infinite;">
-                    🎟️ PRESALE SOLD OUT — General Admission starts at $20
-                </p>
-                
-                <div class="event-meta" style="display: none;">
+        <!-- ════ Next Event ════ -->
+        <section class="next-event" id="next-event">
+            <span class="katakana-fragment" data-original="信号" aria-hidden="true">信号</span>
+            <span class="data-fragment" aria-hidden="true">BROADCAST.OK</span>
+
+            <header class="section-head">
+                <span class="jp-label">次のイベント</span>
+                <h2 class="section-title"><span class="chromatic-title" data-text="NEXT EVENT">NEXT EVENT</span></h2>
+                <p class="section-sub">What's coming up at Moonlight.</p>
+            </header>
+
+            <div class="next-event-card">
+                <span class="corner-bracket tl" aria-hidden="true"></span>
+                <span class="corner-bracket tr" aria-hidden="true"></span>
+                <span class="corner-bracket bl" aria-hidden="true"></span>
+                <span class="corner-bracket br" aria-hidden="true"></span>
+
+                <div class="next-event-flyer">
+                    <div class="flyer-glow" aria-hidden="true"></div>
+                    <img src="/assets/images/flyers/1080%20x%201350%20hatsune%20miku%20unofficial%20after%20party%204_11_2026.png" alt="Hatsune Miku Unofficial After Party flyer">
                 </div>
 
-                <div class="hero-tags" style="justify-content: flex-start; margin-bottom: 1.5rem;">
-                    <span class="hero-tag">ANISONG</span>
-                    <span class="hero-tag">J-CORE</span>
-                    <span class="hero-tag">HAPPY HARDCORE</span>
-                    <span class="hero-tag">FUTURE BASS</span>
-                    <span class="hero-tag">COSPLAY CONTEST</span>
-                </div>
-                
-                <div class="event-cta">
-                    <div class="event-cta-buttons">
-                        <a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=homepage_cta&utm_campaign=elven_grove" class="btn btn-primary" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">GET TICKETS</a>
-                        <a href="/cosplay-signup/" class="btn btn-event-ghost">COSPLAY SIGN-UP</a>
+                <div class="next-event-details">
+                    <p class="event-date-label">MAY 7, 2026 · THURSDAY</p>
+                    <p class="event-jp">初音ミク 非公式アフターパーティー</p>
+                    <h3 class="event-title">HATSUNE MIKU</h3>
+                    <p class="event-sub">UNOFFICIAL AFTER PARTY</p>
+                    <p class="event-copresenter">MOONLIGHT OTAKU NIGHTS × MIKU ONLY NYC</p>
+                    <p class="event-desc">The show two blocks north ends around 10:30. The night doesn't have to. Vocaloid, J-Core, anikura, future bass, and the cosplay night Newark hasn't seen yet. Three rooms. Five hours.</p>
+                    <div class="event-cta-row">
+                        <a href="/hatsune-miku-after-party/" class="btn btn-accent-outline">VIEW EVENT →</a>
+                        <a href="#guild" class="btn btn-ghost">JOIN THE WAITLIST</a>
                     </div>
-                    <a href="/elven-grove/" class="event-next-details-link">See full event details →</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Upcoming Events -->
-    <section class="section">
-        <div class="section-header">
-            <span class="section-label">予定</span>
-            <h2 class="section-title">What's Coming</h2>
-            <p class="section-subtitle">
-                Every month, a new world. Same crew, different dimension.
-            </p>
-        </div>
+        <!-- ════ Guild ════ -->
+        <section class="guild-section" id="guild">
+            <span class="katakana-fragment" data-original="月光" aria-hidden="true">月光</span>
 
-        <div class="events-timeline">
-            <div class="timeline-card">
-                <span class="timeline-date">MAY 6, 2026</span>
-                <h3 class="timeline-title">VOCALOID NIGHTS — PRE-PARTY</h3>
-                <p class="timeline-theme">The night before Hatsune Miku EXPO hits Newark. Vocaloid, future funk, and denpa all night. Two stages. The warm-up starts here.</p>
-                <div class="timeline-tags">
-                    <span class="timeline-tag">DETAILS COMING SOON</span>
-                </div>
-            </div>
-            
-            <div class="timeline-card">
-                <span class="timeline-date">MAY 7, 2026</span>
-                <h3 class="timeline-title">VOCALOID NIGHTS — AFTER-PARTY</h3>
-                <p class="timeline-theme">Prudential Center closes. QXT's opens. Two blocks away. The unofficial after-party for everyone who isn't ready to go home.</p>
-                <div class="timeline-tags">
-                    <span class="timeline-tag">DETAILS COMING SOON</span>
-                </div>
-            </div>
-        </div>
-    </section>
+            <header class="section-head">
+                <span class="jp-label">ギルド入会</span>
+                <h2 class="section-title"><span class="chromatic-title" data-text="JOIN THE GUILD">JOIN THE GUILD</span></h2>
+                <p class="section-sub">Members get presale access, exclusive discount codes, and event announcements before anyone else.</p>
+            </header>
 
-    <!-- Join the Moonlight Crew -->
-    <section class="section join-section" id="guild">
-        <div class="join-content">
-            <span class="section-label">仲間入り</span>
-            <h2 class="section-title">Join the Moonlight Guild</h2>
-            <p class="section-subtitle">
-                Presale tickets sell out fast. Guild members get first access before they go public — plus exclusive discount codes and event announcements before anyone else.
-            </p>
-            
-            <form class="email-form" id="moonlight-crew-form" method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==" onsubmit="return false;">
+            <form class="guild-form" id="moonlight-crew-form" method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==" onsubmit="return false;">
                 <input type="email" name="EMAIL" placeholder="your@email.com" required>
-                <button type="submit" class="btn btn-primary">JOIN THE GUILD</button>
+                <button type="submit" class="btn btn-accent-outline">JOIN THE GUILD</button>
                 <input type="text" name="email_address_check" value="" style="display:none;">
                 <input type="hidden" name="locale" value="en">
             </form>
-            <p class="email-incentive">You'll get a welcome gift — <span style="color: var(--neon-green); font-weight: 600;">presale access + exclusive discount code</span></p>
-        </div>
-    </section>
+            <p class="guild-note">Welcome gift: presale access + exclusive discount code.</p>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="footer-logo">MOONLIGHT OTAKU NIGHTS</span>
-                <span style="font-family: 'Noto Sans JP', sans-serif; font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">アニクラ NJ</span>
-                <p class="footer-tagline">
-                    Building NJ's anime nightlife scene. One night at a time.
-                </p>
-            </div>
-            
-            <div class="footer-section">
+    <!-- ════ Footer ════ -->
+    <footer class="home-footer">
+        <span class="katakana-fragment" data-original="周波数" aria-hidden="true">周波数</span>
+        <span class="data-fragment" aria-hidden="true">SIG/MAGENTA.A</span>
+
+        <div class="footer-barcode barcode-strip" aria-hidden="true"></div>
+
+        <p class="footer-brand-name">MOONLIGHT OTAKU NIGHTS</p>
+        <p class="footer-brand-jp">月光オタクナイト · アニクラ</p>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <div class="footer-links-grid">
+            <div>
                 <h4>NAVIGATE</h4>
-                <ul class="footer-links">
-                    <li><a href="/elven-grove/">Current Event</a></li>
+                <ul>
+                    <li><a href="/hatsune-miku-after-party/">Hatsune Miku After Party</a></li>
+                    <li><a href="/past-events/">Past Events</a></li>
+                    <li><a href="/cosplay-signup/">Cosplay Sign-Up</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>CONNECT</h4>
+                <ul>
                     <li><a href="https://instagram.com/moonlightotakunights" target="_blank">Instagram</a></li>
-                    <li><a href="/sponsors/" style="opacity: 0.5;">Sponsors</a></li>
+                    <li><a href="mailto:info@moonlightotakunights.com">Email</a></li>
                 </ul>
             </div>
-            
-            <div class="footer-section">
+            <div>
                 <h4>DETAILS</h4>
-                <ul class="footer-links">
-                    <li><span style="color: var(--text-muted); font-size: 0.9rem;">QXT's Newark — 248 Mulberry St</span></li>
-                    <li><a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a></li>
-                    <li><span style="color: var(--text-muted); font-size: 0.9rem;">21+ with valid ID</span></li>
-                    <li><a href="/partners/" style="opacity: 0.5;">Community Partners</a></li>
-                    <li><a href="/work-with-us/" style="opacity: 0.5;">Work With Us</a></li>
+                <ul>
+                    <li><span class="footer-detail">QXT's Newark · 248 Mulberry St</span></li>
+                    <li><span class="footer-detail">21+ with valid ID</span></li>
+                    <li><a href="/sponsors/">Sponsors</a></li>
                 </ul>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p class="copyright">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://instagram.com/moonlightotakunights" class="social-link" target="_blank">📸</a>
-                <a href="/elven-grove/" class="social-link">🎵</a>
-                <a href="mailto:info@moonlightotakunights.com" class="social-link">💬</a>
-            </div>
-        </div>
-        <div class="footer-legal">
-            <a href="/privacy-policy/">Privacy Policy</a>
-            <span class="separator">|</span>
-            <a href="/terms/">Terms of Service</a>
-        </div>
+
+        <p class="footer-copyright">&copy; 2026 Moonlight Otaku Nights</p>
     </footer>
+</div>
 
-    <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('[Moonlight] DOM loaded, initializing...');
-
-    // Floating particles
-    var particlesContainer = document.querySelector('.particles');
-    if (particlesContainer) {
-        for (var i = 0; i < 30; i++) {
-            var particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + 'vh';
-            particle.style.animationDelay = -(Math.random() * 15) + 's';
-            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-    }
-
-    // Smooth scroll for nav links
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1628,61 +250,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar background on scroll
-    window.addEventListener('scroll', function() {
-        var nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.style.background = 'rgba(10, 10, 15, 0.95)';
-        } else {
-            nav.style.background = 'rgba(10, 10, 15, 0.9)';
-        }
-    });
-
-    // Mobile menu toggle
-    var mobileToggle = document.querySelector('.mobile-toggle');
-    var navLinks = document.querySelector('.nav-links');
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-        });
-        document.querySelectorAll('.nav-links a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                mobileToggle.classList.remove('active');
-            });
-        });
-    }
-
-    // Fade-in animation on scroll
-    var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    document.querySelectorAll('.anikura-card, .timeline-card, .experience-card, .collab-card').forEach(function(el) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-
-    // EPIC EMAIL FORM SUBMISSION WITH CONFETTI CELEBRATION
+    // GUILD FORM SUBMISSION WITH CONFETTI
     var crewForm = document.getElementById('moonlight-crew-form');
-    console.log('[Moonlight] Form element found:', !!crewForm);
 
     if (crewForm) {
         var originalAction = crewForm.getAttribute('action');
-        console.log('[Moonlight] Form action captured:', originalAction);
 
         crewForm.addEventListener('submit', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('[Moonlight] Form submit intercepted!');
 
             var submitBtn = crewForm.querySelector('button[type="submit"]');
             var emailInput = crewForm.querySelector('input[name="EMAIL"]');
@@ -1690,7 +266,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var localeInput = crewForm.querySelector('input[name="locale"]');
 
             if (!emailInput || !emailInput.value) {
-                console.log('[Moonlight] No email entered');
                 return false;
             }
 
@@ -1713,7 +288,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: formData,
                 mode: 'no-cors'
             }).then(function() {
-                console.log('[Moonlight] Brevo submission sent');
                 if(typeof fbq !== 'undefined') { fbq('track', 'Lead', {content_name: 'Moonlight Crew Signup', content_category: 'Email List'}); }
 
                 setTimeout(function() {
@@ -1722,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     successModal.innerHTML = '<div class="success-content">' +
                         '<div class="success-icon">⭐</div>' +
                         '<h2 class="success-title">ACHIEVEMENT UNLOCKED!</h2>' +
-                        '<h3 class="success-subtitle">🎮 MOONLIGHT GUILD MEMBER</h3>' +
+                        '<h3 class="success-subtitle">MOONLIGHT GUILD MEMBER</h3>' +
                         '<p class="success-message">You\'ve joined the elite! Check your email for your legendary 10% discount code.</p>' +
                         '<p class="redirect-message">Redirecting to your rewards page...</p>' +
                         '</div>';
@@ -1737,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             particleCount: 100,
                             spread: 100,
                             origin: { x: originX, y: originY },
-                            colors: ['#00ff88', '#00f0ff', '#bf00ff', '#ff00aa']
+                            colors: ['#ff00aa', '#00f0ff', '#bf00ff', '#ff00aa']
                         });
 
                         var duration = 4000;
@@ -1756,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 angle: randomInRange(55, 125),
                                 spread: randomInRange(50, 70),
                                 origin: { x: 0, y: 0.6 },
-                                colors: ['#00ff88', '#00f0ff', '#bf00ff'],
+                                colors: ['#ff00aa', '#00f0ff', '#bf00ff'],
                                 shapes: ['circle', 'square'],
                                 scalar: randomInRange(0.8, 1.2)
                             });
@@ -1765,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 angle: randomInRange(55, 125),
                                 spread: randomInRange(50, 70),
                                 origin: { x: 1, y: 0.6 },
-                                colors: ['#00ff88', '#00f0ff', '#bf00ff'],
+                                colors: ['#ff00aa', '#00f0ff', '#bf00ff'],
                                 shapes: ['circle', 'square'],
                                 scalar: randomInRange(0.8, 1.2)
                             });
@@ -1779,8 +353,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 scalar: 1.5
                             });
                         }, 250);
-                    } else {
-                        console.warn('[Moonlight] Confetti library not loaded');
                     }
 
                     setTimeout(function() {
@@ -1799,55 +371,73 @@ document.addEventListener('DOMContentLoaded', function() {
 
             return false;
         });
-
-        console.log('[Moonlight] Form handler registered successfully');
-    } else {
-        console.error('[Moonlight] CRITICAL: Form element not found!');
     }
 });
-    </script>
+</script>
 
-    <!-- Data Collection Notice -->
-    <div id="data-notice" class="data-notice" role="complementary" aria-label="Data collection notice">
-        <div class="data-notice-content">
-            <p>We use cookies and similar technologies to improve your experience and measure site traffic.
-               <a href="/privacy-policy/">Learn more</a></p>
-            <button id="data-notice-dismiss" class="data-notice-btn" aria-label="Dismiss notice">Got it</button>
-        </div>
+<!-- Data Collection Notice -->
+<div id="data-notice" class="data-notice" role="complementary" aria-label="Data collection notice">
+    <div class="data-notice-content">
+        <p>We use cookies and similar technologies to improve your experience and measure site traffic.
+           <a href="/privacy-policy/">Learn more</a></p>
+        <button id="data-notice-dismiss" class="data-notice-btn" aria-label="Dismiss notice">Got it</button>
     </div>
-    <script>
-    (function() {
-        const notice = document.getElementById('data-notice');
-        const dismissBtn = document.getElementById('data-notice-dismiss');
-        const STORAGE_KEY = 'moonlight_data_notice_dismissed';
-        const EXPIRY_DAYS = 90;
+</div>
+<script>
+(function() {
+    const notice = document.getElementById('data-notice');
+    const dismissBtn = document.getElementById('data-notice-dismiss');
+    const STORAGE_KEY = 'moonlight_data_notice_dismissed';
+    const EXPIRY_DAYS = 90;
 
-        function isDismissed() {
-            const dismissed = localStorage.getItem(STORAGE_KEY);
-            if (!dismissed) return false;
-            const dismissedDate = parseInt(dismissed, 10);
-            const now = Date.now();
-            const daysSince = (now - dismissedDate) / (1000 * 60 * 60 * 24);
-            if (daysSince > EXPIRY_DAYS) {
-                localStorage.removeItem(STORAGE_KEY);
-                return false;
-            }
-            return true;
+    function isDismissed() {
+        const dismissed = localStorage.getItem(STORAGE_KEY);
+        if (!dismissed) return false;
+        const dismissedDate = parseInt(dismissed, 10);
+        const now = Date.now();
+        const daysSince = (now - dismissedDate) / (1000 * 60 * 60 * 24);
+        if (daysSince > EXPIRY_DAYS) {
+            localStorage.removeItem(STORAGE_KEY);
+            return false;
         }
+        return true;
+    }
 
-        function hideBanner() {
+    function hideBanner() {
+        notice.classList.add('hidden');
+        localStorage.setItem(STORAGE_KEY, Date.now().toString());
+    }
+
+    if (notice && dismissBtn) {
+        if (isDismissed()) {
             notice.classList.add('hidden');
-            localStorage.setItem(STORAGE_KEY, Date.now().toString());
         }
-
-        if (notice && dismissBtn) {
-            if (isDismissed()) {
-                notice.classList.add('hidden');
-            }
-            dismissBtn.addEventListener('click', hideBanner);
-        }
-    })();
-    </script>
-    <script src="/components/nav-loader.js"></script>
+        dismissBtn.addEventListener('click', hideBanner);
+    }
+})();
+</script>
+<script src="/components/nav-loader.js"></script>
+<script>
+(function () {
+    var pool = ['ノイズ', 'データ', '信号', '月光', '周波数', '暗号'];
+    var nodes = document.querySelectorAll('.home-page .katakana-fragment');
+    if (!nodes.length) return;
+    function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+    function swap() {
+        var el = nodes[Math.floor(Math.random() * nodes.length)];
+        var next = pick(pool);
+        el.style.transition = 'opacity 0.15s ease';
+        el.style.opacity = '0';
+        window.setTimeout(function () {
+            el.textContent = next;
+            el.setAttribute('data-original', next);
+            el.style.opacity = '1';
+        }, 150);
+    }
+    window.setInterval(swap, 3000);
+})();
+</script>
 </body>
 </html>

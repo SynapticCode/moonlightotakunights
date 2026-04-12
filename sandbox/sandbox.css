@@ -29,6 +29,57 @@
     box-sizing: border-box;
 }
 
+.sandbox .sandbox-scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    mix-blend-mode: overlay;
+}
+
+.sandbox .sandbox-noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: sandboxNoiseShift 16s linear infinite;
+}
+
+@keyframes sandboxNoiseShift {
+    0% {
+        background-position: 0 0;
+    }
+    25% {
+        background-position: 4px 3px;
+    }
+    50% {
+        background-position: -3px 5px;
+    }
+    75% {
+        background-position: 2px -2px;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
 /* Banner above fixed shared nav */
 .sandbox .sandbox-banner {
     position: fixed;
@@ -58,6 +109,7 @@
     position: relative;
     display: inline-block;
     z-index: 0;
+    animation: titleGlitch 5s infinite;
 }
 
 .sandbox .chromatic-title::before,
@@ -72,15 +124,54 @@
 }
 
 .sandbox .chromatic-title::before {
-    transform: translate(-6px, -4px);
     color: rgba(0, 240, 255, 0.25);
     z-index: -1;
+    animation: titleGlitchBefore 5s infinite;
 }
 
 .sandbox .chromatic-title::after {
-    transform: translate(6px, 4px);
     color: rgba(0, 136, 184, 0.25);
     z-index: -2;
+    animation: titleGlitchAfter 5s infinite;
+}
+
+@keyframes titleGlitch {
+    0%,
+    90%,
+    95%,
+    100% {
+        opacity: 1;
+    }
+    90.01%,
+    94.99% {
+        opacity: 0.85;
+    }
+}
+
+@keyframes titleGlitchBefore {
+    0%,
+    90%,
+    95%,
+    100% {
+        transform: translate(-6px, -4px);
+    }
+    90.01%,
+    94.99% {
+        transform: translate(-12px, -8px);
+    }
+}
+
+@keyframes titleGlitchAfter {
+    0%,
+    90%,
+    95%,
+    100% {
+        transform: translate(6px, 4px);
+    }
+    90.01%,
+    94.99% {
+        transform: translate(12px, 8px);
+    }
 }
 
 .sandbox .btn {
@@ -123,6 +214,7 @@
 
 /* Hero */
 .sandbox .hero {
+    position: relative;
     min-height: 90vh;
     padding: 160px 2rem 4rem;
     display: grid;
@@ -131,6 +223,48 @@
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.sandbox .hero-glitch-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--sb-cyan-primary);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1;
+    animation: heroGlitchLineSweep linear infinite;
+}
+
+.sandbox .hero-glitch-line:nth-child(1) {
+    animation-duration: 4s;
+    animation-delay: 0s;
+}
+
+.sandbox .hero-glitch-line:nth-child(2) {
+    animation-duration: 7s;
+    animation-delay: -2.3s;
+}
+
+.sandbox .hero-glitch-line:nth-child(3) {
+    animation-duration: 11s;
+    animation-delay: -5.7s;
+}
+
+@keyframes heroGlitchLineSweep {
+    from {
+        top: -10px;
+    }
+    to {
+        top: 100%;
+    }
+}
+
+.sandbox .hero-text,
+.sandbox .hero-flyer {
+    position: relative;
+    z-index: 2;
 }
 
 .sandbox .hero-text .hero-eyebrow {
@@ -339,6 +473,7 @@
 
 /* Lineup */
 .sandbox .lineup {
+    position: relative;
     padding: 5rem 2rem;
     max-width: 1100px;
     margin: 0 auto;
@@ -418,11 +553,46 @@
 }
 
 .sandbox .dj-name {
+    position: relative;
+    display: inline-block;
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
     color: #fff;
     margin-top: 0;
+}
+
+.sandbox .dj-name::before,
+.sandbox .dj-name::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    color: #fff;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.sandbox .dj-card:hover .dj-name::before,
+.sandbox .dj-card:hover .dj-name::after {
+    animation: djNameGlitchPulse 0.3s ease forwards;
+}
+
+@keyframes djNameGlitchPulse {
+    0%,
+    49.99% {
+        opacity: 1;
+        text-shadow: -3px 0 var(--sb-cyan-primary), 3px 0 var(--sb-cyan-secondary);
+    }
+    50%,
+    100% {
+        opacity: 0;
+        text-shadow: none;
+    }
 }
 
 .sandbox .dj-sub {
@@ -435,6 +605,7 @@
 
 /* Live block hype section */
 .sandbox .live-block {
+    position: relative;
     width: 100%;
     background: var(--sb-bg);
     padding: 6rem 2rem;
@@ -464,6 +635,25 @@
     line-height: 1;
     margin: 0;
     margin-top: 0.5rem;
+}
+
+.sandbox .sandbox-title-barcode {
+    width: 240px;
+    max-width: 100%;
+    height: 20px;
+    margin: 1.5rem auto;
+    opacity: 0.4;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(0, 240, 255, 0.5) 0px,
+        rgba(0, 240, 255, 0.5) 2px,
+        transparent 2px,
+        transparent 4px,
+        rgba(0, 136, 184, 0.45) 4px,
+        rgba(0, 136, 184, 0.45) 5px,
+        transparent 5px,
+        transparent 8px
+    );
 }
 
 .sandbox .live-block-sub {
@@ -509,6 +699,7 @@
 
 /* Cosplay hype block */
 .sandbox .cosplay-block {
+    position: relative;
     width: 100%;
     background: var(--sb-bg);
     padding: 6rem 2rem;
@@ -615,9 +806,85 @@
 
 /* Experiences */
 .sandbox .experiences {
+    position: relative;
     padding: 5rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.sandbox .sandbox-crop-bracket {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    border-style: solid;
+    border-color: rgba(0, 240, 255, 0.4);
+    border-width: 0;
+    z-index: 0;
+}
+
+.sandbox .lineup .sandbox-crop-bracket.tl,
+.sandbox .experiences .sandbox-crop-bracket.tl {
+    top: 5rem;
+    left: 2rem;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.sandbox .lineup .sandbox-crop-bracket.tr,
+.sandbox .experiences .sandbox-crop-bracket.tr {
+    top: 5rem;
+    right: 2rem;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.sandbox .lineup .sandbox-crop-bracket.bl,
+.sandbox .experiences .sandbox-crop-bracket.bl {
+    bottom: 5rem;
+    left: 2rem;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.sandbox .lineup .sandbox-crop-bracket.br,
+.sandbox .experiences .sandbox-crop-bracket.br {
+    bottom: 5rem;
+    right: 2rem;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}
+
+.sandbox .live-block .sandbox-crop-bracket.tl,
+.sandbox .cosplay-block .sandbox-crop-bracket.tl {
+    top: 6rem;
+    left: 2rem;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.sandbox .live-block .sandbox-crop-bracket.tr,
+.sandbox .cosplay-block .sandbox-crop-bracket.tr {
+    top: 6rem;
+    right: 2rem;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.sandbox .live-block .sandbox-crop-bracket.bl,
+.sandbox .cosplay-block .sandbox-crop-bracket.bl {
+    bottom: 6rem;
+    left: 2rem;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.sandbox .live-block .sandbox-crop-bracket.br,
+.sandbox .cosplay-block .sandbox-crop-bracket.br {
+    bottom: 6rem;
+    right: 2rem;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
 }
 
 .sandbox .exp-grid {
@@ -925,5 +1192,53 @@
 
     .sandbox .big-date {
         text-align: center;
+    }
+
+    .sandbox .lineup .sandbox-crop-bracket.tl,
+    .sandbox .experiences .sandbox-crop-bracket.tl {
+        top: 3.75rem;
+        left: 1.5rem;
+    }
+
+    .sandbox .lineup .sandbox-crop-bracket.tr,
+    .sandbox .experiences .sandbox-crop-bracket.tr {
+        top: 3.75rem;
+        right: 1.5rem;
+    }
+
+    .sandbox .lineup .sandbox-crop-bracket.bl,
+    .sandbox .experiences .sandbox-crop-bracket.bl {
+        bottom: 3.75rem;
+        left: 1.5rem;
+    }
+
+    .sandbox .lineup .sandbox-crop-bracket.br,
+    .sandbox .experiences .sandbox-crop-bracket.br {
+        bottom: 3.75rem;
+        right: 1.5rem;
+    }
+
+    .sandbox .live-block .sandbox-crop-bracket.tl,
+    .sandbox .cosplay-block .sandbox-crop-bracket.tl {
+        top: 4rem;
+        left: 1.5rem;
+    }
+
+    .sandbox .live-block .sandbox-crop-bracket.tr,
+    .sandbox .cosplay-block .sandbox-crop-bracket.tr {
+        top: 4rem;
+        right: 1.5rem;
+    }
+
+    .sandbox .live-block .sandbox-crop-bracket.bl,
+    .sandbox .cosplay-block .sandbox-crop-bracket.bl {
+        bottom: 4rem;
+        left: 1.5rem;
+    }
+
+    .sandbox .live-block .sandbox-crop-bracket.br,
+    .sandbox .cosplay-block .sandbox-crop-bracket.br {
+        bottom: 4rem;
+        right: 1.5rem;
     }
 }

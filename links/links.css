@@ -100,7 +100,7 @@
    create the uneven staggered look. */
 .portrait-frame .band {
     position: absolute;
-    width: calc(25% - 4px);
+    width: 77px;
     overflow: hidden;
     background: #0a0a0f;
     border: 1px solid rgba(255, 255, 255, 0.7);
@@ -114,8 +114,6 @@
     position: absolute;
     width: 320px;
     height: 440px;
-    left: 0;
-    top: 0;
     object-fit: cover;
     object-position: center;
     filter: grayscale(100%) contrast(1.15);
@@ -135,34 +133,34 @@
 
 /* Band 2: second column, medium height, offset down */
 .portrait-frame .band-2 {
-    left: calc(25% + 0px);
+    left: 81px;
     top: 30px;
     height: 380px;
 }
 .portrait-frame .band-2 img {
-    left: calc(-25% - 4px);
+    left: -81px;
     top: -30px;
 }
 
 /* Band 3: third column, shorter, offset up slightly */
 .portrait-frame .band-3 {
-    left: calc(50% + 0px);
+    left: 162px;
     top: 15px;
     height: 410px;
 }
 .portrait-frame .band-3 img {
-    left: calc(-50% - 8px);
+    left: -162px;
     top: -15px;
 }
 
 /* Band 4: rightmost column, tall, offset down more */
 .portrait-frame .band-4 {
-    left: calc(75% + 0px);
+    left: 243px;
     top: 45px;
     height: 370px;
 }
 .portrait-frame .band-4 img {
-    left: calc(-75% - 12px);
+    left: -243px;
     top: -45px;
 }
 
@@ -344,19 +342,23 @@
         height: 385px;
     }
 
+    .portrait-frame .band {
+        width: 67px;
+    }
+
     .portrait-frame .band img {
         width: 280px;
         height: 385px;
     }
 
-    .portrait-frame .band-1 { height: 350px; }
-    .portrait-frame .band-1 img { top: 0; }
-    .portrait-frame .band-2 { top: 26px; height: 332px; }
-    .portrait-frame .band-2 img { top: -26px; }
-    .portrait-frame .band-3 { top: 13px; height: 358px; }
-    .portrait-frame .band-3 img { top: -13px; }
-    .portrait-frame .band-4 { top: 39px; height: 323px; }
-    .portrait-frame .band-4 img { top: -39px; }
+    .portrait-frame .band-1 { left: 0; height: 350px; }
+    .portrait-frame .band-1 img { left: 0; top: 0; }
+    .portrait-frame .band-2 { left: 71px; top: 26px; height: 332px; }
+    .portrait-frame .band-2 img { left: -71px; top: -26px; }
+    .portrait-frame .band-3 { left: 142px; top: 13px; height: 358px; }
+    .portrait-frame .band-3 img { left: -142px; top: -13px; }
+    .portrait-frame .band-4 { left: 213px; top: 39px; height: 323px; }
+    .portrait-frame .band-4 img { left: -213px; top: -39px; }
 
     .link-btn {
         padding: 1rem 1.25rem;

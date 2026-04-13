@@ -1,0 +1,289 @@
+/* ── Past Events Page ──────────────────────────────────────────── */
+
+.past-page {
+    --mt-accent-primary: #ffffff;
+    --mt-accent-secondary: #a0a0a0;
+    --mt-accent-highlight: #7fbbe0;
+}
+
+/* ── Main Layout ───────────────────────────────────────────────── */
+
+.past-page main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 160px 2rem 4rem;
+}
+
+/* ── Past Hero ─────────────────────────────────────────────────── */
+
+.past-page .past-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.past-page .past-hero .jp-label {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--mt-accent-highlight);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.past-page .past-hero .chromatic-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+.past-page .past-subtitle {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 1.5rem;
+}
+
+/* ── Past Grid ─────────────────────────────────────────────────── */
+
+.past-page .past-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+/* ── Past Card ─────────────────────────────────────────────────── */
+
+.past-page .past-card {
+    display: flex;
+    flex-direction: row;
+    background: var(--mt-panel);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--mt-border);
+    border-radius: 2px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.past-page .past-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--mt-border-strong);
+}
+
+/* ── Card Flyer Panel ──────────────────────────────────────────── */
+
+.past-page .past-card-flyer {
+    flex-basis: 40%;
+    background: #000;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.past-page .past-card-flyer img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(30%);
+}
+
+/* ── Card Info Panel ───────────────────────────────────────────── */
+
+.past-page .past-card-info {
+    flex-basis: 60%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.past-page .past-card-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--mt-accent-highlight);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.past-page .past-card-date {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--mt-text-muted);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.past-page .past-card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: #fff;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.past-page .past-card-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: var(--mt-accent-highlight);
+    margin: 0.5rem 0 1rem;
+}
+
+.past-page .past-card-venue {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--mt-text-muted);
+    margin: 0 0 1.5rem;
+}
+
+.past-page .past-card-link {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+/* ── Archive Note ──────────────────────────────────────────────── */
+
+.past-page .past-footer-note {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--mt-text-muted);
+}
+
+/* ── Past Footer ───────────────────────────────────────────────── */
+
+.past-page .past-footer {
+    padding: 4rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    border-top: 1px solid var(--mt-border);
+}
+
+.past-page .past-footer .footer-barcode {
+    height: 30px;
+    width: 100%;
+    opacity: 0.3;
+}
+
+.past-page .past-footer .footer-brand-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: 3px;
+    margin-top: 2rem;
+}
+
+.past-page .past-footer .footer-brand-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.25rem;
+}
+
+.past-page .past-footer .footer-divider {
+    width: 200px;
+    height: 1px;
+    background: var(--mt-border);
+    margin: 2rem auto;
+}
+
+.past-page .footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.past-page .footer-links-grid h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--mt-text-muted);
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
+
+.past-page .footer-links-grid ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.past-page .footer-links-grid li {
+    margin-bottom: 0.6rem;
+}
+
+.past-page .footer-links-grid a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.past-page .footer-links-grid a:hover {
+    color: var(--mt-accent-highlight);
+}
+
+.past-page .footer-links-grid .footer-detail {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+}
+
+.past-page .past-footer .footer-copyright {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 2rem;
+}
+
+/* ── Mobile ────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+    .past-page .past-card {
+        flex-direction: column;
+    }
+
+    .past-page .past-card-flyer {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .past-page .past-card-info {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .past-page .past-card-title {
+        font-size: 1.5rem;
+    }
+
+    .past-page .footer-links-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}

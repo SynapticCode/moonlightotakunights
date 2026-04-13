@@ -34,7 +34,7 @@
     font-family: 'Orbitron', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 3px;
-    color: var(--mt-accent-primary);
+    color: var(--mt-accent-highlight);
     text-transform: uppercase;
     margin-bottom: 1rem;
 }
@@ -111,8 +111,8 @@
     transform: translate(-50%, -50%);
     background: radial-gradient(
         circle,
-        color-mix(in srgb, var(--mt-accent-secondary) 25%, transparent) 0%,
-        color-mix(in srgb, var(--mt-accent-primary) 15%, transparent) 40%,
+        color-mix(in srgb, var(--mt-accent-pink-soft) 20%, transparent) 0%,
+        color-mix(in srgb, var(--mt-accent-secondary) 15%, transparent) 40%,
         transparent 70%
     );
     filter: blur(40px);
@@ -184,14 +184,15 @@
 
 .home-page .vibe-card:hover {
     transform: translateY(-4px) rotate(0deg);
-    border-color: var(--mt-border-strong);
+    border-color: var(--mt-accent-secondary);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--mt-accent-pink-soft) 20%, transparent);
 }
 
 .home-page .vibe-card .card-jp {
     font-family: 'Noto Serif JP', serif;
     font-style: italic;
     font-size: 0.85rem;
-    color: var(--mt-accent-primary);
+    color: var(--mt-accent-highlight);
     margin-bottom: 0.75rem;
 }
 
@@ -303,7 +304,7 @@
     font-family: 'Orbitron', sans-serif;
     font-weight: 500;
     font-size: 1.2rem;
-    color: var(--mt-accent-highlight);
+    color: var(--mt-accent-pink-soft);
     margin-top: 0.25rem;
 }
 
@@ -349,7 +350,7 @@
     width: 100%;
     padding: 1rem;
     background: var(--mt-panel);
-    border: 1px solid var(--mt-border-strong);
+    border: 1px solid var(--mt-accent-secondary);
     color: #fff;
     font-family: 'Zen Kaku Gothic New', sans-serif;
     font-size: 1rem;
@@ -359,7 +360,7 @@
 }
 
 .home-page .guild-form input[type="email"]:focus {
-    border-color: var(--mt-accent-primary);
+    border-color: var(--mt-accent-secondary);
 }
 
 .home-page .guild-form input[type="email"]::placeholder {
@@ -479,6 +480,61 @@
 .home-page .guild-section .katakana-fragment { top: 10%; right: 6%; }
 .home-page .home-footer .katakana-fragment   { top: 8%; left: 3%; }
 .home-page .home-footer .data-fragment       { bottom: 20%; right: 3%; }
+
+/* ── Home Page Color Distribution ─────────────────────────────── */
+
+.home-page .chromatic-title::before {
+    color: color-mix(in srgb, var(--mt-accent-pink-soft) 40%, transparent);
+    transform: translate(-6px, -4px);
+}
+
+.home-page .chromatic-title::after {
+    color: color-mix(in srgb, var(--mt-accent-blue-deep) 40%, transparent);
+    transform: translate(6px, 4px);
+}
+
+.home-page .corner-bracket {
+    border-color: var(--mt-accent-blue-deep);
+}
+
+.home-page .katakana-fragment:nth-child(odd) {
+    color: color-mix(in srgb, var(--mt-accent-primary) 35%, transparent);
+}
+
+.home-page .katakana-fragment:nth-child(even) {
+    color: color-mix(in srgb, var(--mt-accent-highlight) 35%, transparent);
+}
+
+.home-page .btn-accent-outline {
+    border: 1px solid transparent;
+    background: linear-gradient(var(--mt-bg), var(--mt-bg)) padding-box,
+                var(--mt-accent-gradient) border-box;
+    color: var(--mt-accent-pink-soft);
+}
+
+.home-page .btn-accent-outline:hover {
+    background: var(--mt-accent-gradient);
+    color: var(--mt-bg);
+    box-shadow: none;
+}
+
+.home-page .home-footer .footer-barcode {
+    background: repeating-linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--mt-accent-primary) 50%, transparent) 0px,
+        color-mix(in srgb, var(--mt-accent-primary) 50%, transparent) 2px,
+        transparent 2px,
+        transparent 4px,
+        color-mix(in srgb, var(--mt-accent-secondary) 45%, transparent) 4px,
+        color-mix(in srgb, var(--mt-accent-secondary) 45%, transparent) 5px,
+        transparent 5px,
+        transparent 8px,
+        color-mix(in srgb, var(--mt-accent-highlight) 40%, transparent) 8px,
+        color-mix(in srgb, var(--mt-accent-highlight) 40%, transparent) 9px,
+        transparent 9px,
+        transparent 13px
+    );
+}
 
 /* ── Success Modal ────────────────────────────────────────────── */
 

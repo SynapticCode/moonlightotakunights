@@ -484,13 +484,13 @@
 /* ── Home Page Color Distribution ─────────────────────────────── */
 
 .home-page .chromatic-title::before {
-    color: color-mix(in srgb, var(--mt-accent-pink-soft) 40%, transparent);
-    transform: translate(-6px, -4px);
+    color: color-mix(in srgb, var(--mt-accent-pink-soft) 15%, transparent);
+    transform: translate(-2px, -1px);
 }
 
 .home-page .chromatic-title::after {
-    color: color-mix(in srgb, var(--mt-accent-blue-deep) 40%, transparent);
-    transform: translate(6px, 4px);
+    color: color-mix(in srgb, var(--mt-accent-blue-deep) 15%, transparent);
+    transform: translate(2px, 1px);
 }
 
 .home-page .corner-bracket {

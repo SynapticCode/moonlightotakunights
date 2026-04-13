@@ -83,6 +83,7 @@ nav {
     letter-spacing: 1px;
     transition: color 0.3s ease;
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {

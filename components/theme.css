@@ -146,13 +146,13 @@
 }
 
 .moonlight-theme .chromatic-title::before {
-    color: color-mix(in srgb, var(--mt-accent-primary) 30%, transparent);
+    color: color-mix(in srgb, var(--mt-accent-primary) 15%, transparent);
     z-index: -1;
     animation: titleGlitchBefore 5s infinite;
 }
 
 .moonlight-theme .chromatic-title::after {
-    color: color-mix(in srgb, var(--mt-accent-blue-deep) 30%, transparent);
+    color: color-mix(in srgb, var(--mt-accent-blue-deep) 15%, transparent);
     z-index: -2;
     animation: titleGlitchAfter 5s infinite;
 }
@@ -163,13 +163,13 @@
 }
 
 @keyframes titleGlitchBefore {
-    0%, 90%, 95%, 100% { transform: translate(-6px, -4px); }
-    90.01%, 94.99%     { transform: translate(-12px, -8px); }
+    0%, 90%, 95%, 100% { transform: translate(-2px, -1px); }
+    90.01%, 94.99%     { transform: translate(-4px, -2px); }
 }
 
 @keyframes titleGlitchAfter {
-    0%, 90%, 95%, 100% { transform: translate(6px, 4px); }
-    90.01%, 94.99%     { transform: translate(12px, 8px); }
+    0%, 90%, 95%, 100% { transform: translate(2px, 1px); }
+    90.01%, 94.99%     { transform: translate(4px, 2px); }
 }
 
 /* ── Buttons ───────────────────────────────────────────────────── */

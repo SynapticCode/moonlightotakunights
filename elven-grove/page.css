@@ -13,6 +13,7 @@
     --mt-accent-pink-soft: #aaff55;
     --mt-accent-blue-deep: #00994f;
     --mt-accent-gradient:  linear-gradient(135deg, #7fff00 0%, #00ff88 50%, #00994f 100%);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
 }
 
 /* ── Global reset inside wrapper ──────────────────────────────── */
@@ -87,6 +88,8 @@
 }
 
 .elven-page .hero-description {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
     color: var(--mt-text-muted);
     font-size: 1.1rem;
     line-height: 1.8;
@@ -267,6 +270,8 @@
 }
 
 .elven-page .section-subtitle {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
     color: var(--mt-text-muted);
     margin-bottom: 3rem;
 }

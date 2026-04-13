@@ -179,18 +179,18 @@
 
 .portrait-corners {
     position: absolute;
-    top: -16px;
-    left: -16px;
-    width: calc(100% + 32px);
-    height: calc(100% + 32px);
+    top: -32px;
+    left: -32px;
+    width: calc(100% + 64px);
+    height: calc(100% + 64px);
     pointer-events: none;
     z-index: 11;
 }
 
 .portrait-corners .corner {
     position: absolute;
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     border: 2px solid white;
 }
 

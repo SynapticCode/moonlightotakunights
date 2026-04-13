@@ -1,5 +1,10 @@
 /* ── Past Events Page ──────────────────────────────────────────── */
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .past-page {
     --mt-accent-primary: #ffffff;
     --mt-accent-secondary: #a0a0a0;

@@ -1,0 +1,331 @@
+/*
+ * Page-specific styles for the Moonlight links page.
+ * All rules scoped to .links-page so they layer on top of theme.css.
+ * Pure black and white — no color accents.
+ */
+
+/* ── White-Only Accent Overrides ──────────────────────────────── */
+
+.links-page {
+    --mt-accent-primary: #ffffff;
+    --mt-accent-secondary: rgba(255, 255, 255, 0.7);
+    --mt-accent-highlight: #ffffff;
+    --mt-accent-pink-soft: rgba(255, 255, 255, 0.5);
+    --mt-accent-blue-deep: rgba(255, 255, 255, 0.5);
+    --mt-accent-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* ── Layout ───────────────────────────────────────────────────── */
+
+.links-main {
+    max-width: 520px;
+    width: 100%;
+}
+
+/* ── Chromatic Override (white ghost split) ────────────────────── */
+
+.links-page .chromatic-title::before,
+.links-page .chromatic-title::after {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Portrait Hero ────────────────────────────────────────────── */
+
+.links-portrait {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.portrait-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.portrait-brand-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0.25rem 0 0;
+}
+
+.portrait-frame {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.portrait-strips {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    gap: 4px;
+}
+
+.portrait-strips .strip {
+    flex: 1;
+    height: 100%;
+    background-image: url('/assets/images/branding/tsuki-portrait.jpg');
+    background-size: 400% 100%;
+    background-repeat: no-repeat;
+    filter: grayscale(100%) contrast(1.1);
+}
+
+.strip-1 {
+    background-position: 0% 0%;
+    transform: translateY(0);
+}
+
+.strip-2 {
+    background-position: 33.33% 0%;
+    transform: translateY(-8px);
+}
+
+.strip-3 {
+    background-position: 66.66% 0%;
+    transform: translateY(4px);
+}
+
+.strip-4 {
+    background-position: 100% 0%;
+    transform: translateY(-4px);
+}
+
+.portrait-halftone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1.5px);
+    background-size: 4px 4px;
+    mix-blend-mode: overlay;
+}
+
+.portrait-corners {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.portrait-corners .corner {
+    position: absolute;
+    display: block;
+}
+
+.portrait-corners .corner::before,
+.portrait-corners .corner::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+}
+
+.portrait-corners .corner::before {
+    width: 24px;
+    height: 2px;
+}
+
+.portrait-corners .corner::after {
+    width: 2px;
+    height: 24px;
+}
+
+.corner-tl { top: -1px; left: -1px; }
+.corner-tl::before { top: 0; left: 0; }
+.corner-tl::after { top: 0; left: 0; }
+
+.corner-tr { top: -1px; right: -1px; }
+.corner-tr::before { top: 0; right: 0; }
+.corner-tr::after { top: 0; right: 0; }
+
+.corner-bl { bottom: -1px; left: -1px; }
+.corner-bl::before { bottom: 0; left: 0; }
+.corner-bl::after { bottom: 0; left: 0; }
+
+.corner-br { bottom: -1px; right: -1px; }
+.corner-br::before { bottom: 0; right: 0; }
+.corner-br::after { bottom: 0; right: 0; }
+
+.portrait-tagline {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin: 1.5rem 0 0;
+}
+
+/* ── Link Buttons Stack ───────────────────────────────────────── */
+
+.links-stack {
+    max-width: 480px;
+    margin: 3rem auto;
+}
+
+.link-btn {
+    display: block;
+    position: relative;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    border-radius: 2px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+}
+
+.link-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #fff;
+    transform: translateX(4px);
+}
+
+.link-btn:hover .link-label {
+    text-shadow: 1px 0 0 rgba(255, 255, 255, 0.3), -1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+.link-btn:hover .link-arrow {
+    transform: translateY(-50%) translateX(4px);
+}
+
+.link-label {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    display: block;
+    padding-right: 2rem;
+}
+
+.link-sub {
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.link-arrow {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* ── Contact ──────────────────────────────────────────────────── */
+
+.links-contact {
+    max-width: 480px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.links-contact .contact-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+.links-contact .contact-email {
+    display: block;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.links-contact .contact-email:hover {
+    opacity: 0.7;
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+
+.links-footer {
+    padding: 3rem 0 2rem;
+    text-align: center;
+}
+
+.links-footer .footer-barcode {
+    height: 20px;
+    width: 200px;
+    margin: 0 auto;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.5) 0px,
+        rgba(255, 255, 255, 0.5) 2px,
+        transparent 2px,
+        transparent 4px,
+        rgba(255, 255, 255, 0.3) 4px,
+        rgba(255, 255, 255, 0.3) 5px,
+        transparent 5px,
+        transparent 8px
+    );
+}
+
+.links-footer .footer-copyright {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 1rem;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+    .portrait-frame {
+        width: 280px;
+        height: 350px;
+    }
+
+    .link-btn {
+        padding: 1rem 1.25rem;
+    }
+
+    .links-portrait {
+        margin-bottom: 1.5rem;
+    }
+
+    .links-stack {
+        margin: 2.25rem auto;
+    }
+
+    .links-contact {
+        margin: 1.5rem auto;
+    }
+
+    .links-footer {
+        padding: 2.25rem 0 1.5rem;
+    }
+}

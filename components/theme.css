@@ -18,9 +18,12 @@
     --mt-text-dim: rgba(255, 255, 255, 0.4);
 
     /* Accent — overridable per page */
-    --mt-accent-primary: #ff00aa;
-    --mt-accent-secondary: #bf00ff;
-    --mt-accent-highlight: #00f0ff;
+    --mt-accent-primary: #ac2181;        /* deep magenta — logo core */
+    --mt-accent-secondary: #694591;      /* deep purple — logo inner glow */
+    --mt-accent-highlight: #7fbbe0;      /* pale ice blue — logo cyan */
+    --mt-accent-pink-soft: #f7b6d2;      /* pale pink — logo edge */
+    --mt-accent-blue-deep: #3480c3;      /* mid blue — logo deep shadow */
+    --mt-accent-gradient: linear-gradient(135deg, #ac2181 0%, #694591 50%, #3480c3 100%);
 
     /* Derived from accent */
     --mt-accent-glow: color-mix(in srgb, var(--mt-accent-primary) 40%, transparent);
@@ -143,13 +146,13 @@
 }
 
 .moonlight-theme .chromatic-title::before {
-    color: color-mix(in srgb, var(--mt-accent-primary) 25%, transparent);
+    color: color-mix(in srgb, var(--mt-accent-primary) 30%, transparent);
     z-index: -1;
     animation: titleGlitchBefore 5s infinite;
 }
 
 .moonlight-theme .chromatic-title::after {
-    color: color-mix(in srgb, var(--mt-accent-secondary) 25%, transparent);
+    color: color-mix(in srgb, var(--mt-accent-blue-deep) 30%, transparent);
     z-index: -2;
     animation: titleGlitchAfter 5s infinite;
 }

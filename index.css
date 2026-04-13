@@ -6,9 +6,9 @@
 /* ── Brand Magenta Accent Override ────────────────────────────── */
 
 .home-page {
-    --mt-accent-primary: #ff00aa;
-    --mt-accent-secondary: #bf00ff;
-    --mt-accent-highlight: #00f0ff;
+    --mt-accent-primary: #ac2181;
+    --mt-accent-secondary: #694591;
+    --mt-accent-highlight: #7fbbe0;
 }
 
 /* ── Hero ─────────────────────────────────────────────────────── */
@@ -100,9 +100,6 @@
     height: auto;
     position: relative;
     z-index: 1;
-    filter:
-        drop-shadow(-4px 0 var(--mt-accent-primary))
-        drop-shadow(4px 0 var(--mt-accent-secondary));
 }
 
 .home-page .hero-logo-frame .logo-glow {
@@ -114,7 +111,8 @@
     transform: translate(-50%, -50%);
     background: radial-gradient(
         circle,
-        color-mix(in srgb, var(--mt-accent-primary) 25%, transparent) 0%,
+        color-mix(in srgb, var(--mt-accent-secondary) 25%, transparent) 0%,
+        color-mix(in srgb, var(--mt-accent-primary) 15%, transparent) 40%,
         transparent 70%
     );
     filter: blur(40px);

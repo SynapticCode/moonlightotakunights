@@ -1,0 +1,987 @@
+/*
+ * Elven Grove page-specific styles.
+ * Requires /components/theme.css loaded first.
+ * Apply .moonlight-theme.elven-page to the root wrapper.
+ */
+
+/* ── Accent Override ───────────────────────────────────────────── */
+
+.elven-page {
+    --mt-accent-primary:   #7fff00;
+    --mt-accent-secondary: #00ff88;
+    --mt-accent-highlight: #aaff55;
+    --mt-accent-pink-soft: #aaff55;
+    --mt-accent-blue-deep: #00994f;
+    --mt-accent-gradient:  linear-gradient(135deg, #7fff00 0%, #00ff88 50%, #00994f 100%);
+}
+
+/* ── Global reset inside wrapper ──────────────────────────────── */
+
+.elven-page * { margin: 0; padding: 0; }
+.elven-page html { scroll-behavior: smooth; }
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+
+.elven-page .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 160px 2rem 60px;
+}
+
+.elven-page .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.elven-page .hero-content {
+    max-width: 550px;
+}
+
+.elven-page .event-badge {
+    display: inline-block;
+    background: color-mix(in srgb, var(--mt-accent-primary) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--mt-accent-primary) 30%, transparent);
+    color: var(--mt-accent-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.elven-page .hero-jp {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+    color: var(--mt-accent-primary);
+    letter-spacing: 4px;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.elven-page .hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.elven-page .hero h1 span {
+    background: var(--mt-accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.elven-page .hero-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--mt-accent-secondary);
+    margin-bottom: 1.5rem;
+    letter-spacing: 3px;
+}
+
+.elven-page .hero-description {
+    color: var(--mt-text-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* ── Event Meta ────────────────────────────────────────────────── */
+
+.elven-page .event-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.elven-page .meta-item {
+    background: var(--mt-panel);
+    border: 1px solid var(--mt-border);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.elven-page .meta-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--mt-panel);
+    border: 1px solid var(--mt-border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.elven-page .meta-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.elven-page .meta-label {
+    font-size: 0.7rem;
+    color: var(--mt-text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.elven-page .meta-value {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* ── Music Tags ────────────────────────────────────────────────── */
+
+.elven-page .music-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.elven-page .music-tag {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    background: var(--mt-panel);
+    border: 1px solid var(--mt-border);
+    color: var(--mt-accent-primary);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+/* ── Hero CTA Buttons ──────────────────────────────────────────── */
+
+.elven-page .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.elven-page .btn {
+    font-family: 'Orbitron', sans-serif;
+    padding: 1rem 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50px;
+}
+
+.elven-page .btn-primary {
+    background: transparent;
+    background-image:
+        linear-gradient(var(--mt-bg), var(--mt-bg)) padding-box,
+        var(--mt-accent-gradient) border-box;
+    border: 1px solid transparent;
+    color: var(--mt-accent-primary);
+    min-width: 200px;
+}
+
+.elven-page .btn-primary:hover {
+    background: var(--mt-accent-gradient);
+    color: var(--mt-bg);
+    box-shadow: 0 10px 40px var(--mt-accent-glow);
+}
+
+.elven-page .btn-secondary {
+    background: transparent;
+    color: var(--mt-text-muted);
+    border: 1px solid var(--mt-border-strong);
+}
+
+.elven-page .btn-secondary:hover {
+    border-color: var(--mt-text);
+    color: var(--mt-text);
+}
+
+/* ── Flyer Frame ───────────────────────────────────────────────── */
+
+.elven-page .flyer-container {
+    position: relative;
+}
+
+.elven-page .flyer-frame {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    filter:
+        drop-shadow(0 0 20px color-mix(in srgb, var(--mt-accent-primary) 40%, transparent))
+        drop-shadow(4px 4px 0 color-mix(in srgb, var(--mt-accent-blue-deep) 25%, transparent))
+        drop-shadow(-4px -4px 0 color-mix(in srgb, var(--mt-accent-primary) 20%, transparent));
+}
+
+.elven-page .flyer-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Corner brackets on flyer */
+.elven-page .flyer-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow:
+        inset 12px 12px 0 -10px var(--mt-border-strong),
+        inset -12px 12px 0 -10px var(--mt-border-strong),
+        inset 12px -12px 0 -10px var(--mt-border-strong),
+        inset -12px -12px 0 -10px var(--mt-border-strong);
+}
+
+/* ── Tickets Section ───────────────────────────────────────────── */
+
+.elven-page .tickets-section {
+    padding: 80px 2rem;
+}
+
+.elven-page .tickets-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.elven-page .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.elven-page .section-subtitle {
+    color: var(--mt-text-muted);
+    margin-bottom: 3rem;
+}
+
+.elven-page .tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.elven-page .ticket-card {
+    background: var(--mt-panel);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--mt-border);
+    border-radius: 2px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.elven-page .ticket-card:hover {
+    border-color: var(--mt-border-strong);
+    transform: translateY(-5px);
+}
+
+.elven-page .ticket-card.featured {
+    border-color: var(--mt-accent-primary);
+    position: relative;
+}
+
+.elven-page .ticket-card.featured::before {
+    content: 'BEST VALUE';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--mt-accent-primary);
+    color: var(--mt-bg);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.elven-page .ticket-type {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.elven-page .ticket-price {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--mt-accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.elven-page .ticket-details {
+    color: var(--mt-text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.elven-page .ticket-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--mt-accent-gradient);
+    color: var(--mt-bg);
+    border: none;
+    border-radius: 2px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.elven-page .ticket-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px var(--mt-accent-glow);
+}
+
+/* ── Discount Banner ───────────────────────────────────────────── */
+
+.elven-page .discount-banner {
+    background: var(--mt-panel);
+    border: 1px dashed var(--mt-accent-primary);
+    border-radius: 2px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.elven-page .discount-text {
+    color: var(--mt-text-muted);
+}
+
+.elven-page .discount-code {
+    background: color-mix(in srgb, var(--mt-accent-primary) 10%, transparent);
+    border: 1px solid var(--mt-accent-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: var(--mt-accent-primary);
+    letter-spacing: 2px;
+}
+
+/* ── Presale Sold Out ──────────────────────────────────────────── */
+
+.elven-page .presale-soldout {
+    opacity: 0.82;
+}
+
+.elven-page .presale-soldout:hover {
+    transform: none !important;
+}
+
+.elven-page .presale-inner {
+    position: relative;
+    overflow: hidden;
+}
+
+.elven-page .presale-inner::after {
+    content: "SOLD OUT";
+    position: absolute;
+    top: 22px;
+    right: -32px;
+    background: #ff3333;
+    color: white;
+    padding: 5px 40px;
+    font-size: 13px;
+    font-weight: 800;
+    transform: rotate(45deg);
+    z-index: 10;
+    letter-spacing: 2px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.elven-page .ticket-btn-disabled {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: block;
+    text-align: center;
+    cursor: default;
+}
+
+/* ── Lineup Section ────────────────────────────────────────────── */
+
+.elven-page .lineup-section {
+    padding: 80px 2rem;
+}
+
+.elven-page .lineup-performing-section {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.elven-page .lineup-performing-label {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: var(--mt-accent-secondary);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.elven-page .lineup-performing-card {
+    display: inline-block;
+    text-align: center;
+}
+
+.elven-page .lineup-dj-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem auto 0;
+    max-width: 500px;
+    align-items: start;
+    justify-items: center;
+}
+
+.elven-page .lineup-dj-row-aniparty {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    margin: 2rem auto 0;
+    max-width: 700px;
+    align-items: center;
+    justify-items: center;
+}
+
+.elven-page .lineup-card {
+    text-align: center;
+    width: 100%;
+}
+
+.elven-page .lineup-aniparty-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-align: center;
+}
+
+.elven-page .lineup-aniparty-center .featuring-label {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mt-text-muted);
+}
+
+.elven-page .lineup-aniparty-center img {
+    height: 65px;
+    width: auto;
+    opacity: 0.75;
+}
+
+.elven-page .lineup-aniparty-center .vdj-label {
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+    color: var(--mt-text-muted);
+}
+
+/* ── Vendors Section ───────────────────────────────────────────── */
+
+.elven-page .vendors-section {
+    padding: 60px 2rem;
+}
+
+.elven-page .vendors-section .card {
+    background: var(--mt-panel);
+    border: 1px solid var(--mt-border);
+    border-radius: 2px;
+    padding: 2rem;
+    text-align: left;
+}
+
+/* ── Expect Section ────────────────────────────────────────────── */
+
+.elven-page .expect-section {
+    padding: 80px 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.elven-page .expect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.elven-page .expect-card {
+    background: var(--mt-panel);
+    border: 1px solid var(--mt-border);
+    border-radius: 2px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.elven-page .expect-card:hover {
+    border-color: var(--mt-border-strong);
+}
+
+.elven-page .expect-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.elven-page .expect-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.elven-page .expect-card p {
+    color: var(--mt-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ── Anime Section ─────────────────────────────────────────────── */
+
+.elven-page .anime-section {
+    padding: 60px 2rem;
+    text-align: center;
+}
+
+.elven-page .anime-label {
+    font-size: 0.8rem;
+    color: var(--mt-text-muted);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.elven-page .anime-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.elven-page .anime-tag {
+    background: var(--mt-panel);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    color: var(--mt-text-muted);
+    transition: all 0.3s;
+}
+
+.elven-page .anime-tag:hover {
+    border-color: var(--mt-accent-primary);
+    color: var(--mt-accent-primary);
+}
+
+/* ── Email Section ─────────────────────────────────────────────── */
+
+.elven-page .email-section {
+    padding: 60px 2rem;
+    background: var(--mt-panel);
+    text-align: center;
+}
+
+.elven-page .email-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.elven-page .email-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.elven-page .email-subtitle {
+    color: var(--mt-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.elven-page .email-form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.elven-page .email-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 1rem;
+    background: var(--mt-panel);
+    border: 1px solid var(--mt-border-strong);
+    color: white;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1rem;
+    border-radius: 2px;
+}
+
+.elven-page .email-input:focus {
+    outline: none;
+    border-color: var(--mt-accent-primary);
+}
+
+.elven-page .email-incentive {
+    margin-top: 1rem;
+    color: var(--mt-accent-primary);
+    font-size: 0.9rem;
+}
+
+/* ── Venue Section ─────────────────────────────────────────────── */
+
+.elven-page .venue-section {
+    padding: 60px 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.elven-page .venue-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.elven-page .venue-address {
+    color: var(--mt-text-muted);
+    margin-bottom: 1rem;
+}
+
+.elven-page .venue-note {
+    background: color-mix(in srgb, #ffc800 10%, transparent);
+    border: 1px solid color-mix(in srgb, #ffc800 30%, transparent);
+    color: #ffc800;
+    padding: 1rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+/* ── Footer ────────────────────────────────────────────────────── */
+
+.elven-page footer {
+    padding: 40px 2rem;
+    text-align: center;
+    border-top: 1px solid var(--mt-border);
+}
+
+.elven-page .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.elven-page .footer-links a {
+    color: var(--mt-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.elven-page .footer-links a:hover {
+    color: var(--mt-accent-primary);
+}
+
+.elven-page .copyright {
+    color: var(--mt-text-muted);
+    font-size: 0.85rem;
+}
+
+.elven-page .footer-legal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.elven-page .footer-legal a {
+    color: var(--mt-text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.elven-page .footer-legal a:hover { color: var(--mt-text); }
+.elven-page .footer-legal .separator { color: var(--mt-text-muted); font-size: 0.85rem; }
+
+/* ── Success Modal ─────────────────────────────────────────────── */
+
+.elven-page .success-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.elven-page .success-modal.active { display: flex; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.elven-page .success-content {
+    background: var(--mt-panel);
+    border: 2px solid var(--mt-accent-primary);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 60px var(--mt-accent-glow);
+    animation: slideUp 0.5s ease, successGlow 2s ease-in-out infinite;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes successGlow {
+    0%, 100% { box-shadow: 0 0 60px var(--mt-accent-glow); }
+    50%       { box-shadow: 0 0 80px var(--mt-accent-glow), 0 0 120px color-mix(in srgb, var(--mt-accent-secondary) 40%, transparent); }
+}
+
+.elven-page .success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+}
+
+.elven-page .success-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: var(--mt-accent-primary);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px var(--mt-accent-glow);
+}
+
+.elven-page .success-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--mt-accent-secondary);
+    margin-bottom: 1rem;
+}
+
+.elven-page .success-message {
+    color: var(--mt-text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.elven-page .redirect-message {
+    font-size: 0.9rem;
+    color: var(--mt-text-muted);
+    font-style: italic;
+}
+
+.elven-page .btn-loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* ── Data Notice Banner ────────────────────────────────────────── */
+
+.elven-page .data-notice {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(20, 20, 25, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem 1.5rem;
+    z-index: 9999;
+    transform: translateY(0);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.elven-page .data-notice.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.elven-page .data-notice-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.elven-page .data-notice p {
+    margin: 0;
+    color: var(--mt-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex: 1;
+    min-width: 200px;
+}
+
+.elven-page .data-notice a {
+    color: var(--mt-text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.3s ease;
+}
+
+.elven-page .data-notice a:hover { color: var(--mt-accent-primary); }
+
+.elven-page .data-notice-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--mt-text);
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.elven-page .data-notice-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.elven-page .data-notice-btn:focus {
+    outline: 2px solid var(--mt-accent-primary);
+    outline-offset: 2px;
+}
+
+/* ── Mobile ────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+    .elven-page .hero {
+        padding: 120px 2rem 40px;
+    }
+
+    .elven-page .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .elven-page .hero-content {
+        max-width: 100%;
+    }
+
+    .elven-page .event-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .elven-page .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .elven-page .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .elven-page .discount-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .elven-page .lineup-dj-row {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+    }
+
+    .elven-page .lineup-dj-row-aniparty {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+    }
+
+    .elven-page .tickets-section,
+    .elven-page .lineup-section,
+    .elven-page .expect-section {
+        padding: 60px 1.5rem;
+    }
+
+    .elven-page .vendors-section,
+    .elven-page .venue-section,
+    .elven-page .anime-section,
+    .elven-page .email-section {
+        padding: 45px 1.5rem;
+    }
+
+    .elven-page .success-content {
+        margin: 1rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .elven-page .success-title { font-size: 1.4rem; }
+    .elven-page .success-subtitle { font-size: 1rem; }
+
+    .elven-page .data-notice { padding: 1rem; }
+    .elven-page .data-notice-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .elven-page .data-notice p { font-size: 0.85rem; }
+    .elven-page .data-notice-btn { width: 100%; padding: 0.75rem 1.25rem; }
+}

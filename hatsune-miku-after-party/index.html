@@ -166,7 +166,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <img src="/assets/images/dj_images/contro1freak%20no%20background.png" alt="Contro1freak" onerror="this.style.display='none'">
                     </div>
                     <div class="dj-card-text">
-                        <span class="dj-name" data-text="CONTRO1FREAK">CONTRO1FREAK</span>
+                        <img class="dj-name--logo" src="/assets/images/dj_images/dj%20logos/the%20contro1freak%20logo.png" alt="Contro1freak">
                         <span class="dj-affiliation">Shonen Pump</span>
                     </div>
                 </article>
@@ -175,7 +175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <img src="/assets/images/dj_images/dj_appare.avif" alt="DJ Appare" onerror="this.style.display='none'">
                     </div>
                     <div class="dj-card-text">
-                        <span class="dj-name" data-text="DJ APPARE">DJ APPARE</span>
+                        <img class="dj-name--logo" src="/assets/images/dj_images/dj%20logos/ADM_logo_WonB-transp%404x.png" alt="DJ Appare / ADM">
                         <span class="dj-affiliation">AniParty</span>
                     </div>
                 </article>
@@ -193,7 +193,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <img src="/assets/images/dj_images/TuxedoMask%20no%20background.png" alt="TuxedoMask" onerror="this.style.display='none'">
                     </div>
                     <div class="dj-card-text">
-                        <span class="dj-name" data-text="TUXEDOMASK">TUXEDOMASK</span>
+                        <img class="dj-name--logo" src="/assets/images/dj_images/dj%20logos/TuxedoMaskLogo%20no%20background.png" alt="TuxedoMask">
                         <span class="dj-affiliation">Soju Guild</span>
                     </div>
                 </article>
@@ -207,11 +207,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                 </article>
                 <article class="dj-card">
-                    <div class="dj-photo-frame">
+                    <div class="dj-photo-frame dj-photo-frame--portrait">
                         <img src="/assets/images/dj_images/DJPlynk.jpg" alt="DJ Plynk" onerror="this.style.display='none'">
                     </div>
                     <div class="dj-card-text">
-                        <span class="dj-name" data-text="DJ PLYNK">DJ PLYNK</span>
+                        <img class="dj-name--logo" src="/assets/images/dj_images/dj%20logos/PlynkLogo.png" alt="DJ Plynk">
                         <span class="dj-affiliation">Soju Guild</span>
                     </div>
                 </article>
@@ -220,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <img src="/assets/images/dj_images/DarkPrimejpg.jpg" alt="Dark Prime" onerror="this.style.display='none'">
                     </div>
                     <div class="dj-card-text">
-                        <span class="dj-name" data-text="DARK PRIME">DARK PRIME</span>
+                        <img class="dj-name--logo" src="/assets/images/dj_images/dj%20logos/DarkPrime%20no%20background%20Logo.png" alt="Dark Prime">
                         <span class="dj-affiliation">Soju Guild</span>
                     </div>
                 </article>
@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let ticking = false;
         const updateParallax = () => {
             const scrolled = window.scrollY;
-            parallaxBg.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
+            parallaxBg.style.transform = `translate3d(0, ${scrolled * -0.15}px, 0)`;
             ticking = false;
         };
         window.addEventListener('scroll', () => {

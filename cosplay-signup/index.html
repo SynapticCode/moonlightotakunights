@@ -56,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             top: 0;
             left: 0;
             width: 100%;
-            height: 150vh;
+            height: 200vh;
             background-image: url('/assets/images/Hatsune_Miku/Hatune_Miku_Only_NYC.jpg');
             background-size: cover;
             background-position: center top;
@@ -244,12 +244,52 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin-bottom: 1rem;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            color: #fff;
         }
 
-        .hero h1 span {
-            background: var(--gradient-theme);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .chromatic-title {
+            position: relative;
+            display: inline-block;
+            z-index: 0;
+            animation: titleGlitch 5s infinite;
+        }
+
+        .chromatic-title::before,
+        .chromatic-title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .chromatic-title::before {
+            color: rgba(255, 0, 255, 0.18);
+            z-index: -1;
+            animation: titleGlitchBefore 5s infinite;
+        }
+
+        .chromatic-title::after {
+            color: rgba(0, 136, 184, 0.18);
+            z-index: -2;
+            animation: titleGlitchAfter 5s infinite;
+        }
+
+        @keyframes titleGlitch {
+            0%, 90%, 95%, 100% { opacity: 1; }
+            90.01%, 94.99%     { opacity: 0.85; }
+        }
+
+        @keyframes titleGlitchBefore {
+            0%, 90%, 95%, 100% { transform: translate(-2px, -1px); }
+            90.01%, 94.99%     { transform: translate(-4px, -2px); }
+        }
+
+        @keyframes titleGlitchAfter {
+            0%, 90%, 95%, 100% { transform: translate(2px, 1px); }
+            90.01%, 94.99%     { transform: translate(4px, 2px); }
         }
 
         .hero-description {
@@ -716,7 +756,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Parallax background layer — JS moves this at 0.5x scroll speed -->
+    <!-- Parallax background layer — JS drifts this upward at 0.15x scroll speed -->
     <div class="miku-bg-layer" aria-hidden="true"></div>
 
     <!-- Dark gradient overlay above bg layer, behind all content -->
@@ -760,7 +800,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="hero-container hero-flex">
             <div class="hero-text">
                 <p class="hero-eyebrow">Costume Contest Pre-Registration</p>
-                <h1><span>Lock your spot for the main stage.</span></h1>
+                <h1 class="hero-title"><span class="chromatic-title" data-text="Lock your spot for the main stage.">Lock your spot for the main stage.</span></h1>
                 <p class="hero-description">
                     Costume contest hits the main stage at 12:30 AM, hosted by Miku Only NYC. Pre-register here to guarantee your walk-on. Walk-ins welcome at the door if spots remain.
                 </p>
@@ -988,14 +1028,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 });
             }
 
-            // Parallax background scroll — moves background at 0.5x scroll speed
+            // Parallax background scroll — drifts background upward at 0.15x scroll speed
             const parallaxBg = document.querySelector('.miku-bg-layer');
             if (parallaxBg) {
                 if (window.matchMedia('(min-width: 769px)').matches) {
                     let ticking = false;
                     const updateParallax = () => {
                         const scrolled = window.scrollY;
-                        parallaxBg.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
+                        parallaxBg.style.transform = `translate3d(0, ${scrolled * -0.15}px, 0)`;
                         ticking = false;
                     };
                     window.addEventListener('scroll', () => {

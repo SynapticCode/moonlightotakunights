@@ -10,12 +10,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosplay Competition Signup | Elven Grove | Moonlight Otaku Nights</title>
-    <meta name="description" content="Pre-register for the cosplay competition at Elven Grove: Emerald Moon. Judge's Pick and Crowd Favorite. March 26, 2026 at QXT's Newark. 21+">
+    <title>Cosplay Competition Signup | Hatsune Miku Unofficial After Party | Moonlight Otaku Nights</title>
+    <meta name="description" content="Pre-register for the costume contest at Hatsune Miku Unofficial After Party Vol. 02. Main stage at 12:30 AM, hosted by Miku Only NYC. May 7, 2026 at QXT's Newark. 21+">
 
     <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Cosplay Competition Signup | Elven Grove">
-    <meta property="og:description" content="Pre-register for the cosplay competition. 12 spots. Get your theme song queued. March 26, 2026 at QXT's Newark.">
+    <meta property="og:title" content="Cosplay Competition Signup | Hatsune Miku Unofficial After Party">
+    <meta property="og:description" content="Pre-register for the costume contest. Main stage at 12:30 AM, hosted by Miku Only NYC. May 7, 2026 at QXT's Newark.">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
@@ -27,11 +27,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <style>
         :root {
-            --theme-primary: #7fff00;
-            --theme-secondary: #00e5ff;
+            --theme-primary: #00f0ff;
+            --theme-secondary: #0088b8;
             --theme-magenta: #ff00ff;
             --theme-gold: #ffb700;
-            --theme-glow: rgba(127, 255, 0, 0.5);
+            --theme-glow: rgba(0, 240, 255, 0.35);
 
             --bg-dark: #0a0a0f;
             --bg-card: rgba(15, 15, 25, 0.8);
@@ -45,27 +45,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Zen Kaku Gothic New', sans-serif;
-            background: var(--bg-dark);
+            background-color: var(--bg-dark);
+            background-image: url('/assets/images/Hatsune_Miku/Hatune_Miku_Only_NYC.jpg');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             color: var(--text-primary);
             line-height: 1.6;
         }
 
-        .bg-animation {
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+        }
+
+        /* Dark gradient overlay sits above the bg image, behind all content */
+        .bg-overlay {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(127, 255, 0, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(0, 229, 255, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.04) 0%, transparent 50%);
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.95) 100%);
         }
 
         .particles {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: -1;
+            z-index: 0;
             overflow: hidden;
             pointer-events: none;
         }
@@ -93,7 +102,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 1rem 2rem;
             background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(127, 255, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
         }
 
         .nav-container {
@@ -178,29 +187,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             display: flex;
             align-items: center;
             padding: 120px 2rem 60px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
-            text-align: center;
+            width: 100%;
         }
 
-        .hero-jp {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 1rem;
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hero-flyer {
+            flex-shrink: 0;
+            width: 220px;
+        }
+
+        .flyer-thumb {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.15), 0 8px 32px rgba(0,0,0,0.6);
+            display: block;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
             color: var(--theme-primary);
             letter-spacing: 4px;
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2rem, 5vw, 3.2rem);
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .hero h1 span {
@@ -209,63 +246,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-subtitle {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--theme-secondary);
-            margin-bottom: 1.5rem;
-            letter-spacing: 3px;
-        }
-
         .hero-description {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
+            margin-bottom: 1rem;
+            max-width: 560px;
+        }
+
+        .hero-dateline {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--theme-primary);
+            letter-spacing: 2px;
             margin-bottom: 2rem;
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
+            opacity: 0.85;
         }
-
-        /* Event Meta */
-        .event-meta {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .meta-item {
-            background: var(--bg-card);
-            border: 1px solid rgba(127, 255, 0, 0.1);
-            border-radius: 12px;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .meta-icon { font-size: 1.5rem; }
-
-        .meta-text { display: flex; flex-direction: column; }
-
-        .meta-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .meta-value { font-weight: 600; font-size: 0.95rem; }
 
         .hero-cta {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .btn {
@@ -310,6 +311,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 80px 2rem;
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .section-title {
@@ -333,15 +336,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
 
         .expect-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(127, 255, 0, 0.1);
+            background: rgba(8, 12, 22, 0.78);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 240, 255, 0.15);
             border-radius: 16px;
             padding: 2rem;
             text-align: center;
             transition: all 0.3s;
         }
 
-        .expect-card:hover { border-color: rgba(127, 255, 0, 0.3); }
+        .expect-card:hover { border-color: rgba(0, 240, 255, 0.35); }
 
         .expect-icon { font-size: 2.5rem; margin-bottom: 1rem; }
 
@@ -361,8 +366,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         /* Form section */
         .form-section {
             padding: 80px 2rem;
-            max-width: 600px;
+            max-width: 660px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-section-inner {
+            background: rgba(8, 12, 22, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 240, 255, 0.18);
         }
 
         .form-section .section-title { margin-bottom: 0.5rem; }
@@ -385,8 +401,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .form-select {
             width: 100%;
             padding: 1rem 1.25rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.18);
             border-radius: 12px;
             color: var(--text-primary);
             font-family: inherit;
@@ -437,7 +453,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .form-error.visible { display: block; }
 
         .form-success {
-            background: var(--bg-card);
+            background: rgba(8, 12, 22, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 2px solid var(--theme-primary);
             border-radius: 16px;
             padding: 2.5rem;
@@ -472,7 +490,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         footer {
             padding: 40px 2rem;
             text-align: center;
-            border-top: 1px solid rgba(127, 255, 0, 0.1);
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .footer-links {
@@ -528,7 +548,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 flex-direction: column;
                 padding: 2rem;
                 gap: 1.5rem;
-                border-bottom: 1px solid rgba(127, 255, 0, 0.1);
+                border-bottom: 1px solid rgba(0, 240, 255, 0.1);
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             }
 
@@ -545,7 +565,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             .logo { font-size: 0.75rem; }
             .logo-image { height: 40px; width: 40px; }
 
-            .event-meta { grid-template-columns: 1fr; }
+            .hero-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text { text-align: center; }
+
+            .hero-description { margin-left: auto; margin-right: auto; }
+
+            .hero-flyer {
+                width: 180px;
+                order: 1;
+            }
+
+            .hero-text { order: 0; }
 
             .hero-cta {
                 flex-direction: column;
@@ -553,6 +587,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }
 
             .btn { width: 100%; max-width: 280px; }
+
+            .form-section-inner { padding: 1.5rem; }
         }
 
         /* Data Collection Notice */
@@ -663,7 +699,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WX8WHXSZ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-    <div class="bg-animation"></div>
+
+    <!-- Dark gradient overlay above bg image, behind all content -->
+    <div class="bg-overlay" aria-hidden="true"></div>
 
     <div class="particles">
         <script>
@@ -688,7 +726,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><a href="/#vibe">The Vibe</a></li>
                 <li><a href="/#events">Events</a></li>
                 <li><a href="/#guild">Join the Guild</a></li>
-                <li><a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=nav&utm_campaign=elven_grove" class="nav-cta" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">TICKETS</a></li>
+                <li><a href="https://moonlightotakunights.com/miku?utm_source=website&utm_medium=nav&utm_campaign=miku_after_party" class="nav-cta" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Miku After Party Tickets',content_category:'Event Tickets'});}">TICKETS</a></li>
             </ul>
             <div class="mobile-toggle">
                 <span></span>
@@ -700,46 +738,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-container">
-            <p class="hero-jp">コスプレ大会</p>
-            <h1><span>COSPLAY COMPETITION</span></h1>
-            <p class="hero-subtitle">ELVEN GROVE — EMERALD MOON</p>
-            <p class="hero-description">
-                Hit the stage at midnight. Two winners: Judge's Pick and Crowd Favorite. Fantasy and isekai cosplay encouraged — all cosplay welcome. Pre-register and our DJs will have your character's theme song queued for your walk-on.
-            </p>
-            <div class="event-meta">
-                <div class="meta-item">
-                    <div class="meta-icon">📅</div>
-                    <div class="meta-text">
-                        <span class="meta-label">Date</span>
-                        <span class="meta-value">Thursday, March 26, 2026</span>
-                    </div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-icon">⏰</div>
-                    <div class="meta-text">
-                        <span class="meta-label">Stage time</span>
-                        <span class="meta-value">Midnight</span>
-                    </div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-icon">📍</div>
-                    <div class="meta-text">
-                        <span class="meta-label">Venue</span>
-                        <span class="meta-value">QXT's Nightclub, Newark NJ</span>
-                    </div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-icon">🏆</div>
-                    <div class="meta-text">
-                        <span class="meta-label">Categories</span>
-                        <span class="meta-value">Judge's Pick + Crowd Favorite</span>
-                    </div>
+        <div class="hero-container hero-flex">
+            <div class="hero-text">
+                <p class="hero-eyebrow">Costume Contest Pre-Registration</p>
+                <h1><span>Lock your spot for the main stage.</span></h1>
+                <p class="hero-description">
+                    Costume contest hits the main stage at 12:30 AM, hosted by Miku Only NYC. Pre-register here to guarantee your walk-on. Walk-ins welcome at the door if spots remain.
+                </p>
+                <p class="hero-dateline">Thursday, May 7, 2026 · QXT's Newark · 21+</p>
+                <div class="hero-cta">
+                    <a href="https://moonlightotakunights.com/miku?utm_source=website&utm_medium=cosplay_signup_cta&utm_campaign=miku_after_party" class="btn btn-primary" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Miku After Party Tickets',content_category:'Event Tickets'});}">GET TICKETS</a>
+                    <a href="#signup" class="btn btn-secondary">SIGN UP BELOW ↓</a>
                 </div>
             </div>
-            <div class="hero-cta">
-                <a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=cosplay_signup_cta&utm_campaign=elven_grove" class="btn btn-primary" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">GET TICKETS</a>
-                <a href="#signup" class="btn btn-secondary">SIGN UP BELOW ↓</a>
+            <div class="hero-flyer">
+                <img src="/assets/images/flyers/1080%20x%201350%20hatsune%20miku%20unofficial%20after%20party%204_11_2026.png" alt="Hatsune Miku Unofficial After Party Vol. 02 flyer" class="flyer-thumb">
             </div>
         </div>
     </section>
@@ -750,8 +763,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="expect-grid">
             <div class="expect-card">
                 <div class="expect-icon">1</div>
-                <h3>SIGN UP</h3>
-                <p>Fill out the form below. Pre-registered contestants get a custom walk-on with their character's theme song queued by our DJs.</p>
+                <h3>PRE-REGISTER</h3>
+                <p>Lock your slot before May 7. Pre-registered contestants get a custom walk-on with their character's theme song queued by AniParty's VDJ.</p>
             </div>
             <div class="expect-card">
                 <div class="expect-icon">2</div>
@@ -761,103 +774,105 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="expect-card">
                 <div class="expect-icon">3</div>
                 <h3>SHOW UP READY</h3>
-                <p>Arrive in full cosplay. Check in at the Quest Master station.</p>
+                <p>Arrive in full cosplay (qualifies you for the $10 all-night entry). Check in at the Quest Master station — Papou is your point of contact.</p>
             </div>
             <div class="expect-card">
                 <div class="expect-icon">4</div>
                 <h3>HIT THE STAGE</h3>
-                <p>Walk on, pose, own it. Pre-registered contestants get their theme song. Day-of sign-ups get a hype track if spots remain.</p>
+                <p>12:30 AM call time. Miku Only NYC hosts. Walk on, pose, own it. Prizes from our partners.</p>
             </div>
         </div>
     </section>
 
     <!-- Signup form -->
     <section class="form-section" id="signup">
-        <h2 class="section-title">REGISTER NOW</h2>
-        <p class="section-subtitle">12 spots. Pre-register for the full walk-on experience.</p>
+        <div class="form-section-inner">
+            <h2 class="section-title">REGISTER NOW</h2>
+            <p class="section-subtitle">Pre-register to guarantee your walk-on spot.</p>
 
-        <div id="form-wrapper">
-            <form id="cosplay-form" method="POST" action="https://formspree.io/f/mjgayegq">
-                <div class="form-group">
-                    <label class="form-label" for="full-name">Full Name</label>
-                    <input type="text" id="full-name" name="full_name" class="form-input" required placeholder="First and last name">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="alias">Alias / Moonlight Name</label>
-                    <input type="text" id="alias" name="alias" class="form-input" required placeholder="The name you go by in the community">
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">Your persona, online handle, or the name people know you as.</p>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="cosplay-character">Cosplay Character</label>
-                    <input type="text" id="cosplay-character" name="cosplay_character" class="form-input" required placeholder="Who are you cosplaying as?">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="character-series">Series / Origin</label>
-                    <input type="text" id="character-series" name="character_series" class="form-input" required placeholder="Anime, manga, game, or OC universe">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="walk-on-theme">Walk-On Theme Song</label>
-                    <input type="text" id="walk-on-theme" name="walk_on_track" class="form-input" placeholder="What song should play when you hit the stage?">
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">Pre-registered contestants get their character's theme song queued live by our DJs. Song name + artist, or a YouTube/Spotify link.</p>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="instagram">Instagram @ Handle</label>
-                    <input type="text" id="instagram" name="instagram" class="form-input" required placeholder="@yourusername">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="category">Category Preference</label>
-                    <select id="category" name="category_preference" class="form-select">
-                        <option value="">Select...</option>
-                        <option value="judges-pick">Judge's Pick</option>
-                        <option value="crowd-favorite">Crowd Favorite</option>
-                        <option value="either">Either — surprise me</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="ticket-status">Ticket Status</label>
-                    <select id="ticket-status" name="ticket_status" class="form-select" required>
-                        <option value="">Select one...</option>
-                        <option value="purchased">Already purchased my ticket</option>
-                        <option value="using-promo-code">I have a promo code</option>
-                        <option value="not-yet">Haven't bought yet</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="promo-code-info">Promo Code Info</label>
-                    <input type="text" id="promo-code-info" name="promo_code_info" class="form-input" placeholder="Enter the code or who gave it to you">
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">If you selected 'I have a promo code' above, let us know the code or who shared it.</p>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="notes">Anything else we should know?</label>
-                    <textarea id="notes" name="notes" class="form-textarea" placeholder="Accessibility needs, group entries, questions — whatever you want us to know."></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="contact-consent" style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer;">
-                        <input type="checkbox" id="contact-consent" name="contact_consent" required style="margin-top: 0.2rem; flex-shrink: 0; width: auto;">
-                        <span style="font-size: 0.68rem; color: var(--text-muted); line-height: 1.5; letter-spacing: 0.02em;">I give permission to be contacted by Moonlight Otaku Nights regarding the cosplay competition, including walk-on coordination, schedule updates, and event-day details.</span>
-                    </label>
-                </div>
-                <input type="hidden" name="_subject" value="Cosplay Competition Signup — Elven Grove">
-                <div class="form-submit-wrap">
-                    <button type="submit" class="btn btn-primary" id="submit-btn">LOCK IN MY SPOT</button>
-                </div>
-                <div class="form-error" id="form-error" role="alert">Something went wrong. Please try again.</div>
-            </form>
+            <div id="form-wrapper">
+                <form id="cosplay-form" method="POST" action="https://formspree.io/f/mjgayegq">
+                    <div class="form-group">
+                        <label class="form-label" for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="full_name" class="form-input" required placeholder="First and last name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="alias">Alias / Moonlight Name</label>
+                        <input type="text" id="alias" name="alias" class="form-input" required placeholder="The name you go by in the community">
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">Your persona, online handle, or the name people know you as.</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="cosplay-character">Cosplay Character</label>
+                        <input type="text" id="cosplay-character" name="cosplay_character" class="form-input" required placeholder="Who are you cosplaying as?">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="character-series">Series / Origin</label>
+                        <input type="text" id="character-series" name="character_series" class="form-input" required placeholder="Anime, manga, game, or OC universe">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="walk-on-theme">Walk-On Theme Song</label>
+                        <input type="text" id="walk-on-theme" name="walk_on_track" class="form-input" placeholder="What song should play when you hit the stage?">
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">Pre-registered contestants get their character's theme song queued live by our VDJ. Song name + artist, or a YouTube/Spotify link.</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="instagram">Instagram @ Handle</label>
+                        <input type="text" id="instagram" name="instagram" class="form-input" required placeholder="@yourusername">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="category">Category Preference</label>
+                        <select id="category" name="category_preference" class="form-select">
+                            <option value="">Select...</option>
+                            <option value="best-vocaloid-cosplay">Best Vocaloid Cosplay</option>
+                            <option value="best-original-character">Best Original Character</option>
+                            <option value="open-surprise">Open / Surprise Category — pick one for me</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="ticket-status">Ticket Status</label>
+                        <select id="ticket-status" name="ticket_status" class="form-select" required>
+                            <option value="">Select one...</option>
+                            <option value="purchased">Already purchased my ticket</option>
+                            <option value="using-promo-code">I have a promo code</option>
+                            <option value="not-yet">Haven't bought yet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="promo-code-info">Promo Code Info</label>
+                        <input type="text" id="promo-code-info" name="promo_code_info" class="form-input" placeholder="Enter the code or who gave it to you">
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">If you selected 'I have a promo code' above, let us know the code or who shared it.</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="notes">Anything else we should know?</label>
+                        <textarea id="notes" name="notes" class="form-textarea" placeholder="Accessibility needs, group entries, questions — whatever you want us to know."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-consent" style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer;">
+                            <input type="checkbox" id="contact-consent" name="contact_consent" required style="margin-top: 0.2rem; flex-shrink: 0; width: auto;">
+                            <span style="font-size: 0.68rem; color: var(--text-muted); line-height: 1.5; letter-spacing: 0.02em;">I give permission to be contacted by Moonlight Otaku Nights regarding the cosplay competition, including walk-on coordination, schedule updates, and event-day details.</span>
+                        </label>
+                    </div>
+                    <input type="hidden" name="_subject" value="Cosplay Competition Signup — Hatsune Miku Vol. 02">
+                    <div class="form-submit-wrap">
+                        <button type="submit" class="btn btn-primary" id="submit-btn">LOCK IN MY SPOT</button>
+                    </div>
+                    <div class="form-error" id="form-error" role="alert">Something went wrong. Please try again.</div>
+                </form>
+            </div>
+
+            <div id="form-success" class="form-success">
+                <div class="form-success-icon">✓</div>
+                <h3 class="form-success-title">You're on the roster.</h3>
+                <p class="form-success-message">
+                    We'll confirm your spot via DM soon. Show up in full cosplay and ready to hit the main stage at 12:30 AM. See you at QXT's. — Moonlight Otaku Nights × Miku Only NYC
+                </p>
+            </div>
+
+            <p class="form-footer-text">Don't have a ticket yet? <a href="https://moonlightotakunights.com/miku?utm_source=website&utm_medium=cosplay_signup_form&utm_campaign=miku_after_party" target="_blank" rel="noopener noreferrer">Get tickets here</a>.</p>
         </div>
-
-        <div id="form-success" class="form-success">
-            <div class="form-success-icon">✓</div>
-            <h3 class="form-success-title">You're on the roster.</h3>
-            <p class="form-success-message">
-                We'll confirm your spot via DM soon. Show up in full cosplay and ready to hit the stage at midnight. See you at QXT's.<br>— Moonlight Otaku Nights
-            </p>
-        </div>
-
-        <p class="form-footer-text">Don't have a ticket yet? <a href="https://elven-grove.eventbrite.com?utm_source=website&utm_medium=cosplay_signup_form&utm_campaign=elven_grove" target="_blank" rel="noopener noreferrer">Get tickets here</a>.</p>
     </section>
 
     <!-- Footer -->

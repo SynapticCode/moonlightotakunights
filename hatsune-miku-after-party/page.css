@@ -491,22 +491,7 @@
 
 .miku-page .dj-photo-frame--portrait img {
     object-fit: cover;
-    object-position: left center;
-}
-
-.miku-page .dj-photo-frame--logo-fill {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-}
-
-.miku-page .dj-photo-frame--logo-fill img {
-    width: 200%;
-    height: 200%;
-    object-fit: contain;
-    padding: 0;
-    transform: translate(-25%, -25%);
-    filter: none !important;
+    object-position: center center;
 }
 
 /* DJ name logo replacement */
@@ -536,17 +521,6 @@
     max-height: 280px;
     margin-top: -60px;
     margin-bottom: -60px;
-}
-
-.miku-page .dj-name--logo--padded-square-blackbg {
-    /* For Plynk specifically: square canvas, solid black background */
-    height: auto;
-    width: 240px;
-    max-width: 240px;
-    max-height: 240px;
-    margin-top: -45px;
-    margin-bottom: -45px;
-    mix-blend-mode: screen;
 }
 
 .miku-page .dj-name {
@@ -1376,14 +1350,6 @@
         max-height: 180px;
         margin-top: -40px;
         margin-bottom: -40px;
-    }
-
-    .miku-page .dj-name--logo--padded-square-blackbg {
-        width: 160px;
-        max-width: 160px;
-        max-height: 160px;
-        margin-top: -30px;
-        margin-bottom: -30px;
     }
 
     .miku-page .dj-name {

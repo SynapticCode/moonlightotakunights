@@ -494,6 +494,10 @@
     object-position: center center;
 }
 
+.miku-page .dj-photo-frame--plynk img {
+    object-position: 30% center;
+}
+
 /* DJ name logo replacement */
 .miku-page .dj-name--logo {
     display: block;

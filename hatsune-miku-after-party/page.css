@@ -494,9 +494,6 @@
     object-position: center center;
 }
 
-.miku-page .dj-photo-frame--plynk img {
-    object-position: 30% center;
-}
 
 /* DJ name logo replacement */
 .miku-page .dj-name--logo {
@@ -1349,11 +1346,11 @@
     }
 
     .miku-page .dj-name--logo--padded-square {
-        width: 180px;
-        max-width: 180px;
-        max-height: 180px;
-        margin-top: -40px;
-        margin-bottom: -40px;
+        width: 240px;
+        max-width: 240px;
+        max-height: 240px;
+        margin-top: -55px;
+        margin-bottom: -55px;
     }
 
     .miku-page .dj-name {

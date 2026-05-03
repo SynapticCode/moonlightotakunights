@@ -514,15 +514,6 @@
     max-height: 120px;
 }
 
-.miku-page .dj-name--logo--padded-square {
-    /* For square logos with ~75% transparent padding (TuxedoMask) */
-    height: auto;
-    width: 280px;
-    max-width: 280px;
-    max-height: 280px;
-    margin-top: -60px;
-    margin-bottom: -60px;
-}
 
 .miku-page .dj-name {
     position: relative;
@@ -578,11 +569,11 @@
 
 .miku-page .dj-affiliation--logo {
     display: block;
-    height: 36px;
+    height: 60px;
     width: auto;
-    max-width: 160px;
+    max-width: 240px;
     object-fit: contain;
-    margin-top: 0.4rem;
+    margin-top: 0.6rem;
     opacity: 0.95;
 }
 
@@ -1345,20 +1336,12 @@
         max-height: 80px;
     }
 
-    .miku-page .dj-name--logo--padded-square {
-        width: 240px;
-        max-width: 240px;
-        max-height: 240px;
-        margin-top: -55px;
-        margin-bottom: -55px;
-    }
-
     .miku-page .dj-name {
         font-size: 2.4rem;
     }
 
     .miku-page .dj-affiliation--logo {
-        height: 32px;
-        max-width: 130px;
+        height: 48px;
+        max-width: 180px;
     }
 }

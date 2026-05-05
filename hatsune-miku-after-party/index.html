@@ -41,6 +41,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         body { margin: 0; background: #0a0a0f; }
         .posh-logo { max-height: 24px; vertical-align: middle; margin-right: 8px; }
         @media (max-width: 768px) { .posh-logo { max-height: 20px; } }
+        .flyer-link {
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .flyer-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.25);
+        }
+        .miku-page .produced-by-credit {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(0, 240, 255, 0.7);
+            margin-top: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .miku-page .produced-by-credit {
+                font-size: 0.6rem;
+                letter-spacing: 0.2em;
+            }
+        }
     </style>
 
     <!-- Google Analytics 4 -->
@@ -104,6 +128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <span class="chromatic-title" data-text="HATSUNE MIKU">HATSUNE MIKU</span>
                 </h1>
                 <p class="hero-subtitle">UNOFFICIAL AFTER PARTY</p>
+                <p class="produced-by-credit">PRODUCED BY MOONLIGHT OTAKU NIGHTS · IN PARTNERSHIP WITH MIKU ONLY NYC</p>
                 <p class="hero-tagline">プルーデンシャル・センターから徒歩5分。Two blocks south. The night doesn't end at Prudential Center.</p>
                 <div class="hero-cta-row">
                     <a href="https://moonlightotakunights.com/miku" class="btn btn-accent-outline"><img src="/assets/images/logos/Posh_VIP_Logo.png" alt="Posh" class="posh-logo">GET TICKETS AT POSH</a>
@@ -118,7 +143,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <span class="flyer-bracket tr" aria-hidden="true"></span>
                     <span class="flyer-bracket bl" aria-hidden="true"></span>
                     <span class="flyer-bracket br" aria-hidden="true"></span>
-                    <img src="/assets/images/flyers/1080%20x%201350%20hatsune%20miku%20unofficial%20after%20party%204_11_2026.png" alt="Hatsune Miku Unofficial After Party flyer" width="420" height="525">
+                    <a href="/miku?utm_source=event_page&utm_medium=hero_flyer_click&utm_campaign=miku_after_party" class="flyer-link" target="_blank" rel="noopener noreferrer" aria-label="Get tickets for Hatsune Miku Unofficial After-Party" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Miku After Party Tickets',content_category:'Event Tickets'});}">
+                        <img src="/assets/images/flyers/1080%20x%201350%20hatsune%20miku%20unofficial%20after%20party%204_11_2026.png" alt="Hatsune Miku Unofficial After Party flyer" width="420" height="525">
+                    </a>
                 </div>
             </div>
         </section>
@@ -281,7 +308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="section-header">
                 <span class="jp-label">コスプレコンテスト</span>
                 <h2 class="section-title chromatic-title" data-text="COSPLAY CONTEST">COSPLAY CONTEST</h2>
-                <p class="section-sub">Hit the main stage at 12:30 AM. Hosted by Miku Only NYC.</p>
+                <p class="section-sub">Moonlight Otaku Nights brings the contest to the main stage at 12:30 AM. Co-hosted with Miku Only NYC.</p>
             </div>
             <div class="cosplay-contest-content">
                 <div class="contest-detail">

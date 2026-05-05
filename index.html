@@ -44,6 +44,15 @@ window.addEventListener('load',function(){var noscriptIframe=!!document.querySel
     <style>
         html { scroll-behavior: smooth; }
         body { margin: 0; background: #0a0a0f; }
+        .flyer-link {
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .flyer-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.25);
+        }
     </style>
 
     <!-- Canvas Confetti Library -->
@@ -161,7 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
 
         <!-- ════ Next Event ════ -->
-        <section class="next-event" id="events">
+        <section class="next-event" id="next-event">
             <span class="katakana-fragment" data-original="信号" aria-hidden="true">信号</span>
             <span class="data-fragment" aria-hidden="true">BROADCAST.OK</span>
 
@@ -179,7 +188,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <div class="next-event-flyer">
                     <div class="flyer-glow" aria-hidden="true"></div>
-                    <img src="/assets/images/flyers/1080%20x%201350%20hatsune%20miku%20unofficial%20after%20party%204_11_2026.png" alt="Hatsune Miku Unofficial After Party flyer">
+                    <a href="/hatsune-miku-after-party/" class="flyer-link" aria-label="View Hatsune Miku Unofficial After-Party event details">
+                        <img src="/assets/images/flyers/1080%20x%201350%20hatsune%20miku%20unofficial%20after%20party%204_11_2026.png" alt="Hatsune Miku Unofficial After Party flyer">
+                    </a>
                 </div>
 
                 <div class="next-event-details">

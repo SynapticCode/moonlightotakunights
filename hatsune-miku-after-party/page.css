@@ -1,5 +1,10 @@
 /* Hatsune Miku Unofficial After Party — page-specific layout */
 
+/* Override .moonlight-theme's opaque background so .miku-bg-layer shows through */
+.moonlight-theme.miku-page {
+    background: transparent;
+}
+
 .miku-page {
     --mt-accent-primary: #00f0ff;
     --mt-accent-secondary: #0088b8;
@@ -18,7 +23,6 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     z-index: -2;
     will-change: transform;
 }

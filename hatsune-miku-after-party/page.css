@@ -238,6 +238,32 @@
     margin-top: 2rem;
 }
 
+.miku-page .hero-secondary-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: var(--mt-accent-primary, #00f0ff);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.4);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.miku-page .hero-secondary-link:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+@media (max-width: 768px) {
+    .miku-page .hero-secondary-link {
+        font-size: 0.75rem;
+        margin-top: 1rem;
+    }
+}
+
 .miku-page .hero-flyer {
     display: flex;
     justify-content: center;
@@ -1214,6 +1240,27 @@
     margin-bottom: 2.5rem;
 }
 
+.miku-page .cosplay-contest-section .jp-label {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--mt-accent-primary);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.miku-page .cosplay-contest-section .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+
 .miku-page .cosplay-contest-content {
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(12px);
@@ -1282,6 +1329,43 @@
         align-self: stretch;
         text-align: center;
         width: 100%;
+    }
+}
+
+/* ── CTA Button — Primary ──────────────────────────────────────── */
+
+.miku-page .cta-button.cta-button--primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #0a0a0f;
+    background: linear-gradient(135deg, var(--mt-accent-primary, #00f0ff) 0%, var(--mt-accent-secondary, #0088b8) 100%);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.35), 0 4px 20px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 240px;
+}
+
+.miku-page .cta-button.cta-button--primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.5), 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .miku-page .cta-button.cta-button--primary {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 0.85rem;
+        min-width: unset;
     }
 }
 

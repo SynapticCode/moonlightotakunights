@@ -1188,6 +1188,90 @@
     color: rgba(255, 255, 255, 0.3);
 }
 
+/* ── Cosplay Contest Section ───────────────────────────────────── */
+
+.miku-page .cosplay-contest-section {
+    position: relative;
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.miku-page .cosplay-contest-section .section-header {
+    margin-bottom: 2.5rem;
+}
+
+.miku-page .cosplay-contest-content {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--mt-border);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.miku-page .contest-detail {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1rem;
+    align-items: baseline;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--mt-border);
+}
+
+.miku-page .contest-detail:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.miku-page .contest-detail .detail-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--mt-accent-primary);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0;
+}
+
+.miku-page .contest-detail .detail-value {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+}
+
+.miku-page .cosplay-contest-content .cta-button {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+    .miku-page .cosplay-contest-section {
+        padding: 3.75rem 1.5rem;
+    }
+
+    .miku-page .cosplay-contest-content {
+        padding: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .miku-page .contest-detail {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+    }
+
+    .miku-page .cosplay-contest-content .cta-button {
+        align-self: stretch;
+        text-align: center;
+        width: 100%;
+    }
+}
+
 /* ── Mobile ────────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
@@ -1326,8 +1410,8 @@
 
 @media (max-width: 768px) {
     .miku-page .dj-name--logo {
-        height: 80px;
-        max-height: 80px;
+        height: 60px;
+        max-height: 60px;
     }
 
     .miku-page .dj-name--logo--square {
@@ -1337,11 +1421,39 @@
     }
 
     .miku-page .dj-name {
-        font-size: 2.4rem;
+        font-size: 1.4rem;
+        line-height: 1;
     }
 
     .miku-page .dj-affiliation--logo {
-        height: 48px;
-        max-width: 180px;
+        height: 36px;
+        max-width: 130px;
+    }
+
+    .miku-page .dj-card {
+        padding: 1rem 1.25rem;
+    }
+
+    .miku-page .dj-photo-frame {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 414px) {
+    .miku-page .dj-name--logo {
+        height: 50px;
+        max-height: 50px;
+    }
+    .miku-page .dj-name {
+        font-size: 1.2rem;
+    }
+    .miku-page .dj-affiliation--logo {
+        height: 30px;
+        max-width: 110px;
+    }
+    .miku-page .dj-photo-frame {
+        width: 70px;
+        height: 70px;
     }
 }

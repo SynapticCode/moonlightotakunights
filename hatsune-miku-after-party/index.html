@@ -81,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div class="miku-bg-layer" aria-hidden="true"></div>
-<div class="bg-overlay" aria-hidden="true"></div>
+<div class="miku-bg-overlay" aria-hidden="true"></div>
 <div class="moonlight-theme miku-page">
     <div class="bg-stripes" aria-hidden="true"></div>
     <div class="bg-dots" aria-hidden="true"></div>
@@ -522,23 +522,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     window.setInterval(swap, 3000);
 })();
 
-document.addEventListener('DOMContentLoaded', function () {
-    const parallaxBg = document.querySelector('.miku-bg-layer');
-    if (parallaxBg && window.matchMedia('(min-width: 769px)').matches) {
-        let ticking = false;
-        const updateParallax = () => {
-            const scrolled = window.scrollY;
-            parallaxBg.style.transform = `translate3d(0, ${scrolled * -0.15}px, 0)`;
-            ticking = false;
-        };
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }, { passive: true });
-    }
-});
+const parallaxBg = document.querySelector('.miku-bg-layer');
+if (parallaxBg && window.matchMedia('(min-width: 769px)').matches) {
+    let ticking = false;
+    const updateParallax = () => {
+        const scrolled = window.scrollY;
+        // Very subtle drift — background remains in viewport always
+        parallaxBg.style.transform = `translate3d(0, ${scrolled * -0.03}px, 0)`;
+        ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+}
 </script>
 <script src="/components/nav-loader.js"></script>
 </body>

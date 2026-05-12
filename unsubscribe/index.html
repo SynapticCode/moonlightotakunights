@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsubscribe | Moonlight Otaku Nights</title>
+    <meta name="robots" content="noindex,follow">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/components/theme.css">
+    <link rel="stylesheet" href="/components/nav.css">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .unsub-wrap {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
+            background: radial-gradient(ellipse at top, rgba(105,69,145,0.18), transparent 60%), #07060d;
+        }
+        .unsub-card {
+            max-width: 520px;
+            width: 100%;
+            background: rgba(15,12,28,0.85);
+            border: 1px solid rgba(127,187,224,0.2);
+            border-radius: 16px;
+            padding: 48px 36px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px);
+        }
+        .unsub-card h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            margin: 0 0 12px;
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+        .unsub-card p { color: #cfc8dc; line-height: 1.6; margin: 0 0 16px; font-size: 15px; }
+        .unsub-form { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+        .unsub-form input[type="email"] {
+            padding: 14px 16px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(127,187,224,0.25);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            font-family: inherit;
+        }
+        .unsub-form input[type="email"]:focus {
+            outline: none;
+            border-color: #ac2181;
+            box-shadow: 0 0 0 3px rgba(172,33,129,0.2);
+        }
+        .unsub-form button {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #694591 0%, #ac2181 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .unsub-form button:hover { transform: translateY(-2px); }
+        .unsub-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .unsub-msg { margin-top: 18px; padding: 14px; border-radius: 8px; font-size: 14px; text-align: center; }
+        .msg-ok { background: rgba(0,240,255,0.08); color: #7fbbe0; border: 1px solid rgba(127,187,224,0.35); }
+        .msg-err { background: rgba(255,80,80,0.08); color: #ff8a8a; border: 1px solid rgba(255,80,80,0.35); }
+        .back-link { display: inline-block; margin-top: 24px; color: #7fbbe0; text-decoration: none; font-size: 13px; letter-spacing: 0.08em; }
+        .back-link:hover { color: #ac2181; }
+        .hp { position: absolute; left: -9999px; opacity: 0; width: 1px; height: 1px; }
+    </style>
+</head>
+<body class="moonlight-theme">
+
+<div id="nav-placeholder"></div>
+
+<main class="unsub-wrap">
+    <div class="unsub-card">
+        <h1>Unsubscribe</h1>
+        <p>Sorry to see you go. Enter your email below and we'll remove you from all Moonlight Otaku Nights mailings.</p>
+        <p style="font-size: 13px; color: #8a849c;">This only affects marketing emails. You'll still receive transactional messages if you have an active ticket or cosplay entry.</p>
+
+        <form class="unsub-form" id="unsub-form" novalidate>
+            <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" id="unsub-email">
+            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" id="unsub-btn">Unsubscribe me</button>
+        </form>
+
+        <div id="unsub-result" style="display:none;"></div>
+
+        <a href="/" class="back-link">← Back to moonlightotakunights.com</a>
+    </div>
+</main>
+
+<script src="/components/nav-loader.js"></script>
+<script>
+(function () {
+    var form = document.getElementById('unsub-form');
+    var btn = document.getElementById('unsub-btn');
+    var result = document.getElementById('unsub-result');
+    var emailInput = document.getElementById('unsub-email');
+
+    // Prefill from ?email= or ?e= query param
+    var params = new URLSearchParams(window.location.search);
+    var preEmail = params.get('email') || params.get('e');
+    if (preEmail) { emailInput.value = preEmail; }
+
+    function show(kind, msg) {
+        result.style.display = 'block';
+        result.className = 'unsub-msg ' + (kind === 'ok' ? 'msg-ok' : 'msg-err');
+        result.textContent = msg;
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = emailInput.value.trim();
+        var honeypot = form.querySelector('input[name="website"]').value;
+        if (!email) { show('err', 'Please enter your email.'); return; }
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Working...';
+
+        fetch('/api/unsubscribe.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ email: email, website: honeypot, token: params.get('t') || '' })
+        }).then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
+          .then(function (data) {
+              if (data && data.ok !== false) {
+                  show('ok', 'Done. You\'ve been removed from all Moonlight Otaku Nights mailings.');
+                  form.style.display = 'none';
+              } else {
+                  show('err', (data && data.error) || 'Something went wrong. Please email info@moonlightotakunights.com and we\'ll handle it manually.');
+                  btn.disabled = false;
+                  btn.textContent = originalText;
+              }
+          }).catch(function () {
+              show('err', 'Network error. Please try again or email info@moonlightotakunights.com.');
+              btn.disabled = false;
+              btn.textContent = originalText;
+          });
+    });
+})();
+</script>
+
+</body>
+</html>

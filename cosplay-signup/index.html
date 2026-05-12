@@ -10,16 +10,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosplay Competition Signup | Hatsune Miku Unofficial After Party | Moonlight Otaku Nights</title>
-    <meta name="description" content="Pre-register for the costume contest at Hatsune Miku Unofficial After Party Vol. 02. Main stage at 12:30 AM. Moonlight Otaku Nights and Miku Only NYC co-hosting. May 7, 2026 at QXT's Newark. 21+">
+    <title>Cosplay Contest | Moonlight Otaku Nights</title>
+    <meta name="description" content="Cosplay contest signup for Moonlight Otaku Nights. No active contest right now — follow the Guild or our Instagram for the next call.">
 
     <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Cosplay Competition Signup | Hatsune Miku Unofficial After Party">
-    <meta property="og:description" content="Pre-register for the costume contest. Main stage at 12:30 AM. Moonlight Otaku Nights and Miku Only NYC co-hosting. May 7, 2026 at QXT's Newark.">
+    <meta property="og:title" content="Cosplay Contest | Moonlight Otaku Nights">
+    <meta property="og:description" content="No active cosplay contest right now. Follow Moonlight Otaku Nights for the next event.">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="/components/theme.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,11 +32,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             --theme-primary: #00f0ff;
             --theme-secondary: #0088b8;
             --theme-magenta: #ff00ff;
-            --theme-gold: #ffb700;
             --theme-glow: rgba(0, 240, 255, 0.35);
-
             --bg-dark: #0a0a0f;
-            --bg-card: rgba(15, 15, 25, 0.8);
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-muted: rgba(255, 255, 255, 0.5);
@@ -48,678 +47,207 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             background-color: #080c16;
             color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Parallax background layer — transformed independently by JS */
-        .miku-bg-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 200vh;
-            background-image: url('/assets/images/Hatsune_Miku/Hatune_Miku_Only_NYC.jpg');
-            background-size: cover;
-            background-position: center top;
-            background-repeat: no-repeat;
-            z-index: -2;
-            will-change: transform;
-        }
-
-        /* Dark gradient overlay sits above the bg layer, behind all content */
-        .bg-overlay {
+        /* Subtle parallax background */
+        .bg-layer {
             position: fixed;
             inset: 0;
-            pointer-events: none;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0, 240, 255, 0.08), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(172, 33, 129, 0.08), transparent 50%),
+                #080c16;
+            z-index: -2;
+        }
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
             z-index: -1;
-            background: linear-gradient(180deg, rgba(8, 12, 22, 0.35) 0%, rgba(8, 12, 22, 0.55) 50%, rgba(8, 12, 22, 0.70) 100%);
-        }
-
-        .particles {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 0;
-            overflow: hidden;
             pointer-events: none;
         }
 
-        .particle {
-            position: absolute;
-            width: 4px; height: 4px;
-            background: var(--theme-primary);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 15s infinite ease-in-out;
-        }
+        /* Nav placeholder — loaded by nav-loader.js */
 
-        @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
-        }
-
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            background: var(--gradient-theme);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo-image {
-            height: 50px;
-            width: 50px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px var(--theme-glow));
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .logo:hover .logo-image { transform: scale(1.05); }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover { color: var(--theme-primary); }
-
-        .nav-cta {
-            background: var(--gradient-theme);
-            color: var(--bg-dark) !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-        }
-
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .mobile-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: 0.3s;
-        }
-
-        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
-        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
-        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
-
-        /* Hero */
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 2rem 60px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .hero-flex {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .hero-text {
+        main {
             flex: 1;
-            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 1.5rem 80px;
         }
 
-        .hero-flyer {
-            flex-shrink: 0;
-            width: 220px;
-        }
-
-        .flyer-thumb {
+        .empty-state {
+            max-width: 720px;
             width: 100%;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 240, 255, 0.25);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.15), 0 8px 32px rgba(0,0,0,0.6);
-            display: block;
+            text-align: center;
+            position: relative;
         }
 
-        .hero-eyebrow {
+        .empty-eyebrow {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
             color: var(--theme-primary);
-            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             opacity: 0.9;
         }
 
-        .hero h1 {
+        .empty-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+        }
+
+        .empty-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 1rem;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            margin-bottom: 1.5rem;
             color: #fff;
+            letter-spacing: 0.02em;
         }
 
         .chromatic-title {
             position: relative;
             display: inline-block;
-            z-index: 0;
-            animation: titleGlitch 5s infinite;
         }
-
         .chromatic-title::before,
         .chromatic-title::after {
             content: attr(data-text);
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
         }
-
         .chromatic-title::before {
             color: rgba(255, 0, 255, 0.18);
-            z-index: -1;
-            animation: titleGlitchBefore 5s infinite;
+            transform: translate(-2px, -1px);
         }
-
         .chromatic-title::after {
             color: rgba(0, 136, 184, 0.18);
-            z-index: -2;
-            animation: titleGlitchAfter 5s infinite;
+            transform: translate(2px, 1px);
         }
 
-        @keyframes titleGlitch {
-            0%, 90%, 95%, 100% { opacity: 1; }
-            90.01%, 94.99%     { opacity: 0.85; }
-        }
-
-        @keyframes titleGlitchBefore {
-            0%, 90%, 95%, 100% { transform: translate(-2px, -1px); }
-            90.01%, 94.99%     { transform: translate(-4px, -2px); }
-        }
-
-        @keyframes titleGlitchAfter {
-            0%, 90%, 95%, 100% { transform: translate(2px, 1px); }
-            90.01%, 94.99%     { transform: translate(4px, 2px); }
-        }
-
-        .hero-description {
+        .empty-body {
             color: var(--text-secondary);
             font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
             max-width: 560px;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85), 0 0 4px rgba(0, 0, 0, 0.6);
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero-dateline {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            color: var(--theme-primary);
-            letter-spacing: 2px;
+        .empty-card {
+            background: rgba(8, 12, 22, 0.78);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 240, 255, 0.18);
+            border-radius: 6px;
+            padding: 2.5rem 2rem;
             margin-bottom: 2rem;
-            opacity: 0.85;
-            text-shadow:
-                0 2px 12px rgba(0, 0, 0, 0.85),
-                0 0 4px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        .empty-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--theme-primary), transparent);
         }
 
-        .hero-cta {
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .empty-status {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            color: var(--theme-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-row {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
         }
 
         .btn {
             padding: 1rem 2rem;
-            border-radius: 50px;
+            border-radius: 4px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 0.2em;
             text-decoration: none;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             text-align: center;
+            text-transform: uppercase;
         }
-
         .btn-primary {
             background: var(--gradient-theme);
             color: var(--bg-dark);
-            box-shadow: 0 0 30px var(--theme-glow);
-            min-width: 200px;
+            box-shadow: 0 0 24px var(--theme-glow);
         }
-
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px var(--theme-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px var(--theme-glow);
         }
-
-        .btn-secondary {
+        .btn-ghost {
             background: transparent;
             color: var(--text-primary);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
-
-        .btn-secondary:hover {
+        .btn-ghost:hover {
             border-color: var(--theme-primary);
             color: var(--theme-primary);
         }
 
-        /* Sections */
-        .section {
-            padding: 80px 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .expect-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .expect-card {
-            background: rgba(8, 12, 22, 0.78);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .expect-card:hover { border-color: rgba(0, 240, 255, 0.35); }
-
-        .expect-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-
-        .expect-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
-        }
-
-        .expect-card p {
-            color: var(--text-secondary);
+        .past-link {
+            margin-top: 2.5rem;
             font-size: 0.9rem;
-            line-height: 1.6;
+            color: var(--text-muted);
         }
-
-        /* Form section */
-        .form-section {
-            padding: 80px 2rem;
-            max-width: 660px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .form-section-inner {
-            background: rgba(8, 12, 22, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 16px;
-            padding: 2.5rem;
-            border: 1px solid rgba(0, 240, 255, 0.18);
-        }
-
-        .form-section .section-title { margin-bottom: 0.5rem; }
-        .form-section .section-subtitle { margin-bottom: 2rem; }
-
-        .form-group { margin-bottom: 1.5rem; }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-
-        .form-input,
-        .form-textarea,
-        .form-select {
-            width: 100%;
-            padding: 1rem 1.25rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 255, 255, 0.18);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
-            outline: none;
-            border-color: var(--theme-primary);
-        }
-
-        .form-textarea { min-height: 120px; resize: vertical; }
-        .form-select { cursor: pointer; }
-        .form-select option { background: var(--bg-dark); }
-
-        .form-submit-wrap { margin-top: 2rem; }
-        .form-submit-wrap .btn { width: 100%; }
-
-        .form-footer-text {
-            margin-top: 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .form-footer-text a {
+        .past-link a {
             color: var(--theme-primary);
-            text-decoration: underline;
-            text-underline-offset: 2px;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+            padding-bottom: 1px;
         }
+        .past-link a:hover { border-color: var(--theme-primary); }
 
-        .form-footer-text a:hover { opacity: 0.9; }
-
-        .form-error {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(255, 80, 80, 0.15);
-            border: 1px solid rgba(255, 80, 80, 0.4);
-            border-radius: 12px;
-            color: #ffb3b3;
-            font-size: 0.9rem;
-            display: none;
-        }
-
-        .form-error.visible { display: block; }
-
-        .form-success {
-            background: rgba(8, 12, 22, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 2px solid var(--theme-primary);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 0 40px var(--theme-glow);
-            display: none;
-        }
-
-        .form-success.visible { display: block; }
-
-        .form-success-icon { font-size: 3rem; margin-bottom: 1rem; }
-
-        .form-success-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--theme-primary);
-            margin-bottom: 1rem;
-        }
-
-        .form-success-message {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .btn-loading {
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        /* Footer */
         footer {
-            padding: 40px 2rem;
+            padding: 32px 1.5rem;
             text-align: center;
             border-top: 1px solid rgba(0, 240, 255, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover { color: var(--theme-primary); }
-
-        .copyright { color: var(--text-muted); font-size: 0.85rem; }
-
-        .footer-legal {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-legal a {
             color: var(--text-muted);
-            text-decoration: none;
             font-size: 0.85rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-legal a:hover { color: var(--text-primary); }
-        .footer-legal .separator { color: var(--text-muted); font-size: 0.85rem; }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .miku-bg-layer {
-                position: absolute;
-                height: 100%;
-                transform: none !important;
-            }
-
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: rgba(10, 10, 15, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                border-bottom: 1px solid rgba(0, 240, 255, 0.1);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            }
-
-            .nav-links.active { display: flex; }
-
-            .nav-links a {
-                font-size: 1.1rem;
-                padding: 0.8rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .mobile-toggle { display: flex; }
-
-            .logo { font-size: 0.75rem; }
-            .logo-image { height: 40px; width: 40px; }
-
-            .hero-flex {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-text { text-align: center; }
-
-            .hero-description { margin-left: auto; margin-right: auto; }
-
-            .hero-flyer {
-                width: 180px;
-                order: 1;
-            }
-
-            .hero-text { order: 0; }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn { width: 100%; max-width: 280px; }
-
-            .form-section-inner { padding: 1.5rem; }
-        }
-
-        /* Data Collection Notice */
-        .data-notice {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(20, 20, 25, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 1rem 1.5rem;
-            z-index: 9999;
-            transform: translateY(0);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-
-        .data-notice.hidden {
-            transform: translateY(100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .data-notice-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .data-notice p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .data-notice a {
-            color: var(--text-primary);
-            text-decoration: underline;
-            text-underline-offset: 2px;
-            transition: color 0.3s ease;
-        }
-
-        .data-notice a:hover { color: var(--theme-primary); }
-
-        .data-notice-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-primary);
-            padding: 0.5rem 1.25rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .data-notice-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.3);
         }
 
         @media (max-width: 600px) {
-            .data-notice { padding: 1rem; }
-            .data-notice-content { flex-direction: column; text-align: center; gap: 1rem; }
-            .data-notice p { font-size: 0.85rem; }
-            .data-notice-btn { width: 100%; padding: 0.75rem 1.25rem; }
+            .empty-card { padding: 2rem 1.25rem; }
+            .btn { width: 100%; max-width: 280px; }
         }
     </style>
 
@@ -743,7 +271,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '1979608179640857');
       fbq('track', 'PageView');
-      fbq('track', 'ViewContent', { content_name: 'Cosplay Competition Signup', content_type: 'registration', content_ids: ['cosplay-signup-miku-after-party'] });
     </script>
     <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1979608179640857&ev=PageView&noscript=1"/>
@@ -756,337 +283,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Parallax background layer — JS drifts this upward at 0.15x scroll speed -->
-    <div class="miku-bg-layer" aria-hidden="true"></div>
+<div class="bg-layer" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
 
-    <!-- Dark gradient overlay above bg layer, behind all content -->
-    <div class="bg-overlay" aria-hidden="true"></div>
+<nav></nav>
 
-    <div class="particles">
-        <script>
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-                document.querySelector('.particles').appendChild(particle);
-            }
-        </script>
+<main>
+    <div class="empty-state moonlight-theme">
+        <p class="empty-eyebrow">Cosplay Contest</p>
+        <p class="empty-jp">コスプレ・コンテスト</p>
+        <h1 class="empty-title"><span class="chromatic-title" data-text="STAGE IS DARK">STAGE IS DARK</span></h1>
+        <p class="empty-body">There's no active cosplay contest signup right now. The next contest will open when we announce the next event. Drop your name in the Guild and you'll get the call before anyone else.</p>
+
+        <div class="empty-card">
+            <div class="empty-icon" aria-hidden="true">◐</div>
+            <p class="empty-status">No active contest</p>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 460px; margin: 0 auto;">When we lock the next event, this page will reopen with the new contest form. Walk-on slot, theme song, the works.</p>
+            <div class="cta-row">
+                <a href="/#guild" class="btn btn-primary">Join the Guild</a>
+                <a href="https://instagram.com/moonlightotakunights" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Follow on Instagram</a>
+            </div>
+        </div>
+
+        <p class="past-link">Looking for past events? <a href="/past-events/">Browse the archive →</a></p>
     </div>
+</main>
 
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="../assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Logo" class="logo-image">
-                MOONLIGHT OTAKU NIGHTS
-            </a>
-            <ul class="nav-links">
-                <li><a href="/#vibe">The Vibe</a></li>
-                <li><a href="/#next-event">Events</a></li>
-                <li><a href="/#guild">Join the Guild</a></li>
-                <li><a href="https://moonlightotakunights.com/miku?utm_source=website&utm_medium=nav&utm_campaign=miku_after_party" class="nav-cta" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Miku After Party Tickets',content_category:'Event Tickets'});}">TICKETS</a></li>
-            </ul>
-            <div class="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+<footer>
+    <p>&copy; 2026 Moonlight Otaku Nights. Newark, NJ.</p>
+</footer>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-container hero-flex">
-            <div class="hero-text">
-                <p class="hero-eyebrow">Costume Contest Pre-Registration</p>
-                <h1 class="hero-title"><span class="chromatic-title" data-text="Lock your spot for the main stage.">Lock your spot for the main stage.</span></h1>
-                <p class="hero-description">
-                    The costume contest hits the main stage at 12:30 AM. Moonlight Otaku Nights and Miku Only NYC are running it together. Pre-register to guarantee your walk-on. Walk-ins welcome if spots remain.
-                </p>
-                <p class="hero-dateline">Thursday, May 7, 2026 · QXT's Newark · 21+</p>
-                <div class="hero-cta">
-                    <a href="https://moonlightotakunights.com/miku?utm_source=website&utm_medium=cosplay_signup_cta&utm_campaign=miku_after_party" class="btn btn-primary" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Miku After Party Tickets',content_category:'Event Tickets'});}">GET TICKETS</a>
-                    <a href="#signup" class="btn btn-secondary">SIGN UP BELOW ↓</a>
-                </div>
-            </div>
-            <div class="hero-flyer">
-                <img src="/assets/images/flyers/1080%20x%201350%20hatsune%20miku%20unofficial%20after%20party%204_11_2026.png" alt="Hatsune Miku Unofficial After Party Vol. 02 flyer" class="flyer-thumb">
-            </div>
-        </div>
-    </section>
-
-    <!-- How it works -->
-    <section class="section">
-        <h2 class="section-title">HOW IT WORKS</h2>
-        <div class="expect-grid">
-            <div class="expect-card">
-                <div class="expect-icon">1</div>
-                <h3>PRE-REGISTER</h3>
-                <p>Lock your slot before May 7. Pre-registered contestants get a custom walk-on with their character's theme song queued by AniParty's VDJ.</p>
-            </div>
-            <div class="expect-card">
-                <div class="expect-icon">2</div>
-                <h3>GET CONFIRMED</h3>
-                <p>We'll confirm your spot via Instagram DM within a few days of signing up.</p>
-            </div>
-            <div class="expect-card">
-                <div class="expect-icon">3</div>
-                <h3>SHOW UP READY</h3>
-                <p>Arrive in full cosplay (qualifies you for the $10 all-night entry). Check in at the door — Moonlight's Atila runs ops, with Miku Only NYC handling the contest itself.</p>
-            </div>
-            <div class="expect-card">
-                <div class="expect-icon">4</div>
-                <h3>HIT THE STAGE</h3>
-                <p>12:30 AM call time. Hosted by Moonlight Otaku Nights and Miku Only NYC. Walk on, pose, own it. Prizes from our partners.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Signup form -->
-    <section class="form-section" id="signup">
-        <div class="form-section-inner">
-            <h2 class="section-title">REGISTER NOW</h2>
-            <p class="section-subtitle">Pre-register to guarantee your walk-on spot.</p>
-
-            <div id="form-wrapper">
-                <form id="cosplay-form" method="POST" action="https://formspree.io/f/mjgayegq">
-                    <div class="form-group">
-                        <label class="form-label" for="full-name">Full Name</label>
-                        <input type="text" id="full-name" name="full_name" class="form-input" required placeholder="First and last name">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="alias">Alias / Moonlight Name</label>
-                        <input type="text" id="alias" name="alias" class="form-input" required placeholder="The name you go by in the community">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">Your persona, online handle, or the name people know you as.</p>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="cosplay-character">Cosplay Character</label>
-                        <input type="text" id="cosplay-character" name="cosplay_character" class="form-input" required placeholder="Who are you cosplaying as?">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="character-series">Series / Origin</label>
-                        <input type="text" id="character-series" name="character_series" class="form-input" required placeholder="Anime, manga, game, or OC universe">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="walk-on-theme">Walk-On Theme Song</label>
-                        <input type="text" id="walk-on-theme" name="walk_on_track" class="form-input" placeholder="What song should play when you hit the stage?">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">Pre-registered contestants get their character's theme song queued live by our VDJ. Song name + artist, or a YouTube/Spotify link.</p>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="instagram">Instagram @ Handle</label>
-                        <input type="text" id="instagram" name="instagram" class="form-input" required placeholder="@yourusername">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="category">Category Preference</label>
-                        <select id="category" name="category_preference" class="form-select">
-                            <option value="">Select...</option>
-                            <option value="best-vocaloid-cosplay">Best Vocaloid Cosplay</option>
-                            <option value="best-original-character">Best Original Character</option>
-                            <option value="open-surprise">Open / Surprise Category — pick one for me</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="ticket-status">Ticket Status</label>
-                        <select id="ticket-status" name="ticket_status" class="form-select" required>
-                            <option value="">Select one...</option>
-                            <option value="purchased">Already purchased my ticket</option>
-                            <option value="using-promo-code">I have a promo code</option>
-                            <option value="not-yet">Haven't bought yet</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="promo-code-info">Promo Code Info</label>
-                        <input type="text" id="promo-code-info" name="promo_code_info" class="form-input" placeholder="Enter the code or who gave it to you">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.5;">If you selected 'I have a promo code' above, let us know the code or who shared it.</p>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="notes">Anything else we should know?</label>
-                        <textarea id="notes" name="notes" class="form-textarea" placeholder="Accessibility needs, group entries, questions — whatever you want us to know."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-consent" style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer;">
-                            <input type="checkbox" id="contact-consent" name="contact_consent" required style="margin-top: 0.2rem; flex-shrink: 0; width: auto;">
-                            <span style="font-size: 0.68rem; color: var(--text-muted); line-height: 1.5; letter-spacing: 0.02em;">I give permission to be contacted by Moonlight Otaku Nights regarding the cosplay competition, including walk-on coordination, schedule updates, and event-day details.</span>
-                        </label>
-                    </div>
-                    <input type="hidden" name="_subject" value="Cosplay Competition Signup — Hatsune Miku Vol. 02">
-                    <div class="form-submit-wrap">
-                        <button type="submit" class="btn btn-primary" id="submit-btn">LOCK IN MY SPOT</button>
-                    </div>
-                    <div class="form-error" id="form-error" role="alert">Something went wrong. Please try again.</div>
-                </form>
-            </div>
-
-            <div id="form-success" class="form-success">
-                <div class="form-success-icon">✓</div>
-                <h3 class="form-success-title">You're on the roster.</h3>
-                <p class="form-success-message">
-                    We'll confirm your spot via DM soon. Show up in full cosplay and ready to hit the main stage at 12:30 AM. See you at QXT's. — Moonlight Otaku Nights × Miku Only NYC
-                </p>
-            </div>
-
-            <p class="form-footer-text">Don't have a ticket yet? <a href="https://moonlightotakunights.com/miku?utm_source=website&utm_medium=cosplay_signup_form&utm_campaign=miku_after_party" target="_blank" rel="noopener noreferrer">Get tickets here</a>.</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="/">Moonlight Otaku Nights</a>
-            <a href="https://instagram.com/moonlightotakunights" target="_blank">Instagram</a>
-            <a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a>
-            <span style="color: var(--text-muted); font-size: 0.9rem;">QXT's Newark — 248 Mulberry St</span>
-            <span style="color: var(--text-muted); font-size: 0.9rem;">21+ with valid ID</span>
-        </div>
-        <div class="footer-links" style="margin-top: 1rem;">
-            <a href="/partners/" style="opacity: 0.5;">Community Partners</a>
-            <a href="/work-with-us/" style="opacity: 0.5;">Work With Us</a>
-            <a href="/sponsors/" style="opacity: 0.5;">Sponsors</a>
-        </div>
-        <p class="copyright" style="margin-top: 1.5rem;">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
-        <div class="footer-legal">
-            <a href="/privacy-policy/">Privacy Policy</a>
-            <span class="separator">|</span>
-            <a href="/terms/">Terms of Service</a>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll for in-page anchors
-            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-                anchor.addEventListener('click', function(e) {
-                    var target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            // Mobile menu toggle
-            var mobileToggle = document.querySelector('.mobile-toggle');
-            var navLinks = document.querySelector('.nav-links');
-            if (mobileToggle && navLinks) {
-                mobileToggle.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                    mobileToggle.classList.toggle('active');
-                });
-                document.querySelectorAll('.nav-links a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        navLinks.classList.remove('active');
-                        mobileToggle.classList.remove('active');
-                    });
-                });
-            }
-
-            // Form submission
-            var form = document.getElementById('cosplay-form');
-            var formWrapper = document.getElementById('form-wrapper');
-            var formSuccess = document.getElementById('form-success');
-            var formError = document.getElementById('form-error');
-            var submitBtn = document.getElementById('submit-btn');
-
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    formError.classList.remove('visible');
-
-                    var originalText = submitBtn.textContent;
-                    submitBtn.textContent = 'SUBMITTING...';
-                    submitBtn.classList.add('btn-loading');
-                    submitBtn.disabled = true;
-
-                    var formData = new FormData(form);
-
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    }).then(function(response) {
-                        if (response.ok) {
-                            formWrapper.style.display = 'none';
-                            formSuccess.classList.add('visible');
-                            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        } else {
-                            return response.json().then(function() {
-                                throw new Error('Submit failed');
-                            });
-                        }
-                    }).catch(function() {
-                        formError.classList.add('visible');
-                        formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        submitBtn.textContent = originalText;
-                        submitBtn.classList.remove('btn-loading');
-                        submitBtn.disabled = false;
-                    });
-                });
-            }
-
-            // Parallax background scroll — drifts background upward at 0.15x scroll speed
-            const parallaxBg = document.querySelector('.miku-bg-layer');
-            if (parallaxBg) {
-                if (window.matchMedia('(min-width: 769px)').matches) {
-                    let ticking = false;
-                    const updateParallax = () => {
-                        const scrolled = window.scrollY;
-                        parallaxBg.style.transform = `translate3d(0, ${scrolled * -0.15}px, 0)`;
-                        ticking = false;
-                    };
-                    window.addEventListener('scroll', () => {
-                        if (!ticking) {
-                            window.requestAnimationFrame(updateParallax);
-                            ticking = true;
-                        }
-                    }, { passive: true });
-                }
-            }
-        });
-    </script>
-
-    <!-- Data Collection Notice -->
-    <div id="data-notice" class="data-notice" role="complementary" aria-label="Data collection notice">
-        <div class="data-notice-content">
-            <p>We use cookies and similar technologies to improve your experience and measure site traffic.
-               <a href="/privacy-policy/">Learn more</a></p>
-            <button id="data-notice-dismiss" class="data-notice-btn" aria-label="Dismiss notice">Got it</button>
-        </div>
-    </div>
-    <script>
-    (function() {
-        var notice = document.getElementById('data-notice');
-        var dismissBtn = document.getElementById('data-notice-dismiss');
-        var STORAGE_KEY = 'moonlight_data_notice_dismissed';
-        var EXPIRY_DAYS = 90;
-
-        function isDismissed() {
-            var dismissed = localStorage.getItem(STORAGE_KEY);
-            if (!dismissed) return false;
-            var dismissedDate = parseInt(dismissed, 10);
-            var now = Date.now();
-            var daysSince = (now - dismissedDate) / (1000 * 60 * 60 * 24);
-            if (daysSince > EXPIRY_DAYS) {
-                localStorage.removeItem(STORAGE_KEY);
-                return false;
-            }
-            return true;
-        }
-
-        function hideBanner() {
-            notice.classList.add('hidden');
-            localStorage.setItem(STORAGE_KEY, Date.now().toString());
-        }
-
-        if (notice && dismissBtn) {
-            if (isDismissed()) notice.classList.add('hidden');
-            dismissBtn.addEventListener('click', hideBanner);
-        }
-    })();
-    </script>
+<script src="/components/nav-loader.js"></script>
 </body>
 </html>

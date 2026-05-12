@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Moonlight Guild | Moonlight Otaku Nights</title>
+    <meta name="description" content="Welcome to the Moonlight Guild — presale access, exclusive codes, and event drops before anyone else.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="robots" content="noindex,follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/components/theme.css">
+    <link rel="stylesheet" href="/components/nav.css">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .welcome-wrap {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
+            background: radial-gradient(ellipse at top, rgba(172,33,129,0.18), transparent 60%),
+                        radial-gradient(ellipse at bottom, rgba(105,69,145,0.18), transparent 60%),
+                        #07060d;
+        }
+        .welcome-card {
+            max-width: 640px;
+            width: 100%;
+            background: rgba(15,12,28,0.85);
+            border: 1px solid rgba(127,187,224,0.25);
+            border-radius: 18px;
+            padding: 56px 40px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(172,33,129,0.15);
+            backdrop-filter: blur(12px);
+        }
+        .welcome-card .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+        .badge-success { background: rgba(0,240,255,0.12); color: #7fbbe0; border: 1px solid rgba(127,187,224,0.4); }
+        .badge-pending { background: rgba(172,33,129,0.15); color: #ff7dc8; border: 1px solid rgba(172,33,129,0.5); }
+        .badge-error   { background: rgba(255,80,80,0.12); color: #ff8a8a; border: 1px solid rgba(255,80,80,0.4); }
+        .welcome-card h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(28px, 5vw, 44px);
+            letter-spacing: 0.04em;
+            margin: 0 0 16px;
+            background: linear-gradient(135deg, #7fbbe0 0%, #ac2181 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .welcome-card p {
+            color: #cfc8dc;
+            line-height: 1.65;
+            font-size: 16px;
+            margin: 0 0 14px;
+        }
+        .welcome-card .perk-list {
+            text-align: left;
+            margin: 28px auto;
+            padding: 22px 24px;
+            background: rgba(127,187,224,0.05);
+            border: 1px dashed rgba(127,187,224,0.25);
+            border-radius: 12px;
+            max-width: 460px;
+        }
+        .perk-list ul { margin: 0; padding: 0 0 0 20px; color: #cfc8dc; }
+        .perk-list li { margin: 8px 0; }
+        .welcome-actions {
+            margin-top: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .btn-welcome {
+            display: inline-block;
+            padding: 14px 28px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ac2181 0%, #694591 100%);
+            color: #fff;
+            border: none;
+        }
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(127,187,224,0.4);
+            color: #7fbbe0;
+        }
+        .btn-welcome:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(172,33,129,0.35); }
+        .small-note { font-size: 13px; color: #8a849c; margin-top: 24px; }
+    </style>
+</head>
+<body class="moonlight-theme">
+
+<div id="nav-placeholder"></div>
+
+<main class="welcome-wrap">
+    <div class="welcome-card" id="welcome-card">
+        <!-- populated by JS -->
+    </div>
+</main>
+
+<script src="/components/nav-loader.js"></script>
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search);
+    var state = (params.get('guild') || '').toLowerCase();
+    var card = document.getElementById('welcome-card');
+
+    var views = {
+        pending: {
+            badge: 'badge-pending',
+            badgeText: 'CHECK YOUR INBOX',
+            title: 'Almost there.',
+            body: '<p>We just sent a verification link to your email. Click it to activate your Moonlight Guild membership.</p>' +
+                  '<p>The link expires in 24 hours.</p>' +
+                  '<p class="small-note">Tip: if you don\'t see it within a minute, check your Promotions or Spam folder, and add <strong>info@moonlightotakunights.com</strong> to your contacts.</p>',
+            actions: '<a href="/" class="btn-welcome btn-ghost">Back to site</a>'
+        },
+        verified: {
+            badge: 'badge-success',
+            badgeText: 'GUILD MEMBER',
+            title: 'Welcome to the Moonlight Guild.',
+            body: '<p>You\'re officially in. Your email is verified and you\'re now on the inside track.</p>' +
+                  '<div class="perk-list"><ul>' +
+                  '<li>Early access to presales before public release</li>' +
+                  '<li>Exclusive discount codes on tickets and merch</li>' +
+                  '<li>First look at lineup drops, cosplay contests, and after-parties</li>' +
+                  '<li>Members-only event invites</li>' +
+                  '</ul></div>' +
+                  '<p>Keep an eye on your inbox — the next drop is coming soon.</p>',
+            actions: '<a href="/" class="btn-welcome btn-primary">Explore the site</a>' +
+                     '<a href="/past-events/" class="btn-welcome btn-ghost">See past events</a>'
+        },
+        expired: {
+            badge: 'badge-error',
+            badgeText: 'LINK EXPIRED',
+            title: 'That link has expired.',
+            body: '<p>Verification links are valid for 24 hours. No worries — just join the Guild again and we\'ll send a fresh one.</p>',
+            actions: '<a href="/#guild" class="btn-welcome btn-primary">Try again</a>'
+        },
+        invalid: {
+            badge: 'badge-error',
+            badgeText: 'LINK INVALID',
+            title: 'We couldn\'t verify that link.',
+            body: '<p>The verification link is missing or malformed. If you copied it from your email, make sure the entire URL was included.</p>',
+            actions: '<a href="/#guild" class="btn-welcome btn-primary">Try again</a>' +
+                     '<a href="mailto:info@moonlightotakunights.com" class="btn-welcome btn-ghost">Email us</a>'
+        },
+        cosplay: {
+            badge: 'badge-success',
+            badgeText: 'ENTRY RECEIVED',
+            title: 'Cosplay entry locked in.',
+            body: '<p>We got your cosplay submission. We\'ll review it and email you with the next steps.</p>' +
+                  '<p class="small-note">Make sure <strong>info@moonlightotakunights.com</strong> is in your contacts so our follow-up doesn\'t get lost.</p>',
+            actions: '<a href="/" class="btn-welcome btn-primary">Back to site</a>'
+        }
+    };
+
+    var view = views[state] || views.pending;
+
+    card.innerHTML =
+        '<span class="badge ' + view.badge + '">' + view.badgeText + '</span>' +
+        '<h1>' + view.title + '</h1>' +
+        view.body +
+        '<div class="welcome-actions">' + view.actions + '</div>';
+
+    // Fire conversion event on success
+    if (state === 'verified' && typeof fbq !== 'undefined') {
+        try { fbq('track', 'CompleteRegistration', { content_name: 'Guild Verification' }); } catch (e) {}
+    }
+    if (window.dataLayer) {
+        window.dataLayer.push({ event: 'guild_welcome_view', guild_state: state || 'pending' });
+    }
+})();
+</script>
+
+</body>
+</html>

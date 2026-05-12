@@ -334,7 +334,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data && data.ok === false) {
                     throw new Error(data.error || 'signup_failed');
                 }
-                if(typeof fbq !== 'undefined') { fbq('track', 'Lead', {content_name: 'Moonlight Crew Signup', content_category: 'Email List'}); }
+                // Fire pixel with the SAME event_id our server-side CAPI used,
+                // so Meta dedupes browser + CAPI into a single conversion.
+                var __evId = (data && data.event_id) ? data.event_id : null;
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead',
+                        { content_name: 'Moonlight Guild Signup', content_category: 'newsletter_signup' },
+                        __evId ? { eventID: __evId } : undefined
+                    );
+                }
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        event: 'guild_signup_submit',
+                        event_id: __evId,
+                        content_name: 'Moonlight Guild Signup'
+                    });
+                }
 
                 setTimeout(function() {
                     var successModal = document.createElement('div');

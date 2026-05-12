@@ -16,6 +16,7 @@ require_once __DIR__ . '/includes/bootstrap.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/ses.php';
 require_once __DIR__ . '/includes/tokens.php';
+require_once __DIR__ . '/includes/tracking.php';
 
 send_cors_headers();
 
@@ -135,9 +136,26 @@ if (!$result['ok']) {
     log_error('Guild verify email failed', ['contact_id' => $contact_id, 'err' => $result['error'] ?? '?']);
 }
 
+// -------- Server-side tracking (Meta CAPI + GA4 MP + Google Ads queue) --------
+// Fires on every Guild signup as a "Lead" (pre-verification). After the user
+// clicks the email link, verify.php fires "CompleteRegistration".
+$nameParts = preg_split('/\s+/', trim((string)$name), 2);
+$tracking = track_event('Lead', [
+    'email'       => $email,
+    'phone'       => $phone,
+    'first_name'  => $nameParts[0] ?? null,
+    'last_name'   => $nameParts[1] ?? null,
+    'external_id' => 'contact_' . $contact_id,
+], [
+    'content_name'     => 'Moonlight Guild Signup',
+    'content_category' => 'newsletter_signup',
+    'event_source_url' => $_SERVER['HTTP_REFERER'] ?? config('app')['base_url'] . '/#guild',
+]);
+
 json_ok([
     'contact_id'        => $contact_id,
     'verification_sent' => $result['ok'] ?? false,
+    'event_id'          => $tracking['event_id'] ?? null,
 ]);
 
 function first_name_of(?string $full): string {

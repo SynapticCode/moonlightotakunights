@@ -320,3 +320,59 @@ CREATE TABLE IF NOT EXISTS dashboard_sessions (
     CONSTRAINT fk_ds_user FOREIGN KEY (user_id)
         REFERENCES dashboard_users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- ------------------------------------------------------------
+-- gads_conversion_queue
+-- Holds server-side Google Ads conversions until a worker drains
+-- them via the Google Ads connector (uploadClickConversions /
+-- uploadCallConversions / customer match).
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS gads_conversion_queue (
+    id                BIGINT UNSIGNED   NOT NULL AUTO_INCREMENT,
+    event_name        VARCHAR(64)       NOT NULL,
+    event_id          VARCHAR(128)      NOT NULL,
+    event_time        DATETIME          NOT NULL,
+    email_hash        CHAR(64)          DEFAULT NULL,
+    phone_hash        CHAR(64)          DEFAULT NULL,
+    value             DECIMAL(10,2)     DEFAULT NULL,
+    currency          CHAR(3)           DEFAULT 'USD',
+    conversion_id     VARCHAR(64)       DEFAULT NULL,
+    conversion_label  VARCHAR(64)       DEFAULT NULL,
+    payload           JSON              DEFAULT NULL,
+    status            ENUM('pending','sent','failed','skipped')
+                                        NOT NULL DEFAULT 'pending',
+    last_error        VARCHAR(500)      DEFAULT NULL,
+    attempts          TINYINT UNSIGNED  NOT NULL DEFAULT 0,
+    sent_at           DATETIME          DEFAULT NULL,
+    created_at        DATETIME          NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_event_id (event_id),
+    KEY idx_gads_status (status),
+    KEY idx_gads_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- ------------------------------------------------------------
+-- tracking_log
+-- Audit trail of every server-side tracking call (so we can prove
+-- Meta CAPI / GA4 MP fired and inspect failures in the dashboard).
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS tracking_log (
+    id              BIGINT UNSIGNED   NOT NULL AUTO_INCREMENT,
+    event_name      VARCHAR(64)       NOT NULL,
+    event_id        VARCHAR(128)      NOT NULL,
+    contact_id      INT UNSIGNED      DEFAULT NULL,
+    meta_ok         TINYINT(1)        DEFAULT NULL,
+    meta_http       SMALLINT          DEFAULT NULL,
+    ga4_ok          TINYINT(1)        DEFAULT NULL,
+    ga4_http        SMALLINT          DEFAULT NULL,
+    gads_ok         TINYINT(1)        DEFAULT NULL,
+    custom_data     JSON              DEFAULT NULL,
+    error_summary   VARCHAR(500)      DEFAULT NULL,
+    created_at      DATETIME          NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    KEY idx_tl_event (event_name),
+    KEY idx_tl_eventid (event_id),
+    KEY idx_tl_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

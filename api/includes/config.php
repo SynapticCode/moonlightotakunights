@@ -81,4 +81,30 @@ return [
         // Free, no account. Leave blank to disable.
         'ntfy_topic' => env('NTFY_TOPIC', ''),
     ],
+    'tracking' => [
+        // Client-side IDs (already on every page via GTM)
+        'gtm_container_id' => env('GTM_CONTAINER_ID', 'GTM-WX8WHXSZ'),
+        'ga4_measurement_id' => env('GA4_MEASUREMENT_ID', 'G-8W7W5FKYV9'),
+        'meta_pixel_id'    => env('META_PIXEL_ID', '1979608179640857'),
+
+        // Meta Conversions API (server-side)
+        // Token = Business System User token from Meta Business Manager.
+        // Test event code = optional, used while QAing in Events Manager.
+        'meta_capi_token'         => env('META_CAPI_TOKEN', ''),
+        'meta_capi_test_event'    => env('META_CAPI_TEST_EVENT', ''),
+        'meta_capi_api_version'   => env('META_CAPI_API_VERSION', 'v21.0'),
+
+        // GA4 Measurement Protocol (server-side)
+        // api_secret = generated under GA4 Admin → Data Streams → Measurement Protocol API secrets
+        'ga4_api_secret' => env('GA4_API_SECRET', ''),
+
+        // Google Ads Enhanced Conversions / Offline Conversions
+        // We already have the google_ads connector wired — these are for direct API fallback.
+        'gads_customer_id'    => env('GADS_CUSTOMER_ID', ''),    // e.g. 123-456-7890
+        'gads_conversion_id'  => env('GADS_CONVERSION_ID', ''),  // AW-XXXXXXXXX
+        'gads_conversion_label' => env('GADS_CONVERSION_LABEL', ''), // alphanum slug
+
+        // Whether to actually send (turn off in dev)
+        'enabled' => env('TRACKING_ENABLED', '1') === '1',
+    ],
 ];

@@ -178,9 +178,40 @@
 .recap-credit {
     text-align: center;
     margin-top: 2.5rem;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.85rem;
-    font-style: italic;
+    padding: 1.25rem 1rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-top: 1px solid rgba(0, 240, 255, 0.18);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.18);
+}
+.recap-credit-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    padding: 0.15rem 0.6rem;
+    margin: 0 0.15rem;
+    text-decoration: none;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.10), rgba(172, 33, 129, 0.12));
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    border-radius: 999px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.recap-credit-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 18px rgba(0, 240, 255, 0.25);
+    border-color: rgba(0, 240, 255, 0.7);
+}
+.recap-credit-handle {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    color: #7fbbe0;
+}
+.recap-credit-name {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.65);
 }
 
 /* ------- Lightbox ------- */

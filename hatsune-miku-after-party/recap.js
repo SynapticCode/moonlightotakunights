@@ -29,7 +29,7 @@
         photos.push({
             src: `${BASE_PATH}${i}${EXT}`,
             alt: `Hatsune Miku unofficial after-party — photo ${i} of ${PHOTO_COUNT}`,
-            caption: `${String(i).padStart(2, "0")} / ${String(PHOTO_COUNT).padStart(2, "0")} — QXT'S Nightclub`
+            caption: `${String(i).padStart(2, "0")} / ${String(PHOTO_COUNT).padStart(2, "0")} — QXT'S Nightclub · 📸 @tenryu.photo`
         });
     }
 

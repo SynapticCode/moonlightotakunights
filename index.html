@@ -218,10 +218,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="section-sub">Members get presale access, exclusive discount codes, and event announcements before anyone else.</p>
             </header>
 
-            <form class="guild-form" id="moonlight-crew-form" method="POST" action="https://764b2d3c.sibforms.com/serve/MUIFACZ73_hJlQhOkXnqeM0lLIPQMGwKDvEkaSoNN3BX0qDtDytJMcKOMa9XR20BQ8ldFmlUt42S_yxZjhsAi5KFcZB9rFVCXIJ8ku3FataTHhwLdja7RIlSPJSCC9uwPxu28_sjMjgVnVt52opHrIIqtJUkZbSCQVVzD70IEVmq_9gvTFkxGX1TR00-XrXRhY4XaSrI644UHklSNQ==" onsubmit="return false;">
-                <input type="email" name="EMAIL" placeholder="your@email.com" required>
+            <form class="guild-form" id="moonlight-crew-form" method="POST" action="/api/guild-signup.php" onsubmit="return false;" data-source="guild_homepage">
+                <input type="text" name="name" placeholder="your name (required)" required autocomplete="name">
+                <input type="email" name="email" placeholder="your@email.com (required)" required autocomplete="email">
+                <input type="tel" name="phone" placeholder="phone (optional)" autocomplete="tel">
+                <input type="text" name="instagram" placeholder="@instagram (optional)" autocomplete="off">
                 <button type="submit" class="btn btn-accent-outline">JOIN THE GUILD</button>
-                <input type="text" name="email_address_check" value="" style="display:none;">
+                <!-- honeypot -->
+                <input type="text" name="website" value="" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
                 <input type="hidden" name="locale" value="en">
             </form>
             <p class="guild-note">Welcome gift: presale access + exclusive discount code.</p>
@@ -294,33 +298,42 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
 
             var submitBtn = crewForm.querySelector('button[type="submit"]');
-            var emailInput = crewForm.querySelector('input[name="EMAIL"]');
-            var honeypotInput = crewForm.querySelector('input[name="email_address_check"]');
-            var localeInput = crewForm.querySelector('input[name="locale"]');
+            var nameInput = crewForm.querySelector('input[name="name"]');
+            var emailInput = crewForm.querySelector('input[name="email"]');
+            var phoneInput = crewForm.querySelector('input[name="phone"]');
+            var igInput = crewForm.querySelector('input[name="instagram"]');
+            var honeypotInput = crewForm.querySelector('input[name="website"]');
+            var source = crewForm.getAttribute('data-source') || 'guild_homepage';
 
-            if (!emailInput || !emailInput.value) {
+            if (!emailInput || !emailInput.value || !nameInput || !nameInput.value) {
+                alert('Name and email are required.');
                 return false;
             }
 
-            var email = emailInput.value;
-            var honeypot = honeypotInput ? honeypotInput.value : '';
-            var locale = localeInput ? localeInput.value : 'en';
+            var payload = {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                phone: phoneInput ? phoneInput.value.trim() : '',
+                instagram: igInput ? igInput.value.trim() : '',
+                website: honeypotInput ? honeypotInput.value : '',
+                source: source
+            };
 
             var originalBtnText = submitBtn.textContent;
             submitBtn.textContent = 'JOINING...';
             submitBtn.classList.add('btn-loading');
             submitBtn.disabled = true;
 
-            var formData = new FormData();
-            formData.append('EMAIL', email);
-            formData.append('email_address_check', honeypot);
-            formData.append('locale', locale);
-
             fetch(originalAction, {
                 method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            }).then(function() {
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(function(resp) {
+                return resp.json().catch(function(){ return { ok: resp.ok }; });
+            }).then(function(data) {
+                if (data && data.ok === false) {
+                    throw new Error(data.error || 'signup_failed');
+                }
                 if(typeof fbq !== 'undefined') { fbq('track', 'Lead', {content_name: 'Moonlight Crew Signup', content_category: 'Email List'}); }
 
                 setTimeout(function() {
@@ -329,9 +342,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     successModal.innerHTML = '<div class="success-content">' +
                         '<div class="success-icon">⭐</div>' +
                         '<h2 class="success-title">ACHIEVEMENT UNLOCKED!</h2>' +
-                        '<h3 class="success-subtitle">MOONLIGHT GUILD MEMBER</h3>' +
-                        '<p class="success-message">You\'ve joined the elite! Check your email for your legendary 10% discount code.</p>' +
-                        '<p class="redirect-message">Redirecting to your rewards page...</p>' +
+                        '<h3 class="success-subtitle">CHECK YOUR EMAIL</h3>' +
+                        '<p class="success-message">We sent you a verification link. Click it to activate your Guild membership and unlock your welcome perks.</p>' +
+                        '<p class="redirect-message">(Heads up: it may land in Promotions or Spam.)</p>' +
                         '</div>';
                     document.body.appendChild(successModal);
 
@@ -389,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
 
                     setTimeout(function() {
-                        window.location.href = '/thank-you.html';
+                        window.location.href = '/welcome/?guild=pending';
                     }, 5000);
 
                 }, 500);

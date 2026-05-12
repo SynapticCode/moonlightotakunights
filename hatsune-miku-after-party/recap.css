@@ -1,0 +1,274 @@
+/* ===========================================================
+   recap.css — Hatsune Miku unofficial after-party recap gallery
+   Masonry grid + lightbox + sold-out banner styling.
+   Scoped to .recap and .recap-lightbox to avoid cross-page bleed.
+   =========================================================== */
+
+/* ------- Sold-out hero banner (sits inside .hero CTA row) ------- */
+.miku-soldout-banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0 1rem;
+    border: 1px solid rgba(255, 60, 90, 0.55);
+    background:
+        linear-gradient(135deg, rgba(255, 60, 90, 0.12), rgba(0, 240, 255, 0.06));
+    border-radius: 4px;
+    overflow: hidden;
+    isolation: isolate;
+}
+.miku-soldout-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0 3px,
+        rgba(255, 60, 90, 0.07) 3px 4px
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+.miku-soldout-label {
+    font-family: var(--mt-font-mono, "JetBrains Mono", monospace);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: #ff3c5a;
+    text-transform: uppercase;
+    animation: miku-flicker 4.5s infinite;
+}
+.miku-soldout-title {
+    font-family: var(--mt-font-display, "Orbitron", sans-serif);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    line-height: 0.95;
+    color: #fff;
+    margin: 0;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 18px rgba(255, 60, 90, 0.35);
+}
+.miku-soldout-sub {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0;
+}
+@keyframes miku-flicker {
+    0%, 92%, 100% { opacity: 1; }
+    93%, 95% { opacity: 0.35; }
+    94%, 96% { opacity: 1; }
+}
+
+/* ------- Recap section frame ------- */
+.recap {
+    position: relative;
+    padding: 6rem 1.5rem 5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.recap .section-head {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.recap .section-sub {
+    color: rgba(255, 255, 255, 0.65);
+    font-family: var(--mt-font-mono, "JetBrains Mono", monospace);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    margin-top: 0.75rem;
+    text-transform: uppercase;
+}
+
+/* ------- Stat row ------- */
+.recap-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 0 auto 3rem;
+    max-width: 800px;
+}
+.recap-stat {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    background: rgba(0, 240, 255, 0.04);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+.recap-stat::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+    opacity: 0.6;
+}
+.recap-stat-num {
+    display: block;
+    font-family: var(--mt-font-display, "Orbitron", sans-serif);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    line-height: 1;
+    color: #00f0ff;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.45);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+.recap-stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ------- Masonry grid (column layout) ------- */
+.recap-grid {
+    column-count: 4;
+    column-gap: 12px;
+}
+@media (max-width: 1100px) { .recap-grid { column-count: 3; } }
+@media (max-width: 760px)  { .recap-grid { column-count: 2; column-gap: 8px; } }
+@media (max-width: 420px)  { .recap-grid { column-count: 1; } }
+
+.recap-tile {
+    display: block;
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 0;
+    border: 1px solid rgba(0, 240, 255, 0.18);
+    background: #0a0a0f;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    break-inside: avoid;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    appearance: none;
+    border-radius: 3px;
+}
+.recap-tile:hover,
+.recap-tile:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(0, 240, 255, 0.7);
+    box-shadow:
+        0 8px 24px rgba(0, 240, 255, 0.18),
+        0 0 0 1px rgba(0, 240, 255, 0.25) inset;
+    outline: none;
+}
+.recap-tile img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.recap-tile img.is-loaded { opacity: 1; }
+.recap-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 70%, rgba(10,10,15,0.7));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.recap-tile:hover::after { opacity: 1; }
+
+.recap-credit {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* ------- Lightbox ------- */
+.recap-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 5, 10, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: none;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem 2rem;
+}
+.recap-lightbox.is-open {
+    display: flex;
+    animation: recap-fade-in 0.25s ease;
+}
+@keyframes recap-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.recap-lightbox-figure {
+    margin: 0;
+    max-width: min(1100px, 95vw);
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+.recap-lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    box-shadow:
+        0 0 40px rgba(0, 240, 255, 0.2),
+        0 20px 60px rgba(0, 0, 0, 0.6);
+    background: #000;
+}
+.recap-lightbox-caption {
+    color: rgba(255, 255, 255, 0.65);
+    font-family: var(--mt-font-mono, "JetBrains Mono", monospace);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+.recap-lightbox-close,
+.recap-lightbox-nav {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    color: #00f0ff;
+    font-size: 1.75rem;
+    line-height: 1;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    z-index: 1;
+}
+.recap-lightbox-close:hover,
+.recap-lightbox-nav:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: #00f0ff;
+    transform: scale(1.08);
+}
+.recap-lightbox-close {
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+}
+.recap-lightbox-prev { left: 1.5rem; }
+.recap-lightbox-next { right: 1.5rem; }
+@media (max-width: 600px) {
+    .recap-lightbox-prev { left: 0.5rem; }
+    .recap-lightbox-next { right: 0.5rem; }
+    .recap-lightbox-close { top: 0.75rem; right: 0.75rem; }
+    .recap-lightbox-nav,
+    .recap-lightbox-close { width: 40px; height: 40px; font-size: 1.4rem; }
+}
+
+/* Lock body scroll while lightbox open */
+body.recap-lightbox-open { overflow: hidden; }

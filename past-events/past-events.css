@@ -122,6 +122,31 @@ body {
     display: block;
 }
 
+.past-page .past-card-badge--soldout {
+    color: #ff4d6d;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(255, 77, 109, 0.45);
+    animation: soldoutFlicker 6s infinite;
+}
+
+@keyframes soldoutFlicker {
+    0%, 92%, 94%, 100% { opacity: 1; }
+    93%                { opacity: 0.55; }
+}
+
+.past-page .past-card--miku .past-card-flyer {
+    background: linear-gradient(135deg, #001a2e 0%, #000814 100%);
+}
+
+.past-page .past-card--miku .past-card-flyer img {
+    filter: grayscale(0%);
+}
+
+.past-page .past-card--miku .past-card-subtitle {
+    color: #00f0ff;
+}
+
 .past-page .past-card-date {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.8rem;

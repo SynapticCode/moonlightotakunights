@@ -35,6 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/components/theme.css">
     <link rel="stylesheet" href="/hatsune-miku-after-party/page.css">
+    <link rel="stylesheet" href="/hatsune-miku-after-party/recap.css">
 
     <style>
         html { scroll-behavior: smooth; }
@@ -130,11 +131,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="hero-subtitle">UNOFFICIAL AFTER PARTY</p>
                 <p class="produced-by-credit">PRODUCED BY MOONLIGHT OTAKU NIGHTS · IN PARTNERSHIP WITH MIKU ONLY NYC</p>
                 <p class="hero-tagline">プルーデンシャル・センターから徒歩5分。Two blocks south. The night doesn't end at Prudential Center.</p>
-                <div class="hero-cta-row">
-                    <a href="https://moonlightotakunights.com/miku" class="btn btn-accent-outline"><img src="/assets/images/logos/Posh_VIP_Logo.png" alt="Posh" class="posh-logo">GET TICKETS AT POSH</a>
-                    <a href="#lineup" class="btn btn-ghost">VIEW LINEUP</a>
+                <div class="miku-soldout-banner" role="status">
+                    <span class="miku-soldout-label">EVENT COMPLETE · 受付終了</span>
+                    <h2 class="miku-soldout-title">SOLD OUT</h2>
+                    <p class="miku-soldout-sub">May 7, 2026 · We reached venue capacity. Thank you to everyone who showed up.</p>
                 </div>
-                <a href="#cosplay-contest" class="hero-secondary-link">Cosplaying? Sign up for the contest →</a>
+                <div class="hero-cta-row">
+                    <a href="#recap-gallery" class="btn btn-accent-outline">VIEW THE NIGHT</a>
+                    <a href="/#guild" class="btn btn-ghost">JOIN THE GUILD</a>
+                </div>
             </div>
             <div class="hero-flyer">
                 <div class="flyer-frame">
@@ -435,36 +440,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </section>
 
-        <!-- Tickets CTA -->
-        <section class="tickets-cta">
-            <span class="katakana-fragment" data-original="暗号" aria-hidden="true">暗号</span>
-            <div class="big-date">
-                <div class="ghost-month">MAY</div>
-                <div class="ghost-day">07</div>
-                <div class="ghost-year">2026</div>
+        <!-- Recap Gallery -->
+        <section class="recap" id="recap-gallery">
+            <span class="katakana-fragment" data-original="記録" aria-hidden="true">記録</span>
+            <header class="section-head">
+                <span class="jp-label">記録 — recap</span>
+                <h2 class="section-title"><span class="chromatic-title" data-text="THE NIGHT">THE NIGHT</span></h2>
+                <p class="section-sub">QXT's Nightclub · May 7, 2026 · sold to capacity</p>
+            </header>
+
+            <div class="recap-stats">
+                <div class="recap-stat">
+                    <span class="recap-stat-num">SOLD<br>OUT</span>
+                    <span class="recap-stat-label">Venue capacity reached</span>
+                </div>
+                <div class="recap-stat">
+                    <span class="recap-stat-num">5</span>
+                    <span class="recap-stat-label">Hours of Vocaloid &amp; J-pop</span>
+                </div>
+                <div class="recap-stat">
+                    <span class="recap-stat-num">20+</span>
+                    <span class="recap-stat-label">Cosplayers on the floor</span>
+                </div>
             </div>
-            <div class="pricing">
-                <div class="pricing-header">
-                    <span class="jp">入場料</span>
-                    <span class="en">TICKET TIERS</span>
-                </div>
-                <div class="tier-row">
-                    <span class="tier-price">$10</span>
-                    <span class="tier-desc">All night with a Miku EXPO ticket stub, cosplay, or college ID</span>
-                </div>
-                <div class="tier-row">
-                    <span class="tier-price">$15</span>
-                    <span class="tier-desc">General entry before 11:30 PM</span>
-                </div>
-                <div class="tier-row">
-                    <span class="tier-price">$20</span>
-                    <span class="tier-desc">Late entry after 11:30 PM</span>
-                </div>
-                <a href="https://moonlightotakunights.com/miku" class="btn btn-accent-outline"><img src="/assets/images/logos/Posh_VIP_Logo.png" alt="Posh" class="posh-logo">GET TICKETS AT POSH</a>
-                <p class="ticket-waitlist-note">Tickets drop soon. Waitlist members get first access.</p>
-                <p class="ticket-disclaimer">21+ with valid ID. Re-entry allowed.</p>
+
+            <div class="recap-grid" id="recap-grid" role="list" aria-label="Photos from the Hatsune Miku unofficial after-party">
+                <!-- Populated by recap.js -->
             </div>
+
+            <p class="recap-credit">Photos courtesy of attendees and the Moonlight Otaku Nights team. Tap any frame to enlarge.</p>
         </section>
+
+        <!-- Lightbox shell (populated by recap.js) -->
+        <div class="recap-lightbox" id="recap-lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+            <button class="recap-lightbox-close" id="recap-close" aria-label="Close photo viewer">×</button>
+            <button class="recap-lightbox-nav recap-lightbox-prev" id="recap-prev" aria-label="Previous photo">‹</button>
+            <figure class="recap-lightbox-figure">
+                <img class="recap-lightbox-img" id="recap-lightbox-img" alt="">
+                <figcaption class="recap-lightbox-caption" id="recap-lightbox-caption"></figcaption>
+            </figure>
+            <button class="recap-lightbox-nav recap-lightbox-next" id="recap-next" aria-label="Next photo">›</button>
+        </div>
 
         <!-- Venue -->
         <section class="venue">
@@ -511,8 +527,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p>Yes. Re-entry is allowed all night. Tell security on your way out so they know to let you back in.</p>
                 </details>
                 <details>
-                    <summary>When do tickets go on sale?</summary>
-                    <p>Soon. Join the waitlist above and you'll get the link before they go public.</p>
+                    <summary>Will there be another one?</summary>
+                    <p>Yes. Moonlight Otaku Nights is a recurring anime &amp; rave series. Join the Guild on the homepage and you'll hear about the next event before it goes public.</p>
                 </details>
             </div>
         </section>
@@ -568,5 +584,6 @@ if (parallaxBg && window.matchMedia('(min-width: 769px)').matches) {
 }
 </script>
 <script src="/components/nav-loader.js"></script>
+<script src="/hatsune-miku-after-party/recap.js" defer></script>
 </body>
 </html>

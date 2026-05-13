@@ -8,17 +8,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WX8WHXSZ');</script>
 <!-- End Google Tag Manager -->
-<script>
-// #region agent log H1
-fetch('http://127.0.0.1:7734/ingest/90e6f3e0-aa65-469f-8f30-1e095e3a3f16',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'0db5e5'},body:JSON.stringify({sessionId:'0db5e5',runId:'run1',hypothesisId:'H1',location:'index.html:11',message:'head script executed',data:{href:location.href,host:location.host,protocol:location.protocol},timestamp:Date.now()})}).catch(()=>{});
-// #endregion
-// #region agent log H2
-window.addEventListener('DOMContentLoaded',function(){var gtmScript=!!document.querySelector('script[src*="googletagmanager.com/gtm.js?id=GTM-WX8WHXSZ"]');var dataLayerLen=Array.isArray(window.dataLayer)?window.dataLayer.length:-1;fetch('http://127.0.0.1:7734/ingest/90e6f3e0-aa65-469f-8f30-1e095e3a3f16',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'0db5e5'},body:JSON.stringify({sessionId:'0db5e5',runId:'run1',hypothesisId:'H2',location:'index.html:14',message:'dom ready gtm status',data:{gtmScript:gtmScript,dataLayerLen:dataLayerLen,title:document.title},timestamp:Date.now()})}).catch(()=>{});});
-// #endregion
-// #region agent log H3
-window.addEventListener('load',function(){var noscriptIframe=!!document.querySelector('noscript iframe[src*="googletagmanager.com/ns.html?id=GTM-WX8WHXSZ"]');fetch('http://127.0.0.1:7734/ingest/90e6f3e0-aa65-469f-8f30-1e095e3a3f16',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'0db5e5'},body:JSON.stringify({sessionId:'0db5e5',runId:'run1',hypothesisId:'H3',location:'index.html:17',message:'load noscript status',data:{noscriptIframe:noscriptIframe,readyState:document.readyState},timestamp:Date.now()})}).catch(()=>{});});
-// #endregion
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moonlight Otaku Nights — NJ's First Anikura at QXT's Newark</title>
@@ -218,7 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="section-sub">Members get presale access, exclusive discount codes, and event announcements before anyone else.</p>
             </header>
 
-            <form class="guild-form" id="moonlight-crew-form" method="POST" action="/api/guild-signup.php" onsubmit="return false;" data-source="guild_homepage">
+            <form class="guild-form" id="moonlight-crew-form" method="POST" action="/api/guild-signup.php" onsubmit="return false;" data-source="guild_homepage" data-track-form="guild_homepage">
                 <input type="text" name="name" placeholder="your name (required)" required autocomplete="name">
                 <input type="email" name="email" placeholder="your@email.com (required)" required autocomplete="email">
                 <input type="tel" name="phone" placeholder="phone (optional)" autocomplete="tel">
@@ -334,7 +323,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data && data.ok === false) {
                     throw new Error(data.error || 'signup_failed');
                 }
-                if(typeof fbq !== 'undefined') { fbq('track', 'Lead', {content_name: 'Moonlight Crew Signup', content_category: 'Email List'}); }
+                // Fire pixel with the SAME event_id our server-side CAPI used,
+                // so Meta dedupes browser + CAPI into a single conversion.
+                var __evId = (data && data.event_id) ? data.event_id : null;
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead',
+                        { content_name: 'Moonlight Guild Signup', content_category: 'newsletter_signup' },
+                        __evId ? { eventID: __evId } : undefined
+                    );
+                }
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        event: 'guild_signup_submit',
+                        event_id: __evId,
+                        content_name: 'Moonlight Guild Signup'
+                    });
+                }
 
                 setTimeout(function() {
                     var successModal = document.createElement('div');
@@ -463,6 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 <script src="/components/nav-loader.js"></script>
+<script src="/components/tracking.js" defer></script>
 <script>
 (function () {
     var pool = ['ノイズ', 'データ', '信号', '月光', '周波数', '暗号'];

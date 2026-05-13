@@ -15,6 +15,7 @@ require_once __DIR__ . '/includes/bootstrap.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/ses.php';
 require_once __DIR__ . '/includes/tokens.php';
+require_once __DIR__ . '/includes/tracking.php';
 
 $token = (string)($_GET['t'] ?? '');
 if ($token === '') {
@@ -58,6 +59,20 @@ if ($contact) {
         'template'   => 'guild-welcome',
         'contact_id' => $contact_id,
         'kind'       => 'transactional',
+    ]);
+
+    // -------- Server-side tracking: verified Guild member --------
+    $nameParts = preg_split('/\s+/', trim((string)($contact['name'] ?? '')), 2);
+    track_event('CompleteRegistration', [
+        'email'       => $email,
+        'phone'       => $contact['phone'] ?? null,
+        'first_name'  => $nameParts[0] ?? null,
+        'last_name'   => $nameParts[1] ?? null,
+        'external_id' => 'contact_' . $contact_id,
+    ], [
+        'content_name'     => 'Moonlight Guild Verified',
+        'content_category' => 'newsletter_verified',
+        'event_source_url' => config('app')['base_url'] . '/welcome/?guild=verified',
     ]);
 }
 

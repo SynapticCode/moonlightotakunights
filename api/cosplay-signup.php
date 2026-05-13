@@ -12,6 +12,7 @@ require_once __DIR__ . '/includes/bootstrap.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/ses.php';
 require_once __DIR__ . '/includes/tokens.php';
+require_once __DIR__ . '/includes/tracking.php';
 
 send_cors_headers();
 
@@ -165,7 +166,21 @@ if ($topic) {
     ]));
 }
 
-json_ok(['signup_id' => $signup_id]);
+// -------- Server-side tracking: cosplay contest entry --------
+$nameParts = preg_split('/\s+/', trim((string)$full_name), 2);
+$tracking = track_event('Contact', [
+    'email'       => $email,
+    'phone'       => $phone,
+    'first_name'  => $nameParts[0] ?? null,
+    'last_name'   => $nameParts[1] ?? null,
+    'external_id' => 'cosplay_' . $signup_id,
+], [
+    'content_name'     => 'Cosplay Contest Entry' . ($character ? " — $character" : ''),
+    'content_category' => 'cosplay_signup',
+    'event_source_url' => $_SERVER['HTTP_REFERER'] ?? config('app')['base_url'] . '/cosplay-signup/',
+]);
+
+json_ok(['signup_id' => $signup_id, 'event_id' => $tracking['event_id'] ?? null]);
 
 
 function first_name_of(?string $full): string {

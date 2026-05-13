@@ -104,7 +104,7 @@ return [
         'gads_conversion_id'  => env('GADS_CONVERSION_ID', ''),  // AW-XXXXXXXXX
         'gads_conversion_label' => env('GADS_CONVERSION_LABEL', ''), // alphanum slug
 
-        // Whether to actually send (turn off in dev)
-        'enabled' => env('TRACKING_ENABLED', '1') === '1',
+        // Whether to actually send (turn off in dev). Accepts 1/true/on/yes.
+        'enabled' => in_array(strtolower((string)env('TRACKING_ENABLED', '1')), ['1','true','on','yes'], true),
     ],
 ];

@@ -132,7 +132,70 @@ function track_event(string $eventName, array $userData = [], array $customData 
         }
     }
 
+    // -------- Audit trail --------
+    // Persist one row per call so we can prove the pipeline fired (and what
+    // each destination returned) from the dashboard. Failures here must NEVER
+    // break the caller — the user's signup already succeeded.
+    try {
+        tracking_log_write($eventName, $eventId, $userData, $customData, $results);
+    } catch (Throwable $e) {
+        log_error('tracking_log_write_failed', ['err' => $e->getMessage(), 'event' => $eventName]);
+    }
+
     return $results;
+}
+
+/**
+ * Writes one audit row per track_event() call. Stores enough state that
+ * the dashboard can show "this Lead fired to Meta=200, GA4=204, Ads=queued".
+ */
+function tracking_log_write(string $eventName, string $eventId, array $userData, array $customData, array $results): void {
+    $pdo = db();
+    if (!$pdo) return;
+
+    $metaOk   = isset($results['meta']['ok'])  ? (int)(bool)$results['meta']['ok']  : null;
+    $metaHttp = $results['meta']['http']       ?? null;
+    $ga4Ok    = isset($results['ga4']['ok'])   ? (int)(bool)$results['ga4']['ok']   : null;
+    $ga4Http  = $results['ga4']['http']        ?? null;
+    $gadsOk   = isset($results['gads']['ok'])  ? (int)(bool)$results['gads']['ok']  : null;
+
+    // Collect any error strings into one ≤500-char summary for quick scanning.
+    // Note: HTTP-layer errors land in 'err'; thrown exceptions land in 'error'.
+    $errors = [];
+    foreach (['meta','ga4','gads'] as $dest) {
+        $r = $results[$dest] ?? null;
+        if (!is_array($r)) continue;
+        if (!empty($r['error'])) $errors[] = $dest . ':' . $r['error'];
+        if (!empty($r['err']))   $errors[] = $dest . ':' . $r['err'];
+        // Non-2xx with a body — capture first 200 chars so we can debug.
+        if (isset($r['ok']) && !$r['ok'] && !empty($r['body'])) {
+            $errors[] = $dest . ':body:' . substr((string)$r['body'], 0, 200);
+        }
+    }
+    $errSummary = $errors ? substr(implode(' | ', $errors), 0, 500) : null;
+
+    // Pull contact_id out of external_id when caller followed the
+    // "contact_<id>" convention used in guild-signup.php.
+    $contactId = null;
+    if (!empty($userData['external_id']) && preg_match('/^contact_(\d+)$/', (string)$userData['external_id'], $m)) {
+        $contactId = (int)$m[1];
+    }
+
+    $stmt = $pdo->prepare("INSERT INTO tracking_log
+        (event_name, event_id, contact_id, meta_ok, meta_http, ga4_ok, ga4_http, gads_ok, custom_data, error_summary)
+        VALUES (:en, :eid, :cid, :mok, :mhttp, :g4ok, :g4http, :gok, :cd, :err)");
+    $stmt->execute([
+        ':en'    => $eventName,
+        ':eid'   => $eventId,
+        ':cid'   => $contactId,
+        ':mok'   => $metaOk,
+        ':mhttp' => $metaHttp,
+        ':g4ok'  => $ga4Ok,
+        ':g4http'=> $ga4Http,
+        ':gok'   => $gadsOk,
+        ':cd'    => json_encode($customData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+        ':err'   => $errSummary,
+    ]);
 }
 
 /* ============================================================

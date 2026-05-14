@@ -18,14 +18,14 @@ $active = db_fetch(
     "SELECT * FROM events WHERE cosplay_contest_active = 1 ORDER BY event_date ASC LIMIT 1"
 );
 
-$page_title  = 'Cosplay Signups';
+$page_title  = 'Cosplay Contest';
 $page_active = 'cosplay';
 ob_start();
 ?>
 
 <div class="topbar">
     <div>
-        <h1>Cosplay Signups</h1>
+        <h1>Cosplay Contest</h1>
         <p class="topbar-sub">コスプレ・エントリー · <?= count($rows) ?> entries</p>
     </div>
 </div>

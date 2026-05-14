@@ -1,0 +1,31 @@
+# Moonlight Otaku Nights
+# https://moonlightotakunights.com
+
+User-agent: *
+Allow: /
+
+# Don't index the operator dashboard
+Disallow: /dashboard/
+
+# Don't index legacy/dev paths
+Disallow: /tmp/
+Disallow: /admin/
+
+# Block AI crawlers that scrape without permission for training.
+# (Allow Google, Bing, Apple, DuckDuckGo, etc. by omission.)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://moonlightotakunights.com/sitemap.xml

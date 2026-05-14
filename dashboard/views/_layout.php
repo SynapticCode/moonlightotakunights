@@ -27,7 +27,7 @@ $nav = [
         ['key' => 'overview',  'href' => '/',                 'label' => 'Overview',      'icon' => '◉'],
         ['key' => 'contacts',  'href' => '/contacts.php',     'label' => 'Contacts',      'icon' => '◇'],
         ['key' => 'guild',     'href' => '/contacts.php?source=guild', 'label' => 'Guild', 'icon' => '✦'],
-        ['key' => 'cosplay',   'href' => '/cosplay.php',      'label' => 'Cosplay',       'icon' => '✶'],
+        ['key' => 'cosplay',   'href' => '/cosplay.php',      'label' => 'Cosplay Contest', 'icon' => '✶'],
         ['key' => 'compose',   'href' => '/compose.php',      'label' => 'Compose',       'icon' => '✎'],
         ['key' => 'broadcasts','href' => '/broadcasts.php',   'label' => 'Broadcasts',    'icon' => '⤴'],
     ]],

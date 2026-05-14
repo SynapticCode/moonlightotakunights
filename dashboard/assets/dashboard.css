@@ -477,6 +477,26 @@ code { font-family: var(--font-mono); color: var(--acc-ice); background: rgba(0,
 }
 .dropzone strong { display: block; font-family: var(--font-display); letter-spacing: 0.15em; font-size: 13px; margin-bottom: 6px; }
 
+.form-help {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-mute);
+}
+.form-filename {
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--acc-cyan);
+    min-height: 1em;
+}
+.form-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
 /* ===================== Health grid ===================== */
 
 .health-grid {

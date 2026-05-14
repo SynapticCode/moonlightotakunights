@@ -23,9 +23,9 @@ ob_start();
         <h2 class="panel-title">Upload CSV</h2>
     </div>
     <div class="panel-body">
-        <form id="import-form" enctype="multipart/form-data">
-            <div class="form-row composer-form" style="margin-bottom: 16px;">
-                <label for="src" style="font-family: var(--font-display); font-size: 10px; letter-spacing: 0.2em; color: var(--text-mute); text-transform: uppercase;">Source</label>
+        <form id="import-form" class="composer-form" enctype="multipart/form-data">
+            <div class="form-row">
+                <label for="src">Source</label>
                 <select id="src" name="source" required>
                     <option value="">Choose…</option>
                     <option value="import_formspree">Formspree (cosplay signups)</option>
@@ -34,17 +34,20 @@ ob_start();
                     <option value="import_eventbrite">Eventbrite (attendees)</option>
                     <option value="import_manual">Manual / Other</option>
                 </select>
+                <small class="form-help">Which platform this CSV came from. Used to tag every imported row so you can segment later.</small>
             </div>
 
-            <label for="csv" class="dropzone" id="dropzone">
-                <strong>DROP CSV OR CLICK TO BROWSE</strong>
-                <span>UTF-8 encoded. First row must be headers. Email column required.</span>
-                <input type="file" id="csv" name="csv" accept=".csv,text/csv" required hidden>
-            </label>
+            <div class="form-row">
+                <label>CSV file</label>
+                <label for="csv" class="dropzone" id="dropzone">
+                    <strong>DROP CSV OR CLICK TO BROWSE</strong>
+                    <span>UTF-8 encoded. First row must be headers. Email column required.</span>
+                    <input type="file" id="csv" name="csv" accept=".csv,text/csv" required hidden>
+                </label>
+                <p id="filename" class="form-filename"></p>
+            </div>
 
-            <p id="filename" style="margin-top: 12px; font-family: var(--font-mono); font-size: 13px; color: var(--acc-cyan);"></p>
-
-            <div style="margin-top:16px; display:flex; gap:8px;">
+            <div class="form-actions">
                 <button type="submit" class="btn btn-primary" style="width:auto;">IMPORT</button>
             </div>
             <p class="auth-status" id="import-status"></p>

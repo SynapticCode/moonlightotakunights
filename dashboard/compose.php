@@ -36,6 +36,7 @@ ob_start();
                         <option value="all">All non-unsubscribed (<?= number_format($allCount) ?>)</option>
                         <option value="test">Send test to me only</option>
                     </select>
+                    <small class="form-help">Who receives this broadcast. "Verified Guild" = double opt-in confirmed. "All non-unsubscribed" = everyone who hasn't opted out. "Test to me only" = sends just to you for QA.</small>
                 </div>
 
                 <div class="form-row">
@@ -61,11 +62,13 @@ ob_start();
                 <div class="form-row">
                     <label for="cta">CTA Label</label>
                     <input type="text" id="cta" name="cta_label" maxlength="40" value="MORE DETAILS">
+                    <small class="form-help">Text on the big button inside the email (e.g. GET TICKETS, RSVP, LEARN MORE).</small>
                 </div>
 
                 <div class="form-row">
                     <label for="ctau">CTA URL</label>
                     <input type="url" id="ctau" name="cta_url" placeholder="https://moonlightotakunights.com/...">
+                    <small class="form-help">Where the button takes the reader. Use a full URL with https://.</small>
                 </div>
 
                 <div style="display:flex; gap:8px; margin-top:8px;">

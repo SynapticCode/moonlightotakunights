@@ -63,7 +63,7 @@ ob_start();
                         </button>
                     </form>
                 </td>
-                <td><?php if ($e['page_path']): ?><a href="<?= htmlspecialchars($e['page_path']) ?>" target="_blank"><?= htmlspecialchars($e['page_path']) ?></a><?php else: ?>—<?php endif; ?></td>
+                <td><?php if ($e['page_path']): ?><?php $public_url = rtrim(config('app')['base_url'], '/') . '/' . ltrim($e['page_path'], '/'); ?><a href="<?= htmlspecialchars($public_url) ?>" target="_blank" rel="noopener"><?= htmlspecialchars($e['page_path']) ?></a><?php else: ?>—<?php endif; ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

@@ -92,7 +92,7 @@ function current_user(): ?array {
 function require_login(): array {
     $u = current_user();
     if (!$u) {
-        header('Location: /dashboard/login.php');
+        header('Location: /login.php');
         exit;
     }
     return $u;

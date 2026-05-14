@@ -103,7 +103,7 @@ ob_start();
 
         const fd = new FormData(form);
         try {
-            const r = await fetch('/dashboard/api/import-csv.php', { method: 'POST', body: fd });
+            const r = await fetch('/api/import-csv.php', { method: 'POST', body: fd });
             const data = await r.json();
             if (!data.ok) throw new Error(data.error || 'Import failed');
             setStatus(`Imported ${data.created} new, updated ${data.updated}, skipped ${data.skipped} of ${data.total}.`, 'ok');

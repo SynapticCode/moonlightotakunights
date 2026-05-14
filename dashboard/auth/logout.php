@@ -5,5 +5,5 @@ require_once __DIR__ . '/../../api/includes/db.php';
 require_once __DIR__ . '/session.php';
 
 destroy_current_session();
-header('Location: /dashboard/login.php');
+header('Location: /login.php');
 exit;

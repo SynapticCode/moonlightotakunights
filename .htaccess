@@ -1,0 +1,14 @@
+# Moonlight Otaku Nights - Main domain Apache config
+#
+# Primary purpose: redirect legacy /dashboard/* URLs to the dashboard subdomain.
+# The dashboard now lives at dashboard.moonlightotakunights.com (its own subdomain
+# pointed at /public_html/dashboard). Anyone hitting the old subdirectory URL gets
+# permanently redirected to the subdomain.
+
+RewriteEngine On
+
+# Only apply this rule when the request hostname is the main domain (not the subdomain).
+# Without this guard, the subdomain would also match and create a redirect loop because
+# its document root is /public_html/dashboard.
+RewriteCond %{HTTP_HOST} ^(www\.)?moonlightotakunights\.com$ [NC]
+RewriteRule ^dashboard/?(.*)$ https://dashboard.moonlightotakunights.com/$1 [R=301,L]

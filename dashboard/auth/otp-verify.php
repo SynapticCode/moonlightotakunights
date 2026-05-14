@@ -49,4 +49,4 @@ if (!$user) {
 }
 
 create_session((int) $user['id']);
-json_ok(['redirect' => '/dashboard/']);
+json_ok(['redirect' => '/']);

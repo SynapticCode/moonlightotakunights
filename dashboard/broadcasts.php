@@ -19,7 +19,7 @@ ob_start();
         <p class="topbar-sub">放送履歴 · <?= count($rows) ?> on record</p>
     </div>
     <div class="topbar-actions">
-        <a href="/dashboard/compose.php" class="btn btn-primary" style="width:auto;">+ NEW BROADCAST</a>
+        <a href="/compose.php" class="btn btn-primary" style="width:auto;">+ NEW BROADCAST</a>
     </div>
 </div>
 

@@ -24,17 +24,17 @@ $page_body   = $page_body   ?? '';
 
 $nav = [
     ['main', [
-        ['key' => 'overview',  'href' => '/dashboard/',                 'label' => 'Overview',      'icon' => '◉'],
-        ['key' => 'contacts',  'href' => '/dashboard/contacts.php',     'label' => 'Contacts',      'icon' => '◇'],
-        ['key' => 'guild',     'href' => '/dashboard/contacts.php?source=guild', 'label' => 'Guild', 'icon' => '✦'],
-        ['key' => 'cosplay',   'href' => '/dashboard/cosplay.php',      'label' => 'Cosplay',       'icon' => '✶'],
-        ['key' => 'compose',   'href' => '/dashboard/compose.php',      'label' => 'Compose',       'icon' => '✎'],
-        ['key' => 'broadcasts','href' => '/dashboard/broadcasts.php',   'label' => 'Broadcasts',    'icon' => '⤴'],
+        ['key' => 'overview',  'href' => '/',                 'label' => 'Overview',      'icon' => '◉'],
+        ['key' => 'contacts',  'href' => '/contacts.php',     'label' => 'Contacts',      'icon' => '◇'],
+        ['key' => 'guild',     'href' => '/contacts.php?source=guild', 'label' => 'Guild', 'icon' => '✦'],
+        ['key' => 'cosplay',   'href' => '/cosplay.php',      'label' => 'Cosplay',       'icon' => '✶'],
+        ['key' => 'compose',   'href' => '/compose.php',      'label' => 'Compose',       'icon' => '✎'],
+        ['key' => 'broadcasts','href' => '/broadcasts.php',   'label' => 'Broadcasts',    'icon' => '⤴'],
     ]],
     ['data', [
-        ['key' => 'import',    'href' => '/dashboard/import.php',       'label' => 'CSV Import',    'icon' => '⤵'],
-        ['key' => 'events',    'href' => '/dashboard/events.php',       'label' => 'Events',        'icon' => '☉'],
-        ['key' => 'health',    'href' => '/dashboard/health.php',       'label' => 'Site Health',   'icon' => '◈'],
+        ['key' => 'import',    'href' => '/import.php',       'label' => 'CSV Import',    'icon' => '⤵'],
+        ['key' => 'events',    'href' => '/events.php',       'label' => 'Events',        'icon' => '☉'],
+        ['key' => 'health',    'href' => '/health.php',       'label' => 'Site Health',   'icon' => '◈'],
     ]],
 ];
 ?><!DOCTYPE html>
@@ -43,7 +43,7 @@ $nav = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($page_title) ?> · Moonlight Dashboard</title>
-    <link rel="stylesheet" href="/dashboard/assets/dashboard.css">
+    <link rel="stylesheet" href="/assets/dashboard.css">
     <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
@@ -51,7 +51,7 @@ $nav = [
 <div class="app">
 
     <aside class="sidebar">
-        <a href="/dashboard/" class="sidebar-brand">
+        <a href="/" class="sidebar-brand">
             <img src="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight">
             <div class="sidebar-brand-text">
                 Moonlight
@@ -74,7 +74,7 @@ $nav = [
 
         <div class="sidebar-foot">
             <div>Signed in as <strong><?= htmlspecialchars($user['email']) ?></strong></div>
-            <a href="/dashboard/auth/logout.php">Sign out →</a>
+            <a href="/auth/logout.php">Sign out →</a>
         </div>
     </aside>
 

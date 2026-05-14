@@ -37,8 +37,8 @@ ob_start();
         <p class="topbar-sub">運営概要 · OPERATIONAL SUMMARY</p>
     </div>
     <div class="topbar-actions">
-        <a href="/dashboard/compose.php" class="btn btn-ghost" style="width:auto;">COMPOSE</a>
-        <a href="/dashboard/import.php" class="btn btn-ghost" style="width:auto;">IMPORT CSV</a>
+        <a href="/compose.php" class="btn btn-ghost" style="width:auto;">COMPOSE</a>
+        <a href="/import.php" class="btn btn-ghost" style="width:auto;">IMPORT CSV</a>
     </div>
 </div>
 
@@ -68,7 +68,7 @@ ob_start();
 <div class="panel">
     <div class="panel-head">
         <h2 class="panel-title">Recent Signups</h2>
-        <a href="/dashboard/contacts.php" style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase;">View all →</a>
+        <a href="/contacts.php" style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase;">View all →</a>
     </div>
     <?php if (!$recent): ?>
         <div class="empty">
@@ -104,13 +104,13 @@ ob_start();
 <div class="panel">
     <div class="panel-head">
         <h2 class="panel-title">Recent Broadcasts</h2>
-        <a href="/dashboard/broadcasts.php" style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase;">View all →</a>
+        <a href="/broadcasts.php" style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase;">View all →</a>
     </div>
     <?php if (!$recentBroadcasts): ?>
         <div class="empty">
             <div class="empty-icon">⤴</div>
             <p>No broadcasts sent yet.</p>
-            <p style="margin-top:8px;"><a href="/dashboard/compose.php">Compose your first →</a></p>
+            <p style="margin-top:8px;"><a href="/compose.php">Compose your first →</a></p>
         </div>
     <?php else: ?>
     <table class="data-table">

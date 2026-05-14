@@ -7,7 +7,7 @@ session_start();
 
 // If already logged in, bounce to home
 if (current_user()) {
-    header('Location: /dashboard/');
+    header('Location: /');
     exit;
 }
 
@@ -31,7 +31,7 @@ $googleConfigured = !empty($cfg['client_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sign in · Moonlight Otaku Nights Dashboard</title>
-    <link rel="stylesheet" href="/dashboard/assets/dashboard.css">
+    <link rel="stylesheet" href="/assets/dashboard.css">
     <meta name="robots" content="noindex, nofollow">
 </head>
 <body class="auth-page">
@@ -99,7 +99,7 @@ $googleConfigured = !empty($cfg['client_id']);
         requestBtn.disabled = true;
         setStatus('Sending code…');
         try {
-            const r = await fetch('/dashboard/auth/otp-request.php', {
+            const r = await fetch('/auth/otp-request.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: emailEl.value })
@@ -124,14 +124,14 @@ $googleConfigured = !empty($cfg['client_id']);
         verifyBtn.disabled = true;
         setStatus('Verifying…');
         try {
-            const r = await fetch('/dashboard/auth/otp-verify.php', {
+            const r = await fetch('/auth/otp-verify.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: emailEl.value, otp: codeEl.value })
             });
             const data = await r.json();
             if (!data.ok) throw new Error(data.error || 'Verify failed');
-            window.location = data.redirect || '/dashboard/';
+            window.location = data.redirect || '/';
         } catch (err) {
             setStatus(err.message, 'err');
             verifyBtn.disabled = false;

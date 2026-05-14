@@ -43,8 +43,9 @@ $nav = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($page_title) ?> · Moonlight Dashboard</title>
-    <link rel="icon" type="image/png" href="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png">
-    <link rel="apple-touch-icon" href="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/images/moonlight-logo.png">
+    <link rel="apple-touch-icon" href="/assets/images/moonlight-logo.png">
     <link rel="stylesheet" href="/assets/dashboard.css">
     <meta name="robots" content="noindex, nofollow">
 </head>
@@ -54,7 +55,7 @@ $nav = [
 
     <aside class="sidebar">
         <a href="/" class="sidebar-brand">
-            <img src="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight">
+            <img src="/assets/images/moonlight-logo.png" alt="Moonlight">
             <div class="sidebar-brand-text">
                 Moonlight
                 <span>運営 · OPS</span>

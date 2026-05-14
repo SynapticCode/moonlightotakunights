@@ -31,8 +31,9 @@ $googleConfigured = !empty($cfg['client_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sign in · Moonlight Otaku Nights Dashboard</title>
-    <link rel="icon" type="image/png" href="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png">
-    <link rel="apple-touch-icon" href="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/images/moonlight-logo.png">
+    <link rel="apple-touch-icon" href="/assets/images/moonlight-logo.png">
     <link rel="stylesheet" href="/assets/dashboard.css">
     <meta name="robots" content="noindex, nofollow">
 </head>

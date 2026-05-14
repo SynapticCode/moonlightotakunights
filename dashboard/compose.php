@@ -2,12 +2,14 @@
 declare(strict_types=1);
 require_once __DIR__ . '/../api/includes/bootstrap.php';
 require_once __DIR__ . '/../api/includes/db.php';
+require_once __DIR__ . '/../api/includes/audit.php';
 require_once __DIR__ . '/auth/session.php';
 
 $user = require_login();
 
 $verifiedCount = (int) (db_fetch("SELECT COUNT(*) c FROM contacts WHERE status='verified'")['c'] ?? 0);
 $allCount      = (int) (db_fetch("SELECT COUNT(*) c FROM contacts WHERE deleted_at IS NULL")['c'] ?? 0);
+$senders       = senders_list();
 
 $page_title  = 'Compose';
 $page_active = 'compose';
@@ -28,6 +30,23 @@ ob_start();
         </div>
         <div class="panel-body">
             <form id="compose-form" class="composer-form">
+
+                <div class="form-row">
+                    <label for="from">From address</label>
+                    <select id="from" name="from">
+                        <?php foreach ($senders as $s):
+                            $verified = !empty($s['ses_verified_at']);
+                        ?>
+                            <option value="<?= htmlspecialchars($s['email']) ?>" <?= $s['is_default'] ? 'selected' : '' ?> <?= $verified ? '' : 'disabled' ?>>
+                                <?= htmlspecialchars($s['display_name']) ?> &lt;<?= htmlspecialchars($s['email']) ?>&gt;<?= $verified ? '' : ' — pending verification' ?>
+                            </option>
+                        <?php endforeach; ?>
+                        <?php if (!$senders): ?>
+                            <option value="info@moonlightotakunights.com" selected>Moonlight Otaku Nights &lt;info@moonlightotakunights.com&gt;</option>
+                        <?php endif; ?>
+                    </select>
+                    <small class="form-help">Which mailbox the email comes from. New addresses appear here once verified in SES.</small>
+                </div>
 
                 <div class="form-row">
                     <label for="seg">Segment</label>

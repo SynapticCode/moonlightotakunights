@@ -1,0 +1,6 @@
+# Dashboard subdomain — no crawlers, ever.
+# Real lockdown headers are set by .htaccess (X-Robots-Tag + AI user-agent block).
+# This file is the polite fallback for compliant crawlers.
+
+User-agent: *
+Disallow: /

@@ -58,8 +58,53 @@ ob_start();
         <p class="topbar-sub">連絡先 · <?= number_format($total) ?> records</p>
     </div>
     <div class="topbar-actions">
+        <button type="button" id="add-contact-btn" class="btn btn-ghost" style="width:auto;">+ ADD CONTACT</button>
         <a href="/import.php" class="btn btn-ghost" style="width:auto;">IMPORT CSV</a>
         <a href="/compose.php" class="btn btn-primary" style="width:auto;">COMPOSE</a>
+    </div>
+</div>
+
+<div id="add-contact-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-card panel">
+        <div class="panel-head" style="display:flex; justify-content:space-between; align-items:center;">
+            <h2 class="panel-title">Add contact</h2>
+            <button type="button" class="btn btn-ghost" data-close="1" style="width:auto; padding:4px 10px;">✕</button>
+        </div>
+        <div class="panel-body">
+            <form id="add-contact-form" class="composer-form">
+                <div class="form-row">
+                    <label for="add-email">Email <span style="color:var(--danger,#f55);">*</span></label>
+                    <input type="email" id="add-email" name="email" required autocomplete="off" placeholder="name@example.com">
+                </div>
+                <div class="form-row">
+                    <label for="add-name">Name</label>
+                    <input type="text" id="add-name" name="name" maxlength="255" placeholder="First Last">
+                </div>
+                <div class="form-row">
+                    <label for="add-phone">Phone</label>
+                    <input type="tel" id="add-phone" name="phone" placeholder="+1 555 555 1212">
+                </div>
+                <div class="form-row">
+                    <label for="add-ig">Instagram</label>
+                    <input type="text" id="add-ig" name="instagram" placeholder="handle (without @)">
+                </div>
+                <div class="form-row">
+                    <label for="add-tags">Tags</label>
+                    <input type="text" id="add-tags" name="tags" placeholder="comma,separated,tags">
+                    <small class="form-help">Free-form labels for later filtering. Example: <code>vip, dj-pool, miku-vol-2</code>.</small>
+                </div>
+                <div class="form-row">
+                    <label for="add-notes">Notes</label>
+                    <textarea id="add-notes" name="notes" rows="3" placeholder="Anything you want to remember about this person."></textarea>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button type="submit" class="btn btn-primary" style="width:auto;">SAVE CONTACT</button>
+                    <button type="button" class="btn btn-ghost" data-close="1" style="width:auto;">Cancel</button>
+                </div>
+                <p class="auth-status" id="add-contact-status"></p>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -133,6 +178,46 @@ ob_start();
     <?php endif; ?>
     <?php endif; ?>
 </div>
+
+<script>
+(function () {
+    const modal = document.getElementById('add-contact-modal');
+    const form  = document.getElementById('add-contact-form');
+    const status = document.getElementById('add-contact-status');
+
+    function open()  { modal.hidden = false; document.body.classList.add('modal-open'); setTimeout(() => document.getElementById('add-email').focus(), 30); }
+    function close() { modal.hidden = true; document.body.classList.remove('modal-open'); status.textContent=''; status.className='auth-status'; form.reset(); }
+
+    document.getElementById('add-contact-btn').addEventListener('click', open);
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) close(); });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = 'Saving…';
+        status.className = 'auth-status';
+        const fd = new FormData(form);
+        const payload = {};
+        fd.forEach((v, k) => payload[k] = v);
+
+        try {
+            const r = await fetch('/api/contact-create.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const data = await r.json();
+            if (!data.ok) throw new Error(data.error || 'Save failed');
+            status.textContent = data.created ? 'Contact added. Reloading…' : 'Existing contact patched. Reloading…';
+            status.className = 'auth-status auth-status--ok';
+            setTimeout(() => location.reload(), 600);
+        } catch (err) {
+            status.textContent = err.message;
+            status.className = 'auth-status auth-status--err';
+        }
+    });
+})();
+</script>
 
 <?php
 $page_body = ob_get_clean();

@@ -544,3 +544,43 @@ code { font-family: var(--font-mono); color: var(--acc-ice); background: rgba(0,
     .main { padding: 16px; }
     .toolbar input[type="search"] { min-width: 0; width: 100%; }
 }
+
+/* ---------- Modal (manual add contact, etc) ---------- */
+.modal[hidden] { display: none; }
+.modal {
+    position: fixed; inset: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+}
+.modal-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(8, 6, 18, 0.72);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.modal-card {
+    position: relative;
+    width: 100%; max-width: 480px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+}
+body.modal-open { overflow: hidden; }
+
+/* Status colors that the modal + form share */
+.auth-status--ok  { color: var(--ok,  #4ade80); }
+.auth-status--err { color: var(--danger, #f87171); }
+.auth-status--warn{ color: var(--warn, #fbbf24); }
+
+/* Sender chip in compose header */
+.sender-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-dim);
+}
+.sender-chip strong { color: var(--text); }

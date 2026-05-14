@@ -5,5 +5,6 @@ require_once __DIR__ . '/../../api/includes/db.php';
 require_once __DIR__ . '/session.php';
 
 destroy_current_session();
-header('Location: /login.php');
+$base = rtrim(config('app')['dashboard_url'] ?? '', '/');
+header('Location: ' . ($base !== '' ? $base . '/login.php' : '/login.php'));
 exit;

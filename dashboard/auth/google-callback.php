@@ -90,5 +90,5 @@ if (!$user) {
 
 create_session((int) $user['id']);
 
-header('Location: /dashboard/');
+header('Location: /');
 exit;

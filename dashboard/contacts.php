@@ -58,8 +58,8 @@ ob_start();
         <p class="topbar-sub">連絡先 · <?= number_format($total) ?> records</p>
     </div>
     <div class="topbar-actions">
-        <a href="/dashboard/import.php" class="btn btn-ghost" style="width:auto;">IMPORT CSV</a>
-        <a href="/dashboard/compose.php" class="btn btn-primary" style="width:auto;">COMPOSE</a>
+        <a href="/import.php" class="btn btn-ghost" style="width:auto;">IMPORT CSV</a>
+        <a href="/compose.php" class="btn btn-primary" style="width:auto;">COMPOSE</a>
     </div>
 </div>
 

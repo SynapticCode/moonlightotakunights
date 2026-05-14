@@ -12,7 +12,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['toggle_event'
     if ($id) {
         db_exec("UPDATE events SET cosplay_contest_active = 1 - cosplay_contest_active WHERE id = :id", [':id' => $id]);
     }
-    header('Location: /dashboard/events.php');
+    header('Location: /events.php');
     exit;
 }
 

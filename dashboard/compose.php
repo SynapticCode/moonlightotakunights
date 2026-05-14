@@ -109,7 +109,7 @@ ob_start();
     async function refreshPreview() {
         const payload = getPayload();
         try {
-            const r = await fetch('/dashboard/api/preview.php', {
+            const r = await fetch('/api/preview.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -125,7 +125,7 @@ ob_start();
 
     document.getElementById('test-btn').addEventListener('click', async () => {
         setStatus('Sending test…');
-        const r = await fetch('/dashboard/api/send-broadcast.php', {
+        const r = await fetch('/api/send-broadcast.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...getPayload(), mode: 'test' })
@@ -138,7 +138,7 @@ ob_start();
         e.preventDefault();
         if (!confirm('Send this broadcast to all matching contacts?')) return;
         setStatus('Queuing broadcast…');
-        const r = await fetch('/dashboard/api/send-broadcast.php', {
+        const r = await fetch('/api/send-broadcast.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...getPayload(), mode: 'send' })

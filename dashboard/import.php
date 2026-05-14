@@ -6,6 +6,22 @@ require_once __DIR__ . '/auth/session.php';
 
 $user = require_login();
 
+// Pull events for the optional event-tag dropdown
+$events = db_fetch_all(
+    "SELECT id, name, event_date FROM events
+      WHERE status IN ('past','live','upcoming')
+      ORDER BY COALESCE(event_date, '1970-01-01') DESC, id DESC"
+) ?: [];
+
+// Pull recent imports for the activity panel
+$recent = db_fetch_all(
+    "SELECT id, source, filename, rows_total, rows_created, rows_updated,
+            rows_attendees, status, started_at
+       FROM import_jobs
+       ORDER BY started_at DESC
+       LIMIT 8"
+) ?: [];
+
 $page_title  = 'CSV Import';
 $page_active = 'import';
 ob_start();
@@ -14,7 +30,7 @@ ob_start();
 <div class="topbar">
     <div>
         <h1>CSV Import</h1>
-        <p class="topbar-sub">輸入 · ONE-TIME MIGRATION FROM FORMSPREE / BREVO / POSH / EVENTBRITE</p>
+        <p class="topbar-sub">輸入 · DROP A CSV — POSH / BREVO / COSPLAY / EVENTBRITE — AUTO-DETECTED</p>
     </div>
 </div>
 
@@ -26,25 +42,45 @@ ob_start();
         <form id="import-form" class="composer-form" enctype="multipart/form-data">
             <div class="form-row">
                 <label for="src">Source</label>
-                <select id="src" name="source" required>
-                    <option value="">Choose…</option>
-                    <option value="import_formspree">Formspree (cosplay signups)</option>
-                    <option value="import_brevo">Brevo (newsletter)</option>
-                    <option value="import_posh">Posh (ticket buyers)</option>
-                    <option value="import_eventbrite">Eventbrite (attendees)</option>
-                    <option value="import_manual">Manual / Other</option>
+                <select id="src" name="source">
+                    <option value="auto" selected>Auto-detect (recommended)</option>
+                    <option value="import_posh">Posh — ticket buyers</option>
+                    <option value="import_brevo">Brevo — newsletter list</option>
+                    <option value="cosplay_signup">Cosplay contest signups</option>
+                    <option value="import_eventbrite">Eventbrite — attendees</option>
+                    <option value="import_manual">Generic CSV (email + name)</option>
                 </select>
-                <small class="form-help">Which platform this CSV came from. Used to tag every imported row so you can segment later.</small>
+                <small class="form-help">Leave on auto-detect unless the file doesn't match its real source. The importer recognises Posh, Brevo, cosplay exports, and Eventbrite by their column headers.</small>
+            </div>
+
+            <div class="form-row">
+                <label for="event_id">Tag against an event (optional)</label>
+                <select id="event_id" name="event_id">
+                    <option value="">— none —</option>
+                    <?php foreach ($events as $e): ?>
+                        <option value="<?= (int)$e['id'] ?>">
+                            <?= htmlspecialchars($e['name']) ?><?= $e['event_date'] ? ' — ' . htmlspecialchars(date('M j, Y', strtotime($e['event_date']))) : '' ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <small class="form-help">Posh + Eventbrite imports tagged to an event create attendee records with scan/purchase data, used by the Operations module.</small>
             </div>
 
             <div class="form-row">
                 <label>CSV file</label>
                 <label for="csv" class="dropzone" id="dropzone">
                     <strong>DROP CSV OR CLICK TO BROWSE</strong>
-                    <span>UTF-8 encoded. First row must be headers. Email column required.</span>
+                    <span>Comma, semicolon, or tab delimited. First row = headers. UTF-8 or BOM both fine.</span>
                     <input type="file" id="csv" name="csv" accept=".csv,text/csv" required hidden>
                 </label>
                 <p id="filename" class="form-filename"></p>
+            </div>
+
+            <div class="form-row" style="display:flex; gap:8px; align-items:center;">
+                <label style="display:flex; gap:8px; align-items:center; cursor:pointer; margin:0;">
+                    <input type="checkbox" id="dry_run" name="dry_run" value="1">
+                    <span>Dry run (preview without writing)</span>
+                </label>
             </div>
 
             <div class="form-actions">
@@ -57,16 +93,41 @@ ob_start();
     </div>
 </div>
 
+<?php if ($recent): ?>
 <div class="panel">
-    <div class="panel-head">
-        <h2 class="panel-title">How it works</h2>
+    <div class="panel-head"><h2 class="panel-title">Recent imports</h2></div>
+    <div class="panel-body" style="padding: 0;">
+        <table class="data-table">
+            <thead>
+                <tr><th>When</th><th>Source</th><th>File</th><th class="num">Rows</th><th class="num">New</th><th class="num">Updated</th><th class="num">Attendees</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+                <?php foreach ($recent as $r): ?>
+                <tr>
+                    <td class="num"><?= htmlspecialchars(date('M j, g:i A', strtotime($r['started_at']))) ?></td>
+                    <td><code><?= htmlspecialchars($r['source']) ?></code></td>
+                    <td><?= htmlspecialchars($r['filename'] ?? '—') ?></td>
+                    <td class="num"><?= (int)$r['rows_total'] ?></td>
+                    <td class="num"><?= (int)$r['rows_created'] ?></td>
+                    <td class="num"><?= (int)$r['rows_updated'] ?></td>
+                    <td class="num"><?= (int)$r['rows_attendees'] ?></td>
+                    <td><span class="tag tag--<?= htmlspecialchars($r['status']) ?>"><?= htmlspecialchars($r['status']) ?></span></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
+</div>
+<?php endif; ?>
+
+<div class="panel">
+    <div class="panel-head"><h2 class="panel-title">How it works</h2></div>
     <div class="panel-body">
         <ul style="line-height: 1.85; color: var(--text-mute); padding-left: 18px; margin: 0;">
-            <li>Rows are matched on <code>email</code> (case-insensitive). Existing contacts get patched, never overwritten with blanks.</li>
-            <li>Every imported row creates a <code>contact_sources</code> entry tagging where it came from and when.</li>
-            <li>Imports do <strong>not</strong> trigger a verification email — these are pre-existing contacts.</li>
-            <li>Status defaults to <code>verified</code> for known opt-ins (Brevo, Posh attendees). Adjust later if needed.</li>
+            <li>Rows are matched on <code>email</code> (case-insensitive). Existing contacts get patched — blank fields never overwrite real data.</li>
+            <li>Every row logs a <code>contact_sources</code> entry tagging where it came from + the file row number.</li>
+            <li>Imports do <strong>not</strong> trigger a verification email — pre-opted contacts (Posh, Brevo, Eventbrite, cosplay) are imported as verified.</li>
+            <li>Posh + Eventbrite imports tagged to an event also populate <code>event_attendees</code> with scan status, ticket price, gender, and city — needed by the Operations module for accurate cost-per-attendee.</li>
         </ul>
     </div>
 </div>
@@ -84,6 +145,7 @@ ob_start();
         status.textContent = msg || '';
         status.className = 'auth-status' + (kind ? ' auth-status--' + kind : '');
     }
+    function esc(s) { return String(s ?? '').replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c])); }
 
     drop.addEventListener('click', () => csv.click());
     csv.addEventListener('change', () => {
@@ -101,7 +163,8 @@ ob_start();
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!csv.files[0]) { setStatus('Choose a CSV file first.', 'err'); return; }
-        setStatus('Uploading and importing… (this can take a minute for large files)');
+        const isDry = document.getElementById('dry_run').checked;
+        setStatus(isDry ? 'Running dry-run…' : 'Uploading and importing… (can take a minute on large files)');
         result.innerHTML = '';
 
         const fd = new FormData(form);
@@ -109,11 +172,31 @@ ob_start();
             const r = await fetch('/api/import-csv.php', { method: 'POST', body: fd });
             const data = await r.json();
             if (!data.ok) throw new Error(data.error || 'Import failed');
-            setStatus(`Imported ${data.created} new, updated ${data.updated}, skipped ${data.skipped} of ${data.total}.`, 'ok');
-            if (data.errors && data.errors.length) {
-                result.innerHTML = '<div class="auth-note auth-note--warn"><strong>Warnings:</strong><br>' +
-                    data.errors.slice(0, 20).map(e => '• ' + e).join('<br>') + '</div>';
+
+            const detected = data.detected ? `${data.detected.label} (${data.detected.confidence})` : '—';
+            setStatus(
+                isDry
+                    ? `Dry run — detected ${detected}. ${data.total} rows, ${data.created} new, ${data.updated} updates.`
+                    : `Done. ${data.created} new · ${data.updated} updates · ${data.skipped} skipped · ${data.attendees} attendees · ${data.total} total.`,
+                'ok'
+            );
+
+            let html = '<div class="auth-note auth-note--ok"><strong>Result:</strong><br>'
+                + '<code>source=' + esc(data.source) + ' · delimiter=' + esc(data.delimiter) + ' · detected=' + esc(detected) + '</code></div>';
+
+            if (data.preview_rows && data.preview_rows.length) {
+                html += '<div style="margin-top:16px;"><strong>Preview (first 20 rows):</strong>'
+                    + '<table class="data-table" style="margin-top:8px;"><thead><tr><th>Email</th><th>Name</th><th>Phone</th><th>IG</th></tr></thead><tbody>';
+                for (const r of data.preview_rows) {
+                    html += '<tr><td class="email">' + esc(r.email) + '</td><td>' + esc(r.name || '—') + '</td><td>' + esc(r.phone || '—') + '</td><td>' + esc(r.ig || '—') + '</td></tr>';
+                }
+                html += '</tbody></table></div>';
             }
+            if (data.errors && data.errors.length) {
+                html += '<div class="auth-note auth-note--warn" style="margin-top:12px;"><strong>' + data.errors.length + ' warning(s):</strong><br>'
+                    + data.errors.slice(0, 25).map(e => '• ' + esc(e)).join('<br>') + '</div>';
+            }
+            result.innerHTML = html;
         } catch (err) {
             setStatus(err.message, 'err');
         }

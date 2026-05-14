@@ -1,0 +1,60 @@
+# =====================================================================
+# dashboard.moonlightotakunights.com — operator-only subdomain.
+#
+# Goal: only allow the actual operator (browser w/ valid session cookie)
+# and Comet automation through the front door. Block every known AI
+# scraper / general crawler / archiver at the door so even if robots.txt
+# is ignored, they hit a 403 / get noindex.
+# =====================================================================
+
+RewriteEngine On
+Options -Indexes -MultiViews +FollowSymLinks
+
+# ---------- HTTPS only ----------
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# ---------- Global response headers ----------
+<IfModule mod_headers.c>
+    # Force search engines to drop us out of any index immediately
+    Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+    # Standard hardening
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "no-referrer"
+    Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=()"
+    # Loose-ish CSP — script-inline used for small inline modules.
+    Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data: https://*.moonlightotakunights.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none';"
+</IfModule>
+
+# ---------- Block known AI scrapers / archivers / generic bot user-agents ----------
+# Anyone caught here gets 403 before PHP even boots.
+# We allow Googlebot/Bingbot/DuckDuckBot because they respect robots.txt and
+# the headers above tell them not to index — and because we never want
+# false-positive blocks on the operator using Comet.
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_USER_AGENT} (GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|anthropic-ai|Claude-Web|CCBot|Bytespider|FacebookBot|Meta-ExternalAgent|Amazonbot|Applebot-Extended|Diffbot|Omgilibot|YouBot|cohere-ai|ImagesiftBot|AI2Bot|Timpibot|MagpieCrawler) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (HTTrack|wget|curl|libwww|Scrapy|python-requests|nikto|sqlmap|nmap|masscan|nuclei|gobuster|dirbuster|wpscan) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (SemrushBot|AhrefsBot|MJ12bot|DotBot|BLEXBot|SiteAuditBot|PetalBot|YandexBot|Sogou|Baiduspider|Slurp) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# ---------- Block direct access to dotfiles / config / vendor / git ----------
+RedirectMatch 404 ^/\\.(env|git|htaccess|htpasswd|DS_Store)
+RedirectMatch 404 ^/(config|vendor|tests|node_modules|migrations)(/|$)
+RedirectMatch 404 ^/.*\\.(log|sql|bak|swp|orig|tmp|ini)$
+
+# ---------- Pretty error page (generic, no app fingerprint) ----------
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
+
+# ---------- Cache static assets for a long time ----------
+<FilesMatch "\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff2?)$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "public, max-age=2592000"
+    </IfModule>
+</FilesMatch>
+
+# Default PHP entrypoint
+DirectoryIndex index.php

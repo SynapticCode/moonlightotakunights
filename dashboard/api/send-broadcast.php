@@ -3,6 +3,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../api/includes/bootstrap.php';
 require_once __DIR__ . '/../../api/includes/db.php';
 require_once __DIR__ . '/../../api/includes/ses.php';
+require_once __DIR__ . '/../../api/includes/audit.php';
 require_once __DIR__ . '/../auth/session.php';
 
 $user = require_login();
@@ -21,6 +22,10 @@ $ctaLabel  = trim((string)($in['cta_label'] ?? ''));
 $ctaUrl    = trim((string)($in['cta_url']   ?? ''));
 $segment   = (string)($in['segment'] ?? 'verified');
 $mode      = (string)($in['mode']    ?? 'send');
+$fromAddr  = trim((string)($in['from']      ?? ''));
+
+// Resolve the sender (falls back to SES config default)
+$sender = sender_for($fromAddr);
 
 if ($subject === '' || $heading === '' || $body === '') {
     json_error('Subject, heading, and body are required.', 422);
@@ -42,8 +47,16 @@ $render = fn(string $name = 'preview') => render_email_template('broadcast-base'
 if ($mode === 'test') {
     $html = $render($user['user_name'] ?? 'operator');
     $r = ses_send($user['email'], '[TEST] ' . $subject, $html, [
-        'template' => 'broadcast-base',
-        'kind'     => 'test',
+        'from'      => $sender['email'],
+        'from_name' => $sender['display_name'],
+        'reply_to'  => $sender['reply_to'],
+        'template'  => 'broadcast-base',
+        'kind'      => 'test',
+    ]);
+    audit_log_event('broadcast.test', [
+        'user_email' => $user['email'],
+        'summary'    => 'Test send from ' . $sender['email'] . ' → ' . $user['email'],
+        'details'    => ['from' => $sender['email'], 'subject' => $subject, 'ok' => $r['ok']],
     ]);
     json_response(['ok' => $r['ok'], 'error' => $r['error'] ?? null]);
 }
@@ -89,6 +102,9 @@ foreach ($recipients as $i => $r) {
     $firstName = preg_split('/\\s+/', trim((string)($r['name'] ?? ''))) [0] ?? 'friend';
     $html = $render($firstName);
     $res = ses_send($r['email'], $subject, $html, [
+        'from'         => $sender['email'],
+        'from_name'    => $sender['display_name'],
+        'reply_to'     => $sender['reply_to'],
         'template'     => 'broadcast-base',
         'contact_id'   => (int) $r['id'],
         'broadcast_id' => $broadcastId,
@@ -109,8 +125,21 @@ db_exec(
     [':sc' => $sent, ':st' => $status, ':id' => $broadcastId]
 );
 
+audit_log_event('broadcast.send', [
+    'user_email' => $user['email'],
+    'object_type'=> 'broadcast',
+    'object_id'  => (string)$broadcastId,
+    'summary'    => sprintf('Sent “%s” from %s to %d · success %d · failed %d', $subject, $sender['email'], $count, $sent, $failed),
+    'details'    => [
+        'from'    => $sender['email'],
+        'segment' => $segment,
+        'count'   => $count, 'sent' => $sent, 'failed' => $failed,
+    ],
+]);
+
 json_ok([
     'broadcast_id' => $broadcastId,
+    'from'         => $sender['email'],
     'queued'       => $count,
     'sent_now'     => $sent,
     'failed'       => $failed,

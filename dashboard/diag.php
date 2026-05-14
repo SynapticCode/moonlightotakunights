@@ -132,6 +132,19 @@ button{cursor:pointer}
   <button name="test_send" value="1">SEND TEST</button>
 </form>
 
+<h2>Last 15 audit_log entries</h2>
+<?php
+$audit = db_fetch_all("SELECT id, user_email, action, summary, created_at FROM audit_log ORDER BY id DESC LIMIT 15") ?: [];
+if (!$audit) { echo '<p class="warn">No audit log rows yet (table may not exist until migration runs).</p>'; }
+else {
+  echo '<table><tr><th>when</th><th>actor</th><th>action</th><th>summary</th></tr>';
+  foreach ($audit as $a) {
+    echo '<tr><td>' . htmlspecialchars((string)$a['created_at']) . '</td><td>' . htmlspecialchars((string)($a['user_email'] ?? '—')) . '</td><td><code>' . htmlspecialchars((string)$a['action']) . '</code></td><td>' . htmlspecialchars((string)($a['summary'] ?? '')) . '</td></tr>';
+  }
+  echo '</table>';
+}
+?>
+
 <h2>Last 10 email_log entries</h2>
 <?php if (!$logs): ?>
   <p class="warn">No rows in email_log.</p>

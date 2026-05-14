@@ -6,7 +6,8 @@ complete_website_system.md
 
 # Environment variables
 .env
-.env.local
+.env.*
+!.env.example
 *.env
 
 # System files

@@ -92,7 +92,8 @@ function current_user(): ?array {
 function require_login(): array {
     $u = current_user();
     if (!$u) {
-        header('Location: /login.php');
+        $base = rtrim(config('app')['dashboard_url'] ?? '', '/');
+        header('Location: ' . ($base !== '' ? $base . '/login.php' : '/login.php'));
         exit;
     }
     return $u;

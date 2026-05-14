@@ -90,5 +90,6 @@ if (!$user) {
 
 create_session((int) $user['id']);
 
-header('Location: /');
+$base = rtrim(config('app')['dashboard_url'] ?? '', '/');
+header('Location: ' . ($base !== '' ? $base . '/' : '/'));
 exit;

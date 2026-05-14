@@ -48,8 +48,15 @@ foreach ($files as $f) {
     // Split on `;` at end of line but keep multi-line statements intact
     $statements = preg_split('/;\\s*\\n/', $sql) ?: [];
     foreach ($statements as $i => $stmt) {
-        $stmt = trim($stmt);
-        if ($stmt === '' || str_starts_with($stmt, '--')) continue;
+        // Strip leading comment-only / blank lines so a CREATE TABLE preceded
+        // by a `-- header` block still executes (previously the whole chunk
+        // was skipped because it "started with --").
+        $lines = explode("\n", $stmt);
+        while ($lines && (trim($lines[0]) === '' || str_starts_with(ltrim($lines[0]), '--'))) {
+            array_shift($lines);
+        }
+        $stmt = trim(implode("\n", $lines));
+        if ($stmt === '') continue;
         try {
             $pdo->exec($stmt);
             $first = explode("\n", $stmt)[0];

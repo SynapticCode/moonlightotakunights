@@ -43,7 +43,7 @@ $googleConfigured = !empty($cfg['client_id']);
             <p class="auth-eyebrow">MOONLIGHT OPERATIONS</p>
             <p class="auth-jp">運営ダッシュボード</p>
             <h1 class="auth-title">DASHBOARD ACCESS</h1>
-            <p class="auth-sub">Authorized operators only. Sign in with Google or request a one-time code.</p>
+            <p class="auth-sub">Enter your email — we'll send a one-time code to sign you in.</p>
         </header>
 
         <?php if ($googleConfigured): ?>
@@ -51,13 +51,8 @@ $googleConfigured = !empty($cfg['client_id']);
             <span class="g-icon" aria-hidden="true">G</span>
             <span>Continue with Google</span>
         </a>
-        <?php else: ?>
-        <div class="auth-note auth-note--warn">
-            Google OAuth not configured. Set <code>GOOGLE_CLIENT_ID</code> / <code>GOOGLE_CLIENT_SECRET</code> in env to enable. Use the OTP path below.
-        </div>
-        <?php endif; ?>
-
         <div class="auth-divider"><span>OR</span></div>
+        <?php endif; ?>
 
         <form id="otp-form" class="auth-form" autocomplete="off">
             <label class="auth-label" for="otp-email">Email</label>
@@ -74,7 +69,7 @@ $googleConfigured = !empty($cfg['client_id']);
             <p class="auth-status" id="auth-status"></p>
         </form>
 
-        <p class="auth-foot">Newark, NJ · single-operator phase</p>
+        <p class="auth-foot">ムーンライト・オタクナイツ · Newark, NJ</p>
     </div>
 </div>
 

@@ -332,6 +332,26 @@
     flex-wrap: wrap;
 }
 
+.home-page .next-event-details .next-show-teaser {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+}
+
+.home-page .next-event-details .next-show-teaser a {
+    color: rgba(255, 200, 220, 0.92);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 200, 220, 0.35);
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.home-page .next-event-details .next-show-teaser a:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
 /* ── Guild Section ────────────────────────────────────────────── */
 
 .home-page .guild-section {

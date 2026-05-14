@@ -49,6 +49,14 @@
     letter-spacing: 0.04em;
     text-shadow: 0 0 18px rgba(255, 60, 90, 0.35);
 }
+.miku-soldout-jp {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: rgba(255, 60, 90, 0.85);
+    margin: 0.25rem 0 0.4rem;
+    text-shadow: 0 0 10px rgba(255, 60, 90, 0.25);
+}
 .miku-soldout-sub {
     font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.72);
@@ -303,3 +311,230 @@
 
 /* Lock body scroll while lightbox open */
 body.recap-lightbox-open { overflow: hidden; }
+
+/* ════════════════════════════════════════════════════════════════
+   Founder note · 月光より
+   ════════════════════════════════════════════════════════════════ */
+
+.founder-note {
+    max-width: 720px;
+    margin: 4rem auto 3rem;
+    padding: 3rem 2.5rem;
+    background: linear-gradient(
+        145deg,
+        rgba(15, 10, 25, 0.85) 0%,
+        rgba(25, 15, 40, 0.75) 100%
+    );
+    border: 1px solid rgba(255, 60, 90, 0.25);
+    border-radius: 8px;
+    position: relative;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 0 60px rgba(255, 60, 90, 0.08);
+}
+
+/* Corner accents */
+.founder-note::before,
+.founder-note::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255, 60, 90, 0.55);
+    pointer-events: none;
+}
+.founder-note::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+}
+.founder-note::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+}
+
+.founder-note-head {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 60, 90, 0.18);
+}
+
+.founder-note-kanji {
+    display: block;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.3em;
+    color: rgba(255, 60, 90, 0.85);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 12px rgba(255, 60, 90, 0.3);
+}
+
+.founder-note-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    color: #fff;
+    margin: 0;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.founder-note-body p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 0 1.25rem;
+}
+
+.founder-note-body p:last-child {
+    margin-bottom: 0;
+}
+
+.founder-note-body strong {
+    color: #fff;
+    font-weight: 500;
+}
+
+.founder-note-body a {
+    color: rgba(255, 200, 220, 0.95);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 200, 220, 0.4);
+    transition: color 0.2s, border-color 0.2s;
+}
+.founder-note-body a:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+.founder-note-sign {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 60, 90, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.35rem;
+}
+
+.founder-note-sig {
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: 0.05em;
+    font-style: italic;
+}
+
+.founder-note-katakana {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    color: rgba(255, 200, 220, 0.7);
+}
+
+@media (max-width: 600px) {
+    .founder-note {
+        margin: 3rem 1rem 2rem;
+        padding: 2rem 1.5rem;
+    }
+    .founder-note-body p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    .founder-note-title { font-size: 1.3rem; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Community wall · コミュニティ・ウォール
+   ════════════════════════════════════════════════════════════════ */
+
+.community-wall {
+    max-width: 1100px;
+    margin: 3rem auto 4rem;
+    padding: 0 1rem;
+}
+
+.community-wall-head {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.community-wall-head .jp-label {
+    display: block;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: rgba(0, 240, 255, 0.8);
+    margin-bottom: 0.75rem;
+}
+
+.community-wall-title {
+    font-size: 2rem;
+    letter-spacing: 0.12em;
+    color: #fff;
+    margin: 0 0 1rem;
+    font-weight: 400;
+}
+
+.community-wall-sub {
+    max-width: 540px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.community-wall-sub a {
+    color: rgba(0, 240, 255, 0.9);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.4);
+    transition: color 0.2s, border-color 0.2s;
+}
+.community-wall-sub a:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+.community-wall-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    min-height: 200px;
+    padding: 2rem;
+    border: 1px dashed rgba(0, 240, 255, 0.25);
+    border-radius: 6px;
+    background: rgba(0, 240, 255, 0.02);
+    align-content: center;
+    justify-items: center;
+}
+
+.community-wall-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.community-wall-empty a {
+    color: rgba(0, 240, 255, 0.9);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.4);
+}
+.community-wall-empty a:hover {
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .community-wall-title { font-size: 1.5rem; }
+    .community-wall-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1rem;
+    }
+}

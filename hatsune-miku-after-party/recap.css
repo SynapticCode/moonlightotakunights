@@ -531,6 +531,45 @@ body.recap-lightbox-open { overflow: hidden; }
     color: #fff;
 }
 
+/* UGC tiles populated by /assets/js/community-wall.js */
+.community-wall-tile {
+    margin: 0;
+    width: 100%;
+    background: #000;
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.community-wall-tile:hover {
+    transform: translateY(-2px);
+    border-color: #00f0ff;
+    box-shadow: 0 8px 28px rgba(0, 240, 255, 0.25);
+}
+.community-wall-tile img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+.community-wall-tile-caption {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+}
+.community-wall-tile-caption a {
+    color: #ff4d9d;
+    text-decoration: none;
+    font-weight: 600;
+}
+.community-wall-tile-caption a:hover {
+    color: #fff;
+}
+
 @media (max-width: 600px) {
     .community-wall-title { font-size: 1.5rem; }
     .community-wall-grid {

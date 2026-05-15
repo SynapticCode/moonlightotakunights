@@ -473,9 +473,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p>To everyone who came to the Hatsune Miku unofficial after-party on May 7th — thank you. Truly.</p>
                     <p>I want you to know I see you. I see the cosplays you stayed up nights putting together. I see the friends you brought, the strangers you turned into friends by 2 AM, the way you sang along when the Vocaloid set hit. I've been watching the photos and videos you've all been sharing, and honestly, I keep going back to them. Every single one. You made the room feel like home.</p>
                     <p>This whole thing only works because of you. The floor, the energy, the moments — that was all you.</p>
-                    <p>And it doesn't work without the people who came back to build the community with us — thank you <strong>Papou</strong>, <strong>Renée</strong>, and <strong>Bash</strong> for showing up as vendors and as part of the family. Thank you to <a href="https://instagram.com/dj_plynk" target="_blank" rel="noopener">DJ_Plynk</a> for getting the floor circling — the highlight reel speaks for itself. Thank you to <a href="https://instagram.com/tenryu.photo" target="_blank" rel="noopener">Tenryu</a> for the photographs that are now this page.</p>
+                    <p>And it doesn't work without the people who came back to build the community with us — thank you <strong>Papou</strong>, <strong>Renée</strong>, and <strong>Bash</strong> for showing up as vendors and as part of the family. Thank you to <a data-ig="dj_plynk" href="https://instagram.com/dj_plynk" target="_blank" rel="noopener">DJ_Plynk</a> for getting the floor circling — the highlight reel speaks for itself. Thank you to <a data-ig="tenryu.photo" href="https://instagram.com/tenryu.photo" target="_blank" rel="noopener">Tenryu</a> for the photographs that are now this page.</p>
                     <p>The next night is coming. We don't have a confirmed date yet, but we're looking at somewhere this summer. I'll let you know the moment it's locked in.</p>
-                    <p>If you want to be first to hear, follow <a href="https://instagram.com/moonlightotakunights" target="_blank" rel="noopener">@moonlightotakunights</a> — and if you joined the Guild, you'll know before anyone else.</p>
+                    <p>If you want to be first to hear, follow <a data-ig="moonlightotakunights" href="https://instagram.com/moonlightotakunights" target="_blank" rel="noopener">@moonlightotakunights</a> — and if you joined the Guild, you'll know before anyone else.</p>
                     <p>Take care of each other until then. I'm so grateful for all of you.</p>
                 </div>
                 <footer class="founder-note-sign">
@@ -484,15 +484,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </footer>
             </article>
 
-            <!-- Community photo wall placeholder — to be replaced with IG embed feed -->
-            <article class="community-wall" id="community-wall">
+            <!-- Community photo wall — fed from approved UGC submissions -->
+            <article class="community-wall" id="community-wall" data-event="miku-vol-02">
                 <header class="community-wall-head">
                     <span class="jp-label">コミュニティ・ウォール</span>
                     <h3 class="community-wall-title">YOUR NIGHT, YOUR FRAME</h3>
-                    <p class="community-wall-sub">Tag <a href="https://instagram.com/moonlightotakunights" target="_blank" rel="noopener">@moonlightotakunights</a> in your photos and reels from the night. We repost everything — your shot might end up here.</p>
+                    <p class="community-wall-sub">Tag <a href="https://instagram.com/moonlightotakunights" data-ig="moonlightotakunights" target="_blank" rel="noopener">@moonlightotakunights</a> in your photos and reels from the night, or <a href="/submit/?event=miku-vol-02">drop them here</a>. We feature our favorites on this page and on our IG.</p>
                 </header>
-                <div class="community-wall-grid" data-feed="instagram" aria-live="polite">
-                    <p class="community-wall-empty">— Live feed coming. In the meantime, check <a href="https://instagram.com/moonlightotakunights" target="_blank" rel="noopener">@moonlightotakunights</a> on Instagram.</p>
+                <div class="community-wall-grid" id="community-wall-grid" aria-live="polite">
+                    <p class="community-wall-empty" id="community-wall-empty">— Be the first to share. <a href="/submit/?event=miku-vol-02">Drop a photo</a> or tag <a href="https://instagram.com/moonlightotakunights" data-ig="moonlightotakunights" target="_blank" rel="noopener">@moonlightotakunights</a> on Instagram.</p>
                 </div>
             </article>
 
@@ -502,7 +502,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <p class="recap-credit">
                 Photography by
-                <a class="recap-credit-link" href="https://instagram.com/tenryu.photo" target="_blank" rel="noopener">
+                <a class="recap-credit-link" href="https://instagram.com/tenryu.photo" data-ig="tenryu.photo" target="_blank" rel="noopener">
                     <span class="recap-credit-handle">@tenryu.photo</span>
                     <span class="recap-credit-name">Tenryu (天龍)</span>
                 </a>
@@ -624,5 +624,7 @@ if (parallaxBg && window.matchMedia('(min-width: 769px)').matches) {
 </script>
 <script src="/components/nav-loader.js"></script>
 <script src="/hatsune-miku-after-party/recap.js" defer></script>
+<script src="/assets/js/ig-link.js" defer></script>
+<script src="/assets/js/community-wall.js" defer></script>
 </body>
 </html>

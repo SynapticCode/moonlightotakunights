@@ -25,7 +25,8 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
     Header always set Referrer-Policy "no-referrer"
     Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=()"
     # Loose-ish CSP — script-inline used for small inline modules.
-    Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data: https://*.moonlightotakunights.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none';"
+    # img-src includes S3 + CloudFront so the UGC moderation queue can render thumbnails.
+    Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data: blob: https://*.moonlightotakunights.com https://*.s3.amazonaws.com https://*.s3.us-east-1.amazonaws.com https://*.cloudfront.net; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none';"
 </IfModule>
 
 # ---------- Block known AI scrapers / archivers / generic bot user-agents ----------

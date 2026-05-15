@@ -109,4 +109,24 @@ return [
         // Whether to actually send (turn off in dev). Accepts 1/true/on/yes.
         'enabled' => in_array(strtolower((string)env('TRACKING_ENABLED', '1')), ['1','true','on','yes'], true),
     ],
+    's3' => [
+        // AWS S3 for UGC photo storage. IAM user with PutObject + GetObject
+        // on the single bucket only.
+        'region'      => env('AWS_S3_REGION', 'us-east-1'),
+        'bucket'      => env('AWS_S3_BUCKET', 'moonlight-ugc'),
+        'key'         => env('AWS_S3_KEY', ''),
+        'secret'      => env('AWS_S3_SECRET', ''),
+        // Public read base, e.g. https://moonlight-ugc.s3.us-east-1.amazonaws.com
+        // or a CloudFront alias. Approved photos render via this base.
+        'public_base' => env('AWS_S3_PUBLIC_BASE', ''),
+    ],
+    'ugc' => [
+        // Submission limits. Keep small — we're throwing these on S3 and into
+        // social, not building a photo host.
+        'max_bytes'      => (int) env('UGC_MAX_BYTES', (string)(8 * 1024 * 1024)),  // 8 MB
+        'allowed_mime'   => array_filter(array_map('trim', explode(',', env('UGC_ALLOWED_MIME', 'image/jpeg,image/png,image/webp,image/heic')))),
+        'rate_per_hour'  => (int) env('UGC_RATE_PER_HOUR', '10'),
+        // Display name for moderator (matches dashboard login email).
+        'moderator_label' => env('UGC_MODERATOR_LABEL', 'azael'),
+    ],
 ];

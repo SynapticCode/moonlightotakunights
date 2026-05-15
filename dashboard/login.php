@@ -5,9 +5,21 @@ require_once __DIR__ . '/auth/session.php';
 
 session_start();
 
+// If someone lands on the path-mounted dashboard (moonlightotakunights.com/dashboard/login.php)
+// bounce them to the styled subdomain so the relative /assets/ paths resolve correctly.
+$dashUrl = rtrim(config('app')['dashboard_url'] ?? '', '/');
+if ($dashUrl !== '') {
+    $expectedHost = parse_url($dashUrl, PHP_URL_HOST);
+    $actualHost   = $_SERVER['HTTP_HOST'] ?? '';
+    if ($expectedHost && $actualHost && strcasecmp($expectedHost, $actualHost) !== 0) {
+        header('Location: ' . $dashUrl . '/login.php', true, 301);
+        exit;
+    }
+}
+
 // If already logged in, bounce to home
 if (current_user()) {
-    header('Location: /');
+    header('Location: ' . ($dashUrl !== '' ? $dashUrl . '/' : '/'));
     exit;
 }
 

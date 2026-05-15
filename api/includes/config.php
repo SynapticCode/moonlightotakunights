@@ -14,8 +14,10 @@ declare(strict_types=1);
 
 // -------- .env loader (cheap, no Composer dependency) ---------
 $envCandidates = [
-    __DIR__ . '/../../.env',                     // repo root .env (gitignored)
-    '/home/u833453975/.env',                     // outside web root on Hostinger
+    __DIR__ . '/../../dashboard/.env',           // inside subdomain doc root (open_basedir-safe)
+    __DIR__ . '/../../.env',                     // repo root .env (main-domain doc root)
+    '/home/u833453975/public_html/.env',         // explicit Hostinger main public_html
+    '/home/u833453975/.env',                     // outside web root (if open_basedir allows)
 ];
 foreach ($envCandidates as $envFile) {
     if (is_readable($envFile)) {

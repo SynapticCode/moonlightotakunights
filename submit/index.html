@@ -41,14 +41,17 @@
   }
   textarea { resize: vertical; min-height: 70px; }
   .file-drop {
-    border: 2px dashed #2a2a3a; border-radius: 8px; padding: 28px 16px;
+    display: block;
+    border: 2px dashed #3a3a4f; border-radius: 8px; padding: 32px 16px;
     text-align: center; background: #12121b; cursor: pointer;
     transition: border-color 0.15s, background 0.15s;
+    margin-top: 6px;
   }
-  .file-drop:hover, .file-drop.drag { border-color: #00f0ff; background: #161624; }
-  .file-drop p { margin: 0; color: #b8b8c8; font-size: 14px; }
-  .file-drop strong { color: #fff; }
-  .file-drop input { display: none; }
+  .file-drop:hover, .file-drop.drag, .file-drop:focus-within { border-color: #00f0ff; background: #161624; }
+  .file-drop p { margin: 0 0 4px; color: #b8b8c8; font-size: 14px; line-height: 1.5; }
+  .file-drop p:last-child { margin-bottom: 0; }
+  .file-drop strong { color: #fff; display: block; font-size: 15px; margin-bottom: 6px; }
+  .file-drop input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
   .preview { display: none; margin-top: 12px; }
   .preview img { width: 100%; max-height: 320px; object-fit: contain;
                  border-radius: 6px; border: 1px solid #2a2a3a; background: #000; }
@@ -96,7 +99,8 @@
     <div>
       <label for="photo">Your photo</label>
       <label class="file-drop" id="file-drop" for="photo">
-        <p><strong>Tap to choose a photo</strong> or drag one in</p>
+        <p><strong>Tap to choose a photo</strong></p>
+        <p>or drag one in</p>
         <p class="small">JPG, PNG, WEBP, or HEIC — up to 8 MB</p>
         <input type="file" id="photo" name="photo" accept="image/jpeg,image/png,image/webp,image/heic" required>
       </label>

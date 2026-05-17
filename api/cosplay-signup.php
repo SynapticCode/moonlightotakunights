@@ -82,6 +82,9 @@ try {
         );
     }
 
+    // Capture utm_* first-touch attribution (idempotent: only fills NULL cols)
+    contacts_capture_utm($contact_id, $in ?? []);
+
     db_exec(
         "INSERT INTO contact_sources (contact_id, source, source_detail, event_id, user_agent, ip_hash)
          VALUES (:c, 'cosplay_signup', :d, :ev, :ua, :ip)",

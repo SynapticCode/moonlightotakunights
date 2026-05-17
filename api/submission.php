@@ -136,6 +136,9 @@ try {
         );
     }
 
+    // Capture utm_* first-touch attribution (idempotent: only fills NULL cols)
+    contacts_capture_utm($contact_id, $in ?? []);
+
     // Record source touch
     db_exec(
         "INSERT INTO contact_sources (contact_id, source, source_detail, user_agent, ip_hash)

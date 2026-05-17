@@ -136,6 +136,30 @@ $contactsFromFunnels = (int) (db_fetch(
         AND first_seen_at >= DATE_SUB(NOW(), INTERVAL $rangeSql DAY)"
 )['c'] ?? 0);
 
+// Email → Signup attribution: contacts whose first-touch utm_source = 'ses'.
+// Group by utm_campaign (typically broadcast_<id>) so we can show which email
+// broadcast drove how many signups.
+$emailAttribution = [];
+try {
+    $emailAttribution = db_fetch_all(
+        "SELECT
+            COALESCE(c.utm_campaign, '(direct ses)') AS campaign,
+            COUNT(*)              AS signups,
+            COUNT(CASE WHEN c.status='verified' THEN 1 END) AS verified,
+            MAX(c.first_seen_at)  AS last_signup
+           FROM contacts c
+          WHERE c.utm_source = 'ses'
+            AND c.first_seen_at >= DATE_SUB(NOW(), INTERVAL $rangeSql DAY)
+          GROUP BY c.utm_campaign
+          ORDER BY signups DESC
+          LIMIT 20"
+    ) ?: [];
+} catch (\Throwable $e) {
+    // Columns may not exist before migration 005 ran — quietly degrade.
+    $emailAttribution = [];
+}
+$emailAttributionTotal = array_sum(array_map(fn($r) => (int)$r['signups'], $emailAttribution));
+
 /* ---------------- GA4 metrics ---------------- */
 
 $ga4Enabled  = ga4_enabled();
@@ -507,6 +531,37 @@ function statusBadge(string $s): string {
                 <td><code style="color:var(--acc-ice);"><?= htmlspecialchars($row['p']) ?></code></td>
                 <td class="num"><?= (int) $row['c'] ?></td>
                 <td><span class="an-bar" style="width:<?= $w ?>px;"></span></td>
+            </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <?php endif; ?>
+    </div>
+
+    <div class="an-card">
+        <p class="an-card-title">Email → Signup <span style="opacity:.6;font-weight:normal">(<?= (int)$emailAttributionTotal ?> in <?= (int)$range ?>d)</span></p>
+        <?php if (!$emailAttribution): ?>
+            <p class="an-empty">No SES-attributed signups in this range yet. Outbound emails now auto-tag links with utm_source=ses; signups show up here once recipients click through and convert.</p>
+        <?php else: ?>
+        <table class="an-table">
+            <thead><tr><th>Campaign</th><th class="num">Signups</th><th class="num">Verified</th><th>Last</th></tr></thead>
+            <tbody>
+            <?php foreach ($emailAttribution as $row):
+                $camp = (string)$row['campaign'];
+                $label = $camp;
+                if (preg_match('/^broadcast_(\d+)$/', $camp, $m)) {
+                    $label = '<a href="/broadcasts.php#b' . (int)$m[1] . '" style="color:var(--text);">broadcast #' . (int)$m[1] . '</a>';
+                } else {
+                    $label = htmlspecialchars($camp);
+                }
+            ?>
+            <tr>
+                <td><?= $label ?></td>
+                <td class="num"><strong><?= number_format((int)$row['signups']) ?></strong></td>
+                <td class="num"><?= number_format((int)$row['verified']) ?></td>
+                <td style="color:var(--text-dim);white-space:nowrap;">
+                    <?= $row['last_signup'] ? htmlspecialchars(date('M j', strtotime((string)$row['last_signup']))) : '—' ?>
+                </td>
             </tr>
             <?php endforeach; ?>
             </tbody>

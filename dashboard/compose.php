@@ -3,13 +3,14 @@ declare(strict_types=1);
 require_once __DIR__ . '/../api/includes/bootstrap.php';
 require_once __DIR__ . '/../api/includes/db.php';
 require_once __DIR__ . '/../api/includes/audit.php';
+require_once __DIR__ . '/../api/includes/segments.php';
 require_once __DIR__ . '/auth/session.php';
 
 $user = require_login();
 
-$verifiedCount = (int) (db_fetch("SELECT COUNT(*) c FROM contacts WHERE status='verified'")['c'] ?? 0);
-$allCount      = (int) (db_fetch("SELECT COUNT(*) c FROM contacts WHERE deleted_at IS NULL")['c'] ?? 0);
-$senders       = senders_list();
+$segDefs   = segments_definitions();
+$segCounts = segment_counts();
+$senders   = senders_list();
 
 $page_title  = 'Compose';
 $page_active = 'compose';
@@ -51,11 +52,15 @@ ob_start();
                 <div class="form-row">
                     <label for="seg">Segment</label>
                     <select id="seg" name="segment">
-                        <option value="verified">Verified Guild only (<?= number_format($verifiedCount) ?>)</option>
-                        <option value="all">All non-unsubscribed (<?= number_format($allCount) ?>)</option>
-                        <option value="test">Send test to me only</option>
+                        <?php foreach ($segDefs as $key => $def):
+                            $n = (int)($segCounts[$key] ?? 0);
+                        ?>
+                            <option value="<?= htmlspecialchars($key) ?>"<?= $key === 'verified' ? ' selected' : '' ?>>
+                                <?= htmlspecialchars($def['label']) ?> (<?= number_format($n) ?>)
+                            </option>
+                        <?php endforeach; ?>
                     </select>
-                    <small class="form-help">Who receives this broadcast. "Verified Guild" = double opt-in confirmed. "All non-unsubscribed" = everyone who hasn't opted out. "Test to me only" = sends just to you for QA.</small>
+                    <small class="form-help">Counts refresh on page load. "Verified Guild" = double opt-in confirmed. Applicant segments use first-touch attribution (<code>first_source</code>). Use SEND TEST below to dry-run to yourself.</small>
                 </div>
 
                 <div class="form-row">

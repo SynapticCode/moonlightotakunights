@@ -25,6 +25,7 @@ $page_body   = $page_body   ?? '';
 $nav = [
     ['main', [
         ['key' => 'overview',  'href' => '/',                 'label' => 'Overview',      'icon' => '◉'],
+        ['key' => 'analytics', 'href' => '/analytics.php',    'label' => 'Analytics',     'icon' => '◔'],
         ['key' => 'contacts',  'href' => '/contacts.php',     'label' => 'Contacts',      'icon' => '◇'],
         ['key' => 'guild',     'href' => '/contacts.php?source=guild', 'label' => 'Guild', 'icon' => '✦'],
         ['key' => 'cosplay',   'href' => '/cosplay.php',      'label' => 'Cosplay Contest', 'icon' => '✶'],

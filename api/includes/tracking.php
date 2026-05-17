@@ -247,12 +247,28 @@ function send_meta_capi(
     $testCode = $opts['test_event_code'] ?? $cfg['meta_capi_test_event'] ?? '';
     if ($testCode) $body['test_event_code'] = $testCode;
 
-    $url = sprintf(
-        'https://graph.facebook.com/%s/%s/events?access_token=%s',
-        $cfg['meta_capi_api_version'],
-        $cfg['meta_pixel_id'],
-        urlencode($cfg['meta_capi_token'])
-    );
+    // Route through Stape Meta CAPIG when configured; falls back to graph.facebook.com.
+    // Stape CAPIG endpoints accept the same payload format as Meta CAPI — they
+    // forward to graph.facebook.com server-side with IP/UA enrichment and the
+    // same event_id is preserved so browser-pixel dedup keeps working.
+    if (!empty($cfg['meta_capig_url'])) {
+        $url = rtrim($cfg['meta_capig_url'], '/');
+        // Some Stape CAPIG containers expect the pixel id in the path; if the
+        // configured URL does not already include it, append /<pixel_id>/events.
+        if (!preg_match('#/\d{10,}(?:/events)?$#', $url)) {
+            $url .= '/' . $cfg['meta_pixel_id'] . '/events';
+        } elseif (!str_ends_with($url, '/events')) {
+            $url .= '/events';
+        }
+        $url .= '?access_token=' . urlencode($cfg['meta_capi_token']);
+    } else {
+        $url = sprintf(
+            'https://graph.facebook.com/%s/%s/events?access_token=%s',
+            $cfg['meta_capi_api_version'],
+            $cfg['meta_pixel_id'],
+            urlencode($cfg['meta_capi_token'])
+        );
+    }
 
     return http_json_post($url, $body, 6);
 }

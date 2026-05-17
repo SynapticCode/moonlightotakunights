@@ -37,6 +37,19 @@ function ses_send(string $to_email, string $subject, string $html_body, array $o
     $from_name = $opts['from_name'] ?? $cfg['from_name'];
     $reply_to  = $opts['reply_to']  ?? $cfg['reply_to'];
     $to_name   = $opts['to_name']   ?? null;
+
+    // -------- Outbound link UTM tagging --------
+    // Every link to our own domain gets utm_source=ses + medium=email +
+    // a campaign tied to the broadcast (when available) and content tied to
+    // the contact. This is what powers "Email → Signup" attribution on the
+    // analytics page. We only tag own-domain links so external links (Posh,
+    // Instagram, etc.) are left alone.
+    if (!empty($opts['broadcast_id']) || !empty($opts['contact_id']) || !empty($opts['campaign'])) {
+        $campaign = (string)($opts['campaign'] ?? ('broadcast_' . (int)($opts['broadcast_id'] ?? 0)));
+        $content  = (string)($opts['utm_content'] ?? ('contact_' . (int)($opts['contact_id'] ?? 0)));
+        $html_body = ses_utm_rewrite($html_body, $campaign, $content, /*html*/ true);
+    }
+
     $text_body = $opts['text_body'] ?? html_to_text($html_body);
 
     // Pre-insert email_log row (status=queued)
@@ -156,6 +169,49 @@ function ses_send(string $to_email, string $subject, string $html_body, array $o
         @fclose($sock);
         return ses_fail($log_id, $e->getMessage());
     }
+}
+
+/**
+ * Append utm_* params to every <a href> that points at our own domain.
+ * Returns the rewritten body. Pure string transform, idempotent: if the
+ * link already has utm_source it is left as-is.
+ */
+function ses_utm_rewrite(string $html, string $campaign, string $content, bool $isHtml = true): string {
+    $appCfg = config('app');
+    $ownHost = parse_url($appCfg['base_url'] ?? 'https://moonlightotakunights.com', PHP_URL_HOST)
+               ?: 'moonlightotakunights.com';
+    $ownHost = preg_quote($ownHost, '/');
+
+    $appendParams = function(string $url) use ($campaign, $content): string {
+        // Skip if not http(s)
+        if (!preg_match('#^https?://#i', $url)) return $url;
+        // Skip if already utm-tagged
+        if (stripos($url, 'utm_source=') !== false) return $url;
+        $sep = (strpos($url, '?') === false) ? '?' : '&';
+        $tail = 'utm_source=ses'
+              . '&utm_medium=email'
+              . '&utm_campaign=' . rawurlencode($campaign)
+              . '&utm_content='  . rawurlencode($content);
+        // Preserve fragment if any
+        if (($hash = strpos($url, '#')) !== false) {
+            return substr($url, 0, $hash) . $sep . $tail . substr($url, $hash);
+        }
+        return $url . $sep . $tail;
+    };
+
+    if ($isHtml) {
+        // Match <a ... href="...moonlight..." ...>
+        $pattern = '/(<a\b[^>]*\bhref\s*=\s*(["\']))(https?:\/\/[^"\']*' . $ownHost . '[^"\']*)(\2)/i';
+        return preg_replace_callback($pattern, function($m) use ($appendParams) {
+            return $m[1] . $appendParams($m[3]) . $m[4];
+        }, $html) ?? $html;
+    }
+    // Plain-text mode: tag bare URLs to our domain.
+    return preg_replace_callback(
+        '/(https?:\/\/[^\s<>]*' . $ownHost . '[^\s<>]*)/i',
+        function($m) use ($appendParams) { return $appendParams($m[1]); },
+        $html
+    ) ?? $html;
 }
 
 function ses_fail(int $log_id, string $msg): array {

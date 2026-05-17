@@ -16,6 +16,17 @@ $subsTotal = (int) (db_fetch("SELECT COUNT(*) c FROM submissions")['c'] ?? 0);
 $subsLast7 = (int) (db_fetch("SELECT COUNT(*) c FROM submissions WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)")['c'] ?? 0);
 $subsNew   = (int) (db_fetch("SELECT COUNT(*) c FROM submissions WHERE status='new'")['c'] ?? 0);
 
+// Ticket revenue (session 5 — Posh + Eventbrite webhooks write into event_attendees)
+$ticketStats = db_fetch(
+    "SELECT
+        COALESCE(SUM(CASE WHEN purchase_status='completed' THEN purchase_amount END), 0) AS lifetime_revenue,
+        COUNT(CASE WHEN purchase_status='completed' THEN 1 END) AS lifetime_tickets,
+        COALESCE(SUM(CASE WHEN purchase_status='completed' AND purchased_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+                           THEN purchase_amount END), 0) AS month_revenue,
+        COUNT(CASE WHEN purchase_status='completed' AND purchased_at >= DATE_SUB(NOW(), INTERVAL 30 DAY) THEN 1 END) AS month_tickets
+     FROM event_attendees"
+) ?: ['lifetime_revenue' => 0, 'lifetime_tickets' => 0, 'month_revenue' => 0, 'month_tickets' => 0];
+
 $recent = db_fetch_all(
     "SELECT id, email, name, status, first_source, first_seen_at
        FROM contacts
@@ -82,6 +93,19 @@ ob_start();
         <p class="stat-delta"><a href="/submissions.php?status=new" style="color:var(--acc-cyan);">Open inbox →</a></p>
     </div>
     <div class="stat-card">
+        <p class="stat-label">Ticket Revenue (30d)</p>
+        <p class="stat-value">$<?= number_format((float)$ticketStats['month_revenue'], 0) ?></p>
+        <p class="stat-delta"><?= number_format((int)$ticketStats['month_tickets']) ?> tickets · <a href="/tickets.php" style="color:var(--acc-cyan);">view →</a></p>
+    </div>
+    <div class="stat-card">
+        <p class="stat-label">Lifetime Tickets</p>
+        <p class="stat-value"><?= number_format((int)$ticketStats['lifetime_tickets']) ?></p>
+        <p class="stat-delta">$<?= number_format((float)$ticketStats['lifetime_revenue'], 2) ?> lifetime</p>
+    </div>
+</div>
+
+<div class="stat-grid" style="margin-top:14px;">
+    <div class="stat-card">
         <p class="stat-label">Analytics</p>
         <p class="stat-value" style="font-size:24px; line-height:1.6;"><a href="/analytics.php" style="color:var(--text);">View dashboard →</a></p>
         <p class="stat-delta">Funnel conversion + GA4 traffic</p>
@@ -90,6 +114,16 @@ ob_start();
         <p class="stat-label">Site Health</p>
         <p class="stat-value" style="font-size:24px; line-height:1.6;"><a href="/health.php" style="color:var(--text);">Diagnostics →</a></p>
         <p class="stat-delta">DB, SES, tracking status</p>
+    </div>
+    <div class="stat-card">
+        <p class="stat-label">Tickets</p>
+        <p class="stat-value" style="font-size:24px; line-height:1.6;"><a href="/tickets.php" style="color:var(--text);">Revenue →</a></p>
+        <p class="stat-delta">Posh + Eventbrite live</p>
+    </div>
+    <div class="stat-card">
+        <p class="stat-label">Last 7 Days Email</p>
+        <p class="stat-value" style="font-size:24px; line-height:1.6;"><a href="/broadcasts.php" style="color:var(--text);">Broadcasts →</a></p>
+        <p class="stat-delta">SES outbound activity</p>
     </div>
 </div>
 

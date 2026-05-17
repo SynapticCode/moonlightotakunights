@@ -111,6 +111,66 @@ function normalize_phone(?string $phone): ?string {
     return substr($p, 0, 32);
 }
 
+/* ----------------------------- UTM capture ------------------------------ */
+/**
+ * Pull utm_* params from the request (POST body or query string or referrer
+ * URL) and persist them on the contact row's first-touch fields. Only writes
+ * a value if the existing column is NULL so we never overwrite a real first
+ * touch with a later one.
+ *
+ * Call this immediately after upserting a contact in any signup endpoint.
+ */
+function contacts_capture_utm(int $contact_id, array $input = []): void {
+    if ($contact_id <= 0) return;
+
+    // Sources, in priority order: explicit POST/JSON > query string > referrer.
+    $utm = [
+        'utm_source'   => null,
+        'utm_medium'   => null,
+        'utm_campaign' => null,
+        'utm_content'  => null,
+    ];
+    $pull = function(array $src) use (&$utm) {
+        foreach (array_keys($utm) as $k) {
+            if ($utm[$k] === null && !empty($src[$k])) {
+                $utm[$k] = substr((string)$src[$k], 0, 120);
+            }
+        }
+    };
+    $pull($input);
+    $pull($_POST);
+    $pull($_GET);
+    $ref = $_SERVER['HTTP_REFERER'] ?? '';
+    if ($ref) {
+        $q = parse_url($ref, PHP_URL_QUERY);
+        if ($q) { parse_str($q, $refParams); $pull($refParams); }
+    }
+
+    if (!array_filter($utm)) return;
+
+    try {
+        require_once __DIR__ . '/db.php';
+        db_exec(
+            "UPDATE contacts
+                SET utm_source   = COALESCE(utm_source,   :us),
+                    utm_medium   = COALESCE(utm_medium,   :um),
+                    utm_campaign = COALESCE(utm_campaign, :uc),
+                    utm_content  = COALESCE(utm_content,  :uo)
+              WHERE id = :id",
+            [
+                ':us' => $utm['utm_source'],
+                ':um' => $utm['utm_medium'],
+                ':uc' => $utm['utm_campaign'],
+                ':uo' => $utm['utm_content'],
+                ':id' => $contact_id,
+            ]
+        );
+    } catch (\Throwable $e) {
+        // Column may not exist before migration 005 ran — swallow.
+        log_error('contacts_capture_utm failed', ['err' => $e->getMessage()]);
+    }
+}
+
 /* ----------------------------- CORS ------------------------------------- */
 
 function send_cors_headers(): void {

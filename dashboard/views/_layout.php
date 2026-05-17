@@ -31,6 +31,7 @@ $nav = [
         ['key' => 'cosplay',   'href' => '/cosplay.php',      'label' => 'Cosplay Contest', 'icon' => '✶'],
         ['key' => 'submissions','href'=> '/submissions.php',   'label' => 'Submissions',   'icon' => '⦿'],
         ['key' => 'donations', 'href' => '/donations.php',    'label' => 'Donations',     'icon' => '◆'],
+        ['key' => 'tickets',   'href' => '/tickets.php',      'label' => 'Tickets',       'icon' => '⌘'],
         ['key' => 'ugc',       'href' => '/ugc.php',          'label' => 'UGC Wall',      'icon' => '▣'],
         ['key' => 'compose',   'href' => '/compose.php',      'label' => 'Compose',       'icon' => '✎'],
         ['key' => 'broadcasts','href' => '/broadcasts.php',   'label' => 'Broadcasts',    'icon' => '⤴'],

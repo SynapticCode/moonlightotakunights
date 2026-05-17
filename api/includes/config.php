@@ -104,6 +104,17 @@ return [
         'meta_capi_test_event'    => env('META_CAPI_TEST_EVENT', ''),
         'meta_capi_api_version'   => env('META_CAPI_API_VERSION', 'v21.0'),
 
+        // Stape Meta CAPIG (server-side gateway). When set, server-side Meta
+        // events route through Stape's CAPIG endpoint instead of graph.facebook.com
+        // directly. Stape forwards to Meta with deduplication, IP enrichment,
+        // and event match quality improvements. Example value:
+        //   https://capig.zjkxwrnm.stape.io/<pixel_id>/events
+        // Leave blank to use graph.facebook.com directly.
+        'meta_capig_url' => env('META_CAPIG_URL', ''),
+
+        // Stape sGTM URL — referenced by client meta tag, no server use yet.
+        'sgtm_url' => env('SGTM_URL', ''),
+
         // GA4 Measurement Protocol (server-side)
         // api_secret = generated under GA4 Admin → Data Streams → Measurement Protocol API secrets
         'ga4_api_secret' => env('GA4_API_SECRET', ''),
@@ -116,6 +127,19 @@ return [
 
         // Whether to actually send (turn off in dev). Accepts 1/true/on/yes.
         'enabled' => in_array(strtolower((string)env('TRACKING_ENABLED', '1')), ['1','true','on','yes'], true),
+    ],
+    'posh' => [
+        // Shared HMAC secret configured in Posh.vip webhook settings.
+        // Posh sends X-Posh-Signature: sha256=<hex of body>.
+        'webhook_secret' => env('POSH_WEBHOOK_SECRET', ''),
+    ],
+    'eventbrite' => [
+        // OAuth private token for the Eventbrite account (used to fetch
+        // order/attendee resources after a webhook ping).
+        'oauth_token'    => env('EVENTBRITE_OAUTH_TOKEN', ''),
+        // Optional shared-secret bearer the webhook proxy/edge function injects
+        // before relaying to our endpoint (Eventbrite itself does not sign).
+        'webhook_bearer' => env('EVENTBRITE_WEBHOOK_BEARER', ''),
     ],
     's3' => [
         // AWS S3 for UGC photo storage. IAM user with PutObject + GetObject

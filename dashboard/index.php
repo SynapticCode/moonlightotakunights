@@ -11,6 +11,11 @@ $verifiedContacts= (int) (db_fetch("SELECT COUNT(*) c FROM contacts WHERE status
 $pendingContacts = (int) (db_fetch("SELECT COUNT(*) c FROM contacts WHERE status='pending'")['c'] ?? 0);
 $last7           = (int) (db_fetch("SELECT COUNT(*) c FROM contacts WHERE first_seen_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)")['c'] ?? 0);
 
+// Funnel submission stats (5-funnel recruiting system)
+$subsTotal = (int) (db_fetch("SELECT COUNT(*) c FROM submissions")['c'] ?? 0);
+$subsLast7 = (int) (db_fetch("SELECT COUNT(*) c FROM submissions WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)")['c'] ?? 0);
+$subsNew   = (int) (db_fetch("SELECT COUNT(*) c FROM submissions WHERE status='new'")['c'] ?? 0);
+
 $recent = db_fetch_all(
     "SELECT id, email, name, status, first_source, first_seen_at
        FROM contacts
@@ -62,6 +67,29 @@ ob_start();
         <p class="stat-label">Last 7 Days</p>
         <p class="stat-value"><?= number_format($last7) ?></p>
         <p class="stat-delta">new signups</p>
+    </div>
+</div>
+
+<div class="stat-grid" style="margin-top:14px;">
+    <div class="stat-card">
+        <p class="stat-label">Funnel Submissions</p>
+        <p class="stat-value"><?= number_format($subsTotal) ?></p>
+        <p class="stat-delta">+<?= $subsLast7 ?> in last 7 days</p>
+    </div>
+    <div class="stat-card">
+        <p class="stat-label">Awaiting Review</p>
+        <p class="stat-value"><?= number_format($subsNew) ?></p>
+        <p class="stat-delta"><a href="/submissions.php?status=new" style="color:var(--acc-cyan);">Open inbox →</a></p>
+    </div>
+    <div class="stat-card">
+        <p class="stat-label">Analytics</p>
+        <p class="stat-value" style="font-size:24px; line-height:1.6;"><a href="/analytics.php" style="color:var(--text);">View dashboard →</a></p>
+        <p class="stat-delta">Funnel conversion + GA4 traffic</p>
+    </div>
+    <div class="stat-card">
+        <p class="stat-label">Site Health</p>
+        <p class="stat-value" style="font-size:24px; line-height:1.6;"><a href="/health.php" style="color:var(--text);">Diagnostics →</a></p>
+        <p class="stat-delta">DB, SES, tracking status</p>
     </div>
 </div>
 

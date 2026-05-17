@@ -4,6 +4,7 @@ require_once __DIR__ . '/../../api/includes/bootstrap.php';
 require_once __DIR__ . '/../../api/includes/db.php';
 require_once __DIR__ . '/../../api/includes/ses.php';
 require_once __DIR__ . '/../../api/includes/audit.php';
+require_once __DIR__ . '/../../api/includes/segments.php';
 require_once __DIR__ . '/../auth/session.php';
 
 $user = require_login();
@@ -62,14 +63,10 @@ if ($mode === 'test') {
 }
 
 // Build segment query
-switch ($segment) {
-    case 'all':
-        $sql = "SELECT id, email, name FROM contacts WHERE deleted_at IS NULL AND status NOT IN ('unsubscribed','bounced','complained','suppressed')";
-        break;
-    case 'verified':
-    default:
-        $sql = "SELECT id, email, name FROM contacts WHERE status = 'verified' AND deleted_at IS NULL";
-        break;
+$sql = segment_sql($segment);
+if ($sql === null) {
+    // Back-compat: legacy 'verified' default for unknown keys.
+    $sql = segment_sql('verified');
 }
 $recipients = db_fetch_all($sql) ?: [];
 $count = count($recipients);

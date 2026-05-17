@@ -127,4 +127,34 @@ function run_health_checks(): void {
     $check('robots_txt', $base . '/robots.txt', function ($code, $body) {
         return $code === 200 ? ['ok', 'robots.txt reachable'] : ['warn', "HTTP $code"];
     });
+
+    // ---- Runtime config (env vars set in Hostinger) ----
+    $envCheck = function (string $name, string $env, string $hint) {
+        $val = getenv($env) ?: '';
+        [$status, $detail] = $val !== ''
+            ? ['ok',   'Set · ' . substr($val, 0, 48) . (strlen($val) > 48 ? '…' : '')]
+            : ['warn', 'Missing — ' . $hint];
+        db_exec(
+            "INSERT INTO site_health_log (check_name, target, status, response_ms, detail)
+             VALUES (:n, :t, :s, NULL, :d)",
+            [':n' => $name, ':t' => 'env:' . $env, ':s' => $status, ':d' => $detail]
+        );
+    };
+    $envCheck('env_sgtm_url',          'SGTM_URL',                  'Paste Stape sGTM Server Container URL');
+    $envCheck('env_meta_capig_url',    'META_CAPIG_URL',            'Paste Stape Meta CAPIG endpoint (capig.zjkxwrnm.stape.io/<pixel>/events)');
+    $envCheck('env_meta_access_token', 'META_CAPI_ACCESS_TOKEN',    'Meta CAPI server access token');
+    $envCheck('env_posh_secret',       'POSH_WEBHOOK_SECRET',       'Random secret for Posh.vip webhook HMAC');
+    $envCheck('env_eventbrite_token',  'EVENTBRITE_OAUTH_TOKEN',    'OAuth token from Eventbrite account');
+    $envCheck('env_ga4_property_id',   'GA4_PROPERTY_ID',           'GA4 numeric property ID (for Analytics page)');
+    $envCheck('env_ga4_sa_path',       'GA4_SERVICE_ACCOUNT_JSON_PATH', 'Path to GA4 service account JSON');
+
+    // sGTM endpoint reachability check (only if SGTM_URL set)
+    $sgtm = getenv('SGTM_URL') ?: '';
+    if ($sgtm !== '') {
+        $check('sgtm_reachable', rtrim($sgtm, '/') . '/healthy', function ($code, $body) {
+            return in_array($code, [200, 204], true)
+                ? ['ok',   "Stape sGTM responding (HTTP $code)"]
+                : ['warn', "Stape sGTM HTTP $code — verify container deployed"];
+        });
+    }
 }

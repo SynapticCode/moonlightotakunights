@@ -65,6 +65,14 @@ return [
         'from'     => env('MAIL_FROM', 'info@moonlightotakunights.com'),
         'from_name'=> env('MAIL_FROM_NAME', 'Moonlight Otaku Nights'),
         'reply_to' => env('MAIL_REPLY_TO', 'info@moonlightotakunights.com'),
+        'ops_inbox'=> env('OPS_INBOX', 'anikuranj@gmail.com'),
+    ],
+    'stripe' => [
+        // Stripe is used ONLY for the donate page (Payment Link).
+        // Webhook signing secret comes from the Stripe Dashboard → Developers → Webhooks.
+        'webhook_secret' => env('STRIPE_WEBHOOK_SECRET', ''),
+        'payment_link'   => env('STRIPE_PAYMENT_LINK', ''),
+        'currency'       => env('STRIPE_CURRENCY', 'USD'),
     ],
     'google_oauth' => [
         'client_id'     => env('GOOGLE_CLIENT_ID', ''),

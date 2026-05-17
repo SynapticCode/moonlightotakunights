@@ -1,0 +1,161 @@
+/* Shared form layout for /djs, /idols, /vendors, /sponsors/apply, /investors */
+
+.sub-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 20px 96px;
+}
+
+.sub-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.sub-brand img {
+    height: 36px;
+    width: auto;
+}
+
+.sub-brand .name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--mt-accent-highlight, #7fbbe0);
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.sub-hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1.1;
+    margin: 0 0 12px;
+    letter-spacing: 0.02em;
+}
+
+.sub-hero .sub {
+    color: var(--mt-text-muted, rgba(255,255,255,0.6));
+    margin: 0 0 36px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.sub-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.sub-form label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.sub-form .req {
+    color: #ff4d9d;
+    margin-left: 2px;
+}
+
+.sub-form input[type=text],
+.sub-form input[type=email],
+.sub-form input[type=tel],
+.sub-form input[type=url],
+.sub-form input[type=number],
+.sub-form select,
+.sub-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 13px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.sub-form input:focus,
+.sub-form select:focus,
+.sub-form textarea:focus {
+    outline: none;
+    border-color: var(--mt-accent-highlight, #7fbbe0);
+    box-shadow: 0 0 0 3px rgba(127, 187, 224, 0.18);
+}
+
+.sub-form textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.5;
+}
+
+.sub-form .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 540px) {
+    .sub-form .row-2 { grid-template-columns: 1fr; }
+}
+
+.sub-form .check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.sub-form .check input { width: 18px; height: 18px; accent-color: var(--mt-accent-primary, #ac2181); }
+
+.sub-form .help {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+    line-height: 1.45;
+}
+
+.sub-form .honeypot { position: absolute; left: -9999px; }
+
+.sub-btn {
+    background: var(--mt-accent-gradient, linear-gradient(135deg,#ac2181,#694591,#3480c3));
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 16px 24px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+
+.sub-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(172, 33, 129, 0.35); }
+.sub-btn:active { transform: translateY(0); }
+.sub-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.sub-status {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+    display: none;
+}
+
+.sub-status.ok { display: block; background: rgba(80, 220, 130, 0.1); border: 1px solid rgba(80, 220, 130, 0.35); color: #b6f0c8; }
+.sub-status.err { display: block; background: rgba(255, 77, 157, 0.1); border: 1px solid rgba(255, 77, 157, 0.35); color: #ffb0d3; }

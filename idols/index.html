@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WX8WHXSZ');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performer Application — Moonlight Otaku Nights</title>
+<meta name="description" content="Apply to perform: J-pop, K-pop, vocaloid, dance covers, idol routines, cosplay performances.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/components/theme.css">
+<link rel="stylesheet" href="/components/submission-form.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8W7W5FKYV9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8W7W5FKYV9');</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1979608179640857');fbq('track','PageView');</script>
+</head>
+<body class="moonlight-theme">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WX8WHXSZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="sub-wrap">
+  <div class="sub-brand">
+    <img src="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="">
+    <span class="name">Moonlight Otaku Nights</span>
+  </div>
+
+  <div class="sub-hero">
+    <h1>TAKE THE STAGE.</h1>
+    <p class="sub">Looking for idol routines, dance covers, vocaloid performers, and stage acts that hit the anime-nightlife crowd. Solo or group, both work.</p>
+  </div>
+
+  <form class="sub-form" data-mln-submission="idol" autocomplete="off">
+    <input type="text" name="website_hp" class="honeypot" tabindex="-1" autocomplete="off">
+
+    <div class="row-2">
+      <div>
+        <label>Your Name <span class="req">*</span></label>
+        <input type="text" name="full_name" required maxlength="255">
+      </div>
+      <div>
+        <label>Stage / Group Name</label>
+        <input type="text" name="stage_name" maxlength="120">
+      </div>
+    </div>
+
+    <div class="row-2">
+      <div>
+        <label>Email <span class="req">*</span></label>
+        <input type="email" name="email" required>
+      </div>
+      <div>
+        <label>Phone</label>
+        <input type="tel" name="phone">
+      </div>
+    </div>
+
+    <div class="row-2">
+      <div>
+        <label>Instagram</label>
+        <input type="text" name="instagram" placeholder="handle (no @)">
+      </div>
+      <div>
+        <label>Performance Type <span class="req">*</span></label>
+        <select name="performance_type" required>
+          <option value="">— choose one —</option>
+          <option>Idol routine</option>
+          <option>Dance cover</option>
+          <option>Vocaloid / cosplay vocal</option>
+          <option>Stage / theatrical</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row-2">
+      <div>
+        <label>Group Size</label>
+        <input type="number" name="group_size" min="1" max="20" placeholder="1">
+      </div>
+      <div>
+        <label>Set Length (min)</label>
+        <input type="number" name="set_length_min" min="3" max="60" placeholder="15">
+      </div>
+    </div>
+
+    <div>
+      <label>Demo / Video Link</label>
+      <input type="url" name="demo_url" placeholder="https://youtube.com/...">
+    </div>
+
+    <div>
+      <label>Tell us about your act <span class="req">*</span></label>
+      <textarea name="pitch" required minlength="20" maxlength="5000" placeholder="Describe what you'd perform, your experience, and what equipment you need."></textarea>
+    </div>
+
+    <button type="submit" class="sub-btn">Send Application</button>
+    <div class="sub-status"></div>
+  </form>
+</div>
+
+<script src="/components/submission-form.js"></script>
+</body>
+</html>

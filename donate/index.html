@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WX8WHXSZ');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support Moonlight Otaku Nights</title>
+<meta name="description" content="Help us keep building anime nightlife in Newark. Every dollar goes to the next show.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/components/theme.css">
+<link rel="stylesheet" href="/components/submission-form.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8W7W5FKYV9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8W7W5FKYV9');</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1979608179640857');fbq('track','PageView');</script>
+<style>
+  .donate-amounts { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:18px; }
+  @media (max-width:540px){ .donate-amounts{ grid-template-columns:repeat(2,1fr); } }
+  .donate-amounts button {
+    background: rgba(255,255,255,0.04); color:#fff;
+    border: 1px solid rgba(255,255,255,0.15); border-radius:6px;
+    padding: 16px 8px; font-family:'Orbitron',sans-serif;
+    font-size:16px; font-weight:700; letter-spacing:.05em; cursor:pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .donate-amounts button:hover { border-color: var(--mt-accent-highlight,#7fbbe0); background: rgba(127,187,224,.08); }
+  .donate-amounts button.sel { border-color: var(--mt-accent-primary,#ac2181); background: rgba(172,33,129,.12); }
+  .donate-note { font-size:13px; color:rgba(255,255,255,.5); line-height:1.5; margin-top:12px; }
+</style>
+</head>
+<body class="moonlight-theme">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WX8WHXSZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="sub-wrap">
+  <div class="sub-brand">
+    <img src="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="">
+    <span class="name">Moonlight Otaku Nights</span>
+  </div>
+
+  <div class="sub-hero">
+    <h1>FUEL THE NEXT NIGHT.</h1>
+    <p class="sub">Every dollar covers DJs, sound, security, and the cosplay contest prize pool. No middlemen. No platform fees beyond Stripe processing. Donations roll straight into the next show.</p>
+  </div>
+
+  <form class="sub-form" id="donate-form">
+    <label>Pick an amount</label>
+    <div class="donate-amounts" id="amts">
+      <button type="button" data-amt="10">$10</button>
+      <button type="button" data-amt="25">$25</button>
+      <button type="button" data-amt="50">$50</button>
+      <button type="button" data-amt="100">$100</button>
+    </div>
+
+    <div>
+      <label>Or enter a custom amount (USD)</label>
+      <input type="number" id="custom-amt" min="1" max="10000" step="1" placeholder="25">
+    </div>
+
+    <div>
+      <label>Leave a message (optional)</label>
+      <textarea id="donor-msg" maxlength="500" placeholder="Optional. Shows up on our internal donor wall — not public."></textarea>
+    </div>
+
+    <label class="check">
+      <input type="checkbox" id="anonymous">
+      <span>Donate anonymously (we'll still see your email for the receipt)</span>
+    </label>
+
+    <button type="submit" class="sub-btn">Continue to Stripe →</button>
+    <div class="sub-status"></div>
+    <p class="donate-note">Secure checkout powered by Stripe. We never see your card details. You'll get an email receipt the second your payment clears.</p>
+  </form>
+</div>
+
+<script>
+(function(){
+  const amts = document.getElementById('amts');
+  const custom = document.getElementById('custom-amt');
+  let selected = 25;
+  custom.value = 25;
+
+  amts.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-amt]');
+    if (!btn) return;
+    selected = parseInt(btn.dataset.amt, 10);
+    custom.value = selected;
+    amts.querySelectorAll('button').forEach(b => b.classList.toggle('sel', b === btn));
+  });
+
+  custom.addEventListener('input', () => {
+    selected = parseInt(custom.value, 10) || 0;
+    amts.querySelectorAll('button').forEach(b => b.classList.toggle('sel', parseInt(b.dataset.amt,10) === selected));
+  });
+
+  document.getElementById('donate-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const amount = parseInt(custom.value, 10) || selected;
+    if (!amount || amount < 1) {
+      const s = document.querySelector('.sub-status');
+      s.className = 'sub-status err'; s.textContent = 'Enter an amount of at least $1.';
+      return;
+    }
+
+    const message = document.getElementById('donor-msg').value.trim();
+    const anonymous = document.getElementById('anonymous').checked;
+
+    // Track click before redirect
+    if (window.dataLayer) {
+      window.dataLayer.push({ event: 'donate_click', donate_amount: amount });
+    }
+    if (window.fbq) window.fbq('track', 'InitiateCheckout', { value: amount, currency: 'USD' });
+
+    // Stripe Payment Link supports prefill query params:
+    //   prefilled_promo_code, prefilled_email, etc.
+    // We pass amount + metadata via the URL the user-configured link.
+    // The link is set in /assets/donate-config.js — server emits it from STRIPE_PAYMENT_LINK env.
+    const base = window.MLN_STRIPE_LINK || '';
+    if (!base) {
+      const s = document.querySelector('.sub-status');
+      s.className = 'sub-status err';
+      s.innerHTML = 'Donations are warming up — try again in a few minutes, or DM us on <a href="https://instagram.com/moonlightotakunights" style="color:#ff4d9d;">Instagram</a>.';
+      return;
+    }
+
+    const params = new URLSearchParams();
+    // Stripe Payment Link accepts custom client_reference_id for our tracking
+    params.set('client_reference_id', 'mln_' + Date.now());
+    // Metadata stays inside Stripe — we read it via webhook
+    if (message)  params.set('prefilled_promo_code', '');  // not used
+    // We piggyback on URL fragment to round-trip donor intent to the success page
+    const frag = '#' + encodeURIComponent(JSON.stringify({ a: amount, m: message, an: anonymous ? 1 : 0 }));
+
+    window.location.href = base + (base.includes('?') ? '&' : '?') + params.toString() + frag;
+  });
+})();
+</script>
+<script src="/assets/donate-config.js"></script>
+</body>
+</html>

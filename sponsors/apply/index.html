@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sponsor Application — Moonlight Otaku Nights</title>
-<meta name="description" content="Put your brand in front of the anime nightlife crowd. Sponsorship tiers for QXT's residency and the Mulberry festival.">
+<meta name="description" content="Apply to sponsor a Moonlight night. We respond within 24 hours.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,8 +32,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 
   <div class="sub-hero">
-    <h1>SPONSOR THE NIGHT.</h1>
-    <p class="sub">Anime, cosplay, lifestyle, gaming, energy — if your brand belongs at a Moonlight night, let's talk. We'll send the full sponsor deck after we review your inquiry.</p>
+    <h1>LET'S SEE IF YOU'RE A FIT.</h1>
+    <p class="sub">This application takes about 3 minutes. We read every one. If your brand fits the room, you'll hear from us within 24 hours.</p>
+  </div>
+
+  <div class="sub-letter">
+    <p>If you made it here from the main page, you already know what this is. So I'll keep this short.</p>
+
+    <p>Most sponsorship pitches are <em>random</em>. A promoter emails you. Says they'll have "great energy." You wire money. You never see the data again.</p>
+
+    <p>That's not what we do.</p>
+
+    <h2>What you get when we accept your application:</h2>
+    <ul>
+      <li>A 20-minute call with me — Anthony Kuranj, executive producer and founder of Moonlight Productions LLC.</li>
+      <li>The full sponsor deck with attendance data, photo galleries, audience demographics, and what each tier actually looks like in the room.</li>
+      <li>A custom activation plan built around <strong>your</strong> goals — impressions, samples, signups, or sales. Not a generic logo placement.</li>
+      <li>If we agree to move forward, a one-page agreement and a calendar of the next 4 nights so you can pick which ones make sense.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Why we screen:</strong> we have 6–8 sponsor slots per night. Once they're full, they're full. We screen so we only place brands the room actually responds to — and you only pay if we both think it's a fit.
+    </div>
+
+    <h2>A few questions before you fill this out:</h2>
+    <ul>
+      <li>Do you have a real product or service? (No MLMs, no crypto scams, no "personal brands" without an offer.)</li>
+      <li>Can you commit to at least one night? (Bigger discounts kick in at 3-night and full-season buys.)</li>
+      <li>Are you the decision-maker, or can you get them on the call?</li>
+    </ul>
+
+    <p>If you said yes to all three, fill out the form below. The more you tell us in the "what does success look like" box, the better your activation plan will be.</p>
+
+    <div class="sig">— Anthony Kuranj<br><em>Executive Producer · Moonlight Productions LLC</em></div>
   </div>
 
   <form class="sub-form" data-mln-submission="sponsor" autocomplete="off">
@@ -64,7 +95,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="row-2">
       <div>
         <label>Instagram</label>
-        <input type="text" name="instagram" placeholder="brand handle">
+        <input type="text" name="instagram" placeholder="brand handle (no @)">
       </div>
       <div>
         <label>Website</label>
@@ -74,8 +105,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <div class="row-2">
       <div>
-        <label>Brand Category</label>
-        <select name="brand_category">
+        <label>Brand Category <span class="req">*</span></label>
+        <select name="brand_category" required>
           <option value="">— choose one —</option>
           <option>Apparel / fashion</option>
           <option>Gaming / tech</option>
@@ -87,21 +118,52 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </select>
       </div>
       <div>
-        <label>Budget Tier</label>
-        <select name="budget_tier">
+        <label>Tier You're Looking At <span class="req">*</span></label>
+        <select name="tier_interest" required id="tier_interest">
+          <option value="">— choose one —</option>
+          <option value="friend">Friend of Moonlight — $250</option>
+          <option value="tier1">Tier 1 Activation Partner — $500–$750</option>
+          <option value="tier2">Tier 2 Supporting Sponsor — $1,000–$1,500</option>
+          <option value="tier3">Tier 3 Presenting Sponsor — $3,000–$5,000</option>
+          <option value="tier4">Tier 4 Title Sponsor — Custom</option>
+          <option value="undecided">Not sure yet — recommend something</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row-2">
+      <div>
+        <label>Budget Range <span class="req">*</span></label>
+        <select name="budget_tier" required>
           <option value="">— choose one —</option>
           <option>Under $500</option>
           <option>$500 — $2K</option>
           <option>$2K — $10K</option>
           <option>$10K+</option>
-          <option>In-kind / product</option>
+          <option>In-kind / product only</option>
+        </select>
+      </div>
+      <div>
+        <label>How Many Nights?</label>
+        <select name="nights_interest">
+          <option value="">— pick one —</option>
+          <option>1 night (try it)</option>
+          <option>3 nights (test for a quarter)</option>
+          <option>Full season (6+ nights)</option>
+          <option>Not sure yet</option>
         </select>
       </div>
     </div>
 
     <div>
-      <label>Sponsorship Goals</label>
-      <textarea name="goals" maxlength="2000" placeholder="What does success look like — impressions, samples handed out, signups, sales?"></textarea>
+      <label>What does success look like for you? <span class="req">*</span></label>
+      <textarea name="goals" required minlength="20" maxlength="2000" placeholder="Be specific. Examples: 'We want 500 samples handed to verified 21+ adults.' 'We want 200 email signups for our newsletter.' 'We want 30 video clips of people wearing our product.'"></textarea>
+    </div>
+
+    <div>
+      <label>Current cost per acquisition on your best Meta campaign?</label>
+      <textarea name="cpa_context" maxlength="500" placeholder="Optional but helpful — gives us a number to beat. Ballpark is fine."></textarea>
+      <div class="help">If you know your CPA from Meta / Google / TikTok, share it. We use it to calibrate your activation.</div>
     </div>
 
     <div>
@@ -109,11 +171,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <textarea name="pitch" required minlength="20" maxlength="5000" placeholder="What you do, why anime nightlife fits, and what you'd love to bring to the night."></textarea>
     </div>
 
-    <button type="submit" class="sub-btn">Send Sponsor Inquiry</button>
+    <button type="submit" class="sub-btn">Send Sponsor Application</button>
     <div class="sub-status"></div>
   </form>
+
+  <a href="/sponsors/" class="sub-back">← Back to sponsor overview</a>
 </div>
 
+<script>
+  // Pre-fill tier from ?tier=X
+  (function(){
+    const params = new URLSearchParams(location.search);
+    const t = params.get('tier');
+    if (!t) return;
+    const sel = document.getElementById('tier_interest');
+    if (!sel) return;
+    const map = {
+      '0':'friend', '1':'tier1', '2':'tier2', '3':'tier3', '4':'tier4',
+      'tier0':'friend', 'tier1':'tier1', 'tier2':'tier2', 'tier3':'tier3', 'tier4':'tier4',
+      'friend':'friend', 'inkind':'friend'
+    };
+    const v = map[t.toLowerCase()];
+    if (v) sel.value = v;
+  })();
+</script>
 <script src="/components/submission-form.js"></script>
 </body>
 </html>

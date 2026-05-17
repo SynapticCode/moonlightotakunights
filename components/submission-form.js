@@ -52,7 +52,7 @@
                 const json = await res.json();
 
                 if (json.ok) {
-                    setStatus(form, 'ok', "Got it. We've sent a receipt to your email and you'll hear back within 3 business days.");
+                    setStatus(form, 'ok', "Got it. Redirecting you to next steps…");
                     form.reset();
 
                     // Fire dataLayer event for GA4/GTM
@@ -70,6 +70,17 @@
                             content_name: kind.charAt(0).toUpperCase() + kind.slice(1) + ' Application',
                         }, { eventID: json.event_id });
                     }
+
+                    // Per-kind thank-you redirect
+                    const thanksMap = {
+                        sponsor:  '/sponsors/thank-you/',
+                        dj:       '/djs/thank-you/',
+                        idol:     '/idols/thank-you/',
+                        vendor:   '/vendors/thank-you/',
+                        investor: '/investors/thank-you/',
+                    };
+                    const dest = thanksMap[kind];
+                    if (dest) setTimeout(() => { window.location.href = dest; }, 900);
                 } else {
                     setStatus(form, 'err', json.error || 'Something went wrong. Try again.');
                     if (submitBtn) submitBtn.disabled = false;

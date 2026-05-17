@@ -7,20 +7,18 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WX8WHXSZ');</script>
-<!-- End Google Tag Manager -->
+<!-- End GTM -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Moonlight Otaku Nights | Partner With NJ's Anime Nightlife Series</title>
-    <meta name="description" content="Put your brand in front of 300+ anime fans at Moonlight Otaku Nights. Sponsorship, vendor tables, and prize donations available. Newark, NJ — monthly series.">
+    <title>How to Put Your Brand In Front of 400+ Anime Fans Every Month — Without Spending $10K on Ads</title>
+    <meta name="description" content="The only recurring anime · cosplay · rave nightlife series in NJ. Apply to sponsor and put your brand directly in the hands of the most loyal demographic in entertainment.">
     <meta name="robots" content="noindex, nofollow">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Serif+JP:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8W7W5FKYV9"></script>
@@ -40,81 +38,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         document,'script','https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1979608179640857');
         fbq('track', 'PageView');
+        fbq('track', 'ViewContent', { content_name: 'Sponsor Funnel — Vision Page', content_category: 'Sponsorship' });
     </script>
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=1979608179640857&ev=PageView&noscript=1"/></noscript>
 
     <style>
-        /* ============================================================
-           CSS VARIABLES — brand palette
-        ============================================================ */
         :root {
-            --neon-green: #00ff88;
-            --neon-blue: #00f0ff;
-            --neon-purple: #bf00ff;
-            --neon-pink: #ff00aa;
-            --neon-orange: #ff6b00;
+            --mt-bg: #0a0a0f;
+            --mt-bg-elevated: #12121a;
+            --mt-text: #ffffff;
+            --mt-text-muted: rgba(255, 255, 255, 0.68);
+            --mt-text-dim: rgba(255, 255, 255, 0.48);
 
-            --bg-dark: #0a0a0f;
-            --bg-card: rgba(15, 15, 25, 0.8);
-            --bg-glass: rgba(255, 255, 255, 0.03);
+            --mt-accent-primary: #ac2181;
+            --mt-accent-secondary: #694591;
+            --mt-accent-highlight: #7fbbe0;
+            --mt-accent-pink-soft: #f7b6d2;
+            --mt-accent-blue-deep: #3480c3;
 
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-muted: rgba(255, 255, 255, 0.5);
+            --mt-accent-gradient: linear-gradient(135deg, #ac2181 0%, #694591 50%, #3480c3 100%);
+            --mt-accent-gradient-soft: linear-gradient(135deg, rgba(172, 33, 129, 0.15) 0%, rgba(105, 69, 145, 0.12) 50%, rgba(52, 128, 195, 0.10) 100%);
 
-            --gradient-primary: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
-            --gradient-secondary: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
-            --gradient-hero: linear-gradient(180deg, transparent 0%, var(--bg-dark) 100%);
+            --mt-accent-glow: color-mix(in srgb, var(--mt-accent-primary) 40%, transparent);
+            --mt-border: color-mix(in srgb, var(--mt-accent-primary) 18%, transparent);
+            --mt-border-strong: color-mix(in srgb, var(--mt-accent-primary) 42%, transparent);
+            --mt-panel: rgba(255, 255, 255, 0.03);
+            --mt-panel-elevated: rgba(20, 18, 30, 0.6);
         }
 
-        /* ============================================================
-           RESET & BASE
-        ============================================================ */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Zen Kaku Gothic New', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
+            background: var(--mt-bg);
+            color: var(--mt-text);
+            line-height: 1.65;
             overflow-x: hidden;
         }
 
-        /* ============================================================
-           BACKGROUND ANIMATION
-        ============================================================ */
+        /* Background */
         .bg-animation {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            inset: 0;
             z-index: -1;
             background:
-                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(191, 0, 255, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 18% 22%, rgba(172, 33, 129, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 82% 78%, rgba(52, 128, 195, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(105, 69, 145, 0.05) 0%, transparent 60%);
         }
 
-        /* ============================================================
-           FLOATING PARTICLES
-        ============================================================ */
-        .particles {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
+        /* Particles */
+        .particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
         .particle {
             position: absolute;
             width: 2px; height: 2px;
-            background: var(--neon-green);
+            background: var(--mt-accent-pink-soft);
             border-radius: 50%;
             animation: float-up linear infinite;
             opacity: 0;
         }
-        .particle:nth-child(3n) { background: var(--neon-blue); width: 3px; height: 3px; }
-        .particle:nth-child(5n) { background: var(--neon-purple); }
+        .particle:nth-child(3n) { background: var(--mt-accent-highlight); width: 3px; height: 3px; }
+        .particle:nth-child(5n) { background: var(--mt-accent-primary); }
         @keyframes float-up {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
             10% { opacity: 1; }
@@ -122,14 +107,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
-        /* ============================================================
-           DATA NOTICE BANNER
-        ============================================================ */
+        /* Data notice */
         .data-notice {
             position: fixed;
             bottom: 0; left: 0; right: 0;
             background: rgba(10, 10, 15, 0.97);
-            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            border-top: 1px solid var(--mt-border);
             padding: 1rem 2rem;
             z-index: 9999;
             display: flex;
@@ -138,17 +121,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             transition: transform 0.4s ease;
         }
         .data-notice.hidden { transform: translateY(100%); }
-        .data-notice p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            flex: 1;
-        }
-        .data-notice a { color: var(--neon-green); text-decoration: none; }
+        .data-notice p { font-size: 0.8rem; color: var(--mt-text-muted); flex: 1; }
+        .data-notice a { color: var(--mt-accent-highlight); text-decoration: none; }
         .data-notice-dismiss {
-            background: var(--gradient-primary);
-            color: var(--bg-dark);
+            background: var(--mt-accent-gradient);
+            color: #fff;
             border: none;
-            padding: 0.5rem 1.2rem;
+            padding: 0.55rem 1.3rem;
             border-radius: 20px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.7rem;
@@ -158,21 +137,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             white-space: nowrap;
         }
 
-        /* ============================================================
-           NAVIGATION
-        ============================================================ */
+        /* NAV — minimal on funnel pages */
         nav {
             position: fixed;
             top: 0; width: 100%;
             z-index: 1000;
-            background: rgba(10, 10, 15, 0.9);
+            background: rgba(10, 10, 15, 0.92);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--mt-border);
         }
         .nav-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0.85rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -182,571 +160,611 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: var(--text-primary);
+            color: var(--mt-text);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 2px;
         }
-        .logo-image {
-            height: 36px;
-            width: auto;
-            filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.4));
-            transition: filter 0.3s ease;
-        }
-        .logo:hover .logo-image { filter: drop-shadow(0 0 14px rgba(0, 255, 136, 0.7)); }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover { color: var(--neon-green); }
-        .nav-cta {
-            background: var(--gradient-primary) !important;
-            color: var(--bg-dark) !important;
-            padding: 0.6rem 1.5rem;
+        .logo-image { height: 34px; width: auto; filter: drop-shadow(0 0 8px rgba(172, 33, 129, 0.55)); }
+        .nav-cta-top {
+            background: var(--mt-accent-gradient);
+            color: #fff;
+            padding: 0.55rem 1.3rem;
             border-radius: 30px;
-            font-weight: 600 !important;
-        }
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
-        }
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 4px;
-        }
-        .mobile-toggle span {
-            display: block;
-            width: 24px; height: 2px;
-            background: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            text-transform: uppercase;
             transition: all 0.3s ease;
         }
-        .mobile-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
-        .mobile-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .nav-cta-top:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(172, 33, 129, 0.5); }
 
-        /* ============================================================
-           SECTION SHARED STYLES
-        ============================================================ */
-        section {
-            position: relative;
-            z-index: 1;
-        }
-        .section-container {
-            max-width: 1200px;
+        /* Shared section structure */
+        section { position: relative; z-index: 1; }
+        .container {
+            max-width: 980px;
             margin: 0 auto;
             padding: 5rem 2rem;
         }
-        .section-label {
-            display: block;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--neon-green);
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-        .section-eyebrow {
-            display: block;
+        .container-wide { max-width: 1200px; }
+        .eyebrow {
+            display: inline-block;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 4px;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
+            color: var(--mt-accent-highlight);
+            margin-bottom: 1rem;
             text-transform: uppercase;
+            padding: 0.4rem 0.9rem;
+            border-radius: 30px;
+            background: rgba(127, 187, 224, 0.08);
+            border: 1px solid rgba(127, 187, 224, 0.25);
+        }
+        .jp-label {
+            display: block;
+            font-family: 'Noto Serif JP', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--mt-accent-pink-soft);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
         }
 
         /* ============================================================
-           SECTION 1 — HERO
-        ============================================================ */
-        .hero {
+           HERO — THE HOOK
+           ============================================================ */
+        .hook {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 2rem;
+            padding: 7rem 1.5rem 4rem;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
-        .hero::before {
+        .hook::before {
             content: '';
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 50% 40%, rgba(0, 255, 136, 0.1) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 80%, rgba(0, 240, 255, 0.07) 0%, transparent 40%);
+                radial-gradient(ellipse at 50% 30%, rgba(172, 33, 129, 0.20) 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 80%, rgba(127, 187, 224, 0.12) 0%, transparent 55%);
         }
-        .hero-content {
+        .hook-inner {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 920px;
+            margin: 0 auto;
         }
-        .hero-jp {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--neon-green);
-            letter-spacing: 4px;
-            display: block;
-            margin-bottom: 0.75rem;
-            opacity: 0.9;
-        }
-        .hero-eyebrow {
+        .hook h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 5px;
-            color: var(--text-muted);
-            display: block;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-        }
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3.5rem, 9vw, 8rem);
+            font-size: clamp(2.2rem, 5.5vw, 4.4rem);
             font-weight: 900;
-            line-height: 0.95;
-            background: var(--gradient-primary);
+            line-height: 1.05;
+            color: #fff;
+            margin: 1rem 0 1.5rem;
+            letter-spacing: -1px;
+        }
+        .hook h1 .accent {
+            background: var(--mt-accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
-            letter-spacing: -2px;
         }
-        .hero-sub {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            font-weight: 700;
-            color: var(--neon-green);
-            display: block;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        .hook .sub {
+            font-family: 'Noto Serif JP', serif;
+            font-style: italic;
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            color: var(--mt-text-muted);
+            max-width: 720px;
+            margin: 0 auto 2.25rem;
+            line-height: 1.7;
         }
-        .hero-support {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: var(--bg-dark);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.6);
-        }
-
-        /* ============================================================
-           SECTION 2 — THE AUDIENCE
-        ============================================================ */
-        .audience {
-            background: rgba(255, 255, 255, 0.02);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .audience h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-            color: var(--text-primary);
-        }
-        .audience h2 em {
+        .hook .sub strong {
+            color: var(--mt-accent-pink-soft);
             font-style: normal;
-            color: var(--neon-green);
+            font-weight: 500;
+            font-family: 'Zen Kaku Gothic New', sans-serif;
         }
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+        .hook-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 0 auto 2.5rem;
+            flex-wrap: wrap;
         }
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(0, 255, 136, 0.15);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: var(--gradient-primary);
-        }
-        .stat-card:hover {
-            border-color: rgba(0, 255, 136, 0.35);
-            transform: translateY(-5px);
-        }
-        .stat-number {
+        .hook-stat .num {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
             font-weight: 900;
-            background: var(--gradient-primary);
+            background: var(--mt-accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             display: block;
             line-height: 1;
-            margin-bottom: 0.5rem;
         }
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.4;
+        .hook-stat .lbl {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--mt-text-dim);
+            text-transform: uppercase;
+            margin-top: 0.4rem;
         }
-        .audience-copy {
-            max-width: 780px;
+
+        /* Big CTA buttons */
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
         }
-        .audience-copy p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            line-height: 1.9;
-            margin-bottom: 1.25rem;
+        .btn-primary {
+            background: var(--mt-accent-gradient);
+            color: #fff;
+            box-shadow: 0 0 35px rgba(172, 33, 129, 0.45);
         }
-        .audience-copy p:last-child { margin-bottom: 0; }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 45px rgba(172, 33, 129, 0.65);
+        }
+        .btn-tiny-note {
+            display: block;
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 0.82rem;
+            color: var(--mt-text-dim);
+            margin-top: 1rem;
+            letter-spacing: 0;
+            text-transform: none;
+            font-weight: 400;
+        }
 
         /* ============================================================
-           SECTION 3 — SPONSORSHIP TIERS
-        ============================================================ */
-        .tiers {
-            padding: 0;
+           STORY — THE NARRATIVE / VISION
+           ============================================================ */
+        .story {
+            background: rgba(255, 255, 255, 0.012);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .tiers .section-container {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+        .story h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+            font-weight: 800;
+            margin: 0.75rem 0 2rem;
+            line-height: 1.25;
         }
-        .tiers-header {
+        .story h2 em {
+            font-style: normal;
+            background: var(--mt-accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .story p {
+            font-size: 1.08rem;
+            color: var(--mt-text-muted);
+            line-height: 1.9;
+            margin-bottom: 1.3rem;
+            max-width: 820px;
+        }
+        .story p strong { color: var(--mt-accent-pink-soft); font-weight: 500; }
+        .story-pullquote {
+            margin: 2.5rem 0;
+            padding: 2rem 2.25rem;
+            border-left: 3px solid var(--mt-accent-primary);
+            background: rgba(172, 33, 129, 0.04);
+            border-radius: 0 14px 14px 0;
+            font-family: 'Noto Serif JP', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #fff;
+            line-height: 1.55;
+            max-width: 820px;
+        }
+
+        /* The "what most promoters get wrong" list */
+        .vs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            max-width: 900px;
+        }
+        .vs-card {
+            background: var(--mt-panel);
+            border: 1px solid var(--mt-border);
+            border-radius: 16px;
+            padding: 1.75rem;
+        }
+        .vs-card.wrong {
+            border-color: rgba(255, 90, 90, 0.18);
+            background: rgba(255, 90, 90, 0.025);
+        }
+        .vs-card.right {
+            border-color: var(--mt-border-strong);
+            background: rgba(172, 33, 129, 0.05);
+        }
+        .vs-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
             margin-bottom: 1rem;
         }
-        .tiers h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-            margin-bottom: 0.5rem;
+        .vs-card.wrong .vs-label { color: #ff9a9a; }
+        .vs-card.right .vs-label { color: var(--mt-accent-pink-soft); }
+        .vs-card ul { list-style: none; }
+        .vs-card li {
+            font-size: 0.95rem;
+            color: var(--mt-text-muted);
+            padding: 0.45rem 0;
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            line-height: 1.55;
         }
-        .tiers-sub {
-            font-size: 1rem;
-            color: var(--text-secondary);
+        .vs-card li .mk { flex-shrink: 0; margin-top: 0.15rem; }
+        .vs-card.wrong li .mk { color: #ff9a9a; }
+        .vs-card.right li .mk { color: var(--mt-accent-highlight); }
+
+        /* ============================================================
+           THE OFFER — TIER STACK
+           ============================================================ */
+        .offer .container { max-width: 1280px; padding-top: 6rem; }
+        .offer h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+            font-weight: 800;
+            margin: 0.75rem 0 0.75rem;
+            letter-spacing: -0.5px;
+        }
+        .offer .lead {
+            font-size: 1.05rem;
+            color: var(--mt-text-muted);
+            line-height: 1.8;
+            max-width: 780px;
             margin-bottom: 3rem;
         }
         .tiers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
             gap: 1.5rem;
         }
         .tier-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
-            padding: 2rem;
+            background: var(--mt-panel-elevated);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--mt-border);
+            border-radius: 18px;
+            padding: 2rem 1.75rem;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
         }
         .tier-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 3px;
-            background: var(--gradient-primary);
+            background: var(--mt-accent-gradient);
+            opacity: 0.65;
         }
         .tier-card:hover {
-            border-color: rgba(0, 255, 136, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--mt-border-strong);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 40px rgba(172, 33, 129, 0.12);
         }
         .tier-card.featured {
-            border-color: rgba(0, 255, 136, 0.25);
-            background: rgba(0, 255, 136, 0.04);
+            border-color: var(--mt-accent-primary);
+            background: linear-gradient(180deg, rgba(172, 33, 129, 0.10) 0%, rgba(20, 18, 30, 0.6) 100%);
+            transform: translateY(-4px);
         }
-        .tier-card.featured::before { background: var(--gradient-primary); }
-        .tier-badge {
-            display: inline-block;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            margin-bottom: 1rem;
-            background: rgba(0, 255, 136, 0.12);
-            color: var(--neon-green);
-            border: 1px solid rgba(0, 255, 136, 0.25);
-        }
-        .tier-badge.badge-premium {
-            background: var(--gradient-primary);
-            color: var(--bg-dark);
-            border: none;
-        }
-        .tier-badge.badge-sell {
-            background: rgba(0, 240, 255, 0.12);
-            color: var(--neon-blue);
-            border-color: rgba(0, 240, 255, 0.25);
-        }
-        .tier-badge.badge-prize {
-            background: rgba(191, 0, 255, 0.12);
-            color: #d966ff;
-            border-color: rgba(191, 0, 255, 0.25);
-        }
-        .tier-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-        .tier-jp {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: block;
-            margin-bottom: 1.25rem;
-        }
-        .tier-what-label {
+        .tier-card.featured::before { opacity: 1; height: 4px; }
+        .featured-banner {
+            position: absolute;
+            top: 12px; right: -34px;
+            transform: rotate(35deg);
+            background: var(--mt-accent-gradient);
+            color: #fff;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.6rem;
+            font-weight: 700;
             letter-spacing: 2px;
-            color: var(--text-muted);
+            padding: 0.4rem 2.5rem;
             text-transform: uppercase;
-            margin-bottom: 0.4rem;
         }
-        .tier-what {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
+        .tier-tag {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            background: rgba(127, 187, 224, 0.10);
+            color: var(--mt-accent-highlight);
+            border: 1px solid rgba(127, 187, 224, 0.30);
+            text-transform: uppercase;
+            align-self: flex-start;
+        }
+        .tier-tag.magenta { background: rgba(172, 33, 129, 0.12); color: var(--mt-accent-pink-soft); border-color: rgba(172, 33, 129, 0.35); }
+        .tier-tag.premium { background: var(--mt-accent-gradient); color: #fff; border-color: transparent; }
+        .tier-tag.purple { background: rgba(105, 69, 145, 0.15); color: #c8a4f0; border-color: rgba(105, 69, 145, 0.40); }
+        .tier-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--mt-text);
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.5px;
+        }
+        .tier-jp {
+            font-family: 'Noto Serif JP', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--mt-text-dim);
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .tier-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            background: var(--mt-accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.5px;
+        }
+        .tier-price-note { font-size: 0.78rem; color: var(--mt-text-dim); margin-bottom: 1.25rem; }
+        .tier-desc {
+            font-size: 0.92rem;
+            color: var(--mt-text-muted);
+            line-height: 1.65;
+            margin-bottom: 1.4rem;
+            padding-bottom: 1.25rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
         .tier-benefits-label {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.6rem;
-            letter-spacing: 2px;
-            color: var(--text-muted);
+            letter-spacing: 2.5px;
+            color: var(--mt-text-dim);
             text-transform: uppercase;
             margin-bottom: 0.75rem;
         }
-        .tier-benefits {
-            list-style: none;
-            margin-bottom: 1.5rem;
-            flex: 1;
-        }
+        .tier-benefits { list-style: none; margin-bottom: 1.5rem; flex: 1; }
         .tier-benefits li {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            padding: 0.3rem 0;
+            font-size: 0.88rem;
+            color: var(--mt-text-muted);
+            padding: 0.35rem 0;
             display: flex;
-            gap: 0.5rem;
+            gap: 0.6rem;
             align-items: flex-start;
-            line-height: 1.5;
+            line-height: 1.55;
         }
-        .tier-benefits li .bullet {
-            color: var(--neon-green);
-            font-size: 0.7rem;
-            margin-top: 0.3rem;
-            flex-shrink: 0;
-        }
-        .tier-best {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-        .tier-best strong {
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
+        .tier-benefits li .bullet { color: var(--mt-accent-highlight); font-size: 0.7rem; margin-top: 0.35rem; flex-shrink: 0; }
+        .tier-best { font-size: 0.78rem; color: var(--mt-text-dim); margin-bottom: 1.25rem; line-height: 1.55; }
+        .tier-best strong { color: var(--mt-accent-pink-soft); font-weight: 500; }
         .tier-cta {
             display: block;
             text-align: center;
-            padding: 0.75rem 1.5rem;
+            padding: 0.95rem 1.5rem;
             border-radius: 30px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-decoration: none;
             background: transparent;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            color: var(--neon-green);
+            border: 1px solid var(--mt-border-strong);
+            color: var(--mt-accent-pink-soft);
             transition: all 0.3s ease;
             cursor: pointer;
             width: 100%;
+            text-transform: uppercase;
         }
         .tier-cta:hover {
-            background: var(--gradient-primary);
-            color: var(--bg-dark);
+            background: var(--mt-accent-gradient);
+            color: #fff;
             border-color: transparent;
             transform: translateY(-2px);
         }
+        .tier-card.featured .tier-cta { background: var(--mt-accent-gradient); color: #fff; border-color: transparent; }
+        .tier-card.featured .tier-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(172, 33, 129, 0.5); }
+
+        .pricing-disclaimer {
+            margin: 2.5rem auto 0;
+            font-size: 0.85rem;
+            color: var(--mt-text-dim);
+            font-style: italic;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 760px;
+        }
 
         /* ============================================================
-           SECTION 4 — WHY IT WORKS
-        ============================================================ */
-        .why-works {
-            background: rgba(255, 255, 255, 0.02);
+           VALUE STACK
+           ============================================================ */
+        .value-stack {
+            background: rgba(255, 255, 255, 0.015);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .why-works h2 {
+        .value-stack .container { max-width: 880px; }
+        .value-stack h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
             font-weight: 800;
-            margin-bottom: 3rem;
-            max-width: 720px;
-            line-height: 1.3;
+            margin: 0.75rem 0 1rem;
         }
-        .benefit-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-        .benefit-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: var(--gradient-primary);
-        }
-        .benefit-card:hover {
-            border-color: rgba(0, 240, 255, 0.3);
-            transform: translateY(-5px);
-        }
-        .benefit-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--neon-green);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        .benefit-text {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        /* ============================================================
-           SECTION 5 — CURRENT SPONSORS
-        ============================================================ */
-        .current-sponsors {
-            text-align: center;
-        }
-        .current-sponsors h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-            margin-bottom: 0.75rem;
-        }
-        .current-sponsors .sponsors-sub {
+        .value-stack .lead {
             font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--mt-text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
         }
-        .sponsor-placeholder-grid {
+        .stack-table {
+            border: 1px solid var(--mt-border-strong);
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--mt-panel-elevated);
+        }
+        .stack-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr auto;
             gap: 1.5rem;
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .sponsor-placeholder {
-            border: 2px dashed rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            display: flex;
+            padding: 1.15rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             align-items: center;
-            justify-content: center;
-            min-height: 140px;
-            transition: border-color 0.3s ease;
         }
-        .sponsor-placeholder:hover {
-            border-color: rgba(0, 255, 136, 0.25);
+        .stack-row:last-child { border-bottom: none; }
+        .stack-item { font-size: 0.95rem; color: var(--mt-text-muted); }
+        .stack-item strong { color: var(--mt-text); font-weight: 500; }
+        .stack-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--mt-accent-pink-soft);
+            white-space: nowrap;
         }
-        .sponsor-placeholder span {
+        .stack-total {
+            background: var(--mt-accent-gradient);
+            color: #fff;
+        }
+        .stack-total .stack-item { color: rgba(255,255,255,0.9); font-weight: 500; }
+        .stack-total .stack-item strong { color: #fff; }
+        .stack-total .stack-value { color: #fff; font-size: 1.05rem; }
+
+        .stack-row.stack-moat {
+            background: linear-gradient(135deg, rgba(172,33,129,0.08), rgba(105,69,145,0.08));
+            border: 1px solid color-mix(in srgb, var(--mt-accent-primary) 35%, transparent);
+            border-radius: 8px;
+            padding: 1.1rem 1.2rem;
+            margin: 0.4rem 0;
+            align-items: flex-start;
+        }
+        .stack-row.stack-moat .stack-item { line-height: 1.55; }
+        .stack-row.stack-moat .stack-value { color: var(--mt-accent-highlight); font-weight: 700; }
+        .moat-tag {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 3px 9px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--mt-accent-gradient);
+            border-radius: 3px;
+        }
+
+        .anchor-line {
             text-align: center;
-            line-height: 1.6;
+            margin-top: 2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--mt-text-muted);
+            text-transform: uppercase;
+        }
+        .anchor-line .real {
+            color: var(--mt-accent-highlight);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
         }
 
         /* ============================================================
-           SECTION 6 — HOW IT WORKS
-        ============================================================ */
-        .how-it-works {
-            background: rgba(255, 255, 255, 0.02);
+           OBJECTION HANDLING
+           ============================================================ */
+        .objections h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 800;
+            margin: 0.75rem 0 2rem;
+        }
+        .objection {
+            background: var(--mt-panel);
+            border: 1px solid var(--mt-border);
+            border-radius: 14px;
+            margin-bottom: 0.85rem;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .objection:hover { border-color: var(--mt-border-strong); }
+        .objection-q {
+            padding: 1.15rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--mt-text);
+            letter-spacing: 0.5px;
+            user-select: none;
+        }
+        .objection-q .chev {
+            color: var(--mt-accent-pink-soft);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .objection.open .objection-q .chev { transform: rotate(45deg); }
+        .objection-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+            color: var(--mt-text-muted);
+            font-size: 0.96rem;
+            line-height: 1.8;
+        }
+        .objection.open .objection-a {
+            max-height: 500px;
+            padding: 0 1.5rem 1.3rem;
+        }
+
+        /* ============================================================
+           PROCESS STEPS
+           ============================================================ */
+        .process {
+            background: rgba(255, 255, 255, 0.015);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .how-it-works h2 {
+        .process h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
             font-weight: 800;
-            margin-bottom: 3rem;
+            margin: 0.75rem 0 3rem;
         }
         .steps-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 0;
             position: relative;
         }
@@ -754,197 +772,93 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             content: '';
             position: absolute;
             top: 2.5rem;
-            left: calc(16.666% + 1rem);
-            right: calc(16.666% + 1rem);
+            left: 12.5%; right: 12.5%;
             height: 1px;
-            background: linear-gradient(90deg, rgba(0,255,136,0.4), rgba(0,240,255,0.4));
+            background: linear-gradient(90deg, var(--mt-accent-primary), var(--mt-accent-highlight));
             z-index: 0;
+            opacity: 0.5;
         }
-        .step {
-            text-align: center;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
+        .step { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
         .step-number {
             width: 5rem; height: 5rem;
             border-radius: 50%;
-            background: var(--gradient-primary);
+            background: var(--mt-accent-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1.25rem;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 900;
-            color: var(--bg-dark);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(172, 33, 129, 0.35);
         }
         .step-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
+            letter-spacing: 1.5px;
+            color: var(--mt-text);
+            margin-bottom: 0.6rem;
             text-transform: uppercase;
         }
-        .step-text {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-        .step-text a {
-            color: var(--neon-green);
-            text-decoration: none;
-        }
-        .step-text a:hover { text-decoration: underline; }
+        .step-text { font-size: 0.88rem; color: var(--mt-text-muted); line-height: 1.7; }
 
         /* ============================================================
-           SECTION 7 — CONTACT FORM
-        ============================================================ */
-        .contact-section {
-            position: relative;
-        }
-        .contact-section h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-        .contact-sub {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 520px;
-            line-height: 1.7;
-        }
-        .contact-form-wrap {
-            max-width: 680px;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            margin-bottom: 1rem;
-        }
-        .form-group label {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 0.9rem 1rem;
-            color: var(--text-primary);
-            font-family: 'Zen Kaku Gothic New', sans-serif;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            outline: none;
-            width: 100%;
-        }
-        .form-group select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,0.4)' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 2.5rem;
-            cursor: pointer;
-        }
-        .form-group select option {
-            background: #0f0f1a;
-            color: var(--text-primary);
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: rgba(0, 255, 136, 0.4);
-            background: rgba(0, 255, 136, 0.04);
-            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.08);
-        }
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.25);
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 130px;
-        }
-        .btn-submit {
-            width: 100%;
-            padding: 1rem 2rem;
-            background: var(--gradient-primary);
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 50px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-            margin-top: 0.5rem;
-        }
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.5);
-        }
-        .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .form-email-alt {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-        .form-email-alt a {
-            color: var(--neon-green);
-            text-decoration: none;
-        }
-        .form-email-alt a:hover { text-decoration: underline; }
-        .form-success {
-            display: none;
-            background: rgba(0, 255, 136, 0.08);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 16px;
-            padding: 2rem;
+           CLOSE / FINAL CTA
+           ============================================================ */
+        .close {
             text-align: center;
-            margin-top: 1.5rem;
+            padding: 6rem 1.5rem;
+            position: relative;
+            overflow: hidden;
         }
-        .form-success.visible { display: block; }
-        .form-success h3 {
+        .close::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 50%, rgba(172, 33, 129, 0.18) 0%, transparent 60%);
+        }
+        .close-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+        .close h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--neon-green);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            font-weight: 900;
+            margin: 0.75rem 0 1.5rem;
+            line-height: 1.15;
+            color: #fff;
         }
-        .form-success p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
+        .close h2 .accent {
+            background: var(--mt-accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .close p {
+            font-family: 'Noto Serif JP', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--mt-text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 660px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .scarcity {
+            margin-top: 1.75rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
+            color: var(--mt-accent-pink-soft);
+            text-transform: uppercase;
         }
 
         /* ============================================================
            FOOTER
-        ============================================================ */
+           ============================================================ */
         footer {
-            border-top: 1px solid rgba(0, 255, 136, 0.1);
+            border-top: 1px solid var(--mt-border);
             padding: 3rem 2rem 2rem;
             text-align: center;
             position: relative;
@@ -958,18 +872,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             gap: 1.5rem;
             list-style: none;
         }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-        .footer-links a:hover { color: var(--neon-green); }
-        .footer-links span { color: var(--text-muted); font-size: 0.9rem; }
-        .copyright {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
+        .footer-links a { color: var(--mt-text-muted); text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--mt-accent-highlight); }
+        .footer-links span { color: var(--mt-text-dim); font-size: 0.9rem; }
+        .copyright { font-size: 0.8rem; color: var(--mt-text-dim); margin-top: 1.5rem; }
         .footer-legal {
             margin-top: 1rem;
             display: flex;
@@ -977,397 +883,456 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             justify-content: center;
             gap: 0.75rem;
         }
-        .footer-legal a {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-legal a:hover { color: var(--text-secondary); }
+        .footer-legal a { font-size: 0.75rem; color: var(--mt-text-dim); text-decoration: none; }
+        .footer-legal a:hover { color: var(--mt-text-muted); }
         .footer-legal .separator { color: rgba(255, 255, 255, 0.2); }
 
-        /* ============================================================
-           RESPONSIVE
-        ============================================================ */
+        /* RESPONSIVE */
         @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 70px; left: 0; right: 0;
-                background: rgba(10, 10, 15, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem;
-                gap: 1.5rem;
-                border-bottom: 1px solid rgba(0, 255, 136, 0.1);
-            }
-            .nav-links.active { display: flex; }
-            .mobile-toggle { display: flex; }
-
-            .stat-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .benefit-grid { grid-template-columns: 1fr; }
-            .tiers-grid { grid-template-columns: 1fr; }
-            .steps-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
+            .vs-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
             .steps-grid::before { display: none; }
-            .form-row { grid-template-columns: 1fr; }
-            .sponsor-placeholder-grid { grid-template-columns: 1fr; max-width: 300px; }
+            .hook-stats { gap: 1.5rem; }
         }
-
         @media (max-width: 600px) {
-            .section-container { padding: 3.5rem 1.25rem; }
-            .hero { padding: 0 1.25rem; }
-            .hero h1 { letter-spacing: -1px; }
-            .stat-grid { gap: 0.75rem; }
+            .container { padding: 3.5rem 1.25rem; }
+            .hook { padding: 6rem 1.25rem 3rem; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .stack-row { grid-template-columns: 1fr; gap: 0.4rem; }
+            .stack-value { justify-self: flex-start; }
         }
     </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WX8WHXSZ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<!-- GTM (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WX8WHXSZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Background -->
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
 
-    <!-- Data Notice -->
     <div class="data-notice" id="data-notice">
         <p>We use cookies to understand how visitors interact with this site. See our <a href="/privacy-policy/">Privacy Policy</a> for details.</p>
         <button class="data-notice-dismiss" id="data-notice-dismiss">GOT IT</button>
     </div>
 
-    <!-- Navigation -->
+    <!-- NAV: minimal, single CTA, no menu (funnel best practice) -->
     <nav>
         <div class="nav-container">
             <a href="/" class="logo">
-                <img src="../assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Otaku Nights" class="logo-image">
+                <img src="/assets/images/logos/Moonlight Otaku Nights Logo no background clean version.png" alt="Moonlight Otaku Nights" class="logo-image">
                 MOONLIGHT OTAKU NIGHTS
             </a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/elven-grove/">Events</a></li>
-                <li><a href="/partners/">Community Partners</a></li>
-                <li>
-                    <a href="https://elven-grove.eventbrite.com" class="nav-cta" target="_blank" rel="noopener noreferrer"
-                       onclick="if(typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Elven Grove Tickets',content_category:'Event Tickets'});}">
-                        TICKETS
-                    </a>
-                </li>
-            </ul>
-            <div class="mobile-toggle" id="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <a href="/sponsors/apply/" class="nav-cta-top" onclick="trackCta('nav')">Apply to Sponsor</a>
         </div>
     </nav>
 
     <!-- ============================================================
-         SECTION 1 — HERO
-    ============================================================ -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-jp">スポンサー募集</span>
-            <span class="hero-eyebrow">MOONLIGHT OTAKU NIGHTS</span>
-            <h1>PUT YOUR BRAND</h1>
-            <span class="hero-sub">IN FRONT OF THE CULTURE.</span>
-            <p class="hero-support">
-                300+ anime fans. One room. Newark, NJ.<br>
-                March 26 — and recurring throughout the year.
+         HOOK — Pattern interrupt headline + curiosity + big promise
+         ============================================================ -->
+    <section class="hook">
+        <div class="hook-inner">
+            <span class="eyebrow">For Brands Selling to Anime · Cosplay · Gen Z</span>
+            <span class="jp-label">スポンサー募集</span>
+            <h1>How to Put Your Brand In Front of <span class="accent">400+ Hyper-Engaged Anime Fans Every Month</span> — Without Burning $10K on Meta Ads</h1>
+            <p class="sub">
+                There's <strong>one room</strong> in the Northeast where the entire anime · cosplay · rave audience shows up on the same night, in costume, with phones out, ready to spend money on the brands they discover there. We're letting <strong>5 brands</strong> in next season. Read this page if you might want one of those slots.
             </p>
-            <a href="#tiers" class="btn btn-primary">GET INVOLVED ↓</a>
+
+            <div class="hook-stats">
+                <div class="hook-stat">
+                    <span class="num">~500</span>
+                    <span class="lbl">Cap per event</span>
+                </div>
+                <div class="hook-stat">
+                    <span class="num">18–30</span>
+                    <span class="lbl">Core demo</span>
+                </div>
+                <div class="hook-stat">
+                    <span class="num">Monthly</span>
+                    <span class="lbl">Recurring series</span>
+                </div>
+                <div class="hook-stat">
+                    <span class="num">QXT's</span>
+                    <span class="lbl">Newark NJ</span>
+                </div>
+            </div>
+
+            <a href="/sponsors/apply/" class="btn btn-primary" onclick="trackCta('hook')">Apply to Sponsor →</a>
+            <span class="btn-tiny-note">Takes 3 minutes · No commitment · We respond within 24 hours</span>
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 2 — THE AUDIENCE
-    ============================================================ -->
-    <section class="audience">
-        <div class="section-container">
-            <span class="section-label">誰が来るのか</span>
-            <h2>"Who's walking through that door."</h2>
-            <div class="stat-grid">
-                <div class="stat-card">
-                    <span class="stat-number">300+</span>
-                    <span class="stat-label">Expected attendees at our first event</span>
+         STORY — Origin, vision, "what most promoters get wrong"
+         ============================================================ -->
+    <section class="story">
+        <div class="container">
+            <span class="eyebrow">The Story</span>
+            <span class="jp-label">物語</span>
+            <h2>Most nightlife sponsorships are <em>logo-on-a-flyer theater.</em> This isn't that.</h2>
+
+            <p>I've been producing events since the desert compound days in California — 10,000-person warehouse raves. When I came back to NJ, I built Moonlight Otaku Nights from one observation: <strong>anime fans are the most loyal consumers in entertainment, and nobody is throwing them a real party.</strong></p>
+
+            <p>Conventions get them once a year. Online merch gets them at home. Regular clubs don't get them at all. <strong>So we built the only recurring monthly anime · cosplay · rave series in the Northeast.</strong> Featured cosplayers, hand-picked DJs, full production, real costumes, real photographers — at QXT's in Newark, the venue that's been the home of Goth/industrial nights on the East Coast for 30 years.</p>
+
+            <div class="story-pullquote">
+                "We're not a club night with anime DJs. We're a cosplay culture house — and the events are the showcase. Sponsors aren't buying a logo. They're buying a relationship with the talent and the room."
+            </div>
+
+            <p>Here's what most promoters get wrong when they pitch you, and what we do instead:</p>
+
+            <div class="vs-grid">
+                <div class="vs-card wrong">
+                    <div class="vs-label">What other event sponsorships look like</div>
+                    <ul>
+                        <li><span class="mk">✕</span> Logo on a flyer with 50 other logos</li>
+                        <li><span class="mk">✕</span> "300+ attendees" with no proof or follow-up</li>
+                        <li><span class="mk">✕</span> One-off event, gone in 4 hours, no recap</li>
+                        <li><span class="mk">✕</span> Random audience — could be anyone</li>
+                        <li><span class="mk">✕</span> You chase them for the deck after the night</li>
+                        <li><span class="mk">✕</span> No data, no metrics, no renewal conversation</li>
+                    </ul>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number">21–35</span>
-                    <span class="stat-label">Core age demographic</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Anime, gaming & cosplay community</span>
+                <div class="vs-card right">
+                    <div class="vs-label">What Moonlight delivers</div>
+                    <ul>
+                        <li><span class="mk">✓</span> Tier-tagged placement with category exclusivity available</li>
+                        <li><span class="mk">✓</span> Recurring monthly series — compounding visibility</li>
+                        <li><span class="mk">✓</span> Featured cosplayers (recurring talent) wearing/holding your brand in content that lives for years</li>
+                        <li><span class="mk">✓</span> Single demographic — 18–30 anime/cosplay/rave overlap</li>
+                        <li><span class="mk">✓</span> Recap report within 7 days, every event</li>
+                        <li><span class="mk">✓</span> Anonymized attendee survey data on Tier 2+</li>
+                    </ul>
                 </div>
             </div>
-            <div class="audience-copy">
-                <p>Moonlight Otaku Nights is NJ's first dedicated anikura series — a nightclub format built entirely around anime music, cosplay, and Japanese pop culture. This isn't a one-time event. This is a recurring series with a growing, loyal audience.</p>
-                <p>The people coming to this event buy anime merch, collect figures, attend conventions, and actively support the brands and businesses that show up in their community. If your business serves this audience — or wants to — this is your room.</p>
-            </div>
+
+            <p style="margin-top:2rem">If you sell something — energy drinks, sake, soju, streetwear, anime merch, gaming hardware, Japan tours, a tattoo shop — and your customer is 18–30 and culturally adjacent to anime, K-pop, or cosplay: <strong>this is the room.</strong></p>
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 3 — SPONSORSHIP TIERS
-    ============================================================ -->
-    <section class="tiers" id="tiers">
-        <div class="section-container">
-            <div class="tiers-header">
-                <span class="section-label">スポンサーシップ</span>
-                <h2>Find your fit.</h2>
-                <p class="tiers-sub">Every level of involvement is welcome. Pick what works for you.</p>
-            </div>
+         OFFER — The tier stack
+         ============================================================ -->
+    <section class="offer" id="tiers">
+        <div class="container container-wide">
+            <span class="eyebrow">The Offer</span>
+            <span class="jp-label">スポンサーパッケージ</span>
+            <h2>Pick the slot that fits — or talk to us about a custom build.</h2>
+            <p class="lead">Six ways in. Local businesses start at $250. National brands take the title slot for an entire season. Tiers below are list price; first-event deals close at 60–80% of list while we build documented attendance data. Tell us what success looks like and we'll structure around it.</p>
+
             <div class="tiers-grid">
 
-                <!-- TIER 1 — FLYER PARTNER -->
+                <!-- TIER 0 -->
                 <div class="tier-card">
-                    <span class="tier-badge">FREE</span>
-                    <p class="tier-name">FLYER PARTNER</p>
-                    <span class="tier-jp">フライヤーパートナー</span>
-                    <p class="tier-what-label">What you do</p>
-                    <p class="tier-what">Let us leave a stack of flyers at your location for your customers.</p>
-                    <p class="tier-benefits-label">What you get</p>
+                    <span class="tier-tag purple">FRIEND OF MOONLIGHT</span>
+                    <p class="tier-name">TIER 0</p>
+                    <span class="tier-jp">月の仲間</span>
+                    <p class="tier-price">$250 / event</p>
+                    <p class="tier-price-note">For local Newark businesses — relationship-first.</p>
+                    <p class="tier-desc">Entry for local shops, tattoo parlors, boba spots, ramen joints, neighborhood retail who want to seed goodwill in this community.</p>
+                    <p class="tier-benefits-label">What's included</p>
                     <ul class="tier-benefits">
-                        <li><span class="bullet">✦</span> Shoutout on our Instagram stories</li>
-                        <li><span class="bullet">✦</span> Mentioned in our community newsletter</li>
-                        <li><span class="bullet">✦</span> Your customers get early access to future events</li>
+                        <li><span class="bullet">✦</span> Logo on flyer ("supported by")</li>
+                        <li><span class="bullet">✦</span> 1 dedicated Instagram story shout-out</li>
+                        <li><span class="bullet">✦</span> Listed on the event page</li>
+                        <li><span class="bullet">✦</span> Verbal mention from host on mic</li>
+                        <li><span class="bullet">✦</span> 2 complimentary tickets</li>
                     </ul>
-                    <p class="tier-best"><strong>Best for:</strong> Local shops, cafes, gaming stores</p>
-                    <a href="#contact" class="tier-cta">This is me</a>
+                    <p class="tier-best"><strong>Best fit:</strong> Newark/Essex County local businesses.</p>
+                    <a href="/sponsors/apply/?tier=tier0" class="tier-cta" onclick="trackCta('tier0')">Apply for Tier 0</a>
                 </div>
 
-                <!-- TIER 2 — COMMUNITY SPONSOR -->
+                <!-- TIER 1 -->
                 <div class="tier-card">
-                    <span class="tier-badge">FREE</span>
-                    <p class="tier-name">COMMUNITY SPONSOR</p>
-                    <span class="tier-jp">コミュニティスポンサー</span>
-                    <p class="tier-what-label">What you do</p>
-                    <p class="tier-what">Share our event on your social media and tag @moonlightotakunights. We'll do the same for you.</p>
-                    <p class="tier-benefits-label">What you get</p>
+                    <span class="tier-tag">ACTIVATION PARTNER</span>
+                    <p class="tier-name">TIER 1</p>
+                    <span class="tier-jp">アクティベーションパートナー</span>
+                    <p class="tier-price">$500 – $750 / event</p>
+                    <p class="tier-price-note">For brands that want a physical presence in the room.</p>
+                    <p class="tier-desc">For local retail, indie streetwear, food trucks, content creators with merch, growing tattoo studios — be in the room, not just on the flyer.</p>
+                    <p class="tier-benefits-label">What's included</p>
                     <ul class="tier-benefits">
-                        <li><span class="bullet">✦</span> Your logo featured on our event page</li>
-                        <li><span class="bullet">✦</span> Dedicated Instagram shoutout to our audience</li>
-                        <li><span class="bullet">✦</span> Verbal mention at the event</li>
-                        <li><span class="bullet">✦</span> Logo in our post-event recap content</li>
+                        <li><span class="bullet">✦</span> 6'×6' booth (you bring table/display)</li>
+                        <li><span class="bullet">✦</span> 1 dedicated IG post + 2 stories</li>
+                        <li><span class="bullet">✦</span> Logo on flyer (medium tier)</li>
+                        <li><span class="bullet">✦</span> Featured in pre-event email blast</li>
+                        <li><span class="bullet">✦</span> 5 complimentary tickets</li>
+                        <li><span class="bullet">✦</span> Listed on website event page</li>
                     </ul>
-                    <p class="tier-best"><strong>Best for:</strong> Brands, online shops, creators with an audience</p>
-                    <a href="#contact" class="tier-cta">This is me</a>
+                    <p class="tier-best"><strong>Best fit:</strong> Anime merch, indie streetwear, food vendors, scaling tattoo shops.</p>
+                    <a href="/sponsors/apply/?tier=tier1" class="tier-cta" onclick="trackCta('tier1')">Apply for Tier 1</a>
                 </div>
 
-                <!-- TIER 3 — PRIZE SPONSOR -->
+                <!-- TIER 2 -->
                 <div class="tier-card">
-                    <span class="tier-badge badge-prize">DONATE A PRIZE</span>
-                    <p class="tier-name">PRIZE SPONSOR</p>
-                    <span class="tier-jp">プライズスポンサー</span>
-                    <p class="tier-what-label">What you do</p>
-                    <p class="tier-what">Donate a prize — gift card, product, experience — for our cosplay competition or raffle giveaway.</p>
-                    <p class="tier-benefits-label">What you get</p>
+                    <span class="tier-tag magenta">SUPPORTING SPONSOR</span>
+                    <p class="tier-name">TIER 2</p>
+                    <span class="tier-jp">サポーティングスポンサー</span>
+                    <p class="tier-price">$1,000 – $1,500 / event</p>
+                    <p class="tier-price-note">Two events in 6 months unlocks lower-end pricing.</p>
+                    <p class="tier-desc">For regional brands that want repeat presence, prominent placement, and real engagement metrics after each event.</p>
+                    <p class="tier-benefits-label">What's included</p>
                     <ul class="tier-benefits">
-                        <li><span class="bullet">✦</span> Everything in Community Sponsor</li>
-                        <li><span class="bullet">✦</span> 'Presented by [Your Brand]' callout during the competition</li>
-                        <li><span class="bullet">✦</span> Your prize featured in pre-event promotional content</li>
-                        <li><span class="bullet">✦</span> Direct exposure to our most engaged attendees</li>
+                        <li><span class="bullet">✦</span> 2 events in a 6-month window</li>
+                        <li><span class="bullet">✦</span> 8'×8' booth, prominent placement</li>
+                        <li><span class="bullet">✦</span> 2 IG posts + 4 stories per event</li>
+                        <li><span class="bullet">✦</span> Large logo on flyer + sponsors directory</li>
+                        <li><span class="bullet">✦</span> Top-tier mention in email blast</li>
+                        <li><span class="bullet">✦</span> Brand b-roll in post-event recap reel</li>
+                        <li><span class="bullet">✦</span> Anonymized attendee survey data</li>
+                        <li><span class="bullet">✦</span> 10 comp tickets per event</li>
                     </ul>
-                    <p class="tier-best"><strong>Best for:</strong> Restaurants, activity venues, product brands</p>
-                    <a href="#contact" class="tier-cta">This is me</a>
+                    <p class="tier-best"><strong>Best fit:</strong> Regional clothing, anime/manga retailers, Japan travel agencies, non-alcohol beverages, gaming hardware.</p>
+                    <a href="/sponsors/apply/?tier=tier2" class="tier-cta" onclick="trackCta('tier2')">Apply for Tier 2</a>
                 </div>
 
-                <!-- TIER 4 — VENDOR TABLE -->
-                <div class="tier-card">
-                    <span class="tier-badge badge-sell">SELL DIRECTLY</span>
-                    <p class="tier-name">VENDOR TABLE</p>
-                    <span class="tier-jp">ベンダーテーブル</span>
-                    <p class="tier-what-label">What you do</p>
-                    <p class="tier-what">Set up a table at the event. Sell your product directly to 300+ anime fans. Arrive with enough time to be fully set up before doors open at 10 PM. If your setup takes 1–2 hours, plan to arrive by 8 PM. If it takes longer, arrive earlier. Setup must be complete before guests walk in. Promote your appearance to your audience.</p>
-                    <p class="tier-benefits-label">What you get</p>
-                    <ul class="tier-benefits">
-                        <li><span class="bullet">✦</span> Everything in Community Sponsor</li>
-                        <li><span class="bullet">✦</span> Table space in our vendor area</li>
-                        <li><span class="bullet">✦</span> 100% of your sales — we don't take a cut</li>
-                        <li><span class="bullet">✦</span> Direct access to the most engaged buyers in the room</li>
-                    </ul>
-                    <p class="tier-best"><strong>Best for:</strong> Anime stores, artists, merch brands, collectible shops</p>
-                    <a href="#contact" class="tier-cta">This is me</a>
-                </div>
-
-                <!-- TIER 5 — PRESENTING SPONSOR -->
+                <!-- TIER 3 — FEATURED -->
                 <div class="tier-card featured">
-                    <span class="tier-badge badge-premium">PREMIUM</span>
-                    <p class="tier-name">PRESENTING SPONSOR</p>
+                    <span class="featured-banner">Most Popular</span>
+                    <span class="tier-tag premium">PRESENTING SPONSOR</span>
+                    <p class="tier-name">TIER 3</p>
                     <span class="tier-jp">プレゼンティングスポンサー</span>
-                    <p class="tier-what-label">What you do</p>
-                    <p class="tier-what">Contact us to discuss. Reserved for brands who want maximum visibility.</p>
-                    <p class="tier-benefits-label">What you get</p>
+                    <p class="tier-price">$3,000 – $5,000 / event</p>
+                    <p class="tier-price-note">Co-branded across 3–4 events in 12 months.</p>
+                    <p class="tier-desc">For brands that want significant co-branding, a custom activation, and an ongoing partnership — define the season alongside Moonlight.</p>
+                    <p class="tier-benefits-label">What's included</p>
                     <ul class="tier-benefits">
-                        <li><span class="bullet">✦</span> Logo on the event flyer</li>
-                        <li><span class="bullet">✦</span> Dedicated promotional post to our full audience</li>
-                        <li><span class="bullet">✦</span> PA announcement at the event</li>
-                        <li><span class="bullet">✦</span> Featured banner placement at venue</li>
-                        <li><span class="bullet">✦</span> Everything in all lower tiers</li>
+                        <li><span class="bullet">✦</span> "Presented by [Brand]" co-branding on all event materials</li>
+                        <li><span class="bullet">✦</span> Premium 10'×10' booth, best placement</li>
+                        <li><span class="bullet">✦</span> Dedicated IG Reel + post per event (we produce, you approve)</li>
+                        <li><span class="bullet">✦</span> Logo on every flyer, digital asset, recap reel</li>
+                        <li><span class="bullet">✦</span> 1 custom activation per event (photo wall, glow drop, signature mocktail)</li>
+                        <li><span class="bullet">✦</span> Brand-ambassador add-on with featured cosplayer (+$500–$1,000)</li>
+                        <li><span class="bullet">✦</span> First right of refusal on next year's slot</li>
+                        <li><span class="bullet">✦</span> Quarterly performance report</li>
+                        <li><span class="bullet">✦</span> 25 comp tickets + 1 VIP table per event</li>
                     </ul>
-                    <p class="tier-best"><strong>Best for:</strong> Brands looking for deep community integration</p>
-                    <a href="#contact" class="tier-cta">This is me</a>
+                    <p class="tier-best"><strong>Best fit:</strong> National clothing brands entering anime/Y2K/rave, beverage brands, anime streaming, gaming launches, fashion labels.</p>
+                    <a href="/sponsors/apply/?tier=tier3" class="tier-cta" onclick="trackCta('tier3')">Apply for Tier 3</a>
                 </div>
 
+                <!-- TIER 4 -->
+                <div class="tier-card">
+                    <span class="tier-tag purple">TITLE · DIRECT</span>
+                    <p class="tier-name">TIER 4</p>
+                    <span class="tier-jp">タイトルスポンサー</span>
+                    <p class="tier-price">Pitched direct</p>
+                    <p class="tier-price-note">Own the season — by invitation only.</p>
+                    <p class="tier-desc">For a national brand that wants the entire season. The series carries your name: "Moonlight Otaku Nights presented by [Brand]."</p>
+                    <p class="tier-benefits-label">What's included</p>
+                    <ul class="tier-benefits">
+                        <li><span class="bullet">✦</span> Title sponsor for a full season (4–6 events)</li>
+                        <li><span class="bullet">✦</span> Everything in Tier 3, applied across the season</li>
+                        <li><span class="bullet">✦</span> Custom brand integration into event experience</li>
+                        <li><span class="bullet">✦</span> Founding sponsor status in About, press kit, bios</li>
+                        <li><span class="bullet">✦</span> Dedicated co-branded landing page on our site</li>
+                        <li><span class="bullet">✦</span> Co-branded content series (BTS, interviews, cosplayer features)</li>
+                        <li><span class="bullet">✦</span> 50 comp tickets + 2 VIP tables per event</li>
+                        <li><span class="bullet">✦</span> Right of first refusal on next year's title slot</li>
+                    </ul>
+                    <p class="tier-best"><strong>Best fit:</strong> Sake/soju distributors, streetwear majors, anime studios with property launches, beverage brands going hard at Gen Z.</p>
+                    <a href="/sponsors/apply/?tier=tier4" class="tier-cta" onclick="trackCta('tier4')">Start the conversation</a>
+                </div>
+
+                <!-- IN-KIND -->
+                <div class="tier-card">
+                    <span class="tier-tag">IN-KIND · MEDIA</span>
+                    <p class="tier-name">PRODUCT &amp; MEDIA</p>
+                    <span class="tier-jp">プロダクト・メディアパートナー</span>
+                    <p class="tier-price">Trade / Negotiated</p>
+                    <p class="tier-price-note">Product, services, or audience for tier value.</p>
+                    <p class="tier-desc">For brands that want to contribute product, services, or media reach instead of (or in addition to) cash. Valued at wholesale cost; deliverables scale accordingly.</p>
+                    <p class="tier-benefits-label">What we accept</p>
+                    <ul class="tier-benefits">
+                        <li><span class="bullet">✦</span> Product for cosplay comp prizes / raffles</li>
+                        <li><span class="bullet">✦</span> Sample stations (within venue policy)</li>
+                        <li><span class="bullet">✦</span> Co-promotion from podcasts / newsletters / creators</li>
+                        <li><span class="bullet">✦</span> Photography, video, content services</li>
+                    </ul>
+                    <p class="tier-best"><strong>Best fit:</strong> CPG with product to seed, creators with audience, content services.</p>
+                    <a href="/sponsors/apply/?tier=inkind" class="tier-cta" onclick="trackCta('inkind')">Propose a trade</a>
+                </div>
+
+            </div>
+
+            <p class="pricing-disclaimer">All packages assume single-event deliverables unless noted. Series and annual deals available at a discount once we've executed together. Category exclusivity available at a 25–50% premium on base tier. Alcohol sponsorship is structured three-way (Brand → Moonlight for marketing fee, Brand → QXT's distributor for product) per NJ ABC tied-house law.</p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         VALUE STACK — Anchor the Tier 3 price (Russell Brunson's stack-and-close)
+         ============================================================ -->
+    <section class="value-stack">
+        <div class="container">
+            <span class="eyebrow">What You're Actually Getting</span>
+            <span class="jp-label">価値の内訳</span>
+            <h2>The math on a single Tier 3 partnership.</h2>
+            <p class="lead">If you were to buy each deliverable separately as a marketing line-item — at standard market rates — here's what one Tier 3 event night would cost on the open market.</p>
+
+            <div class="stack-table">
+                <div class="stack-row">
+                    <div class="stack-item"><strong>"Presented by [Brand]" co-branding</strong> on all event materials</div>
+                    <div class="stack-value">$1,500</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-item"><strong>Premium 10'×10' booth</strong> in the best placement, 4-hour run</div>
+                    <div class="stack-value">$800</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-item"><strong>Dedicated Instagram Reel</strong> produced by our content team</div>
+                    <div class="stack-value">$650</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-item"><strong>Custom activation</strong> (photo wall, glow drop, signature mocktail)</div>
+                    <div class="stack-value">$750</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-item"><strong>Logo placement</strong> on flyer, digital, email, recap reel</div>
+                    <div class="stack-value">$400</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-item"><strong>Cosplay-ambassador integration</strong> (brand worn/held by featured talent in content)</div>
+                    <div class="stack-value">$1,000</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-item"><strong>25 comp tickets + VIP table</strong> for your team and clients</div>
+                    <div class="stack-value">$625</div>
+                </div>
+                <div class="stack-row">
+                    <div class="stack-item"><strong>Quarterly performance report</strong> with attendance, impressions, attribution data</div>
+                    <div class="stack-value">$300</div>
+                </div>
+                <div class="stack-row stack-moat">
+                    <div class="stack-item">
+                        <strong>Coordinated cosplayer-influencer activation</strong> — every cosplayer in the room with 2K–15K followers becomes part of your campaign. We handle gifted-product handoffs at the door + FTC-compliant disclosure. Walk away with 30–60 pieces of organic tagged content over the 2 weeks after the night.
+                        <span class="moat-tag">No other venue offers this</span>
+                    </div>
+                    <div class="stack-value">$1,200</div>
+                </div>
+                <div class="stack-row stack-total">
+                    <div class="stack-item"><strong>Total real value per event</strong></div>
+                    <div class="stack-value">$7,225</div>
+                </div>
+            </div>
+
+            <p class="anchor-line">You don't pay $7,225. You pay <span class="real">$3,000 – $5,000.</span></p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         OBJECTION HANDLING — "Internal & External Beliefs"
+         ============================================================ -->
+    <section class="objections">
+        <div class="container">
+            <span class="eyebrow">Honest Answers</span>
+            <span class="jp-label">よくある質問</span>
+            <h2>What you're probably thinking right now.</h2>
+
+            <div class="objection">
+                <div class="objection-q">"Why should I sponsor an event series instead of just running Meta ads to this demo?" <span class="chev">+</span></div>
+                <div class="objection-a">Meta ads put your brand on a screen for 1.7 seconds. Sponsoring Moonlight puts your brand in someone's hands for 4 hours — at the venue, in the photos, on the recap reel, on the cosplayer's feed for months. Plus, anime/cosplay audiences are notoriously hard to target with paid social — they use ad blockers, they cycle accounts, they skip ads. Showing up where they already are, with their permission, is the only reliable way in.</div>
+            </div>
+
+            <div class="objection">
+                <div class="objection-q">"How do I know you'll actually deliver 400+ people?" <span class="chev">+</span></div>
+                <div class="objection-a">You don't have to take our word — every contract includes a make-good clause. If actual attendance drops below 80% of projection, we either provide additional social coverage at equivalent market value or apply a credit toward your next event. No promoter at this scale offers that in writing. We do.</div>
+            </div>
+
+            <div class="objection">
+                <div class="objection-q">"Are these prices firm?" <span class="chev">+</span></div>
+                <div class="objection-a">No. Tier prices are list — first-event deals close at 60–80% of list while we build a documented track record. Series commitments unlock additional discount. In-kind and media-trade deals are negotiated. Tell us your budget honestly and we'll structure around it.</div>
+            </div>
+
+            <div class="objection">
+                <div class="objection-q">"What if my brand is alcohol — does that even work in NJ?" <span class="chev">+</span></div>
+                <div class="objection-a">Yes, but it's structured three-way per NJ ABC tied-house law: <strong>(1)</strong> Brand pays Moonlight a flat marketing/activation fee. <strong>(2)</strong> Brand separately routes product through QXT's distributor; QXT's sells through their license. <strong>(3)</strong> Sampling, branded glassware, pop-up bars, ambassadors on-site are all on the table — coordinated with the venue. We've mapped this out and have legal language ready. Reach out and we'll walk you through it.</div>
+            </div>
+
+            <div class="objection">
+                <div class="objection-q">"Why an application instead of just pricing on the site?" <span class="chev">+</span></div>
+                <div class="objection-a">Because half the brands that fill out a sponsor form aren't a fit — wrong demographic, wrong product category, wrong region. Five minutes of qualifying up front means when we hop on a call together, we both already know it's worth the time. You're not pitched. We're built to fit.</div>
+            </div>
+
+            <div class="objection">
+                <div class="objection-q">"What does the contract actually look like?" <span class="chev">+</span></div>
+                <div class="objection-a">2-page standard agreement with the 12 industry-standard clauses: term, deliverables, activation rights, category exclusivity, creative approval, payment schedule (50% deposit / 50% 14 days out), make-goods, kill fee, force majeure, IP, indemnification, renewal. We'll send a draft within 48 hours of our call.</div>
+            </div>
+
+            <div class="objection">
+                <div class="objection-q">"What if I want to start small and grow?" <span class="chev">+</span></div>
+                <div class="objection-a">Encouraged. Tier 0 and Tier 1 exist exactly for this. Most of our biggest partnerships started as Tier 1 activations — then upgraded after they saw the recap data. We'd rather have you in for $500 this month than not at all.</div>
+            </div>
+
+            <div class="objection">
+                <div class="objection-q">"When's the next event and what's the timeline?" <span class="chev">+</span></div>
+                <div class="objection-a">Apply and we'll send the next 3 confirmed dates. Sponsor onboarding takes 2–3 weeks (contract, deposit, creative assets, activation planning). To make the next event, ideally apply at least 4 weeks out.</div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 4 — WHY IT WORKS
-    ============================================================ -->
-    <section class="why-works">
-        <div class="section-container">
-            <span class="section-label">なぜ効果があるのか</span>
-            <h2>"This community doesn't just attend events. They support the brands that show up for them."</h2>
-            <div class="benefit-grid">
-                <div class="benefit-card">
-                    <p class="benefit-title">COMMUNITY LOYALTY</p>
-                    <p class="benefit-text">Anime fans are among the most brand-loyal consumers in any entertainment vertical. When a brand shows up in their space genuinely, they remember it — and they tell their friends.</p>
-                </div>
-                <div class="benefit-card">
-                    <p class="benefit-title">DIRECT ACCESS</p>
-                    <p class="benefit-text">No algorithm. No ad spend. Your brand is physically in the room with your exact target customer while they're having the best night of their month.</p>
-                </div>
-                <div class="benefit-card">
-                    <p class="benefit-title">RECURRING EXPOSURE</p>
-                    <p class="benefit-text">Moonlight Otaku Nights is a recurring series. One sponsorship conversation can turn into ongoing visibility as the series grows.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 5 — CURRENT SPONSORS
-    ============================================================ -->
-    <section class="current-sponsors">
-        <div class="section-container">
-            <span class="section-label">現在のスポンサー</span>
-            <h2>Brands already in the room.</h2>
-            <p class="sponsors-sub">Logos and links will appear here as sponsors are confirmed. Want to be first?</p>
-            <div class="sponsor-placeholder-grid">
-                <div class="sponsor-placeholder">
-                    <span>YOUR<br>BRAND<br>HERE</span>
-                </div>
-                <div class="sponsor-placeholder">
-                    <span>YOUR<br>BRAND<br>HERE</span>
-                </div>
-                <div class="sponsor-placeholder">
-                    <span>YOUR<br>BRAND<br>HERE</span>
-                </div>
-            </div>
-            <a href="#contact" class="btn btn-primary">BECOME A FOUNDING SPONSOR</a>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 6 — HOW IT WORKS
-    ============================================================ -->
-    <section class="how-it-works">
-        <div class="section-container">
-            <span class="section-label">プロセス</span>
-            <h2>Simple. Fast. No friction.</h2>
+         PROCESS — How it works (concrete next steps)
+         ============================================================ -->
+    <section class="process">
+        <div class="container container-wide">
+            <span class="eyebrow">The Process</span>
+            <span class="jp-label">プロセス</span>
+            <h2>From here to in-the-room in 4 steps.</h2>
             <div class="steps-grid">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <p class="step-title">REACH OUT</p>
-                    <p class="step-text">Fill out the form below or email us directly at <a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a>. Tell us which tier interests you.</p>
+                    <p class="step-title">Apply</p>
+                    <p class="step-text">3 minutes. Tell us about your brand and what success looks like.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <p class="step-title">WE CONNECT</p>
-                    <p class="step-text">We'll get back to you within 24 hours to confirm details, answer questions, and get your assets (logo, link, prize info) on file.</p>
+                    <p class="step-title">15-min Call</p>
+                    <p class="step-text">We talk fit, activation ideas, and budget. No deck pitched at you.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <p class="step-title">YOU'RE IN</p>
-                    <p class="step-text">We handle everything from there — your logo goes live on the site, your shoutout goes out, and you show up to an audience that's already excited about your brand.</p>
+                    <p class="step-title">Contract</p>
+                    <p class="step-text">2-page agreement, 50% deposit. Logo goes live the same week.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <p class="step-title">Event Night</p>
+                    <p class="step-text">You show up. We deliver. Recap report in your inbox within 7 days.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 7 — CONTACT FORM
-    ============================================================ -->
-    <section class="contact-section" id="contact">
-        <div class="section-container">
-            <span class="section-label">お問い合わせ</span>
-            <h2>Let's talk.</h2>
-            <p class="contact-sub">Tell us which tier fits your brand and we'll take it from there. No commitment required to reach out.</p>
-
-            <div class="contact-form-wrap">
-                <form id="sponsor-form" action="https://formspree.io/f/mykpoopg" method="POST">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="business-name">Business / Brand Name *</label>
-                            <input type="text" id="business-name" name="business_name" required placeholder="Your business name">
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-name">Contact Name *</label>
-                            <input type="text" id="contact-name" name="contact_name" required placeholder="Your name">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="website">Website or Instagram</label>
-                            <input type="text" id="website" name="website_instagram" placeholder="yourwebsite.com or @handle">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="tier">Which tier interests you? *</label>
-                        <select id="tier" name="tier" required>
-                            <option value="" disabled selected>Select a tier...</option>
-                            <option value="Flyer Partner (Free)">Flyer Partner (Free)</option>
-                            <option value="Community Sponsor (Free)">Community Sponsor (Free)</option>
-                            <option value="Prize Sponsor (Donate a Prize)">Prize Sponsor (Donate a Prize)</option>
-                            <option value="Vendor Table">Vendor Table</option>
-                            <option value="Presenting Sponsor (Premium)">Presenting Sponsor (Premium)</option>
-                            <option value="Not sure yet — let's talk">Not sure yet — let's talk</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="brand-info">Tell us about your brand</label>
-                        <textarea id="brand-info" name="brand_info" placeholder="What do you sell? Who's your audience? Why does this feel like a fit?"></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit" id="submit-btn">SEND IT</button>
-                </form>
-
-                <div class="form-success" id="form-success">
-                    <h3>MESSAGE RECEIVED.</h3>
-                    <p>We'll be in touch within 24 hours. Talk soon.</p>
-                </div>
-
-                <p class="form-email-alt">Prefer email? Reach us directly at <a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a></p>
-            </div>
+         CLOSE — Final CTA with urgency
+         ============================================================ -->
+    <section class="close">
+        <div class="close-inner">
+            <span class="eyebrow">The Decision</span>
+            <span class="jp-label">最後に</span>
+            <h2>5 sponsor slots <span class="accent">open this season.</span><br>Apply to take one.</h2>
+            <p>If your customer is 18–30 and culturally adjacent to anime, cosplay, K-pop, or rave — we should be talking. The application takes 3 minutes. We respond within 24 hours. If it's not a fit, we'll tell you in the same email.</p>
+            <a href="/sponsors/apply/" class="btn btn-primary" onclick="trackCta('close')">Apply to Sponsor →</a>
+            <span class="btn-tiny-note">Or email <a href="mailto:info@moonlightotakunights.com" style="color:var(--mt-accent-highlight);text-decoration:none">info@moonlightotakunights.com</a> directly</span>
+            <p class="scarcity">⌁ Founding sponsor slots fill on a first-applied basis ⌁</p>
         </div>
     </section>
 
-    <!-- ============================================================
-         FOOTER
-    ============================================================ -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-links">
             <a href="/">Moonlight Otaku Nights</a>
             <a data-ig="moonlightotakunights" href="https://instagram.com/moonlightotakunights" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="mailto:info@moonlightotakunights.com">info@moonlightotakunights.com</a>
             <span>QXT's Newark — 248 Mulberry St</span>
-            <span>21+ with valid ID</span>
+            <span>21+ at the bar</span>
         </div>
         <div class="footer-links" style="margin-top: 1rem;">
-            <a href="/partners/" style="opacity: 0.5;">Community Partners</a>
-            <a href="/work-with-us/" style="opacity: 0.5;">Work With Us</a>
+            <a href="/partners/" style="opacity: 0.6;">Community Partners</a>
+            <a href="/work-with-us/" style="opacity: 0.6;">Work With Us</a>
+            <a href="/investors/" style="opacity: 0.6;">Investors</a>
         </div>
-        <p class="copyright" style="margin-top: 1.5rem;">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 Moonlight Otaku Nights. All rights reserved.</p>
         <div class="footer-legal">
             <a href="/privacy-policy/">Privacy Policy</a>
             <span class="separator">|</span>
@@ -1375,138 +1340,90 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </footer>
 
-    <!-- ============================================================
-         JAVASCRIPT
-    ============================================================ -->
     <script>
-
-    /* --- Particles --- */
+    /* Particles */
     (function() {
-        var container = document.getElementById('particles');
-        for (var i = 0; i < 20; i++) {
+        var c = document.getElementById('particles');
+        for (var i = 0; i < 24; i++) {
             var p = document.createElement('div');
             p.className = 'particle';
             p.style.left = (Math.random() * 100) + '%';
             p.style.animationDelay = (Math.random() * 15) + 's';
             p.style.animationDuration = (10 + Math.random() * 10) + 's';
-            container.appendChild(p);
+            c.appendChild(p);
         }
     })();
 
-    /* --- Data notice banner --- */
+    /* Data notice */
     (function() {
-        var STORAGE_KEY = 'moonlight_data_notice_dismissed';
-        var EXPIRY_DAYS = 90;
+        var KEY = 'moonlight_data_notice_dismissed';
+        var DAYS = 90;
         var notice = document.getElementById('data-notice');
-        var dismissBtn = document.getElementById('data-notice-dismiss');
-
-        var stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            var storedTime = parseInt(stored, 10);
-            var now = Date.now();
-            if ((now - storedTime) < (EXPIRY_DAYS * 24 * 60 * 60 * 1000)) {
-                notice.classList.add('hidden');
-            }
-        }
-
-        dismissBtn.addEventListener('click', function() {
+        var btn = document.getElementById('data-notice-dismiss');
+        var stored = localStorage.getItem(KEY);
+        if (stored && (Date.now() - parseInt(stored, 10)) < (DAYS * 86400000)) {
             notice.classList.add('hidden');
-            localStorage.setItem(STORAGE_KEY, Date.now().toString());
+        }
+        btn.addEventListener('click', function() {
+            notice.classList.add('hidden');
+            localStorage.setItem(KEY, Date.now().toString());
         });
     })();
 
-    document.addEventListener('DOMContentLoaded', function() {
-
-        /* --- Smooth scroll for all hash links --- */
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                var target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+    /* Smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href === '#') return;
+            var t = document.querySelector(href);
+            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         });
+    });
 
-        /* --- Mobile menu toggle --- */
-        var mobileToggle = document.getElementById('mobile-toggle');
-        var navLinks = document.querySelector('.nav-links');
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                mobileToggle.classList.toggle('active');
-            });
-            document.querySelectorAll('.nav-links a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                    mobileToggle.classList.remove('active');
-                });
+    /* Objections accordion */
+    document.querySelectorAll('.objection-q').forEach(function(q) {
+        q.addEventListener('click', function() {
+            var parent = this.parentElement;
+            parent.classList.toggle('open');
+        });
+    });
+
+    /* CTA tracking — fires GA4 + Meta CAPI proxy via dataLayer */
+    function trackCta(location) {
+        var eventId = 'sponsor_cta_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'InitiateCheckout', {
+                content_name: 'Sponsor Application Click',
+                content_category: 'Sponsorship',
+                location: location
+            }, { eventID: eventId });
+        }
+        if (window.dataLayer) {
+            window.dataLayer.push({
+                event: 'sponsor_apply_click',
+                cta_location: location,
+                event_id: eventId
             });
         }
+    }
+    window.trackCta = trackCta;
 
-        /* --- Scroll-triggered fade-in for cards --- */
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.stat-card, .tier-card, .benefit-card, .step, .sponsor-placeholder').forEach(function(el) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+    /* Scroll fade-in */
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'translateY(0)';
+                obs.unobserve(e.target);
+            }
         });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-        /* --- Formspree contact form --- */
-        var sponsorForm = document.getElementById('sponsor-form');
-        var submitBtn = document.getElementById('submit-btn');
-        var formSuccess = document.getElementById('form-success');
-
-        if (sponsorForm) {
-            var originalAction = sponsorForm.getAttribute('action');
-
-            sponsorForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'SENDING...';
-
-                var formData = new FormData(sponsorForm);
-
-                fetch(originalAction, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                })
-                .then(function(response) {
-                    if (response.ok) {
-                        if (typeof fbq !== 'undefined') {
-                            fbq('track', 'Lead', {
-                                content_name: 'Sponsor Inquiry',
-                                content_category: 'Sponsorship'
-                            });
-                        }
-                        sponsorForm.style.display = 'none';
-                        formSuccess.classList.add('visible');
-                    } else {
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'SEND IT';
-                        alert('Something went wrong. Please try again or email us directly at info@moonlightotakunights.com');
-                    }
-                })
-                .catch(function() {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'SEND IT';
-                    alert('Something went wrong. Please try again or email us directly at info@moonlightotakunights.com');
-                });
-            });
-        }
-
+    document.querySelectorAll('.tier-card, .vs-card, .stack-row, .step, .objection, .stat-card').forEach(function(el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        obs.observe(el);
     });
     </script>
 

@@ -75,9 +75,12 @@ $details = [];
 switch ($kind) {
     case 'sponsor':
         // brand assets, audience, budget tier
-        $details['brand_category'] = substr(trim((string)($in['brand_category'] ?? '')), 0, 100);
-        $details['budget_tier']    = substr(trim((string)($in['budget_tier'] ?? '')), 0, 50);
-        $details['goals']          = substr(trim((string)($in['goals'] ?? '')), 0, 2000);
+        $details['brand_category']  = substr(trim((string)($in['brand_category']  ?? '')), 0, 100);
+        $details['budget_tier']     = substr(trim((string)($in['budget_tier']     ?? '')), 0, 50);
+        $details['tier_interest']   = substr(trim((string)($in['tier_interest']   ?? '')), 0, 40);
+        $details['nights_interest'] = substr(trim((string)($in['nights_interest'] ?? '')), 0, 80);
+        $details['cpa_context']     = substr(trim((string)($in['cpa_context']     ?? '')), 0, 500);
+        $details['goals']           = substr(trim((string)($in['goals']           ?? '')), 0, 2000);
         break;
     case 'investor':
         $details['investor_type']  = substr(trim((string)($in['investor_type'] ?? '')), 0, 80);

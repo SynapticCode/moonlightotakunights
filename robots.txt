@@ -11,16 +11,18 @@ Disallow: /dashboard/
 Disallow: /tmp/
 Disallow: /admin/
 
-# Block AI crawlers that scrape without permission for training.
-# (Allow Google, Bing, Apple, DuckDuckGo, etc. by omission.)
+# TEMP UNBLOCK (May 18, 2026): GPTBot + ClaudeBot allowed during funnel copy
+# rewrite waves. RE-LOCK after Wave 4 ships. Tracked in TODO below.
+# TODO: After /partners/, /work-with-us/, /cosplay-signup/, /donate/, /submit/,
+# thank-yous, /welcome/, and /past-events/ rewrites merge, restore the blocks.
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: ClaudeBot
-Disallow: /
+Allow: /
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
 User-agent: CCBot
 Disallow: /

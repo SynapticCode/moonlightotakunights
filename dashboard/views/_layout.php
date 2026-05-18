@@ -34,6 +34,7 @@ $nav = [
         ['key' => 'tickets',   'href' => '/tickets.php',      'label' => 'Tickets',       'icon' => '⌘'],
         ['key' => 'ugc',       'href' => '/ugc.php',          'label' => 'UGC Wall',      'icon' => '▣'],
         ['key' => 'compose',   'href' => '/compose.php',      'label' => 'Compose',       'icon' => '✎'],
+        ['key' => 'outbox',    'href' => '/outbox.php',       'label' => 'Outbox',        'icon' => '✉'],
         ['key' => 'broadcasts','href' => '/broadcasts.php',   'label' => 'Broadcasts',    'icon' => '⤴'],
     ]],
     ['data', [

@@ -25,3 +25,5 @@ node_modules/
 # Build outputs
 dist/
 build/
+sponsors_rewrite_proposal.md
+sponsors_rewrite_v2.md

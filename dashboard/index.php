@@ -16,6 +16,10 @@ $subsTotal = (int) (db_fetch("SELECT COUNT(*) c FROM submissions")['c'] ?? 0);
 $subsLast7 = (int) (db_fetch("SELECT COUNT(*) c FROM submissions WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)")['c'] ?? 0);
 $subsNew   = (int) (db_fetch("SELECT COUNT(*) c FROM submissions WHERE status='new'")['c'] ?? 0);
 
+// Outbox approval queue (Session 7 — review-before-send)
+$outboxPending = (int) (db_fetch("SELECT COUNT(*) c FROM outbox WHERE status='pending'")['c'] ?? 0);
+$outboxFailed  = (int) (db_fetch("SELECT COUNT(*) c FROM outbox WHERE status='failed'")['c'] ?? 0);
+
 // Ticket revenue (session 5 — Posh + Eventbrite webhooks write into event_attendees)
 $ticketStats = db_fetch(
     "SELECT
@@ -91,6 +95,16 @@ ob_start();
         <p class="stat-label">Awaiting Review</p>
         <p class="stat-value"><?= number_format($subsNew) ?></p>
         <p class="stat-delta"><a href="/submissions.php?status=new" style="color:var(--acc-cyan);">Open inbox →</a></p>
+    </div>
+    <div class="stat-card">
+        <p class="stat-label">Outbox Pending</p>
+        <p class="stat-value"><?= number_format($outboxPending) ?></p>
+        <p class="stat-delta">
+            <?php if ($outboxFailed > 0): ?>
+                <span style="color:#ff8a8a;"><?= $outboxFailed ?> failed</span> ·
+            <?php endif; ?>
+            <a href="/outbox.php" style="color:var(--acc-cyan);">Review drafts →</a>
+        </p>
     </div>
     <div class="stat-card">
         <p class="stat-label">Ticket Revenue (30d)</p>

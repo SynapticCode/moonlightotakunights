@@ -150,10 +150,14 @@ $html = render_email_template('cosplay-confirmation', [
     'footer_note' => 'Questions? Reply to this email.',
 ]);
 
-ses_send($email, 'Cosplay contest entry confirmed', $html, [
-    'template'   => 'cosplay-confirmation',
-    'contact_id' => $contact_id,
-    'kind'       => 'transactional',
+// Route through outbox so operator reviews before send.
+require_once __DIR__ . '/includes/outbox.php';
+outbox_queue($email, 'Cosplay contest entry confirmed', $html, [
+    'kind'         => 'cosplay_ack',
+    'funnel'       => 'cosplay',
+    'to_name'      => $full_name,
+    'source_table' => 'cosplay_signups',
+    'source_id'    => $signup_id ?? null,
 ]);
 
 // Live push to operator (optional ntfy.sh topic)

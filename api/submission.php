@@ -206,14 +206,19 @@ $html = render_email_template('submission-receipt', [
     'footer_note' => 'Moonlight Otaku Nights · Newark, NJ',
 ]);
 
-$result = ses_send($email, "We got your {$kindLabel} — Moonlight Otaku Nights", $html, [
-    'template'   => 'submission-receipt',
-    'contact_id' => $contact_id,
-    'kind'       => 'transactional',
+// Route applicant-facing receipt through the outbox approval queue.
+// Operator reviews + approves in dashboard/outbox.php before SES sends.
+require_once __DIR__ . '/includes/outbox.php';
+$result = outbox_queue($email, "We got your {$kindLabel} — Moonlight Otaku Nights", $html, [
+    'kind'         => 'submission_ack',
+    'funnel'       => $kind,
+    'to_name'      => $full_name,
+    'source_table' => 'submissions',
+    'source_id'    => $submission_id,
 ]);
 
 if (!$result['ok']) {
-    log_error('Submission receipt failed', ['submission_id' => $submission_id, 'err' => $result['error'] ?? '?']);
+    log_error('Submission receipt queue failed', ['submission_id' => $submission_id, 'err' => $result['error'] ?? '?']);
 }
 
 // -------- Operator notification to ops inbox --------

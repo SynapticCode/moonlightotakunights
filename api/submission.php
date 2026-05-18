@@ -74,13 +74,11 @@ if ($website !== '') {
 $details = [];
 switch ($kind) {
     case 'sponsor':
-        // brand assets, audience, budget tier
-        $details['brand_category']  = substr(trim((string)($in['brand_category']  ?? '')), 0, 100);
-        $details['budget_tier']     = substr(trim((string)($in['budget_tier']     ?? '')), 0, 50);
-        $details['tier_interest']   = substr(trim((string)($in['tier_interest']   ?? '')), 0, 40);
-        $details['nights_interest'] = substr(trim((string)($in['nights_interest'] ?? '')), 0, 80);
-        $details['cpa_context']     = substr(trim((string)($in['cpa_context']     ?? '')), 0, 500);
-        $details['goals']           = substr(trim((string)($in['goals']           ?? '')), 0, 2000);
+        $details['brand_category']   = substr(trim((string)($in['brand_category']   ?? '')), 0, 100);
+        $details['budget_tier']      = substr(trim((string)($in['budget_tier']      ?? '')), 0, 50);
+        $details['tier_interest']    = substr(trim((string)($in['tier_interest']    ?? '')), 0, 40);
+        $details['events_interest']  = substr(trim((string)($in['events_interest']  ?? '')), 0, 80);
+        $details['goals']            = substr(trim((string)($in['goals']            ?? '')), 0, 2000);
         break;
     case 'investor':
         $details['investor_type']  = substr(trim((string)($in['investor_type'] ?? '')), 0, 80);
@@ -195,25 +193,50 @@ $kindLabel = [
 
 $firstName = preg_split('/\s+/', trim($full_name))[0] ?? 'there';
 
-$ackHtml = render_email_template('submission-receipt', [
-    'first_name'  => $firstName,
-    'preheader'   => "We got your $kindLabel — review within 3 days.",
-    'heading'     => 'GOT IT.',
-    'subheading'  => strtoupper("YOUR $kindLabel"),
-    'body'        => "Thanks for reaching out to Moonlight Otaku Nights. We've logged your $kindLabel and you'll hear back within 3 business days. Reply to this email if anything changes on your end.",
-    'cta_label'   => 'VIEW THE GUILD',
-    'cta_url'     => (config('app')['base_url'] ?? 'https://moonlightotakunights.com'),
-    'footer_note' => 'Moonlight Otaku Nights · Newark, NJ',
-]);
-
 require_once __DIR__ . '/includes/outbox.php';
+
+$sponsorLabelMaps = [
+    'brand_category' => [
+        'apparel'  => 'Apparel / fashion',
+        'gaming'   => 'Gaming / tech',
+        'beverage' => 'Beverage / energy',
+        'food'     => 'Food',
+        'beauty'   => 'Beauty / lifestyle',
+        'anime'    => 'Anime / pop-culture',
+        'other'    => 'Other',
+    ],
+    'tier_interest' => [
+        'friend'      => 'Friend of Moonlight',
+        'activation'  => 'Activation Partner',
+        'supporting'  => 'Supporting Sponsor',
+        'presenting'  => 'Presenting Sponsor',
+        'title'       => 'Title Sponsor',
+        'undecided'   => 'Not sure yet — recommend something',
+    ],
+    'budget_tier' => [
+        'u500'    => 'Under $500',
+        '500-2k'  => '$500 – $2K',
+        '2k-10k'  => '$2K – $10K',
+        '10k+'    => '$10K+',
+        'inkind'  => 'In-kind / product only',
+    ],
+    'events_interest' => [
+        'one'       => 'One event',
+        'few'       => 'A few events',
+        'season'    => 'A full season',
+        'undecided' => 'Not sure yet',
+    ],
+];
 
 if ($kind === 'sponsor') {
     // Sponsor path: two separate actions.
     //
-    // (a) Immediate auto-ack straight to the applicant via SES — no operator
-    //     approval gate; they already waited to apply, acknowledge instantly.
-    $ackResult = ses_send($email, "We got your sponsor inquiry — Moonlight Otaku Nights", $ackHtml, [
+    // (a) Immediate auto-ack straight to the applicant via SES — carve-out from
+    //     the outbox approval rule (sponsor funnel only).
+    $ackHtml = render_email_template('sponsor_apply_ack', [
+        'full_name' => $full_name,
+    ]);
+    $ackResult = ses_send($email, 'Got your application — Moonlight Otaku Nights', $ackHtml, [
         'to_name' => $full_name,
         'kind'    => 'transactional',
     ]);
@@ -221,25 +244,24 @@ if ($kind === 'sponsor') {
         log_error('Sponsor auto-ack SES failed', ['submission_id' => $submission_id, 'err' => $ackResult['error'] ?? '?']);
     }
 
-    // (b) Operator-facing draft reply queued in outbox for review/editing before
-    //     sending. Operator sees this in /dashboard/outbox.php and approves or
-    //     edits before it goes out.
-    $draftBody = render_email_template('submission-receipt', [
-        'first_name'  => $firstName,
-        'preheader'   => "Following up on your Moonlight sponsor inquiry",
-        'heading'     => "LET'S TALK.",
-        'subheading'  => 'YOUR SPONSOR INQUIRY',
-        'body'        => "Hi {$firstName} — thanks for applying to sponsor Moonlight Otaku Nights. I've reviewed your inquiry and want to follow up. [OPERATOR: edit this before sending — add the next step, timeline, or specific ask.]",
-        'cta_label'   => 'VIEW THE GUILD',
-        'cta_url'     => (config('app')['base_url'] ?? 'https://moonlightotakunights.com'),
-        'footer_note' => 'Moonlight Otaku Nights',
+    // (b) Operator-facing draft reply queued in outbox for review/editing before send.
+    $orgLabel = $org_name !== '' ? $org_name : 'Sponsor application';
+    $draftHtml = render_email_template('sponsor_reply_draft', [
+        'full_name'             => $full_name,
+        'org_name'              => $orgLabel,
+        'brand_category_label'  => $sponsorLabelMaps['brand_category'][$details['brand_category'] ?? ''] ?? ($details['brand_category'] ?? ''),
+        'tier_interest_label'   => $sponsorLabelMaps['tier_interest'][$details['tier_interest'] ?? ''] ?? ($details['tier_interest'] ?? ''),
+        'budget_tier_label'     => $sponsorLabelMaps['budget_tier'][$details['budget_tier'] ?? ''] ?? ($details['budget_tier'] ?? ''),
+        'events_interest_label' => $sponsorLabelMaps['events_interest'][$details['events_interest'] ?? ''] ?? ($details['events_interest'] ?? ''),
+        'goals'                 => $details['goals'] ?? '',
+        'pitch'                 => $pitch,
     ]);
 
-    $draftResult = outbox_queue($email, "Re: Your Moonlight sponsor inquiry", $draftBody, [
+    $draftResult = outbox_queue($email, "RE: Sponsor application — {$orgLabel}", $draftHtml, [
         'kind'         => 'sponsor_reply_draft',
         'funnel'       => 'sponsor',
         'to_name'      => $full_name,
-        'reply_to'     => config('ses')['ops_inbox'] ?? 'anikuranj@gmail.com',
+        'reply_to'     => 'info@moonlightotakunights.com',
         'source_table' => 'submissions',
         'source_id'    => $submission_id,
         'note'         => "Auto-generated draft reply for submission #{$submission_id}. Edit before approving.",
@@ -250,7 +272,17 @@ if ($kind === 'sponsor') {
     }
 } else {
     // All other funnels: route the applicant ack through outbox approval queue.
-    // Operator reviews + approves in dashboard/outbox.php before SES sends.
+    $ackHtml = render_email_template('submission-receipt', [
+        'first_name'  => $firstName,
+        'preheader'   => "We got your $kindLabel — review within 3 days.",
+        'heading'     => 'GOT IT.',
+        'subheading'  => strtoupper("YOUR $kindLabel"),
+        'body'        => "Thanks for reaching out to Moonlight Otaku Nights. We've logged your $kindLabel and you'll hear back within 3 business days. Reply to this email if anything changes on your end.",
+        'cta_label'   => 'VIEW THE GUILD',
+        'cta_url'     => (config('app')['base_url'] ?? 'https://moonlightotakunights.com'),
+        'footer_note' => 'Moonlight Otaku Nights · Newark, NJ',
+    ]);
+
     $result = outbox_queue($email, "We got your {$kindLabel} — Moonlight Otaku Nights", $ackHtml, [
         'kind'         => 'submission_ack',
         'funnel'       => $kind,

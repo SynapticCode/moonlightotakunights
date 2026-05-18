@@ -77,3 +77,10 @@ Real numbers only. Door counts use cash-settled figures, never unverified "in th
 - **May 7, 2026 — Hatsune Miku Unofficial After Party** · QXT's Newark
   - 56 online (Posh) + walk-up door (no tally provided by venue) — sold to venue capacity
   - Cash settled at $2,268 door; full count not verified
+
+## Deploy (added May 18, 2026)
+
+- Hostinger auto-pulls from `main` ~1 minute after merge to production at `https://moonlightotakunights.com/`.
+- Manual fallback if auto-pull is suspected stale: hPanel → Websites → Git → Pull.
+- **No SSH access from local dev environments. Never request SSH credentials.**
+- To verify a deploy reached prod, fetch the live URL of the changed file (e.g. `curl -s https://moonlightotakunights.com/robots.txt`). Do not block PR completion on deploy verification — that is the operator's check.

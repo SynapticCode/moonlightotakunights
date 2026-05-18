@@ -44,3 +44,36 @@ The canonical mission stays place-agnostic — no Newark, no QXT's, no NJ. The b
 - Beautiful and forward-looking. Never bitter, never negative.
 - One claim per paragraph. Trust the noun.
 - Specific over abstract — only with facts that are true.
+
+## Funnel page discoverability rule (added May 18, 2026)
+
+The funnel pages (`/sponsors/`, `/investors/`, `/djs/`, `/idols/`, `/vendors/`) are direct-link only. Not in main nav. Not in footer. `noindex, nofollow`. Links are shared 1:1 with people who are actually a fit. This protects against:
+
+- Cosplayers/randos stumbling into pitch-deck-flavored pages and getting the wrong impression of the brand
+- Public scraping/screenshotting out of context (the Kirari risk)
+
+If a funnel page needs to be linkable from anywhere public, the link only appears after a qualifying action (signed up, applied, emailed in).
+
+## Sponsor deliverables (locked May 18, 2026)
+
+These are the ONLY things a sponsor is promised on any public-facing copy. Anything beyond this list is custom-quoted on a call, not pre-promised.
+
+- Logo on flyer
+- Instagram story shout-out
+- Logo on Posh / ticketing listing
+- Mention in the email blast for the event
+- Verbal shout-out from the DJ during the night
+- Logo on the venue screen during announcements (when at QXT's or equivalent)
+- Booth at the event — top tiers get better placement
+
+**Not promised** (until they actually exist as a deliverable): demographic reports, recap reels with sponsor logo, cosplayer-worn product content, attendance certifications, deck. These can be discussed on a call but are not in writing on the public page.
+
+## Event history (locked May 18, 2026)
+
+Real numbers only. Door counts use cash-settled figures, never unverified "in the room" estimates.
+
+- **March 26, 2026 — Elven Grove: Emerald Moon** · QXT's Newark
+  - 42 online (Eventbrite) + 26 door = ~68 paid + guest list
+- **May 7, 2026 — Hatsune Miku Unofficial After Party** · QXT's Newark
+  - 56 online (Posh) + walk-up door (no tally provided by venue) — sold to venue capacity
+  - Cash settled at $2,268 door; full count not verified

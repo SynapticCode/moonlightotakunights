@@ -274,6 +274,14 @@
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
+/* Without color-scheme: dark the browser renders the native dropdown popup
+   using OS light-mode colors, which makes white option text invisible on
+   light popup backgrounds. Declaring dark here fixes the contrast. */
+.sub-form select {
+    color-scheme: dark;
+    cursor: pointer;
+}
+
 .sub-form input:focus,
 .sub-form select:focus,
 .sub-form textarea:focus {

@@ -195,7 +195,7 @@ $kindLabel = [
 
 $firstName = preg_split('/\s+/', trim($full_name))[0] ?? 'there';
 
-$html = render_email_template('submission-receipt', [
+$ackHtml = render_email_template('submission-receipt', [
     'first_name'  => $firstName,
     'preheader'   => "We got your $kindLabel — review within 3 days.",
     'heading'     => 'GOT IT.',
@@ -206,19 +206,62 @@ $html = render_email_template('submission-receipt', [
     'footer_note' => 'Moonlight Otaku Nights · Newark, NJ',
 ]);
 
-// Route applicant-facing receipt through the outbox approval queue.
-// Operator reviews + approves in dashboard/outbox.php before SES sends.
 require_once __DIR__ . '/includes/outbox.php';
-$result = outbox_queue($email, "We got your {$kindLabel} — Moonlight Otaku Nights", $html, [
-    'kind'         => 'submission_ack',
-    'funnel'       => $kind,
-    'to_name'      => $full_name,
-    'source_table' => 'submissions',
-    'source_id'    => $submission_id,
-]);
 
-if (!$result['ok']) {
-    log_error('Submission receipt queue failed', ['submission_id' => $submission_id, 'err' => $result['error'] ?? '?']);
+if ($kind === 'sponsor') {
+    // Sponsor path: two separate actions.
+    //
+    // (a) Immediate auto-ack straight to the applicant via SES — no operator
+    //     approval gate; they already waited to apply, acknowledge instantly.
+    $ackResult = ses_send($email, "We got your sponsor inquiry — Moonlight Otaku Nights", $ackHtml, [
+        'to_name' => $full_name,
+        'kind'    => 'transactional',
+    ]);
+    if (empty($ackResult['ok'])) {
+        log_error('Sponsor auto-ack SES failed', ['submission_id' => $submission_id, 'err' => $ackResult['error'] ?? '?']);
+    }
+
+    // (b) Operator-facing draft reply queued in outbox for review/editing before
+    //     sending. Operator sees this in /dashboard/outbox.php and approves or
+    //     edits before it goes out.
+    $draftBody = render_email_template('submission-receipt', [
+        'first_name'  => $firstName,
+        'preheader'   => "Following up on your Moonlight sponsor inquiry",
+        'heading'     => "LET'S TALK.",
+        'subheading'  => 'YOUR SPONSOR INQUIRY',
+        'body'        => "Hi {$firstName} — thanks for applying to sponsor Moonlight Otaku Nights. I've reviewed your inquiry and want to follow up. [OPERATOR: edit this before sending — add the next step, timeline, or specific ask.]",
+        'cta_label'   => 'VIEW THE GUILD',
+        'cta_url'     => (config('app')['base_url'] ?? 'https://moonlightotakunights.com'),
+        'footer_note' => 'Moonlight Otaku Nights',
+    ]);
+
+    $draftResult = outbox_queue($email, "Re: Your Moonlight sponsor inquiry", $draftBody, [
+        'kind'         => 'sponsor_reply_draft',
+        'funnel'       => 'sponsor',
+        'to_name'      => $full_name,
+        'reply_to'     => config('ses')['ops_inbox'] ?? 'anikuranj@gmail.com',
+        'source_table' => 'submissions',
+        'source_id'    => $submission_id,
+        'note'         => "Auto-generated draft reply for submission #{$submission_id}. Edit before approving.",
+    ]);
+
+    if (!$draftResult['ok']) {
+        log_error('Sponsor reply draft queue failed', ['submission_id' => $submission_id, 'err' => $draftResult['error'] ?? '?']);
+    }
+} else {
+    // All other funnels: route the applicant ack through outbox approval queue.
+    // Operator reviews + approves in dashboard/outbox.php before SES sends.
+    $result = outbox_queue($email, "We got your {$kindLabel} — Moonlight Otaku Nights", $ackHtml, [
+        'kind'         => 'submission_ack',
+        'funnel'       => $kind,
+        'to_name'      => $full_name,
+        'source_table' => 'submissions',
+        'source_id'    => $submission_id,
+    ]);
+
+    if (!$result['ok']) {
+        log_error('Submission receipt queue failed', ['submission_id' => $submission_id, 'err' => $result['error'] ?? '?']);
+    }
 }
 
 // -------- Operator notification to ops inbox --------

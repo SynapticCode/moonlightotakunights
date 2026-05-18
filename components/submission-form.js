@@ -29,6 +29,19 @@
         box.textContent = message;
     }
 
+    function validateSelects(form) {
+        for (const el of form.elements) {
+            if (el.tagName !== 'SELECT') continue;
+            if (!el.required) continue;
+            if (!el.value) {
+                el.focus();
+                return el.labels?.[0]?.textContent?.replace(/\s*\*\s*$/, '').trim()
+                    || el.name;
+            }
+        }
+        return null;
+    }
+
     function wire(form) {
         const kind = form.getAttribute('data-mln-submission');
         if (!kind) return;
@@ -37,6 +50,13 @@
             e.preventDefault();
 
             const submitBtn = form.querySelector('button[type=submit]');
+
+            const missingSelect = validateSelects(form);
+            if (missingSelect) {
+                setStatus(form, 'err', `Please choose an option for "${missingSelect}".`);
+                return;
+            }
+
             if (submitBtn) submitBtn.disabled = true;
 
             const payload = serialize(form);

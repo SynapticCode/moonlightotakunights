@@ -42,6 +42,12 @@ $nav = [
         ['key' => 'events',    'href' => '/events.php',       'label' => 'Events',        'icon' => '☉'],
         ['key' => 'health',    'href' => '/health.php',       'label' => 'Site Health',   'icon' => '◈'],
     ]],
+    ['diagnostics', [
+        ['key' => 'tracking-diag', 'href' => '/tracking-diag.php', 'label' => 'Tracking Diag', 'icon' => '⬡'],
+        ['key' => 'env-edit',      'href' => '/env-edit.php',      'label' => 'Env Editor',    'icon' => '✎'],
+        ['key' => 'diag',          'href' => '/diag.php',          'label' => 'SES Diag',      'icon' => '◉'],
+        ['key' => 'migrate',       'href' => '/migrate.php',       'label' => 'Migrate (raw)', 'icon' => '⤻'],
+    ]],
 ];
 ?><!DOCTYPE html>
 <html lang="en">
